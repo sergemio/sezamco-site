@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sezam&Co | Restaurant Libanais & Street Food Lyon 2 — Manouches, Shawarma & Mezzes</title>
+  <meta name="description" content="Restaurant libanais à Lyon 2, entre Bellecour et Cordeliers. Man'ouches artisanaux, shawarma poulet grillé au four, falafels maison, mezzes. 100% halal. Sur place, à emporter ou en livraison. 7j/7.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://sezamandco.com/">
+  <meta property="og:title" content="Sezam&Co | Restaurant Libanais & Street Food Lyon 2">
+  <meta property="og:description" content="Man'ouches artisanaux, shawarma, falafels maison et mezzes libanais à Lyon 2. 100% halal. 7j/7.">
+  <meta property="og:type" content="restaurant">
+  <meta property="og:url" content="https://sezamandco.com/">
+  <meta property="og:image" content="https://sezamandco.com/assets/images/hero-spread.jpg">
+  <meta property="og:locale" content="fr_FR">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Sezam&Co",
+    "image": "https://sezamandco.com/assets/images/hero-spread.jpg",
+    "url": "https://sezamandco.com",
+    "telephone": "+33478954316",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "6 rue Petit David",
+      "addressLocality": "Lyon",
+      "postalCode": "69002",
+      "addressCountry": "FR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 45.7578,
+      "longitude": 4.8335
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "12:00",
+        "closes": "23:00"
+      }
+    ],
+    "servesCuisine": ["Lebanese", "Street Food", "Halal"],
+    "priceRange": "€",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "bestRating": "5",
+      "ratingCount": "725"
+    },
+    "acceptsReservations": "false"
+  }
+  </script>
+
+  <link href="https://fonts.cdnfonts.com/css/ambery-garden" rel="stylesheet">
+  <style>
+
+    /* ===== RESET ===== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --cream: #FFF8E1;
+      --green-pastel: #D4EDCF;
+      --yellow-soft: #FFF4BD;
+      --blue-pastel: #D4E4FF;
+      --green-deep: #1A3B06;
+      --green-logo: #417F0A;
+      --coral: #E84545;
+      --coral-hover: #d63333;
+      --rose: #F58181;
+      --yellow-rich: #F5D547;
+      --text-dark: #1A1A1A;
+      --text-mid: #555;
+      --font-display: 'Ambery Garden', cursive, sans-serif;
+      --font-body: 'Nunito', system-ui, sans-serif;
+      --max-w: 1200px;
+      --section-py: clamp(4rem, 8vw, 7rem);
+    }
+
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body { font-family: var(--font-body); color: var(--text-dark); background: var(--cream); overflow-x: hidden; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 2.5rem); }
+
+    /* ===== REVEAL ===== */
+    .rv { opacity: 0; transform: translateY(32px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
+    .rv.show { opacity: 1; transform: none; }
+    .rv-d1 { transition-delay: .08s; }
+    .rv-d2 { transition-delay: .16s; }
+    .rv-d3 { transition-delay: .24s; }
+    .rv-d4 { transition-delay: .32s; }
+
+    /* ===== HEADER ===== */
+    .hdr {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      padding: .7rem 0;
+      background: var(--cream);
+      box-shadow: 0 2px 16px rgba(26,59,6,.06);
+      transition: padding .35s, box-shadow .35s;
+    }
+    .hdr.stuck {
+      padding: .55rem 0;
+      box-shadow: 0 2px 24px rgba(26,59,6,.12);
+    }
+    .hdr-inner { display: flex; align-items: center; justify-content: space-between; max-width: var(--max-w); margin: 0 auto; padding: 0 clamp(1.25rem,4vw,2.5rem); }
+    .hdr .logo img { height: 48px; width: auto; transition: height .3s; }
+    .hdr.stuck .logo img { height: 40px; }
+
+    .hdr-nav { display: flex; gap: 1.8rem; align-items: center; }
+    .hdr-nav > a, .hdr-nav .dropdown-toggle {
+      font-size: .88rem; font-weight: 700; color: var(--green-deep);
+      letter-spacing: .02em; position: relative; cursor: pointer;
+      font-family: var(--font-body); background: none; border: none; padding: 0;
+      display: inline-flex; align-items: center; gap: .3rem;
+    }
+    .hdr-nav > a::after, .hdr-nav .dropdown-toggle::after {
+      content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 2px;
+      background: var(--coral); border-radius: 2px;
+      transition: width .3s cubic-bezier(.34,1.56,.64,1);
+    }
+    .hdr-nav > a:hover::after, .hdr-nav .dropdown-toggle:hover::after { width: 100%; }
+
+    /* Dropdown */
+    .dropdown { position: relative; }
+    .dropdown-toggle svg { width: 12px; height: 12px; transition: transform .3s; }
+    .dropdown.open .dropdown-toggle svg { transform: rotate(180deg); }
+    .dropdown-menu {
+      position: absolute; top: calc(100% + 10px); right: 0;
+      background: var(--cream); border: 1px solid rgba(26,59,6,.08);
+      border-radius: 12px; padding: .5rem 0; min-width: 200px;
+      box-shadow: 0 8px 30px rgba(26,59,6,.1);
+      opacity: 0; transform: translateY(-8px); pointer-events: none;
+      transition: opacity .25s, transform .25s;
+    }
+    .dropdown.open .dropdown-menu { opacity: 1; transform: translateY(0); pointer-events: all; }
+    .dropdown-menu a {
+      display: block; padding: .6rem 1.2rem; font-size: .85rem; font-weight: 700;
+      color: var(--green-deep); transition: background .2s, color .2s;
+    }
+    .dropdown-menu a:hover { background: var(--green-pastel); color: var(--coral); }
+
+    .hdr-phone {
+      font-size: .85rem; font-weight: 700; color: var(--green-deep);
+      display: flex; align-items: center; gap: .35rem;
+    }
+    .hdr-phone svg { width: 16px; height: 16px; }
+
+    .hdr-cta {
+      display: inline-flex; align-items: center; gap: .4rem;
+      background: var(--coral); color: #fff;
+      font-size: .82rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em;
+      padding: .6rem 1.3rem; border-radius: 50px;
+      transition: transform .3s, box-shadow .3s, background .3s;
+    }
+    .hdr-cta:hover { transform: scale(1.05); box-shadow: 0 4px 16px rgba(232,69,69,.3); background: var(--coral-hover); }
+
+    /* Hamburger */
+    .burger { display: none; flex-direction: column; gap: 5px; padding: 6px; z-index: 210; }
+    .burger span { width: 24px; height: 2.5px; background: var(--green-deep); border-radius: 3px; transition: all .35s cubic-bezier(.34,1.56,.64,1); transform-origin: center; }
+    .burger.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+    .burger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .burger.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+    .mob-nav {
+      position: fixed; inset: 0; background: var(--cream);
+      display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 1.6rem;
+      opacity: 0; pointer-events: none; transition: opacity .4s; z-index: 205;
+    }
+    .mob-nav.open { opacity: 1; pointer-events: all; }
+    .mob-nav a {
+      font-family: var(--font-display); font-size: clamp(1.6rem,5vw,2.2rem);
+      color: var(--green-deep); transition: color .3s;
+    }
+    .mob-nav a:hover { color: var(--coral); }
+    .mob-nav .mob-cta {
+      margin-top: .8rem; background: var(--coral); color: #fff;
+      font-family: var(--font-body); font-size: 1rem; font-weight: 800;
+      padding: .9rem 2.2rem; border-radius: 50px; text-transform: uppercase; letter-spacing: .06em;
+    }
+
+    @media (max-width: 860px) {
+      .hdr-nav, .hdr-phone, .hdr-cta { display: none; }
+      .burger { display: flex; }
+    }
+
+    /* ===== STICKY MOBILE CTA ===== */
+    .sticky-cta {
+      display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 190;
+      padding: .75rem 1rem; background: rgba(255,248,225,.95);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 -2px 20px rgba(0,0,0,.08);
+    }
+    .sticky-cta a {
+      display: flex; justify-content: center; align-items: center; gap: .5rem;
+      width: 100%; background: var(--coral); color: #fff;
+      font-size: 1rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em;
+      padding: .9rem; border-radius: 50px;
+      transition: background .3s;
+    }
+    .sticky-cta a:active { background: var(--coral-hover); }
+    @media (max-width: 860px) { .sticky-cta { display: block; } }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative; width: 100%; min-height: 100vh; min-height: 100svh;
+      display: flex; align-items: flex-end;
+      overflow: hidden;
+      margin-top: 64px; /* space for solid header */
+      min-height: calc(100vh - 64px);
+    }
+    .hero-img {
+      position: absolute; inset: 0; z-index: 0;
+    }
+    .hero-img img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    /* Gradient overlay — dark at bottom for text, transparent at top to show food */
+    .hero-img::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(26,59,6,.88) 0%,
+        rgba(26,59,6,.65) 30%,
+        rgba(26,59,6,.15) 60%,
+        rgba(26,59,6,.02) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative; z-index: 2;
+      padding: 0 clamp(1.25rem,4vw,2.5rem) clamp(2.5rem,5vw,4rem);
+      max-width: var(--max-w); margin: 0 auto; width: 100%;
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(255,248,225,.15); border: 1px solid rgba(255,248,225,.25);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      padding: .4rem 1rem; border-radius: 50px; margin-bottom: 1.2rem;
+    }
+    .hero-badge .stars { color: var(--yellow-rich); font-size: .85rem; letter-spacing: 2px; }
+    .hero-badge span:last-child { color: rgba(255,255,255,.9); font-size: .82rem; font-weight: 600; }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 7vw, 5.5rem);
+      color: #fff;
+      line-height: 1.05;
+      margin-bottom: .6rem;
+      max-width: 700px;
+    }
+    .hero h1 .accent { color: var(--yellow-rich); }
+
+    .hero-sub {
+      font-size: clamp(.95rem, 1.8vw, 1.15rem);
+      color: rgba(255,255,255,.75);
+      font-weight: 600;
+      margin-bottom: 1.8rem;
+      max-width: 500px;
+    }
+
+    .hero-ctas { display: flex; gap: .8rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .btn {
+      display: inline-flex; align-items: center; gap: .4rem;
+      font-weight: 800; font-size: .9rem; padding: .8rem 1.6rem;
+      border-radius: 50px; letter-spacing: .03em;
+      transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: var(--coral); color: #fff;
+      box-shadow: 0 4px 20px rgba(232,69,69,.3);
+    }
+    .btn-primary:hover { box-shadow: 0 8px 30px rgba(232,69,69,.45); }
+    .btn-outline {
+      background: rgba(255,255,255,.12); color: #fff;
+      border: 2px solid rgba(255,255,255,.35);
+      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+    }
+    .btn-outline:hover { border-color: var(--yellow-soft); color: var(--yellow-soft); }
+
+    .hero-info {
+      display: flex; gap: 1.5rem; flex-wrap: wrap;
+    }
+    .hero-info-item {
+      display: flex; align-items: center; gap: .4rem;
+      font-size: .82rem; font-weight: 600; color: rgba(255,255,255,.55);
+    }
+    .hero-info-item svg { width: 15px; height: 15px; opacity: .5; flex-shrink: 0; }
+
+    /* ===== MARQUEE ===== */
+    .marquee {
+      background: var(--green-deep);
+      padding: .8rem 0;
+      overflow: hidden;
+      position: relative;
+    }
+    .marquee-track {
+      display: flex; width: max-content;
+      animation: marqueeScroll 20s linear infinite;
+    }
+    .marquee-track span {
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      color: var(--yellow-soft);
+      white-space: nowrap;
+      padding: 0 .6rem;
+    }
+    .marquee-track .sep {
+      color: var(--coral);
+      font-family: var(--font-body);
+      font-size: .9rem;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 .3rem;
+    }
+
+    @keyframes marqueeScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ===== SECTION COMMON ===== */
+    .section { padding: var(--section-py) 0; position: relative; overflow: hidden; }
+    .section-cream { background: var(--cream); }
+    .section-green { background: var(--green-pastel); }
+    .section-yellow { background: var(--yellow-soft); }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      color: var(--green-deep);
+      margin-bottom: .3rem;
+      line-height: 1.1;
+    }
+    .section-sub {
+      font-size: .9rem; font-weight: 700; color: var(--text-mid);
+      text-transform: uppercase; letter-spacing: .08em;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ===== BEST-SELLERS — ASYMMETRIC GRID ===== */
+    .bs-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: auto;
+      gap: 1.2rem;
+    }
+    .bs-card {
+      position: relative; border-radius: 16px; overflow: hidden;
+      background: var(--green-pastel);
+      transition: transform .4s cubic-bezier(.34,1.56,.64,1), box-shadow .4s;
+    }
+    .bs-card:hover { transform: translateY(-6px) rotate(-.4deg); box-shadow: 0 16px 40px rgba(26,59,6,.1); }
+
+    /* Asymmetric placement */
+    .bs-card:nth-child(1) { grid-column: 1 / 8; grid-row: 1; }     /* Large — left */
+    .bs-card:nth-child(2) { grid-column: 8 / 13; grid-row: 1; }    /* Small — right top */
+    .bs-card:nth-child(3) { grid-column: 1 / 5; grid-row: 2; }     /* Small — left bottom */
+    .bs-card:nth-child(4) { grid-column: 5 / 9; grid-row: 2; }     /* Small — center bottom */
+    .bs-card:nth-child(5) { grid-column: 9 / 13; grid-row: 2; }    /* Small — right bottom */
+
+    @media (max-width: 700px) {
+      .bs-grid { grid-template-columns: 1fr 1fr; }
+      .bs-card:nth-child(1) { grid-column: 1 / -1; }
+      .bs-card:nth-child(n+2) { grid-column: auto; }
+    }
+
+    .bs-card-img { aspect-ratio: 4/3; overflow: hidden; }
+    .bs-card:nth-child(1) .bs-card-img { aspect-ratio: 16/10; }
+    .bs-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+    .bs-card:hover .bs-card-img img { transform: scale(1.06); }
+
+    .bs-card-body { padding: 1rem 1.2rem 1.3rem; }
+    .bs-card-top { display: flex; justify-content: space-between; align-items: baseline; gap: .5rem; margin-bottom: .3rem; }
+    .bs-card-name {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      color: var(--green-deep);
+    }
+    .bs-card-price {
+      font-weight: 800; font-size: 1rem; color: var(--coral); white-space: nowrap;
+    }
+    .bs-card-desc { font-size: .82rem; color: var(--text-mid); line-height: 1.5; }
+    .badge-veggie {
+      display: inline-block; background: var(--green-logo); color: #fff;
+      font-size: .6rem; font-weight: 800; padding: .15rem .5rem; border-radius: 20px;
+      text-transform: uppercase; letter-spacing: .06em; vertical-align: middle; margin-left: .25rem;
+    }
+
+    /* ===== TRADI OU URBAIN ===== */
+    .tou-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+    }
+    @media (max-width: 700px) { .tou-grid { grid-template-columns: 1fr; } }
+
+    .tou-col {
+      background: var(--cream); border-radius: 20px; overflow: hidden;
+      transition: transform .3s;
+    }
+    .tou-col:hover { transform: translateY(-4px); }
+    .tou-col-img { aspect-ratio: 16/9; overflow: hidden; position: relative; }
+    .tou-col-img img { width: 100%; height: 100%; object-fit: cover; }
+    .tou-col-label {
+      position: absolute; bottom: 1rem; left: 1rem;
+      font-family: var(--font-display); font-size: clamp(1.3rem, 3vw, 1.8rem);
+      color: #fff;
+      text-shadow: 0 2px 12px rgba(0,0,0,.5);
+    }
+    .tou-col-body { padding: 1.2rem 1.4rem 1.5rem; }
+    .tou-item {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: .6rem 0;
+      border-bottom: 1px dashed rgba(26,59,6,.1);
+    }
+    .tou-item:last-child { border-bottom: none; }
+    .tou-item-name { font-weight: 700; font-size: .92rem; color: var(--green-deep); }
+    .tou-item-right { text-align: right; }
+    .tou-item-price { font-weight: 800; font-size: .92rem; color: var(--coral); }
+    .tou-item-formule { font-size: .72rem; font-weight: 700; color: var(--green-logo); display: block; margin-top: .1rem; }
+
+    /* ===== FORMULE ===== */
+    .formule-wrap {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center;
+    }
+    @media (max-width: 700px) { .formule-wrap { grid-template-columns: 1fr; text-align: center; } }
+
+    .formule-tag {
+      display: inline-block; font-family: var(--font-display); font-size: .95rem;
+      background: var(--green-deep); color: var(--yellow-soft);
+      padding: .35rem 1rem; border-radius: 30px; margin-bottom: 1.2rem;
+    }
+    .formule-price {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 7vw, 5rem);
+      color: var(--green-deep);
+      line-height: 1;
+      margin-bottom: .3rem;
+    }
+    .formule-from { font-size: 1rem; font-weight: 600; color: var(--text-mid); }
+    .formule-desc {
+      font-size: 1.05rem; line-height: 1.7; color: var(--text-mid); margin: 1rem 0 1.8rem;
+    }
+    .formule-img-wrap { position: relative; }
+    .formule-img-wrap img {
+      border-radius: 20px; width: 100%;
+      box-shadow: 0 16px 48px rgba(26,59,6,.1);
+    }
+    .formule-img-wrap::before {
+      content: ''; position: absolute;
+      top: -10px; left: -10px; right: -10px; bottom: -10px;
+      border: 2.5px dashed var(--green-logo); border-radius: 26px; opacity: .2;
+    }
+
+    .btn-dark {
+      background: var(--green-deep); color: var(--yellow-soft);
+      box-shadow: 0 4px 16px rgba(26,59,6,.15);
+    }
+    .btn-dark:hover { box-shadow: 0 8px 28px rgba(26,59,6,.25); }
+
+    /* ===== LIVRAISON ===== */
+    .liv-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .liv-card {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: .5rem; padding: 2rem 1.5rem; border-radius: 18px;
+      font-family: var(--font-display); font-size: 1.15rem; color: var(--green-deep);
+      transition: transform .35s cubic-bezier(.34,1.56,.64,1), box-shadow .35s;
+      text-align: center;
+    }
+    .liv-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,.06); }
+    .liv-card--direct { background: var(--green-pastel); border: 2px solid var(--green-logo); }
+    .liv-card--uber { background: var(--yellow-soft); }
+    .liv-card--deliveroo { background: var(--blue-pastel); }
+    .liv-card--delicity { background: #FFE0E0; }
+    .liv-card-icon { font-size: 1.8rem; }
+    .liv-card-sub { font-family: var(--font-body); font-size: .75rem; font-weight: 600; color: var(--text-mid); }
+
+    .address-bar {
+      display: flex; align-items: center; gap: 1rem;
+      background: var(--green-deep); color: rgba(255,255,255,.8);
+      padding: 1.3rem 1.6rem; border-radius: 14px;
+      font-size: .9rem; line-height: 1.6;
+    }
+    .address-bar svg { flex-shrink: 0; }
+    .address-bar strong { color: #fff; }
+
+    /* ===== AVIS ===== */
+    .avis-header { text-align: center; margin-bottom: 2.5rem; }
+    .avis-big {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 8vw, 5.5rem);
+      color: var(--green-deep); line-height: 1;
+    }
+    .avis-stars { font-size: 1.4rem; color: var(--yellow-rich); letter-spacing: 3px; display: block; margin: .3rem 0; }
+    .avis-count { font-size: .88rem; font-weight: 700; color: var(--text-mid); }
+
+    .avis-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.2rem;
+    }
+    .avis-card {
+      background: #fff; border-radius: 14px; padding: 1.6rem;
+      border: 1px solid rgba(26,59,6,.05);
+      transition: transform .35s cubic-bezier(.34,1.56,.64,1), box-shadow .35s;
+    }
+    .avis-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,.06); }
+    .avis-card-stars { color: var(--yellow-rich); font-size: .9rem; letter-spacing: 2px; margin-bottom: .8rem; }
+    .avis-card p { font-size: .9rem; line-height: 1.65; color: var(--text-mid); font-style: italic; margin-bottom: .8rem; }
+    .avis-card cite { font-style: normal; font-weight: 800; font-size: .82rem; color: var(--green-deep); }
+
+    /* ===== FOOTER ===== */
+    .footer { background: var(--green-deep); padding: var(--section-py) 0 0; position: relative; }
+    .footer-grid {
+      display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 2.5rem;
+      padding-bottom: 2.5rem; border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 1.8rem; } }
+    @media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr; } }
+
+    .footer-brand p { color: rgba(255,255,255,.45); font-size: .85rem; line-height: 1.7; margin-top: .8rem; }
+    .footer .logo img { height: 44px; width: auto; }
+
+    .footer-col h4 {
+      font-family: var(--font-display); font-size: 1.1rem;
+      color: var(--yellow-soft); margin-bottom: 1rem;
+    }
+    .footer-col a, .footer-col p {
+      display: block; font-size: .85rem; color: rgba(255,255,255,.45);
+      margin-bottom: .5rem; transition: color .3s;
+    }
+    .footer-col a:hover { color: #fff; }
+
+    .footer-social { display: flex; gap: .6rem; margin-top: .6rem; }
+    .footer-social a {
+      display: flex; align-items: center; justify-content: center;
+      width: 38px; height: 38px; border-radius: 10px;
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.08);
+      color: rgba(255,255,255,.5); transition: all .3s;
+    }
+    .footer-social a:hover {
+      background: var(--yellow-rich); border-color: var(--yellow-rich);
+      color: var(--green-deep); transform: translateY(-2px);
+    }
+
+    .footer-seo {
+      padding: 1.2rem 0; border-bottom: 1px solid rgba(255,255,255,.05);
+    }
+    .footer-seo p {
+      font-size: .75rem; color: rgba(255,255,255,.2); text-align: center; line-height: 2;
+    }
+    .footer-seo a { color: rgba(255,255,255,.3); border-bottom: 1px dotted rgba(255,255,255,.12); transition: color .3s; }
+    .footer-seo a:hover { color: rgba(255,255,255,.6); }
+
+    .footer-copy { padding: 1.2rem 0; }
+    .footer-copy p { font-size: .78rem; color: rgba(255,255,255,.2); text-align: center; }
+
+    /* ===== MOBILE BOTTOM SPACER ===== */
+    @media (max-width: 860px) {
+      .footer { padding-bottom: 4.5rem; }
+    }
+
+    /* ===== DECORATIVE SESAME SEEDS (SVG scattered) ===== */
+    .deco-seed {
+      position: absolute; pointer-events: none; opacity: .07; z-index: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="hdr" id="hdr">
+    <div class="hdr-inner">
+      <a href="/" class="logo" aria-label="Sezam&Co — Accueil">
+        <img src="assets/images/logo-sezamco.png" alt="Sezam&Co" width="140" height="48">
+      </a>
+      <nav class="hdr-nav" aria-label="Navigation principale">
+        <a href="/">Home</a>
+        <a href="/menu">Menu</a>
+        <a href="/faq">FAQ</a>
+        <a href="/adresse">Adresse</a>
+        <div class="dropdown" id="dropdown">
+          <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+            Explorer
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="dropdown-menu">
+            <a href="/manouche">Man'ouche à Lyon</a>
+            <a href="/shawarma-lyon">Shawarma à Lyon</a>
+            <a href="/falafel-lyon">Falafel à Lyon</a>
+            <a href="/notre-histoire">Histoire</a>
+            <a href="/mission">Mission</a>
+          </div>
+        </div>
+      </nav>
+      <a href="tel:+33478954316" class="hdr-phone" aria-label="Appeler le restaurant">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        04 78 95 43 16
+      </a>
+      <a href="https://commandes.sezamandco.com" class="hdr-cta">Commander</a>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MOBILE NAV -->
+  <nav class="mob-nav" id="mob-nav" aria-label="Navigation mobile">
+    <a href="/">Home</a>
+    <a href="/menu">Menu</a>
+    <a href="/faq">FAQ</a>
+    <a href="/adresse">Adresse</a>
+    <a href="/manouche">Man'ouche</a>
+    <a href="/shawarma-lyon">Shawarma</a>
+    <a href="/falafel-lyon">Falafel</a>
+    <a href="/notre-histoire">Histoire</a>
+    <a href="/mission">Mission</a>
+    <a href="tel:+33478954316" style="font-family:var(--font-body);font-size:1rem;color:var(--text-mid);">04 78 95 43 16</a>
+    <a href="https://commandes.sezamandco.com" class="mob-cta">Commander</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-img">
+      <img src="assets/images/hero-spread.jpg" alt="Spread de street food libanaise — man'ouche, shawarma, fattouch, hummus" width="2400" height="1350">
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge rv">
+        <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span>4.8/5 — 725 avis Google</span>
+      </div>
+      <h1 class="rv rv-d1">Street Food Libanaise <span class="accent">Lyon 2</span></h1>
+      <p class="hero-sub rv rv-d2">Man'ouches, shawarma & mezzes — faits maison chaque jour.</p>
+      <div class="hero-ctas rv rv-d3">
+        <a href="https://commandes.sezamandco.com" class="btn btn-primary">Commander en ligne</a>
+        <a href="#best-sellers" class="btn btn-outline">Découvrir le menu</a>
+      </div>
+      <div class="hero-info rv rv-d4">
+        <div class="hero-info-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          6 rue Petit David, Lyon 2
+        </div>
+        <div class="hero-info-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          7j/7 — 12h à 23h
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO INTRO -->
+  <section class="section-intro-seo" style="background:var(--cream);padding:2.5rem 0 1.5rem;text-align:center;">
+    <div class="container">
+      <p class="rv" style="max-width:700px;margin:0 auto;font-size:.95rem;line-height:1.8;color:var(--text-mid);">
+        Bienvenue chez Sézam&amp;Co, votre restaurant libanais au cœur de Lyon 2, entre Bellecour et Cordeliers. Ici, on cuisine comme dans les rues de Beyrouth&nbsp;: man'ouches pétris et cuits minute, mezzes préparés maison chaque jour. Sur place, à emporter ou en livraison.
+      </p>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Man'ouche</span><span class="sep">◆</span>
+      <span>Shawarma</span><span class="sep">◆</span>
+      <span>Falafel</span><span class="sep">◆</span>
+      <span>Mezze</span><span class="sep">◆</span>
+      <span>Lyon 2</span><span class="sep">◆</span>
+      <span>Man'ouche</span><span class="sep">◆</span>
+      <span>Shawarma</span><span class="sep">◆</span>
+      <span>Falafel</span><span class="sep">◆</span>
+      <span>Mezze</span><span class="sep">◆</span>
+      <span>Lyon 2</span><span class="sep">◆</span>
+      <span>Man'ouche</span><span class="sep">◆</span>
+      <span>Shawarma</span><span class="sep">◆</span>
+      <span>Falafel</span><span class="sep">◆</span>
+      <span>Mezze</span><span class="sep">◆</span>
+      <span>Lyon 2</span><span class="sep">◆</span>
+      <span>Man'ouche</span><span class="sep">◆</span>
+      <span>Shawarma</span><span class="sep">◆</span>
+      <span>Falafel</span><span class="sep">◆</span>
+      <span>Mezze</span><span class="sep">◆</span>
+      <span>Lyon 2</span><span class="sep">◆</span>
+    </div>
+  </div>
+
+  <!-- BEST-SELLERS -->
+  <section class="section section-cream" id="best-sellers">
+    <div class="container">
+      <h2 class="section-title rv">Nos Best-Sellers</h2>
+      <p class="section-sub rv rv-d1">Les plats préférés de nos clients</p>
+      <div class="bs-grid">
+        <div class="bs-card rv">
+          <div class="bs-card-img"><img src="assets/images/placeholder-shawarma-poulet.jpg" alt="Shawarma Poulet" loading="lazy" width="600" height="375"></div>
+          <div class="bs-card-body">
+            <div class="bs-card-top"><span class="bs-card-name">Shawarma Poulet</span><span class="bs-card-price">9,20&nbsp;€</span></div>
+            <p class="bs-card-desc">Poulet mariné, grillé au four, sauce ail, sumac</p>
+          </div>
+        </div>
+        <div class="bs-card rv rv-d1">
+          <div class="bs-card-img"><img src="assets/images/placeholder-hummus.jpg" alt="Hummus & Crackers" loading="lazy" width="400" height="300"></div>
+          <div class="bs-card-body">
+            <div class="bs-card-top"><span class="bs-card-name">Hummus &amp; Crackers</span><span class="bs-card-price">5,90&nbsp;€</span></div>
+            <p class="bs-card-desc">Pois chiches, crème de sésame, citron</p>
+          </div>
+        </div>
+        <div class="bs-card rv rv-d1">
+          <div class="bs-card-img"><img src="assets/images/placeholder-zaatar.jpg" alt="Manouche Zaatar" loading="lazy" width="400" height="300"></div>
+          <div class="bs-card-body">
+            <div class="bs-card-top"><span class="bs-card-name">Manouche Zaatar</span><span class="bs-card-price">5,50&nbsp;€</span></div>
+            <p class="bs-card-desc">Thym, sésame, sumac, huile d'olive</p>
+          </div>
+        </div>
+        <div class="bs-card rv rv-d2">
+          <div class="bs-card-img"><img src="assets/images/placeholder-falafel-wrap.png" alt="Falafel Wrap" loading="lazy" width="400" height="300"></div>
+          <div class="bs-card-body">
+            <div class="bs-card-top">
+              <span class="bs-card-name">Falafel Wrap <span class="badge-veggie">Veggie</span></span>
+              <span class="bs-card-price">8,90&nbsp;€</span>
+            </div>
+            <p class="bs-card-desc">Falafels maison, pickles, sauce sezam</p>
+          </div>
+        </div>
+        <div class="bs-card rv rv-d3">
+          <div class="bs-card-img"><img src="assets/images/placeholder-kafta.jpg" alt="Cheesy Kafta" loading="lazy" width="400" height="300"></div>
+          <div class="bs-card-body">
+            <div class="bs-card-top"><span class="bs-card-name">Cheesy Kafta</span><span class="bs-card-price">9,50&nbsp;€</span></div>
+            <p class="bs-card-desc">Bœuf, 3 fromages, épices orientales</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE 2 -->
+  <div class="marquee" aria-hidden="true" style="background: var(--coral);">
+    <div class="marquee-track" style="animation-direction: reverse; animation-duration: 18s;">
+      <span style="color:#fff;">Cuit Minute</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span style="color:#fff;">Fait Maison</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span style="color:#fff;">Généreux</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span style="color:#fff;">Authentique</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span style="color:#fff;">7j/7</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span style="color:#fff;">Cuit Minute</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span style="color:#fff;">Fait Maison</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span style="color:#fff;">Généreux</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span style="color:#fff;">Authentique</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span style="color:#fff;">7j/7</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span style="color:#fff;">Cuit Minute</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span style="color:#fff;">Fait Maison</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span style="color:#fff;">Généreux</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span style="color:#fff;">Authentique</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span style="color:#fff;">7j/7</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span style="color:#fff;">Cuit Minute</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span style="color:#fff;">Fait Maison</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span style="color:#fff;">Généreux</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span style="color:#fff;">Authentique</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span style="color:#fff;">7j/7</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+    </div>
+  </div>
+
+  <!-- TRADI OU URBAIN -->
+  <section class="section section-green" id="manouches">
+    <div class="container">
+      <h2 class="section-title rv">Tradi ou Urbain ?</h2>
+      <p class="section-sub rv rv-d1">Nos Man'ouches à Lyon — Galettes Libanaises Cuites Minute</p>
+      <p class="rv rv-d2" style="max-width:650px;font-size:.92rem;line-height:1.75;color:var(--text-mid);margin-bottom:2.5rem;">
+        Chaque man'ouche est pétri et cuit à la minute sous vos yeux. Zaatar pour les amateurs de saveurs vegan, cheesy kafta au fromage fondant, ou shawarma enveloppé dans son pain libanais croustillant — c'est la spécialité de notre restaurant libanais à Lyon 2.
+      </p>
+      <div class="tou-grid">
+        <div class="tou-col rv">
+          <div class="tou-col-img">
+            <img src="assets/images/placeholder-tradi.jpg" alt="Man'ouches Traditionnels" loading="lazy" width="600" height="340">
+            <span class="tou-col-label">Traditionnels</span>
+          </div>
+          <div class="tou-col-body">
+            <div class="tou-item">
+              <span class="tou-item-name">Zaatar</span>
+              <div class="tou-item-right"><span class="tou-item-price">5,50&nbsp;€</span><span class="tou-item-formule">Formule 10,90&nbsp;€</span></div>
+            </div>
+            <div class="tou-item">
+              <span class="tou-item-name">Jebne</span>
+              <div class="tou-item-right"><span class="tou-item-price">7,00&nbsp;€</span><span class="tou-item-formule">Formule 12,40&nbsp;€</span></div>
+            </div>
+            <div class="tou-item">
+              <span class="tou-item-name">Lahmajine</span>
+              <div class="tou-item-right"><span class="tou-item-price">8,00&nbsp;€</span><span class="tou-item-formule">Formule 13,40&nbsp;€</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="tou-col rv rv-d1">
+          <div class="tou-col-img">
+            <img src="assets/images/placeholder-urbain.jpg" alt="Man'ouches Urbains" loading="lazy" width="600" height="340">
+            <span class="tou-col-label">Urbains</span>
+          </div>
+          <div class="tou-col-body">
+            <div class="tou-item">
+              <span class="tou-item-name">Shawarma</span>
+              <div class="tou-item-right"><span class="tou-item-price">9,20&nbsp;€</span><span class="tou-item-formule">Formule 14,60&nbsp;€</span></div>
+            </div>
+            <div class="tou-item">
+              <span class="tou-item-name">Falafel Wrap <span class="badge-veggie">Veggie</span></span>
+              <div class="tou-item-right"><span class="tou-item-price">8,90&nbsp;€</span><span class="tou-item-formule">Formule 14,30&nbsp;€</span></div>
+            </div>
+            <div class="tou-item">
+              <span class="tou-item-name">Cheesy Kafta</span>
+              <div class="tou-item-right"><span class="tou-item-price">9,50&nbsp;€</span><span class="tou-item-formule">Formule 14,90&nbsp;€</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMULE -->
+  <section class="section section-yellow" id="formule">
+    <div class="container">
+      <div class="formule-wrap rv">
+        <div class="formule-text">
+          <span class="formule-tag">La Formule Sezam</span>
+          <div>
+            <span class="formule-from">dès</span>
+            <div class="formule-price">10,90&nbsp;€</div>
+          </div>
+          <p class="formule-desc">Man'ouche + Boisson + Dessert du jour.<br>7j/7, midi et soir.</p>
+          <a href="https://commandes.sezamandco.com" class="btn btn-dark">Commander ma formule</a>
+        </div>
+        <div class="formule-img-wrap">
+          <img src="assets/images/placeholder-formule.jpg" alt="Formule Sezam&Co — man'ouche, boisson et dessert" loading="lazy" width="500" height="400">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIVRAISON -->
+  <section class="section section-cream" id="livraison">
+    <div class="container">
+      <h2 class="section-title rv">Livraison à Lyon</h2>
+      <p class="section-sub rv rv-d1">Recevez vos man'ouches chez vous</p>
+      <div class="liv-grid rv">
+        <a href="https://commandes.sezamandco.com" class="liv-card liv-card--direct">
+          <span class="liv-card-icon">🌐</span>
+          <span>Commande Directe</span>
+          <span class="liv-card-sub">sezamandco.com</span>
+        </a>
+        <a href="https://www.ubereats.com/fr/store/sezam%26co/placeholder" class="liv-card liv-card--uber" target="_blank" rel="noopener">
+          <span class="liv-card-icon">🍽️</span>
+          <span>Uber Eats</span>
+        </a>
+        <a href="https://deliveroo.fr/fr/menu/lyon/placeholder" class="liv-card liv-card--deliveroo" target="_blank" rel="noopener">
+          <span class="liv-card-icon">🚲</span>
+          <span>Deliveroo</span>
+        </a>
+        <a href="#" class="liv-card liv-card--delicity" target="_blank" rel="noopener">
+          <span class="liv-card-icon">📦</span>
+          <span>Delicity</span>
+        </a>
+      </div>
+      <div class="address-bar rv">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFF4BD" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <div>
+          <strong>Sezam&amp;Co</strong><br>
+          6 rue Petit David, 69002 Lyon — Entre Bellecour &amp; Cordeliers · 7j/7 12h–23h
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AVIS -->
+  <section class="section section-cream" id="avis" style="padding-top: 0;">
+    <div class="container">
+      <div class="avis-header rv">
+        <span class="avis-big">4.8</span>
+        <span class="avis-stars">★★★★★</span>
+        <span class="avis-count">725 avis Google</span>
+      </div>
+      <div class="avis-grid">
+        <blockquote class="avis-card rv">
+          <div class="avis-card-stars">★★★★★</div>
+          <p>«&nbsp;Meilleur libanais de Lyon, sans discussion. La man'ouche shawarma est incroyable, les portions sont généreuses et le personnel hyper sympa.&nbsp;»</p>
+          <cite>— Karim B.</cite>
+        </blockquote>
+        <blockquote class="avis-card rv rv-d1">
+          <div class="avis-card-stars">★★★★★</div>
+          <p>«&nbsp;On y retourne chaque semaine. Le hummus est parfait, les falafels croustillants à souhait. Rapport qualité-prix imbattable.&nbsp;»</p>
+          <cite>— Marie L.</cite>
+        </blockquote>
+        <blockquote class="avis-card rv rv-d2">
+          <div class="avis-card-stars">★★★★★</div>
+          <p>«&nbsp;Livraison rapide, tout était encore chaud et bien emballé. Le cheesy kafta est devenu mon favori. Bravo&nbsp;!&nbsp;»</p>
+          <cite>— Thomas D.</cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo"><img src="assets/images/logo-sezamco.png" alt="Sezam&Co" width="140" height="48"></a>
+          <p>Street food libanaise artisanale à Lyon 2. Man'ouches, shawarma, falafels et mezzes. 7j/7.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Menu</h4>
+          <a href="#best-sellers">Nos Plats</a>
+          <a href="#manouches">Man'ouches</a>
+          <a href="#formule">Formule</a>
+          <a href="/shawarma-lyon">Shawarma</a>
+          <a href="/falafel-lyon">Falafel</a>
+          <a href="/manouche-lyon">Man'ouche</a>
+          <a href="https://commandes.sezamandco.com">Commander</a>
+        </div>
+        <div class="footer-col">
+          <h4>Infos</h4>
+          <a href="#livraison">Livraison</a>
+          <a href="#avis">Avis Clients</a>
+          <a href="/faq">FAQ</a>
+          <a href="#">Mentions Légales</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <p>6 rue Petit David<br>69002 Lyon</p>
+          <p>7j/7 — 12h à 23h</p>
+          <a href="tel:+33478954316">04 78 95 43 16</a>
+          <a href="mailto:modernlebfood@gmail.com">modernlebfood@gmail.com</a>
+          <div class="footer-social">
+            <a href="https://www.instagram.com/sezamandco/" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <a href="https://www.tiktok.com/@sezamandco" target="_blank" rel="noopener" aria-label="TikTok">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-.88-5.64v-3.5a6.37 6.37 0 00-.88-.06A6.34 6.34 0 001.39 15.3a6.34 6.34 0 0011.14 4.17V12.5a8.27 8.27 0 004.68 1.45v-3.4a4.85 4.85 0 01-2.38-1.48V6.69h4.76z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/sezamandco" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-seo">
+        <p>Sezam&amp;Co, c'est la street food libanaise au cœur de <a href="#">Lyon 2</a>. Man'ouches cuits minute, mezzes faits maison, <a href="/falafel-lyon">falafel</a>, options vegan et végétariennes, viandes certifiées halal. Que vous cherchiez un <a href="#">restaurant libanais à Lyon</a>, un déjeuner rapide près de <a href="#">Bellecour</a>, une <a href="#">livraison libanaise à Lyon</a>, un <a href="/shawarma-lyon">shawarma à Lyon</a> ou une <a href="/manouche-lyon">man'ouche à Lyon</a> — poussez la porte, ou commandez en ligne.</p>
+      </div>
+      <div class="footer-copy">
+        <p>&copy; 2026 Sezam&amp;Co — Tous droits réservés</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- STICKY MOBILE CTA -->
+  <div class="sticky-cta" id="sticky-cta">
+    <a href="https://commandes.sezamandco.com">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      Commander en ligne
+    </a>
+  </div>
+
+  <!-- JS -->
+  <script>
+  (function() {
+    /* Dropdown */
+    var dropdown = document.getElementById('dropdown');
+    var ddToggle = dropdown.querySelector('.dropdown-toggle');
+    ddToggle.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var open = dropdown.classList.toggle('open');
+      ddToggle.setAttribute('aria-expanded', open);
+    });
+    document.addEventListener('click', function() {
+      dropdown.classList.remove('open');
+      ddToggle.setAttribute('aria-expanded', 'false');
+    });
+    dropdown.querySelector('.dropdown-menu').addEventListener('click', function(e) { e.stopPropagation(); });
+
+    /* Burger */
+    var burger = document.getElementById('burger');
+    var mobNav = document.getElementById('mob-nav');
+    burger.addEventListener('click', function() {
+      var open = burger.classList.toggle('open');
+      mobNav.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    mobNav.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', function() {
+        burger.classList.remove('open');
+        mobNav.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+
+    /* Sticky header */
+    var hdr = document.getElementById('hdr');
+    window.addEventListener('scroll', function() {
+      hdr.classList.toggle('stuck', window.scrollY > 50);
+    }, { passive: true });
+
+    /* Sticky mobile CTA — show after scrolling past hero */
+    var stickyCta = document.getElementById('sticky-cta');
+    var hero = document.getElementById('hero');
+    function checkSticky() {
+      if (window.innerWidth <= 860) {
+        var heroBottom = hero.getBoundingClientRect().bottom;
+        stickyCta.style.transform = heroBottom < 0 ? 'translateY(0)' : 'translateY(100%)';
+      }
+    }
+    stickyCta.style.transition = 'transform .35s ease';
+    stickyCta.style.transform = 'translateY(100%)';
+    window.addEventListener('scroll', checkSticky, { passive: true });
+    checkSticky();
+
+    /* Scroll reveal */
+    var els = document.querySelectorAll('.rv');
+    if ('IntersectionObserver' in window) {
+      var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) { e.target.classList.add('show'); obs.unobserve(e.target); }
+        });
+      }, { threshold: .1, rootMargin: '0px 0px -40px 0px' });
+      els.forEach(function(el) { obs.observe(el); });
+    } else {
+      els.forEach(function(el) { el.classList.add('show'); });
+    }
+
+    /* Smooth scroll */
+    document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+      a.addEventListener('click', function(e) {
+        var t = document.querySelector(this.getAttribute('href'));
+        if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
+  })();
+  </script>
+
+</body>
+</html>
