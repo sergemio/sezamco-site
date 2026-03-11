@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Falafel Lyon 2 | Falafels Maison Croustillants | Sezam&Co</title>
-  <meta name="description" content="Falafels croustillants faits maison à Lyon 2. Pois chiches, herbes fraîches, cuisson minute. Végétarien & vegan. En wrap man'ouché ou en bol. Formule dès 14,30€. Livraison disponible.">
+  <title>Notre Mission | Street Food Libanaise Moderne | Sezam&Co Lyon 2</title>
+  <meta name="description" content="La mission de Sezam&Co : faire rayonner la street food libanaise à Lyon 2. Man'ouches artisanaux, ingrédients frais, options vegan et végétariennes. Halal friendly.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://sezamandco.com/falafel-lyon">
-  <meta property="og:title" content="Falafel Lyon 2 | Falafels Maison Croustillants | Sezam&Co">
-  <meta property="og:description" content="Falafels croustillants faits maison à Lyon 2. Végétarien & vegan. En wrap ou bol. Livraison disponible.">
+  <link rel="canonical" href="https://sezamandco.com/mission">
+  <meta property="og:title" content="Notre Mission | Street Food Libanaise Moderne | Sezam&Co">
+  <meta property="og:description" content="Faire rayonner la street food libanaise à Lyon 2. Man'ouches artisanaux, ingrédients frais, halal friendly.">
   <meta property="og:type" content="article">
-  <meta property="og:url" content="https://sezamandco.com/falafel-lyon">
-  <meta property="og:image" content="https://sezamandco.com/assets/images/falafel/hero.png">
+  <meta property="og:url" content="https://sezamandco.com/mission">
+  <meta property="og:image" content="https://sezamandco.com/assets/images/histoire/hero.jpg">
   <meta property="og:locale" content="fr_FR">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,19 +23,14 @@
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "Falafel à Lyon — Falafels Maison Croustillants",
-    "description": "Falafels croustillants faits maison à Lyon 2. Pois chiches, herbes fraîches, cuisson minute.",
-    "url": "https://sezamandco.com/falafel-lyon",
-    "publisher": {
-      "@type": "Restaurant",
-      "name": "Sezam&Co",
-      "url": "https://sezamandco.com"
-    },
+    "name": "Notre Mission — Street Food Libanaise Moderne",
+    "url": "https://sezamandco.com/mission",
+    "publisher": { "@type": "Restaurant", "name": "Sezam&Co", "url": "https://sezamandco.com" },
     "breadcrumb": {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://sezamandco.com/" },
-        { "@type": "ListItem", "position": 2, "name": "Falafel à Lyon", "item": "https://sezamandco.com/falafel-lyon" }
+        { "@type": "ListItem", "position": 2, "name": "Mission", "item": "https://sezamandco.com/mission" }
       ]
     }
   }
@@ -104,12 +99,10 @@
     @media (max-width: 860px) { .sticky-cta { display: block; } }
 
     /* HERO */
-    .page-hero { position: relative; margin-top: 64px; min-height: 55vh; display: flex; align-items: center; overflow: hidden; }
-    .page-hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center; filter: brightness(.4); }
-    .page-hero-content { position: relative; z-index: 2; max-width: var(--max-w); margin: 0 auto; padding: clamp(3rem,8vw,6rem) clamp(1.25rem,4vw,2.5rem); color: #fff; }
-    .page-hero h1 { font-family: var(--font-display); font-size: clamp(2.2rem, 6vw, 4rem); line-height: 1.1; margin-bottom: 1rem; }
-    .page-hero p { font-size: clamp(.95rem, 2vw, 1.15rem); line-height: 1.8; max-width: 650px; color: rgba(255,255,255,.85); }
-    .page-hero .hero-badge { display: inline-flex; align-items: center; gap: .5rem; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2); backdrop-filter: blur(8px); padding: .5rem 1.2rem; border-radius: 50px; font-size: .82rem; font-weight: 700; color: var(--yellow-soft); margin-bottom: 1.2rem; }
+    .page-hero { position: relative; margin-top: 64px; min-height: 50vh; display: flex; align-items: center; overflow: hidden; background: var(--green-deep); }
+    .page-hero-content { position: relative; z-index: 2; max-width: var(--max-w); margin: 0 auto; padding: clamp(3rem,8vw,6rem) clamp(1.25rem,4vw,2.5rem); color: #fff; text-align: center; }
+    .page-hero h1 { font-family: var(--font-display); font-size: clamp(2.2rem, 6vw, 4rem); line-height: 1.1; margin-bottom: 1rem; color: var(--yellow-soft); }
+    .page-hero p { font-size: clamp(.95rem, 2vw, 1.15rem); line-height: 1.8; max-width: 600px; margin: 0 auto; color: rgba(255,255,255,.7); }
 
     /* MARQUEE */
     .marquee { background: var(--green-deep); padding: .8rem 0; overflow: hidden; position: relative; }
@@ -125,52 +118,34 @@
     .section-title { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.4rem); color: var(--green-deep); margin-bottom: .3rem; line-height: 1.1; }
     .section-sub { font-size: .9rem; font-weight: 700; color: var(--text-mid); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 2.5rem; }
 
-    /* PRODUCT CARDS */
-    .products-row {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem;
+    /* MISSION BLOCKS */
+    .mission-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
     }
-    @media (max-width: 768px) { .products-row { grid-template-columns: 1fr; } }
+    .mission-grid--reverse { direction: rtl; }
+    .mission-grid--reverse > * { direction: ltr; }
+    @media (max-width: 768px) { .mission-grid, .mission-grid--reverse { grid-template-columns: 1fr; gap: 2rem; direction: ltr; } }
 
-    .product-card {
-      background: #fff; border-radius: 20px; overflow: hidden;
-      border: 1px solid rgba(26,59,6,.06);
-      transition: transform .3s, box-shadow .3s;
-    }
-    .product-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(26,59,6,.08); }
-    .product-card-img { width: 100%; height: 280px; object-fit: cover; }
-    .product-card-body { padding: 1.5rem 1.8rem 2rem; }
-    .product-card-body h3 {
-      font-family: var(--font-display); font-size: 1.6rem;
-      color: var(--green-deep); margin-bottom: .5rem;
-    }
-    .product-card-body p { font-size: .9rem; color: var(--text-mid); line-height: 1.7; margin-bottom: 1rem; }
-    .product-card-prices { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
-    .price-pill {
-      padding: .5rem 1rem; border-radius: 50px; font-weight: 800; font-size: .9rem;
-    }
-    .price-pill--main { background: var(--coral); color: #fff; }
-    .price-pill--formule { background: var(--green-pastel); color: var(--green-deep); font-size: .78rem; }
-    .product-card-tags { display: flex; gap: .4rem; flex-wrap: wrap; }
-    .tag { display: inline-block; font-size: .68rem; font-weight: 700; padding: .2rem .55rem; border-radius: 50px; letter-spacing: .02em; }
-    .tag-vegan { background: var(--green-pastel); color: var(--green-deep); }
-    .tag-allergen { background: var(--yellow-soft); color: #7a6200; }
+    .mission-img { border-radius: 20px; overflow: hidden; box-shadow: 0 8px 40px rgba(26,59,6,.1); }
+    .mission-img img { width: 100%; height: 350px; object-fit: cover; }
+    @media (max-width: 768px) { .mission-img img { height: 250px; } }
 
-    /* DIFF CARDS */
-    .diff-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 2rem; }
-    @media (max-width: 600px) { .diff-grid { grid-template-columns: 1fr; } }
-    .diff-card { background: #fff; border-radius: 16px; padding: 1.8rem 1.5rem; border: 1px solid rgba(26,59,6,.06); transition: transform .3s, box-shadow .3s; }
-    .diff-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(26,59,6,.08); }
-    .diff-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: .8rem; }
-    .diff-icon svg { width: 24px; height: 24px; }
-    .diff-card h3 { font-weight: 800; font-size: 1rem; color: var(--green-deep); margin-bottom: .4rem; }
-    .diff-card p { font-size: .85rem; color: var(--text-mid); line-height: 1.6; }
+    .mission-text h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 4vw, 2.4rem); color: var(--green-deep); margin-bottom: .8rem; line-height: 1.1; }
+    .mission-text p { font-size: .95rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 1rem; }
 
-    /* FORMULE BANNER */
-    .formule-banner { background: var(--green-deep); }
-    .formule-inner { max-width: var(--max-w); margin: 0 auto; padding: clamp(3rem,6vw,5rem) clamp(1.25rem,4vw,2.5rem); text-align: center; }
-    .formule-inner h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.8rem); color: var(--yellow-soft); margin-bottom: .8rem; line-height: 1.1; }
-    .formule-inner p { font-size: .95rem; color: rgba(255,255,255,.7); line-height: 1.7; margin-bottom: 1.5rem; max-width: 600px; margin-left: auto; margin-right: auto; }
-    .formule-inner .formule-price { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3rem); color: var(--coral); display: block; }
+    /* COMMITMENT CARDS */
+    .commit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
+    @media (max-width: 768px) { .commit-grid { grid-template-columns: 1fr; gap: 1.2rem; } }
+    .commit-card { background: #fff; border-radius: 16px; padding: 1.8rem 1.5rem; border: 1px solid rgba(26,59,6,.06); transition: transform .3s, box-shadow .3s; }
+    .commit-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(26,59,6,.08); }
+    .commit-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: .8rem; }
+    .commit-icon svg { width: 24px; height: 24px; }
+    .commit-card h3 { font-weight: 800; font-size: 1rem; color: var(--green-deep); margin-bottom: .4rem; }
+    .commit-card p { font-size: .85rem; color: var(--text-mid); line-height: 1.6; }
+
+    /* QUOTE */
+    .quote-band { text-align: center; padding: clamp(2.5rem,5vw,4rem) clamp(1.25rem,4vw,2.5rem); background: var(--coral); }
+    .quote-band blockquote { font-family: var(--font-display); font-size: clamp(1.3rem, 3.5vw, 2rem); color: #fff; max-width: 650px; margin: 0 auto; line-height: 1.4; }
 
     /* BUTTONS */
     .btn { display: inline-flex; align-items: center; gap: .4rem; font-weight: 800; font-size: .9rem; padding: .8rem 1.6rem; border-radius: 50px; letter-spacing: .03em; transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s; }
@@ -229,9 +204,9 @@
           <div class="dropdown-menu">
             <a href="/manouche.html">Man'ouche à Lyon</a>
             <a href="/shawarma-lyon.html">Shawarma à Lyon</a>
-            <a href="/falafel-lyon.html" style="color:var(--coral);font-weight:800;">Falafel à Lyon</a>
+            <a href="/falafel-lyon.html">Falafel à Lyon</a>
             <a href="/notre-histoire.html">Histoire</a>
-            <a href="/mission.html">Mission</a>
+            <a href="/mission.html" style="color:var(--coral);font-weight:800;">Mission</a>
           </div>
         </div>
       </nav>
@@ -251,167 +226,125 @@
     <a href="/adresse.html">Adresse</a>
     <a href="/manouche.html">Man'ouche</a>
     <a href="/shawarma-lyon.html">Shawarma</a>
-    <a href="/falafel-lyon.html" style="color:var(--coral);">Falafel</a>
+    <a href="/falafel-lyon.html">Falafel</a>
     <a href="/notre-histoire.html">Histoire</a>
-    <a href="/mission.html">Mission</a>
+    <a href="/mission.html" style="color:var(--coral);">Mission</a>
     <a href="tel:+33478954316" style="font-family:var(--font-body);font-size:1rem;color:var(--text-mid);">04 78 95 43 16</a>
     <a href="https://commandes.sezamandco.com" class="mob-cta">Commander</a>
   </nav>
 
   <!-- HERO -->
   <section class="page-hero" id="hero">
-    <div class="page-hero-bg" style="background-image:url('assets/images/falafel/hero.png');"></div>
     <div class="page-hero-content">
-      <div class="hero-badge">
-        <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        Vegan &amp; Végétarien
-      </div>
-      <h1>Falafel à Lyon</h1>
-      <p>Le falafel, c'est le plat végétarien star de la street food libanaise. Chez Sezam&amp;Co, nos falafels sont préparés chaque jour avec des pois chiches, des herbes fraîches et nos épices maison, puis frits à la commande pour un croustillant parfait.</p>
+      <h1>Notre Mission</h1>
+      <p>Faire rayonner la street food libanaise à Lyon. Tradition, fraîcheur, générosité&nbsp;— sans compromis.</p>
     </div>
   </section>
 
   <!-- MARQUEE -->
-  <div class="marquee" aria-hidden="true">
+  <div class="marquee" aria-hidden="true" style="background:var(--coral);">
     <div class="marquee-track">
-      <span>Falafel</span><span class="sep">◆</span>
-      <span>Pois Chiches</span><span class="sep">◆</span>
-      <span>Vegan</span><span class="sep">◆</span>
-      <span>Fait Maison</span><span class="sep">◆</span>
-      <span>Croustillant</span><span class="sep">◆</span>
-      <span>Lyon 2</span><span class="sep">◆</span>
-      <span>Falafel</span><span class="sep">◆</span>
-      <span>Pois Chiches</span><span class="sep">◆</span>
-      <span>Vegan</span><span class="sep">◆</span>
-      <span>Fait Maison</span><span class="sep">◆</span>
-      <span>Croustillant</span><span class="sep">◆</span>
-      <span>Lyon 2</span><span class="sep">◆</span>
+      <span style="color:#fff;">Tradition</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span style="color:#fff;">Fraîcheur</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span style="color:#fff;">Générosité</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span style="color:#fff;">Authenticité</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span style="color:#fff;">Partage</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span style="color:#fff;">Tradition</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span style="color:#fff;">Fraîcheur</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span style="color:#fff;">Générosité</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span style="color:#fff;">Authenticité</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span style="color:#fff;">Partage</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
     </div>
   </div>
 
-  <!-- NOS FALAFELS -->
+  <!-- MISSION 1 : REDEFINIR -->
   <section class="section section-cream">
     <div class="container">
-      <h2 class="section-title rv">Nos Falafels</h2>
-      <p class="section-sub rv rv-d1">Deux façons de les déguster</p>
-
-      <div class="products-row">
-        <!-- Falafel Wrap -->
-        <div class="product-card rv">
-          <img src="assets/images/falafel/wrap.png" alt="Falafel wrap vegan — falafels, tomates, radis, pickles, laitue, sauce sezam maison" class="product-card-img" loading="lazy">
-          <div class="product-card-body">
-            <h3>Falafel Wrap</h3>
-            <p>Falafels croustillants garnis de tomates, radis, pickles, laitue et sauce sezam maison. Le tout dans un <a href="/manouche.html" style="color:var(--coral);font-weight:700;">man'ouché</a> moelleux cuit minute.</p>
-            <div class="product-card-prices">
-              <span class="price-pill price-pill--main">8,90&nbsp;€</span>
-              <span class="price-pill price-pill--formule">Formule 14,30&nbsp;€</span>
-            </div>
-            <div class="product-card-tags">
-              <span class="tag tag-vegan">Vegan</span>
-            </div>
-          </div>
+      <div class="mission-grid rv">
+        <div class="mission-text">
+          <h2>Redéfinir la Cuisine Libanaise à Lyon</h2>
+          <p>Chez Sezam&amp;Co, notre mission est simple&nbsp;: proposer une street food libanaise moderne, rapide et généreuse. Pas de la «&nbsp;cuisine libanaise&nbsp;» générique&nbsp;— la vraie, celle qu'on mange dans les rues de Beyrouth, adaptée au rythme de vie des Lyonnais.</p>
+          <p>On respecte les traditions tout en les faisant évoluer. Le <a href="/manouche.html" style="color:var(--coral);font-weight:700;">man'ouché</a> est notre spécialité&nbsp;: pétri chaque matin, garni de produits frais, cuit à la minute sous vos yeux.</p>
         </div>
-
-        <!-- Falafel Crunch -->
-        <div class="product-card rv rv-d1">
-          <img src="assets/images/falafel/crunch.jpg" alt="Falafel crunch — bol de falafels, radis, tomates, concombre, laitue, crackers, crème de sésame" class="product-card-img" loading="lazy">
-          <div class="product-card-body">
-            <h3>Falafel Crunch</h3>
-            <p>Bol de falafels croustillants, radis, tomates, concombre, laitue, crackers, sumac, crème de sésame maison. Un starter généreux, parfait pour partager ou en formule.</p>
-            <div class="product-card-prices">
-              <span class="price-pill price-pill--main">5,90&nbsp;€</span>
-              <span class="price-pill price-pill--formule">Starter</span>
-            </div>
-            <div class="product-card-tags">
-              <span class="tag tag-vegan">Vegan</span>
-              <span class="tag tag-allergen">Sésame</span>
-            </div>
-          </div>
+        <div class="mission-img">
+          <img src="assets/images/manouche/zaatar.jpg" alt="Man'ouche zaatar — galette libanaise artisanale cuite minute" loading="lazy">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- POURQUOI NOS FALAFELS -->
+  <!-- MISSION 2 : POUR TOUS -->
   <section class="section section-green">
     <div class="container">
-      <h2 class="section-title rv">Pourquoi Nos Falafels Sont Différents</h2>
-      <p class="section-sub rv rv-d1">De vrais falafels libanais, comme dans les rues de Beyrouth</p>
-
-      <div class="diff-grid">
-        <div class="diff-card rv">
-          <div class="diff-icon" style="background:var(--yellow-soft);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="var(--green-deep)" stroke-width="1.5"><path d="M12 2C6.48 2 2 6 2 10c0 2.5 1.5 4.5 3 6l1 6h12l1-6c1.5-1.5 3-3.5 3-6 0-4-4.48-8-10-8z"/><path d="M10 2c0 2-2 4-2 6"/><path d="M14 2c0 2 2 4 2 6"/></svg>
-          </div>
-          <h3>Faits maison chaque jour</h3>
-          <p>Jamais de falafel surgelé ou précuit. Nos falafels sont préparés le matin, avec des pois chiches, des herbes fraîches et nos épices maison.</p>
+      <div class="mission-grid mission-grid--reverse rv">
+        <div class="mission-text">
+          <h2>Une Cuisine Pour Tous</h2>
+          <p>Le partage est au cœur de la cuisine libanaise. Chez Sezam&amp;Co, on s'adapte à tous&nbsp;:</p>
+          <p><strong>Végétarien &amp; vegan</strong>&nbsp;— houmous, <a href="/falafel-lyon.html" style="color:var(--coral);font-weight:700;">falafels</a> croustillants, moutabal, fattouch, man'ouches au zaatar. Pas un ajout de dernière minute, mais des plats à part entière.</p>
+          <p><strong>Halal friendly</strong>&nbsp;— toutes nos viandes sont certifiées halal. <a href="/shawarma-lyon.html" style="color:var(--coral);font-weight:700;">Shawarma</a> poulet, kafta, sojok&nbsp;— sélectionnés avec soin.</p>
+          <p><strong>Rapide &amp; équilibré</strong>&nbsp;— des préparations maison pensées pour un déjeuner sain en quelques minutes.</p>
         </div>
-
-        <div class="diff-card rv rv-d1">
-          <div class="diff-icon" style="background:var(--cream);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-          </div>
-          <h3>Frits à la commande</h3>
-          <p>Chaque falafel est frit minute pour un résultat croustillant à l'extérieur, moelleux et parfumé à l'intérieur.</p>
-        </div>
-
-        <div class="diff-card rv rv-d2">
-          <div class="diff-icon" style="background:var(--green-pastel);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="var(--green-deep)" stroke-width="1.5"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><circle cx="9" cy="10" r="1" fill="var(--green-deep)"/><circle cx="15" cy="10" r="1" fill="var(--green-deep)"/></svg>
-          </div>
-          <h3>100% végétarien &amp; vegan</h3>
-          <p>Sans viande, sans produit animal. Le choix parfait pour un repas gourmand, sain et respectueux. Toute notre carte est halal.</p>
-        </div>
-
-        <div class="diff-card rv rv-d3">
-          <div class="diff-icon" style="background:var(--yellow-soft);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="var(--green-deep)" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
-          </div>
-          <h3>Servi en man'ouché</h3>
-          <p>Pas de wrap industriel. Nos falafels sont servis dans notre <a href="/manouche.html" style="color:var(--coral);font-weight:700;">galette libanaise</a> cuite minute au four — moelleuse et croustillante.</p>
+        <div class="mission-img">
+          <img src="assets/images/histoire/mezze.jpg" alt="Assortiment de mezzes libanais — houmous, moutabal, labné, falafels" loading="lazy">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- MARQUEE 2 -->
-  <div class="marquee" aria-hidden="true" style="background: var(--coral);">
-    <div class="marquee-track" style="animation-direction: reverse; animation-duration: 18s;">
-      <span>Végétarien</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
-      <span>Vegan</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
-      <span>Street Food</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
-      <span>Bellecour</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
-      <span>Livraison</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
-      <span>Végétarien</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
-      <span>Vegan</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
-      <span>Street Food</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
-      <span>Bellecour</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
-      <span>Livraison</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
-    </div>
-  </div>
+  <!-- QUOTE -->
+  <section class="quote-band">
+    <blockquote class="rv">
+      «&nbsp;Venez goûter, vous comprendrez.&nbsp;»
+    </blockquote>
+  </section>
 
-  <!-- FORMULE BANNER -->
-  <section class="formule-banner">
-    <div class="formule-inner rv">
-      <h2>Falafel en Formule</h2>
-      <p>1 falafel wrap + 1 starter au choix (houmous, fattouch, moutabal...) + 1 boisson. Un déjeuner rapide, sain et gourmand entre Bellecour et Cordeliers.</p>
-      <span class="formule-price">14,30&nbsp;€</span>
+  <!-- NOS ENGAGEMENTS -->
+  <section class="section section-cream">
+    <div class="container">
+      <h2 class="section-title rv">Nos Engagements</h2>
+      <p class="section-sub rv rv-d1">Ce qu'on promet, chaque jour</p>
+
+      <div class="commit-grid">
+        <div class="commit-card rv">
+          <div class="commit-icon" style="background:var(--green-pastel);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--green-deep)" stroke-width="1.5"><path d="M12 2C6.48 2 2 6 2 10c0 2.5 1.5 4.5 3 6l1 6h12l1-6c1.5-1.5 3-3.5 3-6 0-4-4.48-8-10-8z"/><path d="M10 2c0 2-2 4-2 6"/><path d="M14 2c0 2 2 4 2 6"/></svg>
+          </div>
+          <h3>Pâte au levain, chaque matin</h3>
+          <p>Notre pain est pétri quotidiennement avec un levain naturel. Pas de levure industrielle, pas de pâte surgelée. Le goût et la texture, c'est là que tout commence.</p>
+        </div>
+
+        <div class="commit-card rv rv-d1">
+          <div class="commit-icon" style="background:var(--yellow-soft);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <h3>Cuit à la minute</h3>
+          <p>Chaque man'ouché est garni et cuit à la commande dans notre four. Jamais précuit, jamais réchauffé. Vous le voyez sortir du four, brûlant.</p>
+        </div>
+
+        <div class="commit-card rv rv-d2">
+          <div class="commit-icon" style="background:var(--green-pastel);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--green-deep)" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <h3>Ingrédients frais</h3>
+          <p>Sauces faites maison, légumes croquants, marinades préparées le jour même. On cuisine comme on mangerait chez nous.</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="section section-cream">
+  <section class="section section-green">
     <div class="container">
       <div class="cta-section rv">
-        <h2>Envie de Falafels ?</h2>
-        <p>Sur place au 6 rue Petit David (Lyon 2), à emporter, ou en livraison.</p>
+        <h2>Goûtez la Différence</h2>
+        <p>6 rue Petit David, Lyon 2 — entre Bellecour et Cordeliers. 7j/7, de 12h à 23h.</p>
         <div class="cta-buttons">
           <a href="https://commandes.sezamandco.com" class="btn btn-primary">Commander en ligne</a>
-          <a href="/menu.html" class="btn btn-dark">Voir le menu complet</a>
+          <a href="/menu.html" class="btn btn-dark">Voir le menu</a>
         </div>
         <div class="cta-links">
+          <a href="/notre-histoire.html">Notre histoire</a>
           <a href="/manouche.html">Man'ouche à Lyon</a>
-          <a href="/shawarma-lyon.html">Shawarma à Lyon</a>
           <a href="/adresse.html">Nous trouver</a>
         </div>
       </div>
@@ -438,6 +371,8 @@
           <h4>Infos</h4>
           <a href="/faq.html">FAQ</a>
           <a href="/adresse.html">Adresse</a>
+          <a href="/notre-histoire.html">Notre Histoire</a>
+          <a href="/mission.html">Mission</a>
           <a href="#">Mentions Légales</a>
         </div>
         <div class="footer-col">
@@ -491,10 +426,8 @@
     var stickyCta = document.getElementById('sticky-cta');
     var hero = document.getElementById('hero');
     function checkSticky() { if (window.innerWidth <= 860) { var heroBottom = hero.getBoundingClientRect().bottom; stickyCta.style.transform = heroBottom < 0 ? 'translateY(0)' : 'translateY(100%)'; } }
-    stickyCta.style.transition = 'transform .35s ease';
-    stickyCta.style.transform = 'translateY(100%)';
-    window.addEventListener('scroll', checkSticky, { passive: true });
-    checkSticky();
+    stickyCta.style.transition = 'transform .35s ease'; stickyCta.style.transform = 'translateY(100%)';
+    window.addEventListener('scroll', checkSticky, { passive: true }); checkSticky();
     var els = document.querySelectorAll('.rv');
     if ('IntersectionObserver' in window) { var obs = new IntersectionObserver(function(entries) { entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('show'); obs.unobserve(e.target); } }); }, { threshold: .1, rootMargin: '0px 0px -40px 0px' }); els.forEach(function(el) { obs.observe(el); }); } else { els.forEach(function(el) { el.classList.add('show'); }); }
     document.querySelectorAll('a[href^="#"]').forEach(function(a) { a.addEventListener('click', function(e) { var t = document.querySelector(this.getAttribute('href')); if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); } }); });
