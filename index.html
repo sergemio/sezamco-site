@@ -189,9 +189,10 @@
     .mob-dropdown-toggle svg { width: 16px; height: 16px; transition: transform .3s; }
     .mob-dropdown-toggle.open svg { transform: rotate(180deg); }
     .mob-dropdown {
-      display: none; flex-direction: column; gap: .8rem; padding: .5rem 0 .3rem;
+      display: flex; flex-direction: column; gap: .8rem; padding: 0;
+      max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .35s ease;
     }
-    .mob-dropdown.open { display: flex; }
+    .mob-dropdown.open { max-height: 400px; padding: .5rem 0 .3rem; }
     .mob-dropdown a {
       font-size: clamp(1rem,3.5vw,1.3rem) !important;
       color: var(--green-logo) !important;
