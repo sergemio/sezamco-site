@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Notre Mission | Street Food Libanaise Moderne | Sezam&Co Lyon 2</title>
-  <meta name="description" content="La mission de Sezam&Co : faire rayonner la street food libanaise à Lyon 2. Man'ouches artisanaux, ingrédients frais, options vegan et végétariennes. Halal friendly.">
+  <title>Mezze Lyon | Houmous, Falafel, Moutabal, Fattouch | Sezam&Co Lyon 2</title>
+  <meta name="description" content="Mezzes libanais à Lyon 2 chez Sezam&Co. Houmous, moutabal, labné, fattouch, falafel crunch, frites signature, mozza sticks. Faits maison chaque jour. Dès 5,90€. 100% halal. 7j/7.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://sezamandco.com/mission">
-  <meta property="og:title" content="Notre Mission | Street Food Libanaise Moderne | Sezam&Co">
-  <meta property="og:description" content="Faire rayonner la street food libanaise à Lyon 2. Man'ouches artisanaux, ingrédients frais, halal friendly.">
-  <meta property="og:type" content="article">
-  <meta property="og:url" content="https://sezamandco.com/mission">
-  <meta property="og:image" content="https://sezamandco.com/assets/images/histoire/hero.jpg">
+  <link rel="canonical" href="https://sezamandco.com/mezze-lyon">
+  <meta property="og:title" content="Mezze Lyon | Houmous, Falafel, Moutabal | Sezam&Co">
+  <meta property="og:description" content="Mezzes libanais faits maison à Lyon 2. Houmous, moutabal, labné, fattouch, falafels. Dès 5,90€. 7j/7.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sezamandco.com/mezze-lyon">
+  <meta property="og:image" content="https://sezamandco.com/assets/images/best-hummus.jpg">
   <meta property="og:locale" content="fr_FR">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,14 +23,27 @@
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "Notre Mission — Street Food Libanaise Moderne",
-    "url": "https://sezamandco.com/mission",
-    "publisher": { "@type": "Restaurant", "name": "Sezam&Co", "url": "https://sezamandco.com" },
+    "name": "Mezze Lyon — Sezam&Co",
+    "url": "https://sezamandco.com/mezze-lyon",
+    "publisher": {
+      "@type": "Restaurant",
+      "name": "Sezam&Co",
+      "url": "https://sezamandco.com",
+      "telephone": "+33478954316",
+      "servesCuisine": ["Lebanese", "Street Food", "Halal"],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "6 rue Petit David",
+        "addressLocality": "Lyon",
+        "postalCode": "69002",
+        "addressCountry": "FR"
+      }
+    },
     "breadcrumb": {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://sezamandco.com/" },
-        { "@type": "ListItem", "position": 2, "name": "Mission", "item": "https://sezamandco.com/mission" }
+        { "@type": "ListItem", "position": 2, "name": "Mezze Lyon", "item": "https://sezamandco.com/mezze-lyon" }
       ]
     }
   }
@@ -69,7 +82,6 @@
     .hdr-nav > a, .hdr-nav .dropdown-toggle { font-size: .88rem; font-weight: 700; color: var(--green-deep); letter-spacing: .02em; position: relative; cursor: pointer; font-family: var(--font-body); background: none; border: none; padding: 0; display: inline-flex; align-items: center; gap: .3rem; }
     .hdr-nav > a::after, .hdr-nav .dropdown-toggle::after { content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 2px; background: var(--coral); border-radius: 2px; transition: width .3s cubic-bezier(.34,1.56,.64,1); }
     .hdr-nav > a:hover::after, .hdr-nav .dropdown-toggle:hover::after { width: 100%; }
-    .hdr-nav > a.active::after { width: 100%; }
     .dropdown { position: relative; }
     .dropdown-toggle svg { width: 12px; height: 12px; transition: transform .3s; }
     .dropdown.open .dropdown-toggle svg { transform: rotate(180deg); }
@@ -100,14 +112,17 @@
     @media (max-width: 860px) { .sticky-cta { display: block; } }
 
     /* HERO */
-    .page-hero { position: relative; margin-top: 64px; min-height: 50vh; display: flex; align-items: center; overflow: hidden; background: var(--green-deep); }
+    .page-hero { position: relative; margin-top: 64px; min-height: 55vh; display: flex; align-items: center; overflow: hidden; background: var(--green-deep); }
+    .page-hero-bg { position: absolute; inset: 0; }
+    .page-hero-bg img { width: 100%; height: 100%; object-fit: cover; opacity: .3; }
     .page-hero-content { position: relative; z-index: 2; max-width: var(--max-w); margin: 0 auto; padding: clamp(3rem,8vw,6rem) clamp(1.25rem,4vw,2.5rem); color: #fff; text-align: center; }
-    .page-hero h1 { font-family: var(--font-display); font-size: clamp(2.2rem, 6vw, 4rem); line-height: 1.1; margin-bottom: 1rem; color: var(--yellow-soft); }
-    .page-hero p { font-size: clamp(.95rem, 2vw, 1.15rem); line-height: 1.8; max-width: 600px; margin: 0 auto; color: rgba(255,255,255,.7); }
+    .page-hero h1 { font-family: var(--font-display); font-size: clamp(2rem, 5.5vw, 3.6rem); line-height: 1.1; margin-bottom: 1rem; color: var(--yellow-soft); }
+    .page-hero p { font-size: clamp(.95rem, 2vw, 1.15rem); line-height: 1.8; max-width: 620px; margin: 0 auto; color: rgba(255,255,255,.75); }
+    .hero-badge { display: inline-flex; align-items: center; gap: .4rem; background: rgba(255,255,255,.12); backdrop-filter: blur(8px); padding: .4rem 1rem; border-radius: 50px; font-size: .82rem; font-weight: 700; color: #fff; margin-bottom: 1.2rem; }
 
     /* MARQUEE */
     .marquee { background: var(--green-deep); padding: .8rem 0; overflow: hidden; position: relative; }
-    .marquee-track { display: flex; width: max-content; animation: marqueeScroll 20s linear infinite; }
+    .marquee-track { display: flex; width: max-content; animation: marqueeScroll 22s linear infinite; }
     .marquee-track span { font-family: var(--font-display); font-size: clamp(1rem, 2.5vw, 1.4rem); color: var(--yellow-soft); white-space: nowrap; padding: 0 .6rem; }
     .marquee-track .sep { color: var(--coral); font-family: var(--font-body); font-size: .9rem; display: inline-flex; align-items: center; padding: 0 .3rem; }
     @keyframes marqueeScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
@@ -119,30 +134,41 @@
     .section-title { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.4rem); color: var(--green-deep); margin-bottom: .3rem; line-height: 1.1; }
     .section-sub { font-size: .9rem; font-weight: 700; color: var(--text-mid); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 2.5rem; }
 
-    /* MISSION BLOCKS */
-    .mission-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
-    }
-    .mission-grid--reverse { direction: rtl; }
-    .mission-grid--reverse > * { direction: ltr; }
-    @media (max-width: 768px) { .mission-grid, .mission-grid--reverse { grid-template-columns: 1fr; gap: 2rem; direction: ltr; } }
+    /* INTRO GRID */
+    .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    .intro-grid--reverse { direction: rtl; }
+    .intro-grid--reverse > * { direction: ltr; }
+    @media (max-width: 768px) { .intro-grid, .intro-grid--reverse { grid-template-columns: 1fr; gap: 2rem; direction: ltr; } }
+    .intro-text h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 4vw, 2.4rem); color: var(--green-deep); margin-bottom: .8rem; line-height: 1.1; }
+    .intro-text p { font-size: .95rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 1rem; }
+    .intro-img { border-radius: 20px; overflow: hidden; box-shadow: 0 8px 40px rgba(26,59,6,.1); }
+    .intro-img img { width: 100%; height: 350px; object-fit: cover; }
+    @media (max-width: 768px) { .intro-img img { height: 250px; } }
 
-    .mission-img { border-radius: 20px; overflow: hidden; box-shadow: 0 8px 40px rgba(26,59,6,.1); }
-    .mission-img img { width: 100%; height: 350px; object-fit: cover; }
-    @media (max-width: 768px) { .mission-img img { height: 250px; } }
+    /* MEZZE CARDS */
+    .mezze-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+    .mezze-card { background: #fff; border-radius: 16px; padding: 1.5rem; border: 1px solid rgba(26,59,6,.06); transition: transform .3s, box-shadow .3s; display: flex; flex-direction: column; }
+    .mezze-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(26,59,6,.08); }
+    .mezze-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: .4rem; }
+    .mezze-card h3 { font-weight: 800; font-size: 1.05rem; color: var(--green-deep); }
+    .mezze-price { font-weight: 800; font-size: 1.1rem; color: var(--coral); white-space: nowrap; }
+    .mezze-desc { font-size: .85rem; color: var(--text-mid); line-height: 1.6; flex: 1; }
+    .mezze-tags { display: flex; gap: .4rem; flex-wrap: wrap; margin-top: .6rem; }
+    .tag { display: inline-block; font-size: .68rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; padding: .2rem .55rem; border-radius: 50px; }
+    .tag-vegan { background: var(--green-deep); color: #fff; }
+    .tag-veg { background: var(--green-pastel); color: var(--green-deep); }
+    .tag-allergen { background: var(--yellow-soft); color: var(--text-dark); }
 
-    .mission-text h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 4vw, 2.4rem); color: var(--green-deep); margin-bottom: .8rem; line-height: 1.1; }
-    .mission-text p { font-size: .95rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 1rem; }
-
-    /* COMMITMENT CARDS */
-    .commit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
-    @media (max-width: 768px) { .commit-grid { grid-template-columns: 1fr; gap: 1.2rem; } }
-    .commit-card { background: #fff; border-radius: 16px; padding: 1.8rem 1.5rem; border: 1px solid rgba(26,59,6,.06); transition: transform .3s, box-shadow .3s; }
-    .commit-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(26,59,6,.08); }
-    .commit-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: .8rem; }
-    .commit-icon svg { width: 24px; height: 24px; }
-    .commit-card h3 { font-weight: 800; font-size: 1rem; color: var(--green-deep); margin-bottom: .4rem; }
-    .commit-card p { font-size: .85rem; color: var(--text-mid); line-height: 1.6; }
+    /* FORMULE BANNER */
+    .formule-banner { background: var(--green-deep); border-radius: 20px; padding: clamp(2rem,4vw,3rem); display: flex; align-items: center; gap: 2.5rem; margin-top: 2rem; }
+    @media (max-width: 768px) { .formule-banner { flex-direction: column; text-align: center; gap: 1.5rem; } }
+    .formule-text { flex: 1; }
+    .formule-text h3 { font-family: var(--font-display); font-size: clamp(1.4rem, 3.5vw, 2rem); color: var(--yellow-soft); margin-bottom: .5rem; }
+    .formule-text p { font-size: .9rem; color: rgba(255,255,255,.7); line-height: 1.7; }
+    .formule-price { text-align: center; }
+    .formule-price .from { font-size: .8rem; font-weight: 700; color: rgba(255,255,255,.5); text-transform: uppercase; letter-spacing: .08em; }
+    .formule-price .amount { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 3.5rem); color: var(--yellow-rich); line-height: 1; }
+    .formule-price .unit { font-size: .85rem; color: rgba(255,255,255,.5); }
 
     /* QUOTE */
     .quote-band { text-align: center; padding: clamp(2.5rem,5vw,4rem) clamp(1.25rem,4vw,2.5rem); background: var(--coral); }
@@ -155,6 +181,8 @@
     .btn-primary:hover { box-shadow: 0 8px 30px rgba(232,69,69,.45); }
     .btn-dark { background: var(--green-deep); color: #fff; box-shadow: 0 4px 20px rgba(26,59,6,.15); }
     .btn-dark:hover { box-shadow: 0 8px 28px rgba(26,59,6,.25); }
+    .btn-outline { background: transparent; color: var(--green-deep); border: 2px solid var(--green-deep); }
+    .btn-outline:hover { background: var(--green-deep); color: #fff; }
 
     /* CTA */
     .cta-section { text-align: center; padding: clamp(3rem,6vw,5rem) 0; }
@@ -199,7 +227,7 @@
         <a href="/faq.html">FAQ</a>
         <a href="/adresse.html">Adresse</a>
         <div class="dropdown" id="dropdown">
-          <button class="dropdown-toggle active" aria-expanded="false" aria-haspopup="true">
+          <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">
             Explorer <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
           <div class="dropdown-menu">
@@ -207,7 +235,7 @@
             <a href="/shawarma-lyon.html">Shawarma à Lyon</a>
             <a href="/falafel-lyon.html">Falafel à Lyon</a>
             <a href="/notre-histoire.html">Histoire</a>
-            <a href="/mission.html" style="color:var(--coral);font-weight:800;">Mission</a>
+            <a href="/mission.html">Mission</a>
           </div>
         </div>
       </nav>
@@ -229,64 +257,161 @@
     <a href="/shawarma-lyon.html">Shawarma</a>
     <a href="/falafel-lyon.html">Falafel</a>
     <a href="/notre-histoire.html">Histoire</a>
-    <a href="/mission.html" style="color:var(--coral);">Mission</a>
+    <a href="/mission.html">Mission</a>
     <a href="tel:+33478954316" style="font-family:var(--font-body);font-size:1rem;color:var(--text-mid);">04 78 95 43 16</a>
     <a href="https://commandes.sezamandco.com" class="mob-cta">Commander</a>
   </nav>
 
   <!-- HERO -->
   <section class="page-hero" id="hero">
+    <div class="page-hero-bg">
+      <img src="assets/images/histoire/mezze.jpg" alt="Assortiment de mezzes libanais — houmous, moutabal, labné" loading="eager">
+    </div>
     <div class="page-hero-content">
-      <h1>Notre Mission</h1>
-      <p>Faire rayonner la street food libanaise à Lyon. Tradition, fraîcheur, générosité&nbsp;— sans compromis.</p>
+      <div class="hero-badge">Tous à 5,90&nbsp;€</div>
+      <h1>Mezzes Libanais à Lyon</h1>
+      <p>Houmous crémeux, moutabal fumé, falafels croustillants, fattouch acidulée&nbsp;— tous faits maison chaque jour chez Sezam&amp;Co, Lyon 2.</p>
     </div>
   </section>
 
   <!-- MARQUEE -->
-  <div class="marquee" aria-hidden="true" style="background:var(--coral);">
+  <div class="marquee" aria-hidden="true">
     <div class="marquee-track">
-      <span style="color:#fff;">Tradition</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
-      <span style="color:#fff;">Fraîcheur</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
-      <span style="color:#fff;">Générosité</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
-      <span style="color:#fff;">Authenticité</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
-      <span style="color:#fff;">Partage</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
-      <span style="color:#fff;">Tradition</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
-      <span style="color:#fff;">Fraîcheur</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
-      <span style="color:#fff;">Générosité</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
-      <span style="color:#fff;">Authenticité</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
-      <span style="color:#fff;">Partage</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span>Houmous</span><span class="sep">◆</span>
+      <span>Moutabal</span><span class="sep">◆</span>
+      <span>Labné</span><span class="sep">◆</span>
+      <span>Fattouch</span><span class="sep">◆</span>
+      <span>Falafel</span><span class="sep">◆</span>
+      <span>Frites</span><span class="sep">◆</span>
+      <span>Mozza Sticks</span><span class="sep">◆</span>
+      <span>Houmous</span><span class="sep">◆</span>
+      <span>Moutabal</span><span class="sep">◆</span>
+      <span>Labné</span><span class="sep">◆</span>
+      <span>Fattouch</span><span class="sep">◆</span>
+      <span>Falafel</span><span class="sep">◆</span>
+      <span>Frites</span><span class="sep">◆</span>
+      <span>Mozza Sticks</span><span class="sep">◆</span>
     </div>
   </div>
 
-  <!-- MISSION 1 : REDEFINIR -->
+  <!-- INTRO : C'EST QUOI UN MEZZE -->
   <section class="section section-cream">
     <div class="container">
-      <div class="mission-grid rv">
-        <div class="mission-text">
-          <h2>Redéfinir la Cuisine Libanaise à Lyon</h2>
-          <p>Chez Sezam&amp;Co, notre mission est simple&nbsp;: proposer une street food libanaise moderne, rapide et généreuse. Pas de la «&nbsp;cuisine libanaise&nbsp;» générique&nbsp;— la vraie, celle qu'on mange dans les rues de Beyrouth, adaptée au rythme de vie des Lyonnais.</p>
-          <p>On respecte les traditions tout en les faisant évoluer. Le <a href="/manouche.html" style="color:var(--coral);font-weight:700;">man'ouché</a> est notre spécialité&nbsp;: pétri chaque matin, garni de produits frais, cuit à la minute sous vos yeux.</p>
+      <div class="intro-grid rv">
+        <div class="intro-text">
+          <h2>Le Mezze, l'Art du Partage Libanais</h2>
+          <p>Au Liban, on ne commence jamais un repas sans mezze. Ce sont ces petits plats qu'on pose au centre de la table et qu'on partage entre amis, en famille, entre collègues. Houmous, moutabal, labné, fattouch&nbsp;— chaque bouchée est un mélange de textures et de saveurs.</p>
+          <p>Chez Sezam&amp;Co, nos mezzes sont préparés <strong>chaque jour avec des produits frais</strong>. Pas de conserve, pas de sachet. Du pois chiche au mixeur, de l'aubergine au four, du citron pressé à la main.</p>
         </div>
-        <div class="mission-img">
-          <img src="assets/images/manouche/zaatar.jpg" alt="Man'ouche zaatar — galette libanaise artisanale cuite minute" loading="lazy">
+        <div class="intro-img">
+          <img src="assets/images/best-hummus.jpg" alt="Houmous maison — pois chiches, crème de sésame, sumac, citron" loading="lazy">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- MISSION 2 : POUR TOUS -->
+  <!-- NOS 7 MEZZES -->
   <section class="section section-green">
     <div class="container">
-      <div class="mission-grid mission-grid--reverse rv">
-        <div class="mission-text">
-          <h2>Une Cuisine Pour Tous</h2>
-          <p>Le partage est au cœur de la cuisine libanaise. Chez Sezam&amp;Co, on s'adapte à tous&nbsp;:</p>
-          <p><strong>Végétarien &amp; vegan</strong>&nbsp;— houmous, <a href="/falafel-lyon.html" style="color:var(--coral);font-weight:700;">falafels</a> croustillants, moutabal, fattouch, man'ouches au zaatar. Pas un ajout de dernière minute, mais des plats à part entière.</p>
-          <p><strong>Halal friendly</strong>&nbsp;— toutes nos viandes sont certifiées halal. <a href="/shawarma-lyon.html" style="color:var(--coral);font-weight:700;">Shawarma</a> poulet, kafta, sojok&nbsp;— sélectionnés avec soin.</p>
-          <p><strong>Rapide &amp; équilibré</strong>&nbsp;— des préparations maison pensées pour un déjeuner sain en quelques minutes.</p>
+      <h2 class="section-title rv">Nos Mezzes &amp; Starters</h2>
+      <p class="section-sub rv rv-d1">7 recettes, toutes à 5,90&nbsp;€</p>
+
+      <div class="mezze-grid">
+        <div class="mezze-card rv">
+          <div class="mezze-card-top">
+            <h3>Hummus &amp; Crackers</h3>
+            <span class="mezze-price">5,90&nbsp;€</span>
+          </div>
+          <p class="mezze-desc">Pois chiches, crème de sésame, sumac, citron, huile d'olive, crackers.</p>
+          <div class="mezze-tags">
+            <span class="tag tag-vegan">Vegan</span>
+            <span class="tag tag-allergen">Sésame</span>
+          </div>
         </div>
-        <div class="mission-img">
-          <img src="assets/images/histoire/mezze.jpg" alt="Assortiment de mezzes libanais — houmous, moutabal, labné, falafels" loading="lazy">
+
+        <div class="mezze-card rv rv-d1">
+          <div class="mezze-card-top">
+            <h3>Moutabal &amp; Crackers</h3>
+            <span class="mezze-price">5,90&nbsp;€</span>
+          </div>
+          <p class="mezze-desc">Caviar d'aubergine crémeuse et fumée, sésame, citron, huile d'olive, crackers.</p>
+          <div class="mezze-tags">
+            <span class="tag tag-vegan">Vegan</span>
+            <span class="tag tag-allergen">Sésame</span>
+          </div>
+        </div>
+
+        <div class="mezze-card rv rv-d2">
+          <div class="mezze-card-top">
+            <h3>Labné &amp; Crackers</h3>
+            <span class="mezze-price">5,90&nbsp;€</span>
+          </div>
+          <p class="mezze-desc">Fromage blanc salé en crème, huile d'olive, crackers, pincée de zaatar.</p>
+          <div class="mezze-tags">
+            <span class="tag tag-veg">Végétarien</span>
+          </div>
+        </div>
+
+        <div class="mezze-card rv">
+          <div class="mezze-card-top">
+            <h3>Fattouch</h3>
+            <span class="mezze-price">5,90&nbsp;€</span>
+          </div>
+          <p class="mezze-desc">Grenade, laitue, tomate, concombre, radis, menthe, crackers, mélasse de grenade.</p>
+          <div class="mezze-tags">
+            <span class="tag tag-vegan">Vegan</span>
+          </div>
+        </div>
+
+        <div class="mezze-card rv rv-d1">
+          <div class="mezze-card-top">
+            <h3>Mozza Sticks</h3>
+            <span class="mezze-price">5,90&nbsp;€</span>
+          </div>
+          <p class="mezze-desc">5 mozzarellas filantes panées, saupoudrées de zaatar, sauce au choix.</p>
+          <div class="mezze-tags">
+            <span class="tag tag-veg">Végétarien</span>
+          </div>
+        </div>
+
+        <div class="mezze-card rv rv-d2">
+          <div class="mezze-card-top">
+            <h3>Frites Signature</h3>
+            <span class="mezze-price">5,90&nbsp;€</span>
+          </div>
+          <p class="mezze-desc">Croustillantes et dorées, mélange épicé maison.</p>
+          <div class="mezze-tags">
+            <span class="tag tag-vegan">Vegan</span>
+          </div>
+        </div>
+
+        <a href="/falafel-lyon.html" class="mezze-card rv" style="border-color:var(--coral);">
+          <div class="mezze-card-top">
+            <h3 style="color:var(--coral);">Falafel Crunch</h3>
+            <span class="mezze-price">5,90&nbsp;€</span>
+          </div>
+          <p class="mezze-desc">Bol de falafels, radis, tomates, concombre, laitue, crackers, sumac, crème de sésame maison.</p>
+          <div class="mezze-tags">
+            <span class="tag tag-vegan">Vegan</span>
+            <span class="tag tag-allergen">Sésame</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMULE -->
+  <section class="section section-cream">
+    <div class="container">
+      <div class="formule-banner rv">
+        <div class="formule-text">
+          <h3>La Formule Sezam</h3>
+          <p>Un <a href="/manouche.html" style="color:var(--yellow-rich);font-weight:700;">man'ouché</a> ou un <a href="/shawarma-lyon.html" style="color:var(--yellow-rich);font-weight:700;">shawarma</a> + un mezze + une boisson. Le déjeuner parfait, complet et généreux.</p>
+        </div>
+        <div class="formule-price">
+          <span class="from">dès</span>
+          <span class="amount">10,90€</span>
+          <span class="unit">la formule complète</span>
         </div>
       </div>
     </div>
@@ -295,58 +420,60 @@
   <!-- QUOTE -->
   <section class="quote-band">
     <blockquote class="rv">
-      «&nbsp;Venez goûter, vous comprendrez.&nbsp;»
+      «&nbsp;Les meilleurs houmous et falafels qu'on ait goûtés à Lyon.&nbsp;»
     </blockquote>
   </section>
 
-  <!-- NOS ENGAGEMENTS -->
-  <section class="section section-cream">
+  <!-- POURQUOI NOS MEZZES -->
+  <section class="section section-green">
     <div class="container">
-      <h2 class="section-title rv">Nos Engagements</h2>
-      <p class="section-sub rv rv-d1">Ce qu'on promet, chaque jour</p>
-
-      <div class="commit-grid">
-        <div class="commit-card rv">
-          <div class="commit-icon" style="background:var(--green-pastel);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="var(--green-deep)" stroke-width="1.5"><path d="M12 2C6.48 2 2 6 2 10c0 2.5 1.5 4.5 3 6l1 6h12l1-6c1.5-1.5 3-3.5 3-6 0-4-4.48-8-10-8z"/><path d="M10 2c0 2-2 4-2 6"/><path d="M14 2c0 2 2 4 2 6"/></svg>
-          </div>
-          <h3>Pâte au levain, chaque matin</h3>
-          <p>Notre pain est pétri quotidiennement avec un levain naturel. Le goût et la texture, c'est là que tout commence.</p>
+      <div class="intro-grid intro-grid--reverse rv">
+        <div class="intro-text">
+          <h2>Pourquoi Nos Mezzes Sont Différents</h2>
+          <p><strong>Faits maison chaque jour.</strong> Notre houmous, c'est du pois chiche cuit le matin, mixé avec du tahini (crème de sésame), du citron frais et une pointe de sumac. Pas de poudre, pas de conservateur.</p>
+          <p><strong>Le moutabal</strong>, c'est de l'aubergine rôtie au four jusqu'à ce qu'elle soit fondante et fumée, puis mélangée à la main. Le <strong>labné</strong>, c'est un fromage blanc égoutté et assaisonné à l'huile d'olive et au zaatar.</p>
+          <p>Chaque mezze a sa propre identité. Et tous sont à <strong>5,90&nbsp;€</strong>.</p>
         </div>
-
-        <div class="commit-card rv rv-d1">
-          <div class="commit-icon" style="background:var(--yellow-soft);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-          </div>
-          <h3>Cuit à la minute</h3>
-          <p>Chaque man'ouché est garni et cuit à la commande dans notre four. Vous le voyez sortir du four, brûlant.</p>
-        </div>
-
-        <div class="commit-card rv rv-d2">
-          <div class="commit-icon" style="background:var(--green-pastel);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="var(--green-deep)" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          </div>
-          <h3>Ingrédients frais</h3>
-          <p>Sauces faites maison, légumes croquants, marinades préparées le jour même. On cuisine comme on mangerait chez nous.</p>
+        <div class="intro-img">
+          <img src="assets/images/falafel/crunch.jpg" alt="Falafel Crunch — bol de falafels croustillants, mezze libanais Lyon" loading="lazy">
         </div>
       </div>
     </div>
   </section>
 
+  <!-- MARQUEE 2 -->
+  <div class="marquee" aria-hidden="true" style="background:var(--coral);">
+    <div class="marquee-track">
+      <span style="color:#fff;">Fait maison</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span style="color:#fff;">Produits frais</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span style="color:#fff;">Vegan</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span style="color:#fff;">Végétarien</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span style="color:#fff;">5,90€</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span style="color:#fff;">Halal</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span style="color:#fff;">Fait maison</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span style="color:#fff;">Produits frais</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span style="color:#fff;">Vegan</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span style="color:#fff;">Végétarien</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span style="color:#fff;">5,90€</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span style="color:#fff;">Halal</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+    </div>
+  </div>
+
   <!-- CTA -->
-  <section class="section section-green">
+  <section class="section section-cream">
     <div class="container">
       <div class="cta-section rv">
-        <h2>Goûtez la Différence</h2>
-        <p>6 rue Petit David, Lyon 2 — entre Bellecour et Cordeliers. 7j/7, de 12h à 23h.</p>
+        <h2>Envie de Mezzes ?</h2>
+        <p>Seuls ou en formule avec un man'ouché. Sur place, à emporter ou en livraison à Lyon.</p>
         <div class="cta-buttons">
           <a href="https://commandes.sezamandco.com" class="btn btn-primary">Commander en ligne</a>
-          <a href="/menu.html" class="btn btn-dark">Voir le menu</a>
+          <a href="/menu.html" class="btn btn-dark">Voir le menu complet</a>
         </div>
         <div class="cta-links">
-          <a href="/notre-histoire.html">Notre histoire</a>
-          <a href="/manouche.html">Man'ouche à Lyon</a>
-          <a href="/adresse.html">Nous trouver</a>
+          <a href="/falafel-lyon.html">Falafel</a>
+          <a href="/manouche.html">Man'ouche</a>
+          <a href="/shawarma-lyon.html">Shawarma</a>
+          <a href="/livraison-libanais-lyon.html">Livraison Lyon</a>
         </div>
       </div>
     </div>
@@ -396,7 +523,7 @@
         </div>
       </div>
       <div class="footer-seo">
-        <p>Sezam&amp;Co, c'est la street food libanaise au cœur de <a href="/adresse.html">Lyon 2</a>. Man'ouches cuits minute, mezzes faits maison, <a href="/falafel-lyon.html">falafel</a>, options vegan et végétariennes, viandes certifiées halal. Que vous cherchiez un <a href="/index.html">restaurant libanais à Lyon</a>, un déjeuner rapide près de Bellecour, une livraison libanaise à Lyon, un <a href="/shawarma-lyon.html">shawarma à Lyon</a> ou une <a href="/manouche.html">man'ouche à Lyon</a>&nbsp;— poussez la porte, ou commandez en ligne.</p>
+        <p><a href="/mezze-lyon.html">Mezzes libanais à Lyon</a> chez Sezam&amp;Co. Houmous, moutabal, labné, fattouch, <a href="/falafel-lyon.html">falafels</a> — faits maison chaque jour. Dès 5,90€. En formule avec un <a href="/manouche.html">man'ouché</a> ou un <a href="/shawarma-lyon.html">shawarma</a>. <a href="/livraison-libanais-lyon.html">Livraison à Lyon</a>. <a href="/index.html">Restaurant libanais Lyon 2</a>, 7j/7. Halal friendly.</p>
       </div>
       <div class="footer-copy">
         <p>&copy; 2026 Sezam&amp;Co — Tous droits réservés</p>

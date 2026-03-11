@@ -91,6 +91,7 @@
     .burger.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
     .burger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
     .burger.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+    .burger.open span { background: var(--coral); }
     .mob-nav { position: fixed; inset: 0; background: var(--cream); display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 1.6rem; opacity: 0; pointer-events: none; transition: opacity .4s; z-index: 205; }
     .mob-nav.open { opacity: 1; pointer-events: all; }
     .mob-nav a { font-family: var(--font-display); font-size: clamp(1.6rem,5vw,2.2rem); color: var(--green-deep); transition: color .3s; }
@@ -344,7 +345,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="var(--green-deep)" stroke-width="1.5"><path d="M12 2C6.48 2 2 6 2 10c0 2.5 1.5 4.5 3 6l1 6h12l1-6c1.5-1.5 3-3.5 3-6 0-4-4.48-8-10-8z"/><path d="M10 2c0 2-2 4-2 6"/><path d="M14 2c0 2 2 4 2 6"/></svg>
           </div>
           <h3>Faits maison chaque jour</h3>
-          <p>Jamais de falafel surgelé ou précuit. Nos falafels sont préparés le matin, avec des pois chiches, des herbes fraîches et nos épices maison.</p>
+          <p>Nos falafels sont préparés le matin, avec des pois chiches, des herbes fraîches et nos épices maison.</p>
         </div>
 
         <div class="diff-card rv rv-d1">
