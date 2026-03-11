@@ -220,7 +220,7 @@
     .mob-nav {
       position: fixed; inset: 0; background: var(--cream);
       display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 1.6rem;
-      opacity: 0; pointer-events: none; transition: opacity .4s; z-index: 205;
+      opacity: 0; pointer-events: none; transition: opacity .4s; z-index: 199;
     }
     .mob-nav.open { opacity: 1; pointer-events: all; }
     .mob-nav a {
@@ -311,6 +311,11 @@
     .menu-nav a:hover, .menu-nav a.active {
       background: var(--yellow-soft); color: var(--green-deep);
       border-color: var(--yellow-soft);
+    }
+
+    /* Scroll offset for anchor links (header + sticky nav) */
+    [id="starters"], [id="urbain"], [id="traditionnel"], [id="formule"], [id="boissons"], [id="desserts"] {
+      scroll-margin-top: 60px;
     }
 
     /* ===== MARQUEE ===== */
@@ -457,8 +462,8 @@
     }
     .formule-banner::before {
       content: ''; position: absolute;
-      top: -10px; left: -10px; right: -10px; bottom: -10px;
-      border: 2.5px dashed var(--green-logo); border-radius: 26px; opacity: .15;
+      top: 0; left: 0; right: 0; bottom: 0;
+      border: none; border-radius: 26px; opacity: .5; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Crect x='1.5' y='1.5' width='99%25' height='99%25' rx='26' ry='26' fill='none' stroke='%232D6A0F' stroke-width='3' stroke-dasharray='14 10'/%3E%3C/svg%3E"); background-size: 100% 100%;
       pointer-events: none;
     }
     .formule-banner-text { flex: 1; }
@@ -645,18 +650,18 @@
   <!-- PAGE HERO -->
   <section class="page-hero">
     <div class="container" style="position:relative;">
-      <div class="rv" style="display:inline-flex;align-items:center;gap:.5rem;background:rgba(26,59,6,.06);border:1px solid rgba(26,59,6,.1);padding:.35rem .9rem;border-radius:50px;margin-bottom:1rem;">
+      <h1 class="rv">Menu Libanais <svg style="display:inline-block;vertical-align:middle;margin-left:.3rem;" width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 15 C50 15 30 25 30 45 C30 55 38 58 42 55 C38 60 35 65 35 72 L65 72 C65 65 62 60 58 55 C62 58 70 55 70 45 C70 25 50 15 50 15Z" fill="#417F0A"/><path d="M50 18 C50 18 35 27 35 44 C35 51 40 53 43 51 C40 56 38 61 38 68 L62 68 C62 61 60 56 57 51 C60 53 65 51 65 44 C65 27 50 18 50 18Z" fill="#5AA30E"/><rect x="48" y="68" width="4" height="14" rx="1" fill="#8B5E3C"/><rect x="40" y="82" width="20" height="3" rx="1.5" fill="#8B5E3C"/></svg></h1>
+      <p class="page-hero-sub rv rv-d1">Man'ouches cuits minute, shawarma poulet grillé au four, mezzes faits maison et desserts libanais. Tous nos plats sont servis en man'ouche — la galette libanaise artisanale, cuite au four sous vos yeux.</p>
+      <div class="rv rv-d2" style="display:inline-flex;align-items:center;gap:.5rem;background:rgba(26,59,6,.06);border:1px solid rgba(26,59,6,.1);padding:.35rem .9rem;border-radius:50px;margin-bottom:1rem;">
         <span style="color:var(--yellow-rich);font-size:.85rem;letter-spacing:2px;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
         <span style="font-size:.82rem;font-weight:600;color:var(--green-deep);">4.8/5 — 725 avis Google</span>
       </div>
-      <h1 class="rv rv-d1">Menu Libanais <svg style="display:inline-block;vertical-align:middle;margin-left:.3rem;" width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 15 C50 15 30 25 30 45 C30 55 38 58 42 55 C38 60 35 65 35 72 L65 72 C65 65 62 60 58 55 C62 58 70 55 70 45 C70 25 50 15 50 15Z" fill="#417F0A"/><path d="M50 18 C50 18 35 27 35 44 C35 51 40 53 43 51 C40 56 38 61 38 68 L62 68 C62 61 60 56 57 51 C60 53 65 51 65 44 C65 27 50 18 50 18Z" fill="#5AA30E"/><rect x="48" y="68" width="4" height="14" rx="1" fill="#8B5E3C"/><rect x="40" y="82" width="20" height="3" rx="1.5" fill="#8B5E3C"/></svg></h1>
-      <p class="page-hero-sub rv rv-d2">Man'ouches cuits minute, shawarma poulet grillé au four, mezzes faits maison et desserts libanais. Tous nos plats sont servis en man'ouche — la galette libanaise artisanale, cuite au four sous vos yeux.</p>
       <div class="rv rv-d3" style="margin-top:1.2rem;display:flex;gap:1rem;align-items:center;flex-wrap:wrap;justify-content:center;">
         <span style="font-family:var(--font-display);font-size:.9rem;color:var(--coral);">Formule dès 10,90&nbsp;€</span>
         <span style="font-size:.78rem;font-weight:700;color:var(--text-mid);">·</span>
         <span style="font-size:.82rem;font-weight:700;color:var(--text-mid);">7j/7 — 12h à 23h</span>
       </div>
-      <div style="position:absolute;top:-10px;left:-10px;right:-10px;bottom:-10px;border:2px dashed var(--green-logo);border-radius:20px;opacity:.1;pointer-events:none;"></div>
+      <div style="position:absolute;top:0;left:0;right:0;bottom:0;border-radius:20px;opacity:.5;pointer-events:none;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Crect x='1.5' y='1.5' width='99%25' height='99%25' rx='20' ry='20' fill='none' stroke='%232D6A0F' stroke-width='3' stroke-dasharray='14 10'/%3E%3C/svg%3E&quot;);background-size:100% 100%;"></div>
     </div>
   </section>
 
