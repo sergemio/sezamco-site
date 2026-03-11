@@ -519,7 +519,8 @@
     .desserts-grid {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem;
     }
-    @media (max-width: 700px) { .desserts-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 768px) { .desserts-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .desserts-grid { grid-template-columns: 1fr; } }
     .dessert-card {
       background: #fff; border-radius: 16px; padding: 1.5rem;
       border: 1px solid rgba(26,59,6,.04);
