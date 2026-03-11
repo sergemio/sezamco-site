@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shawarma Lyon 2 | Poulet Grillé au Four | Sezam&Co</title>
-  <meta name="description" content="Le meilleur shawarma poulet à Lyon 2 : viande marinée maison, grillée au four, servie dans un man'ouche libanais. 100% halal. Sur place, à emporter ou en livraison.">
+  <title>Falafel Lyon 2 | Falafels Maison Croustillants | Sezam&Co</title>
+  <meta name="description" content="Falafels croustillants faits maison à Lyon 2. Pois chiches, herbes fraîches, cuisson minute. Végétarien & vegan. En wrap man'ouché ou en bol. Formule dès 14,30€. Livraison disponible.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://sezamandco.com/shawarma-lyon">
-  <meta property="og:title" content="Shawarma Lyon 2 | Poulet Grillé au Four | Sezam&Co">
-  <meta property="og:description" content="Shawarma poulet mariné aux épices, grillé au four, servi en man'ouche libanais. 100% halal. Lyon 2.">
+  <link rel="canonical" href="https://sezamandco.com/falafel-lyon">
+  <meta property="og:title" content="Falafel Lyon 2 | Falafels Maison Croustillants | Sezam&Co">
+  <meta property="og:description" content="Falafels croustillants faits maison à Lyon 2. Végétarien & vegan. En wrap ou bol. Livraison disponible.">
   <meta property="og:type" content="article">
-  <meta property="og:url" content="https://sezamandco.com/shawarma-lyon">
-  <meta property="og:image" content="https://sezamandco.com/assets/images/shawarma/hero.jpg">
+  <meta property="og:url" content="https://sezamandco.com/falafel-lyon">
+  <meta property="og:image" content="https://sezamandco.com/assets/images/falafel/hero.png">
   <meta property="og:locale" content="fr_FR">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,9 +23,9 @@
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "Shawarma à Lyon — Poulet Grillé au Four",
-    "description": "Le meilleur shawarma poulet à Lyon 2 : viande marinée maison, grillée au four, servie dans un man'ouche libanais.",
-    "url": "https://sezamandco.com/shawarma-lyon",
+    "name": "Falafel à Lyon — Falafels Maison Croustillants",
+    "description": "Falafels croustillants faits maison à Lyon 2. Pois chiches, herbes fraîches, cuisson minute.",
+    "url": "https://sezamandco.com/falafel-lyon",
     "publisher": {
       "@type": "Restaurant",
       "name": "Sezam&Co",
@@ -35,7 +35,7 @@
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://sezamandco.com/" },
-        { "@type": "ListItem", "position": 2, "name": "Shawarma à Lyon", "item": "https://sezamandco.com/shawarma-lyon" }
+        { "@type": "ListItem", "position": 2, "name": "Falafel à Lyon", "item": "https://sezamandco.com/falafel-lyon" }
       ]
     }
   }
@@ -43,26 +43,15 @@
 
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
     :root {
-      --cream: #FFF8E1;
-      --green-pastel: #D4EDCF;
-      --yellow-soft: #FFF4BD;
-      --blue-pastel: #D4E4FF;
-      --green-deep: #1A3B06;
-      --green-logo: #417F0A;
-      --coral: #E84545;
-      --coral-hover: #d63333;
-      --rose: #F58181;
-      --yellow-rich: #F5D547;
-      --text-dark: #1A1A1A;
-      --text-mid: #555;
+      --cream: #FFF8E1; --green-pastel: #D4EDCF; --yellow-soft: #FFF4BD;
+      --green-deep: #1A3B06; --green-logo: #417F0A;
+      --coral: #E84545; --coral-hover: #d63333;
+      --yellow-rich: #F5D547; --text-dark: #1A1A1A; --text-mid: #555;
       --font-display: 'Ambery Garden', cursive, sans-serif;
       --font-body: 'Nunito', system-ui, sans-serif;
-      --max-w: 1200px;
-      --section-py: clamp(4rem, 8vw, 7rem);
+      --max-w: 1200px; --section-py: clamp(4rem, 8vw, 7rem);
     }
-
     html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
     body { font-family: var(--font-body); color: var(--text-dark); background: var(--cream); overflow-x: hidden; }
     img { max-width: 100%; height: auto; display: block; }
@@ -70,138 +59,57 @@
     button { font-family: inherit; cursor: pointer; border: none; background: none; }
     .container { max-width: var(--max-w); margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 2.5rem); }
 
-    /* REVEAL */
     .rv { opacity: 0; transform: translateY(32px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
     .rv.show { opacity: 1; transform: none; }
-    .rv-d1 { transition-delay: .08s; }
-    .rv-d2 { transition-delay: .16s; }
-    .rv-d3 { transition-delay: .24s; }
-    .rv-d4 { transition-delay: .32s; }
+    .rv-d1 { transition-delay: .08s; } .rv-d2 { transition-delay: .16s; }
+    .rv-d3 { transition-delay: .24s; } .rv-d4 { transition-delay: .32s; }
 
     /* HEADER */
-    .hdr {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      padding: .7rem 0; background: var(--cream);
-      box-shadow: 0 2px 16px rgba(26,59,6,.06);
-      transition: padding .35s, box-shadow .35s;
-    }
+    .hdr { position: fixed; top: 0; left: 0; right: 0; z-index: 200; padding: .7rem 0; background: var(--cream); box-shadow: 0 2px 16px rgba(26,59,6,.06); transition: padding .35s, box-shadow .35s; }
     .hdr.stuck { padding: .55rem 0; box-shadow: 0 2px 24px rgba(26,59,6,.12); }
     .hdr-inner { display: flex; align-items: center; justify-content: space-between; max-width: var(--max-w); margin: 0 auto; padding: 0 clamp(1.25rem,4vw,2.5rem); }
     .hdr .logo img { height: 48px; width: auto; transition: height .3s; }
     .hdr.stuck .logo img { height: 40px; }
     .hdr-nav { display: flex; gap: 1.8rem; align-items: center; }
-    .hdr-nav > a, .hdr-nav .dropdown-toggle {
-      font-size: .88rem; font-weight: 700; color: var(--green-deep);
-      letter-spacing: .02em; position: relative; cursor: pointer;
-      font-family: var(--font-body); background: none; border: none; padding: 0;
-      display: inline-flex; align-items: center; gap: .3rem;
-    }
-    .hdr-nav > a::after, .hdr-nav .dropdown-toggle::after {
-      content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 2px;
-      background: var(--coral); border-radius: 2px;
-      transition: width .3s cubic-bezier(.34,1.56,.64,1);
-    }
+    .hdr-nav > a, .hdr-nav .dropdown-toggle { font-size: .88rem; font-weight: 700; color: var(--green-deep); letter-spacing: .02em; position: relative; cursor: pointer; font-family: var(--font-body); background: none; border: none; padding: 0; display: inline-flex; align-items: center; gap: .3rem; }
+    .hdr-nav > a::after, .hdr-nav .dropdown-toggle::after { content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 2px; background: var(--coral); border-radius: 2px; transition: width .3s cubic-bezier(.34,1.56,.64,1); }
     .hdr-nav > a:hover::after, .hdr-nav .dropdown-toggle:hover::after { width: 100%; }
     .hdr-nav > a.active::after { width: 100%; }
-
     .dropdown { position: relative; }
     .dropdown-toggle svg { width: 12px; height: 12px; transition: transform .3s; }
     .dropdown.open .dropdown-toggle svg { transform: rotate(180deg); }
-    .dropdown-menu {
-      position: absolute; top: calc(100% + 10px); right: 0;
-      background: var(--cream); border: 1px solid rgba(26,59,6,.08);
-      border-radius: 12px; padding: .5rem 0; min-width: 200px;
-      box-shadow: 0 8px 30px rgba(26,59,6,.1);
-      opacity: 0; transform: translateY(-8px); pointer-events: none;
-      transition: opacity .25s, transform .25s;
-    }
+    .dropdown-menu { position: absolute; top: calc(100% + 10px); right: 0; background: var(--cream); border: 1px solid rgba(26,59,6,.08); border-radius: 12px; padding: .5rem 0; min-width: 200px; box-shadow: 0 8px 30px rgba(26,59,6,.1); opacity: 0; transform: translateY(-8px); pointer-events: none; transition: opacity .25s, transform .25s; }
     .dropdown.open .dropdown-menu { opacity: 1; transform: translateY(0); pointer-events: all; }
-    .dropdown-menu a {
-      display: block; padding: .6rem 1.2rem; font-size: .85rem; font-weight: 700;
-      color: var(--green-deep); transition: background .2s, color .2s;
-    }
+    .dropdown-menu a { display: block; padding: .6rem 1.2rem; font-size: .85rem; font-weight: 700; color: var(--green-deep); transition: background .2s, color .2s; }
     .dropdown-menu a:hover { background: var(--green-pastel); color: var(--coral); }
-
     .hdr-phone { font-size: .85rem; font-weight: 700; color: var(--green-deep); display: flex; align-items: center; gap: .35rem; }
     .hdr-phone svg { width: 16px; height: 16px; }
-    .hdr-cta {
-      display: inline-flex; align-items: center; gap: .4rem;
-      background: var(--coral); color: #fff;
-      font-size: .82rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em;
-      padding: .6rem 1.3rem; border-radius: 50px;
-      transition: transform .3s, box-shadow .3s, background .3s;
-    }
+    .hdr-cta { display: inline-flex; align-items: center; gap: .4rem; background: var(--coral); color: #fff; font-size: .82rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; padding: .6rem 1.3rem; border-radius: 50px; transition: transform .3s, box-shadow .3s, background .3s; }
     .hdr-cta:hover { transform: scale(1.05); box-shadow: 0 4px 16px rgba(232,69,69,.3); background: var(--coral-hover); }
     .burger { display: none; flex-direction: column; gap: 5px; padding: 6px; z-index: 210; }
     .burger span { width: 24px; height: 2.5px; background: var(--green-deep); border-radius: 3px; transition: all .35s cubic-bezier(.34,1.56,.64,1); transform-origin: center; }
     .burger.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
     .burger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
     .burger.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
-    .mob-nav {
-      position: fixed; inset: 0; background: var(--cream);
-      display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 1.6rem;
-      opacity: 0; pointer-events: none; transition: opacity .4s; z-index: 205;
-    }
+    .mob-nav { position: fixed; inset: 0; background: var(--cream); display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 1.6rem; opacity: 0; pointer-events: none; transition: opacity .4s; z-index: 205; }
     .mob-nav.open { opacity: 1; pointer-events: all; }
     .mob-nav a { font-family: var(--font-display); font-size: clamp(1.6rem,5vw,2.2rem); color: var(--green-deep); transition: color .3s; }
     .mob-nav a:hover { color: var(--coral); }
-    .mob-nav .mob-cta {
-      margin-top: .8rem; background: var(--coral); color: #fff;
-      font-family: var(--font-body); font-size: 1rem; font-weight: 800;
-      padding: .9rem 2.2rem; border-radius: 50px; text-transform: uppercase; letter-spacing: .06em;
-    }
-    @media (max-width: 860px) {
-      .hdr-nav, .hdr-phone, .hdr-cta { display: none; }
-      .burger { display: flex; }
-    }
+    .mob-nav .mob-cta { margin-top: .8rem; background: var(--coral); color: #fff; font-family: var(--font-body); font-size: 1rem; font-weight: 800; padding: .9rem 2.2rem; border-radius: 50px; text-transform: uppercase; letter-spacing: .06em; }
+    @media (max-width: 860px) { .hdr-nav, .hdr-phone, .hdr-cta { display: none; } .burger { display: flex; } }
 
-    /* STICKY MOBILE CTA */
-    .sticky-cta {
-      display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 190;
-      padding: .75rem 1rem; background: rgba(255,248,225,.95);
-      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-      box-shadow: 0 -2px 20px rgba(0,0,0,.08);
-    }
-    .sticky-cta a {
-      display: flex; justify-content: center; align-items: center; gap: .5rem;
-      width: 100%; background: var(--coral); color: #fff;
-      font-size: 1rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em;
-      padding: .9rem; border-radius: 50px; transition: background .3s;
-    }
+    .sticky-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 190; padding: .75rem 1rem; background: rgba(255,248,225,.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: 0 -2px 20px rgba(0,0,0,.08); }
+    .sticky-cta a { display: flex; justify-content: center; align-items: center; gap: .5rem; width: 100%; background: var(--coral); color: #fff; font-size: 1rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; padding: .9rem; border-radius: 50px; transition: background .3s; }
     .sticky-cta a:active { background: var(--coral-hover); }
     @media (max-width: 860px) { .sticky-cta { display: block; } }
 
     /* HERO */
-    .page-hero {
-      position: relative; margin-top: 64px; min-height: 55vh;
-      display: flex; align-items: center; overflow: hidden;
-    }
-    .page-hero-bg {
-      position: absolute; inset: 0;
-      background-size: cover; background-position: center;
-      filter: brightness(.4);
-    }
-    .page-hero-content {
-      position: relative; z-index: 2;
-      max-width: var(--max-w); margin: 0 auto;
-      padding: clamp(3rem,8vw,6rem) clamp(1.25rem,4vw,2.5rem);
-      color: #fff;
-    }
-    .page-hero h1 {
-      font-family: var(--font-display);
-      font-size: clamp(2.2rem, 6vw, 4rem);
-      line-height: 1.1; margin-bottom: 1rem;
-    }
-    .page-hero p {
-      font-size: clamp(.95rem, 2vw, 1.15rem);
-      line-height: 1.8; max-width: 650px; color: rgba(255,255,255,.85);
-    }
-    .page-hero .hero-badge {
-      display: inline-flex; align-items: center; gap: .5rem;
-      background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2);
-      backdrop-filter: blur(8px); padding: .5rem 1.2rem; border-radius: 50px;
-      font-size: .82rem; font-weight: 700; color: var(--yellow-soft); margin-bottom: 1.2rem;
-    }
+    .page-hero { position: relative; margin-top: 64px; min-height: 55vh; display: flex; align-items: center; overflow: hidden; }
+    .page-hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center; filter: brightness(.4); }
+    .page-hero-content { position: relative; z-index: 2; max-width: var(--max-w); margin: 0 auto; padding: clamp(3rem,8vw,6rem) clamp(1.25rem,4vw,2.5rem); color: #fff; }
+    .page-hero h1 { font-family: var(--font-display); font-size: clamp(2.2rem, 6vw, 4rem); line-height: 1.1; margin-bottom: 1rem; }
+    .page-hero p { font-size: clamp(.95rem, 2vw, 1.15rem); line-height: 1.8; max-width: 650px; color: rgba(255,255,255,.85); }
+    .page-hero .hero-badge { display: inline-flex; align-items: center; gap: .5rem; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2); backdrop-filter: blur(8px); padding: .5rem 1.2rem; border-radius: 50px; font-size: .82rem; font-weight: 700; color: var(--yellow-soft); margin-bottom: 1.2rem; }
 
     /* MARQUEE */
     .marquee { background: var(--green-deep); padding: .8rem 0; overflow: hidden; position: relative; }
@@ -214,105 +122,65 @@
     .section { padding: var(--section-py) 0; position: relative; overflow: hidden; }
     .section-cream { background: var(--cream); }
     .section-green { background: var(--green-pastel); }
-    .section-yellow { background: var(--yellow-soft); }
-    .section-title {
-      font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.4rem);
-      color: var(--green-deep); margin-bottom: .3rem; line-height: 1.1;
-    }
-    .section-sub {
-      font-size: .9rem; font-weight: 700; color: var(--text-mid);
-      text-transform: uppercase; letter-spacing: .08em; margin-bottom: 2.5rem;
-    }
+    .section-title { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.4rem); color: var(--green-deep); margin-bottom: .3rem; line-height: 1.1; }
+    .section-sub { font-size: .9rem; font-weight: 700; color: var(--text-mid); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 2.5rem; }
 
-    /* PRODUCT SHOWCASE */
-    .product-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
+    /* PRODUCT CARDS */
+    .products-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem;
     }
-    @media (max-width: 768px) { .product-grid { grid-template-columns: 1fr; gap: 2rem; } }
+    @media (max-width: 768px) { .products-row { grid-template-columns: 1fr; } }
 
-    .product-img {
-      border-radius: 20px; overflow: hidden;
-      box-shadow: 0 8px 40px rgba(26,59,6,.1);
-    }
-    .product-img img {
-      width: 100%; height: 400px; object-fit: cover;
-    }
-    @media (max-width: 768px) { .product-img img { height: 280px; } }
-
-    .product-info h2 {
-      font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.6rem);
-      color: var(--green-deep); margin-bottom: .8rem; line-height: 1.1;
-    }
-    .product-info p {
-      font-size: .95rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 1.2rem;
-    }
-    .product-prices {
-      display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;
-    }
-    .price-box {
-      background: #fff; border: 2px solid rgba(26,59,6,.06);
-      border-radius: 14px; padding: 1rem 1.5rem; text-align: center;
-      flex: 1; min-width: 160px;
-    }
-    .price-box-label {
-      font-size: .75rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: .06em; color: var(--text-mid); margin-bottom: .3rem;
-    }
-    .price-box-amount {
-      font-family: var(--font-display); font-size: 1.8rem; color: var(--coral);
-    }
-    .price-box--formule { border-color: var(--green-logo); }
-    .price-box--formule .price-box-amount { color: var(--green-logo); }
-    .price-box--formule .price-box-label { color: var(--green-logo); }
-
-    /* DIFFERENCE CARDS */
-    .diff-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.5rem; margin-top: 2rem;
-    }
-    .diff-card {
-      background: #fff; border-radius: 16px; padding: 1.8rem 1.5rem;
+    .product-card {
+      background: #fff; border-radius: 20px; overflow: hidden;
       border: 1px solid rgba(26,59,6,.06);
       transition: transform .3s, box-shadow .3s;
     }
-    .diff-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(26,59,6,.08); }
-    .diff-icon {
-      width: 48px; height: 48px; border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: .8rem;
+    .product-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(26,59,6,.08); }
+    .product-card-img { width: 100%; height: 280px; object-fit: cover; }
+    .product-card-body { padding: 1.5rem 1.8rem 2rem; }
+    .product-card-body h3 {
+      font-family: var(--font-display); font-size: 1.6rem;
+      color: var(--green-deep); margin-bottom: .5rem;
     }
+    .product-card-body p { font-size: .9rem; color: var(--text-mid); line-height: 1.7; margin-bottom: 1rem; }
+    .product-card-prices { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .price-pill {
+      padding: .5rem 1rem; border-radius: 50px; font-weight: 800; font-size: .9rem;
+    }
+    .price-pill--main { background: var(--coral); color: #fff; }
+    .price-pill--formule { background: var(--green-pastel); color: var(--green-deep); font-size: .78rem; }
+    .product-card-tags { display: flex; gap: .4rem; flex-wrap: wrap; }
+    .tag { display: inline-block; font-size: .68rem; font-weight: 700; padding: .2rem .55rem; border-radius: 50px; letter-spacing: .02em; }
+    .tag-vegan { background: var(--green-pastel); color: var(--green-deep); }
+    .tag-allergen { background: var(--yellow-soft); color: #7a6200; }
+
+    /* DIFF CARDS */
+    .diff-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 2rem; }
+    @media (max-width: 600px) { .diff-grid { grid-template-columns: 1fr; } }
+    .diff-card { background: #fff; border-radius: 16px; padding: 1.8rem 1.5rem; border: 1px solid rgba(26,59,6,.06); transition: transform .3s, box-shadow .3s; }
+    .diff-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(26,59,6,.08); }
+    .diff-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: .8rem; }
     .diff-icon svg { width: 24px; height: 24px; }
     .diff-card h3 { font-weight: 800; font-size: 1rem; color: var(--green-deep); margin-bottom: .4rem; }
     .diff-card p { font-size: .85rem; color: var(--text-mid); line-height: 1.6; }
 
     /* FORMULE BANNER */
-    .formule-banner { background: var(--green-deep); position: relative; overflow: hidden; }
-    .formule-inner {
-      max-width: var(--max-w); margin: 0 auto;
-      padding: clamp(3rem,6vw,5rem) clamp(1.25rem,4vw,2.5rem);
-      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
-    }
-    @media (max-width: 768px) { .formule-inner { grid-template-columns: 1fr; gap: 2rem; text-align: center; } }
-    .formule-text h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.8rem); color: var(--yellow-soft); margin-bottom: .8rem; line-height: 1.1; }
-    .formule-text p { font-size: .95rem; color: rgba(255,255,255,.7); line-height: 1.7; margin-bottom: 1.5rem; }
-    .formule-text .formule-price { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3rem); color: var(--coral); }
-    .formule-img { border-radius: 16px; overflow: hidden; }
-    .formule-img img { width: 100%; height: 300px; object-fit: cover; border-radius: 16px; }
+    .formule-banner { background: var(--green-deep); }
+    .formule-inner { max-width: var(--max-w); margin: 0 auto; padding: clamp(3rem,6vw,5rem) clamp(1.25rem,4vw,2.5rem); text-align: center; }
+    .formule-inner h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.8rem); color: var(--yellow-soft); margin-bottom: .8rem; line-height: 1.1; }
+    .formule-inner p { font-size: .95rem; color: rgba(255,255,255,.7); line-height: 1.7; margin-bottom: 1.5rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+    .formule-inner .formule-price { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3rem); color: var(--coral); display: block; }
 
     /* BUTTONS */
-    .btn {
-      display: inline-flex; align-items: center; gap: .4rem;
-      font-weight: 800; font-size: .9rem; padding: .8rem 1.6rem;
-      border-radius: 50px; letter-spacing: .03em;
-      transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
-    }
+    .btn { display: inline-flex; align-items: center; gap: .4rem; font-weight: 800; font-size: .9rem; padding: .8rem 1.6rem; border-radius: 50px; letter-spacing: .03em; transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s; }
     .btn:hover { transform: translateY(-2px); }
     .btn-primary { background: var(--coral); color: #fff; box-shadow: 0 4px 20px rgba(232,69,69,.3); }
     .btn-primary:hover { box-shadow: 0 8px 30px rgba(232,69,69,.45); }
     .btn-dark { background: var(--green-deep); color: #fff; box-shadow: 0 4px 20px rgba(26,59,6,.15); }
     .btn-dark:hover { box-shadow: 0 8px 28px rgba(26,59,6,.25); }
 
-    /* CTA SECTION */
+    /* CTA */
     .cta-section { text-align: center; padding: clamp(3rem,6vw,5rem) 0; }
     .cta-section h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.8rem); color: var(--green-deep); margin-bottom: .5rem; }
     .cta-section p { font-size: .95rem; color: var(--text-mid); margin-bottom: 2rem; }
@@ -348,9 +216,7 @@
   <!-- HEADER -->
   <header class="hdr" id="hdr">
     <div class="hdr-inner">
-      <a href="/index.html" class="logo">
-        <img src="assets/images/logo-sezamco.png" alt="Sezam&Co" width="140" height="48">
-      </a>
+      <a href="/index.html" class="logo"><img src="assets/images/logo-sezamco.png" alt="Sezam&Co" width="140" height="48"></a>
       <nav class="hdr-nav" aria-label="Navigation principale">
         <a href="/index.html">Home</a>
         <a href="/menu.html">Menu</a>
@@ -358,13 +224,12 @@
         <a href="/adresse.html">Adresse</a>
         <div class="dropdown" id="dropdown">
           <button class="dropdown-toggle active" aria-expanded="false" aria-haspopup="true">
-            Explorer
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            Explorer <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
           <div class="dropdown-menu">
             <a href="/manouche.html">Man'ouche à Lyon</a>
-            <a href="/shawarma-lyon.html" style="color:var(--coral);font-weight:800;">Shawarma à Lyon</a>
-            <a href="/falafel-lyon.html">Falafel à Lyon</a>
+            <a href="/shawarma-lyon.html">Shawarma à Lyon</a>
+            <a href="/falafel-lyon.html" style="color:var(--coral);font-weight:800;">Falafel à Lyon</a>
             <a href="/notre-histoire">Histoire</a>
             <a href="/mission">Mission</a>
           </div>
@@ -375,21 +240,18 @@
         04 78 95 43 16
       </a>
       <a href="https://commandes.sezamandco.com" class="hdr-cta">Commander</a>
-      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </header>
 
-  <!-- MOBILE NAV -->
   <nav class="mob-nav" id="mob-nav" aria-label="Navigation mobile">
     <a href="/index.html">Home</a>
     <a href="/menu.html">Menu</a>
     <a href="/faq.html">FAQ</a>
     <a href="/adresse.html">Adresse</a>
     <a href="/manouche.html">Man'ouche</a>
-    <a href="/shawarma-lyon.html" style="color:var(--coral);">Shawarma</a>
-    <a href="/falafel-lyon.html">Falafel</a>
+    <a href="/shawarma-lyon.html">Shawarma</a>
+    <a href="/falafel-lyon.html" style="color:var(--coral);">Falafel</a>
     <a href="/notre-histoire">Histoire</a>
     <a href="/mission">Mission</a>
     <a href="tel:+33478954316" style="font-family:var(--font-body);font-size:1rem;color:var(--text-mid);">04 78 95 43 16</a>
@@ -398,106 +260,115 @@
 
   <!-- HERO -->
   <section class="page-hero" id="hero">
-    <div class="page-hero-bg" style="background-image:url('assets/images/shawarma/hero.jpg');"></div>
+    <div class="page-hero-bg" style="background-image:url('assets/images/falafel/hero.png');"></div>
     <div class="page-hero-content">
       <div class="hero-badge">
         <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        4.8/5 — 725 avis Google
+        Vegan &amp; Végétarien
       </div>
-      <h1>Shawarma à Lyon</h1>
-      <p>Le shawarma, c'est l'âme de la street food libanaise. Chez Sezam&amp;Co, notre poulet est mariné chaque matin avec nos épices maison, puis grillé au four pour un résultat fondant et parfumé. Servi dans un <a href="/manouche.html" style="color:var(--yellow-soft);border-bottom:1px solid var(--yellow-soft);">man'ouché</a> moelleux cuit minute.</p>
+      <h1>Falafel à Lyon</h1>
+      <p>Le falafel, c'est le plat végétarien star de la street food libanaise. Chez Sezam&amp;Co, nos falafels sont préparés chaque jour avec des pois chiches, des herbes fraîches et nos épices maison, puis frits à la commande pour un croustillant parfait.</p>
     </div>
   </section>
 
   <!-- MARQUEE -->
   <div class="marquee" aria-hidden="true">
     <div class="marquee-track">
-      <span>Shawarma</span><span class="sep">◆</span>
-      <span>Poulet Mariné</span><span class="sep">◆</span>
-      <span>Grillé au Four</span><span class="sep">◆</span>
-      <span>Épices Maison</span><span class="sep">◆</span>
-      <span>100% Halal</span><span class="sep">◆</span>
+      <span>Falafel</span><span class="sep">◆</span>
+      <span>Pois Chiches</span><span class="sep">◆</span>
+      <span>Vegan</span><span class="sep">◆</span>
+      <span>Fait Maison</span><span class="sep">◆</span>
+      <span>Croustillant</span><span class="sep">◆</span>
       <span>Lyon 2</span><span class="sep">◆</span>
-      <span>Shawarma</span><span class="sep">◆</span>
-      <span>Poulet Mariné</span><span class="sep">◆</span>
-      <span>Grillé au Four</span><span class="sep">◆</span>
-      <span>Épices Maison</span><span class="sep">◆</span>
-      <span>100% Halal</span><span class="sep">◆</span>
+      <span>Falafel</span><span class="sep">◆</span>
+      <span>Pois Chiches</span><span class="sep">◆</span>
+      <span>Vegan</span><span class="sep">◆</span>
+      <span>Fait Maison</span><span class="sep">◆</span>
+      <span>Croustillant</span><span class="sep">◆</span>
       <span>Lyon 2</span><span class="sep">◆</span>
     </div>
   </div>
 
-  <!-- PRODUCT SHOWCASE -->
+  <!-- NOS FALAFELS -->
   <section class="section section-cream">
     <div class="container">
-      <div class="product-grid rv">
-        <div class="product-img">
-          <img src="assets/images/shawarma/detail.jpg" alt="Shawarma poulet Sezam&Co — viande marinée, laitue, frites, pickles, sauce à l'ail" loading="lazy">
-        </div>
-        <div class="product-info">
-          <h2>Notre Shawarma Poulet</h2>
-          <p>Poulet mariné aux épices libanaises, grillé au four, garni de laitue, frites croustillantes, pickles et notre sauce à l'ail maison, le tout relevé d'une touche de sumac. Servi dans un <a href="/manouche.html" style="color:var(--coral);font-weight:700;">man'ouché</a> moelleux cuit minute.</p>
-          <div class="product-prices">
-            <div class="price-box">
-              <div class="price-box-label">Seul</div>
-              <div class="price-box-amount">9,20&nbsp;€</div>
+      <h2 class="section-title rv">Nos Falafels</h2>
+      <p class="section-sub rv rv-d1">Deux façons de les déguster</p>
+
+      <div class="products-row">
+        <!-- Falafel Wrap -->
+        <div class="product-card rv">
+          <img src="assets/images/falafel/wrap.png" alt="Falafel wrap vegan — falafels, tomates, radis, pickles, laitue, sauce sezam maison" class="product-card-img" loading="lazy">
+          <div class="product-card-body">
+            <h3>Falafel Wrap</h3>
+            <p>Falafels croustillants garnis de tomates, radis, pickles, laitue et sauce sezam maison. Le tout dans un <a href="/manouche.html" style="color:var(--coral);font-weight:700;">man'ouché</a> moelleux cuit minute.</p>
+            <div class="product-card-prices">
+              <span class="price-pill price-pill--main">8,90&nbsp;€</span>
+              <span class="price-pill price-pill--formule">Formule 14,30&nbsp;€</span>
             </div>
-            <div class="price-box price-box--formule">
-              <div class="price-box-label">En Formule</div>
-              <div class="price-box-amount">14,60&nbsp;€</div>
+            <div class="product-card-tags">
+              <span class="tag tag-vegan">Vegan</span>
             </div>
           </div>
-          <a href="https://commandes.sezamandco.com" class="btn btn-primary">Commander</a>
+        </div>
+
+        <!-- Falafel Crunch -->
+        <div class="product-card rv rv-d1">
+          <img src="assets/images/falafel/crunch.jpg" alt="Falafel crunch — bol de falafels, radis, tomates, concombre, laitue, crackers, crème de sésame" class="product-card-img" loading="lazy">
+          <div class="product-card-body">
+            <h3>Falafel Crunch</h3>
+            <p>Bol de falafels croustillants, radis, tomates, concombre, laitue, crackers, sumac, crème de sésame maison. Un starter généreux, parfait pour partager ou en formule.</p>
+            <div class="product-card-prices">
+              <span class="price-pill price-pill--main">5,90&nbsp;€</span>
+              <span class="price-pill price-pill--formule">Starter</span>
+            </div>
+            <div class="product-card-tags">
+              <span class="tag tag-vegan">Vegan</span>
+              <span class="tag tag-allergen">Sésame</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CE QUI NOUS REND DIFFERENTS -->
+  <!-- POURQUOI NOS FALAFELS -->
   <section class="section section-green">
     <div class="container">
-      <h2 class="section-title rv">Ce Qui Rend Notre Shawarma Différent</h2>
-      <p class="section-sub rv rv-d1">Du shawarma authentique, comme dans les rues de Beyrouth</p>
+      <h2 class="section-title rv">Pourquoi Nos Falafels Sont Différents</h2>
+      <p class="section-sub rv rv-d1">De vrais falafels libanais, comme dans les rues de Beyrouth</p>
 
       <div class="diff-grid">
         <div class="diff-card rv">
           <div class="diff-icon" style="background:var(--yellow-soft);">
             <svg viewBox="0 0 24 24" fill="none" stroke="var(--green-deep)" stroke-width="1.5"><path d="M12 2C6.48 2 2 6 2 10c0 2.5 1.5 4.5 3 6l1 6h12l1-6c1.5-1.5 3-3.5 3-6 0-4-4.48-8-10-8z"/><path d="M10 2c0 2-2 4-2 6"/><path d="M14 2c0 2 2 4 2 6"/></svg>
           </div>
-          <h3>Marinade maison</h3>
-          <p>Nos épices sont préparées chaque jour dans notre cuisine. Jamais de sauce industrielle, jamais de raccourcis.</p>
+          <h3>Faits maison chaque jour</h3>
+          <p>Jamais de falafel surgelé ou précuit. Nos falafels sont préparés le matin, avec des pois chiches, des herbes fraîches et nos épices maison.</p>
         </div>
 
         <div class="diff-card rv rv-d1">
           <div class="diff-icon" style="background:var(--cream);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 12h18"/><path d="M8 4v-2M16 4v-2"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
           </div>
-          <h3>Grillé au four</h3>
-          <p>Pas de broche rotative. Cuisson lente au four pour une viande fondante et juteuse, avec tout le jus préservé.</p>
+          <h3>Frits à la commande</h3>
+          <p>Chaque falafel est frit minute pour un résultat croustillant à l'extérieur, moelleux et parfumé à l'intérieur.</p>
         </div>
 
         <div class="diff-card rv rv-d2">
           <div class="diff-icon" style="background:var(--green-pastel);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="var(--green-deep)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-4"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--green-deep)" stroke-width="1.5"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><circle cx="9" cy="10" r="1" fill="var(--green-deep)"/><circle cx="15" cy="10" r="1" fill="var(--green-deep)"/></svg>
           </div>
-          <h3>Servi en man'ouché</h3>
-          <p>Notre spécialité&nbsp;: la <a href="/manouche.html" style="color:var(--coral);font-weight:700;">galette libanaise</a> cuite minute au four. Pas de wrap industriel, pas de pita réchauffée.</p>
+          <h3>100% végétarien &amp; vegan</h3>
+          <p>Sans viande, sans produit animal. Le choix parfait pour un repas gourmand, sain et respectueux. Toute notre carte est halal.</p>
         </div>
 
         <div class="diff-card rv rv-d3">
           <div class="diff-icon" style="background:var(--yellow-soft);">
             <svg viewBox="0 0 24 24" fill="none" stroke="var(--green-deep)" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
           </div>
-          <h3>100% halal</h3>
-          <p>Viande de poulet certifiée halal, sans exception. Ingrédients frais, sélectionnés avec soin.</p>
-        </div>
-
-        <div class="diff-card rv rv-d4">
-          <div class="diff-icon" style="background:var(--cream);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="1.5"><path d="M12 2a10 10 0 0 1 0 20 10 10 0 0 1 0-20z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><circle cx="9" cy="10" r="1" fill="var(--coral)"/><circle cx="15" cy="10" r="1" fill="var(--coral)"/></svg>
-          </div>
-          <h3>Produits frais</h3>
-          <p>Légumes croquants, sauces faites maison — ail, tarator, houmous. Tout est préparé le jour même.</p>
+          <h3>Servi en man'ouché</h3>
+          <p>Pas de wrap industriel. Nos falafels sont servis dans notre <a href="/manouche.html" style="color:var(--coral);font-weight:700;">galette libanaise</a> cuite minute au four — moelleuse et croustillante.</p>
         </div>
       </div>
     </div>
@@ -506,30 +377,25 @@
   <!-- MARQUEE 2 -->
   <div class="marquee" aria-hidden="true" style="background: var(--coral);">
     <div class="marquee-track" style="animation-direction: reverse; animation-duration: 18s;">
-      <span>Cuit Minute</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span>Végétarien</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span>Vegan</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
       <span>Street Food</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
       <span>Bellecour</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
       <span>Livraison</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
-      <span>7j/7</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
-      <span>Cuit Minute</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span>Végétarien</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span>Vegan</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
       <span>Street Food</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
       <span>Bellecour</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
       <span>Livraison</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
-      <span>7j/7</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
     </div>
   </div>
 
   <!-- FORMULE BANNER -->
   <section class="formule-banner">
-    <div class="formule-inner">
-      <div class="formule-text rv">
-        <h2>Shawarma en Formule</h2>
-        <p>1 shawarma man'ouché + 1 starter au choix (houmous, fattouch, falafel crunch, moutabal...) + 1 boisson. Le déjeuner rapide idéal entre Bellecour et Cordeliers.</p>
-        <span class="formule-price">14,60&nbsp;€</span>
-      </div>
-      <div class="formule-img rv rv-d1">
-        <img src="assets/images/shawarma/formule.jpg" alt="Formule shawarma — man'ouche + starter + boisson" loading="lazy">
-      </div>
+    <div class="formule-inner rv">
+      <h2>Falafel en Formule</h2>
+      <p>1 falafel wrap + 1 starter au choix (houmous, fattouch, moutabal...) + 1 boisson. Un déjeuner rapide, sain et gourmand entre Bellecour et Cordeliers.</p>
+      <span class="formule-price">14,30&nbsp;€</span>
     </div>
   </section>
 
@@ -537,7 +403,7 @@
   <section class="section section-cream">
     <div class="container">
       <div class="cta-section rv">
-        <h2>Envie d'un Shawarma ?</h2>
+        <h2>Envie de Falafels ?</h2>
         <p>Sur place au 6 rue Petit David (Lyon 2), à emporter, ou en livraison.</p>
         <div class="cta-buttons">
           <a href="https://commandes.sezamandco.com" class="btn btn-primary">Commander en ligne</a>
@@ -545,7 +411,7 @@
         </div>
         <div class="cta-links">
           <a href="/manouche.html">Man'ouche à Lyon</a>
-          <a href="/falafel-lyon.html">Falafel à Lyon</a>
+          <a href="/shawarma-lyon.html">Shawarma à Lyon</a>
           <a href="/adresse.html">Nous trouver</a>
         </div>
       </div>
@@ -602,7 +468,6 @@
     </div>
   </footer>
 
-  <!-- STICKY MOBILE CTA -->
   <div class="sticky-cta" id="sticky-cta">
     <a href="https://commandes.sezamandco.com">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
@@ -610,77 +475,30 @@
     </a>
   </div>
 
-  <!-- JS -->
   <script>
   (function() {
     var dropdown = document.getElementById('dropdown');
     var ddToggle = dropdown.querySelector('.dropdown-toggle');
-    ddToggle.addEventListener('click', function(e) {
-      e.stopPropagation();
-      var open = dropdown.classList.toggle('open');
-      ddToggle.setAttribute('aria-expanded', open);
-    });
-    document.addEventListener('click', function() {
-      dropdown.classList.remove('open');
-      ddToggle.setAttribute('aria-expanded', 'false');
-    });
+    ddToggle.addEventListener('click', function(e) { e.stopPropagation(); var open = dropdown.classList.toggle('open'); ddToggle.setAttribute('aria-expanded', open); });
+    document.addEventListener('click', function() { dropdown.classList.remove('open'); ddToggle.setAttribute('aria-expanded', 'false'); });
     dropdown.querySelector('.dropdown-menu').addEventListener('click', function(e) { e.stopPropagation(); });
-
     var burger = document.getElementById('burger');
     var mobNav = document.getElementById('mob-nav');
-    burger.addEventListener('click', function() {
-      var open = burger.classList.toggle('open');
-      mobNav.classList.toggle('open');
-      burger.setAttribute('aria-expanded', open);
-      document.body.style.overflow = open ? 'hidden' : '';
-    });
-    mobNav.querySelectorAll('a').forEach(function(a) {
-      a.addEventListener('click', function() {
-        burger.classList.remove('open');
-        mobNav.classList.remove('open');
-        burger.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-      });
-    });
-
+    burger.addEventListener('click', function() { var open = burger.classList.toggle('open'); mobNav.classList.toggle('open'); burger.setAttribute('aria-expanded', open); document.body.style.overflow = open ? 'hidden' : ''; });
+    mobNav.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', function() { burger.classList.remove('open'); mobNav.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; }); });
     var hdr = document.getElementById('hdr');
-    window.addEventListener('scroll', function() {
-      hdr.classList.toggle('stuck', window.scrollY > 50);
-    }, { passive: true });
-
+    window.addEventListener('scroll', function() { hdr.classList.toggle('stuck', window.scrollY > 50); }, { passive: true });
     var stickyCta = document.getElementById('sticky-cta');
     var hero = document.getElementById('hero');
-    function checkSticky() {
-      if (window.innerWidth <= 860) {
-        var heroBottom = hero.getBoundingClientRect().bottom;
-        stickyCta.style.transform = heroBottom < 0 ? 'translateY(0)' : 'translateY(100%)';
-      }
-    }
+    function checkSticky() { if (window.innerWidth <= 860) { var heroBottom = hero.getBoundingClientRect().bottom; stickyCta.style.transform = heroBottom < 0 ? 'translateY(0)' : 'translateY(100%)'; } }
     stickyCta.style.transition = 'transform .35s ease';
     stickyCta.style.transform = 'translateY(100%)';
     window.addEventListener('scroll', checkSticky, { passive: true });
     checkSticky();
-
     var els = document.querySelectorAll('.rv');
-    if ('IntersectionObserver' in window) {
-      var obs = new IntersectionObserver(function(entries) {
-        entries.forEach(function(e) {
-          if (e.isIntersecting) { e.target.classList.add('show'); obs.unobserve(e.target); }
-        });
-      }, { threshold: .1, rootMargin: '0px 0px -40px 0px' });
-      els.forEach(function(el) { obs.observe(el); });
-    } else {
-      els.forEach(function(el) { el.classList.add('show'); });
-    }
-
-    document.querySelectorAll('a[href^="#"]').forEach(function(a) {
-      a.addEventListener('click', function(e) {
-        var t = document.querySelector(this.getAttribute('href'));
-        if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-      });
-    });
+    if ('IntersectionObserver' in window) { var obs = new IntersectionObserver(function(entries) { entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('show'); obs.unobserve(e.target); } }); }, { threshold: .1, rootMargin: '0px 0px -40px 0px' }); els.forEach(function(el) { obs.observe(el); }); } else { els.forEach(function(el) { el.classList.add('show'); }); }
+    document.querySelectorAll('a[href^="#"]').forEach(function(a) { a.addEventListener('click', function(e) { var t = document.querySelector(this.getAttribute('href')); if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); } }); });
   })();
   </script>
-
 </body>
 </html>
