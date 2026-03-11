@@ -118,6 +118,19 @@
     .mob-nav.open { opacity: 1; pointer-events: all; }
     .mob-nav a { font-family: var(--font-display); font-size: clamp(1.6rem,5vw,2.2rem); color: var(--green-deep); transition: color .3s; }
     .mob-nav a:hover { color: var(--coral); }
+    .mob-dropdown-toggle { cursor: pointer; display: inline-flex; align-items: center; gap: .4rem; }
+    .mob-dropdown-toggle svg { width: 16px; height: 16px; transition: transform .3s; }
+    .mob-dropdown-toggle.open svg { transform: rotate(180deg); }
+    .mob-dropdown {
+      display: none; flex-direction: column; gap: .8rem; padding: .5rem 0 .3rem;
+    }
+    .mob-dropdown.open { display: flex; }
+    .mob-dropdown a {
+      font-size: clamp(1rem,3.5vw,1.3rem) !important;
+      color: var(--green-logo) !important;
+      padding-left: .5rem;
+      border-left: 2px solid var(--coral);
+    }
     .mob-nav .mob-cta { margin-top: .8rem; background: var(--coral); color: #fff; font-family: var(--font-body); font-size: 1rem; font-weight: 800; padding: .9rem 2.2rem; border-radius: 50px; text-transform: uppercase; letter-spacing: .06em; }
     @media (max-width: 860px) { .hdr-nav, .hdr-phone, .hdr-cta { display: none; } .burger { display: flex; } }
 
@@ -281,11 +294,16 @@
     <a href="menu.html">Menu</a>
     <a href="faq.html">FAQ</a>
     <a href="adresse.html">Adresse</a>
-    <a href="manouche.html">Man'ouche</a>
-    <a href="shawarma-lyon.html">Shawarma</a>
-    <a href="falafel-lyon.html">Falafel</a>
-    <a href="notre-histoire.html">Histoire</a>
-    <a href="mission.html">Mission</a>
+    <a class="mob-dropdown-toggle" id="mob-explore-toggle">Explorer <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a>
+    <div class="mob-dropdown" id="mob-explore-menu">
+      <a href="manouche.html">Man'ouche</a>
+      <a href="shawarma-lyon.html">Shawarma</a>
+      <a href="falafel-lyon.html">Falafel</a>
+      <a href="mezze-lyon.html">Mezze</a>
+      <a href="livraison-libanais-lyon.html">Livraison</a>
+      <a href="notre-histoire.html">Histoire</a>
+      <a href="mission.html">Mission</a>
+    </div>
     <a href="tel:+33478954316" style="font-family:var(--font-body);font-size:1rem;color:var(--text-mid);">04 78 95 43 16</a>
     <a href="https://commandes.sezamandco.com" class="mob-cta">Commander</a>
   </nav>
@@ -597,6 +615,15 @@
     var mobNav = document.getElementById('mob-nav');
     burger.addEventListener('click', function() { var open = burger.classList.toggle('open'); mobNav.classList.toggle('open'); burger.setAttribute('aria-expanded', open); document.body.style.overflow = open ? 'hidden' : ''; });
     mobNav.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', function() { burger.classList.remove('open'); mobNav.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; }); });
+
+    /* Mobile Explorer dropdown */
+    var mobExploreToggle = document.getElementById('mob-explore-toggle');
+    var mobExploreMenu = document.getElementById('mob-explore-menu');
+    mobExploreToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      mobExploreToggle.classList.toggle('open');
+      mobExploreMenu.classList.toggle('open');
+    });
     var hdr = document.getElementById('hdr');
     window.addEventListener('scroll', function() { hdr.classList.toggle('stuck', window.scrollY > 50); }, { passive: true });
     var stickyCta = document.getElementById('sticky-cta');
