@@ -457,7 +457,8 @@
     var burger = document.getElementById('burger');
     var mobNav = document.getElementById('mob-nav');
     burger.addEventListener('click', function() { var open = burger.classList.toggle('open'); mobNav.classList.toggle('open'); burger.setAttribute('aria-expanded', open); document.body.style.overflow = open ? 'hidden' : ''; });
-    mobNav.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', function() { burger.classList.remove('open'); mobNav.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; }); });
+    mobNav.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', function() {
+        if (a.classList.contains('mob-dropdown-toggle')) return; burger.classList.remove('open'); mobNav.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; }); });
 
     /* Mobile Explorer dropdown */
     var mobExploreToggle = document.getElementById('mob-explore-toggle');

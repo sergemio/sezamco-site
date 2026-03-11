@@ -744,6 +744,7 @@
     });
     mobNav.querySelectorAll('a').forEach(function(a) {
       a.addEventListener('click', function() {
+        if (a.classList.contains('mob-dropdown-toggle')) return;
         burger.classList.remove('open');
         mobNav.classList.remove('open');
         burger.setAttribute('aria-expanded', 'false');
