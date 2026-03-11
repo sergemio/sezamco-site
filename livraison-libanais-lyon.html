@@ -45,6 +45,7 @@
         "addressLocality": "Lyon",
         "postalCode": "69002",
         "addressCountry": "FR"
+      },
       "servesCuisine": ["Lebanese", "Street Food", "Halal"],
       "areaServed": [
         { "@type": "City", "name": "Lyon" },
@@ -57,12 +58,14 @@
         { "@type": "AdministrativeArea", "name": "Lyon 8e" },
         { "@type": "AdministrativeArea", "name": "Villeurbanne" }
       ]
+    },
     "breadcrumb": {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://sezamandco.com/" },
         { "@type": "ListItem", "position": 2, "name": "Livraison Libanais Lyon", "item": "https://sezamandco.com/livraison-libanais-lyon" }
       ]
+    }
   }
   </script>
 
@@ -76,6 +79,7 @@
       --font-display: 'Ambery Garden', cursive, sans-serif;
       --font-body: 'Nunito', system-ui, sans-serif;
       --max-w: 1200px; --section-py: clamp(4rem, 8vw, 7rem);
+    }
     html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
     body { font-family: var(--font-body); color: var(--text-dark); background: var(--cream); overflow-x: hidden; }
     img { max-width: 100%; height: auto; display: block; }
@@ -685,6 +689,7 @@
       e.preventDefault();
       mobExploreToggle.classList.toggle('open');
       mobExploreMenu.classList.toggle('open');
+    });
     var hdr = document.getElementById('hdr');
     window.addEventListener('scroll', function() { hdr.classList.toggle('stuck', window.scrollY > 50); }, { passive: true });
     var stickyCta = document.getElementById('sticky-cta');

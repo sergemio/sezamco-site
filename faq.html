@@ -38,60 +38,80 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Le man'ouché (ou manakish) est la galette traditionnelle libanaise par excellence, servie chez Sezam&Co, restaurant libanais du 2e arrondissement de Lyon. Garnie de zaatar et d'huile d'olive extra-vierge, elle se décline au fromage, au poulet mariné ou à la saucisse sojok, et bien d'autres, pour un plaisir frais et authentique. Vous pouvez la déguster sur place ou en livraison."
+        }
+      },
       {
         "@type": "Question",
         "name": "Avez-vous des options végétariennes ou vegan ?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Oui, une partie de notre carte est végétarienne et vegan. Nos recettes 100% vegan incluent : houmous traditionnel, moutabal d'aubergines grillées, salade fattouch, falafel crunch, et les man'ouches Zaatar, Zaatar Extra. Options végétariennes : Jebne, Labné-Zaatar, Halloumi Fromage, Falafel Wrap et bien d'autres."
+        }
+      },
       {
         "@type": "Question",
         "name": "Proposez-vous la livraison à Lyon ?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Oui, nous assurons la livraison dans les 1er, 2e, 3e et 7e arrondissements, ainsi qu'à Villeurbanne et en proche banlieue lyonnaise. Commandez sur notre site web ou via Uber Eats, Deliveroo et Delicity."
+        }
+      },
       {
         "@type": "Question",
         "name": "Peut-on emporter un man'ouché ou un mezzé ?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Bien sûr ! Notre service Click & Collect vous permet de commander en ligne et de retirer votre commande en quelques minutes au 6 rue Petit David, 69002 Lyon."
+        }
+      },
       {
         "@type": "Question",
         "name": "Quels sont vos horaires d'ouverture ?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Sezam&Co, situé au cœur de la Presqu'île de Lyon (2e arrondissement, entre Bellecour et Cordeliers), vous accueille du lundi au dimanche de 12h00 à 23h00."
+        }
+      },
       {
         "@type": "Question",
         "name": "Votre cuisine est-elle halal ?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Oui. Chez Sezam&Co, nous sélectionnons uniquement des viandes certifiées halal : kafta, shawarma, poulet mariné, bacon de dinde, tous préparés à partir de viandes certifiées."
+        }
+      },
       {
         "@type": "Question",
         "name": "Quelle est votre mission culinaire ?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Notre mission est de faire découvrir la cuisine libanaise authentique à Lyon à travers des recettes maison : shawarma, man'ouché, houmous, labné et moutabal, tous préparés frais."
+        }
+      },
       {
         "@type": "Question",
         "name": "Peut-on manger sur place chez Sezam&Co ?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Oui ! Notre restaurant au 6 rue Petit David, Lyon 2, vous accueille dans une ambiance street food chaleureuse. Nous disposons également d'une terrasse pour les beaux jours."
+        }
+      },
       {
         "@type": "Question",
         "name": "Quelle est la différence entre un man'ouché et une pizza ?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Le man'ouché est une galette libanaise à base de pâte au levain, plus fine et légère qu'une pizza. Cuite minute au four traditionnel, elle est garnie d'ingrédients frais comme le zaatar, le fromage akkawi ou le shawarma. C'est la pizza libanaise version street food !"
+        }
+      },
       {
         "@type": "Question",
         "name": "Proposez-vous des formules déjeuner ?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Oui ! Nos formules commencent à partir de 10,90€ et incluent un man'ouché au choix, un starter (houmous, fattouch, moutabal...) et une boisson. Parfait pour un déjeuner rapide à Lyon 2."
+        }
+      }
     ]
   }
   </script>
@@ -119,6 +139,7 @@
       --font-body: 'Nunito', system-ui, sans-serif;
       --max-w: 1200px;
       --section-py: clamp(4rem, 8vw, 7rem);
+    }
 
     html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
     body { font-family: var(--font-body); color: var(--text-dark); background: var(--cream); overflow-x: hidden; }
@@ -143,9 +164,11 @@
       background: var(--cream);
       box-shadow: 0 2px 16px rgba(26,59,6,.06);
       transition: padding .35s, box-shadow .35s;
+    }
     .hdr.stuck {
       padding: .55rem 0;
       box-shadow: 0 2px 24px rgba(26,59,6,.12);
+    }
     .hdr-inner { display: flex; align-items: center; justify-content: space-between; max-width: var(--max-w); margin: 0 auto; padding: 0 clamp(1.25rem,4vw,2.5rem); }
     .hdr .logo img { height: 48px; width: auto; transition: height .3s; }
     .hdr.stuck .logo img { height: 40px; }
@@ -156,10 +179,12 @@
       letter-spacing: .02em; position: relative; cursor: pointer;
       font-family: var(--font-body); background: none; border: none; padding: 0;
       display: inline-flex; align-items: center; gap: .3rem;
+    }
     .hdr-nav > a::after, .hdr-nav .dropdown-toggle::after {
       content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 2px;
       background: var(--coral); border-radius: 2px;
       transition: width .3s cubic-bezier(.34,1.56,.64,1);
+    }
     .hdr-nav > a:hover::after, .hdr-nav .dropdown-toggle:hover::after { width: 100%; }
     .hdr-nav > a.active::after { width: 100%; }
 
@@ -174,15 +199,18 @@
       box-shadow: 0 8px 30px rgba(26,59,6,.1);
       opacity: 0; transform: translateY(-8px); pointer-events: none;
       transition: opacity .25s, transform .25s;
+    }
     .dropdown.open .dropdown-menu { opacity: 1; transform: translateY(0); pointer-events: all; }
     .dropdown-menu a {
       display: block; padding: .6rem 1.2rem; font-size: .85rem; font-weight: 700;
       color: var(--green-deep); transition: background .2s, color .2s;
+    }
     .dropdown-menu a:hover { background: var(--green-pastel); color: var(--coral); }
 
     .hdr-phone {
       font-size: .85rem; font-weight: 700; color: var(--green-deep);
       display: flex; align-items: center; gap: .35rem;
+    }
     .hdr-phone svg { width: 16px; height: 16px; }
 
     .hdr-cta {
@@ -191,6 +219,7 @@
       font-family: var(--font-display); font-size: .95rem; letter-spacing: .02em;
       padding: .6rem 1.3rem; border-radius: 50px;
       transition: transform .3s, box-shadow .3s, background .3s;
+    }
     .hdr-cta:hover { transform: scale(1.05); box-shadow: 0 4px 16px rgba(232,69,69,.3); background: var(--coral-hover); }
 
     /* Hamburger */
@@ -205,10 +234,12 @@
       position: fixed; inset: 0; background: var(--cream);
       display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 1.6rem;
       opacity: 0; pointer-events: none; transition: opacity .4s; z-index: 199;
+    }
     .mob-nav.open { opacity: 1; pointer-events: all; }
     .mob-nav a {
       font-family: var(--font-display); font-size: clamp(1.6rem,5vw,2.2rem);
       color: var(--green-deep); transition: color .3s;
+    }
     .mob-nav a:hover { color: var(--coral); }
     .mob-dropdown-toggle { cursor: pointer; display: inline-flex; align-items: center; gap: .4rem; }
     .mob-dropdown-toggle svg { width: 16px; height: 16px; transition: transform .3s; }
@@ -241,12 +272,14 @@
       padding: .75rem 1rem; background: rgba(255,248,225,.95);
       backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
       box-shadow: 0 -2px 20px rgba(0,0,0,.08);
+    }
     .sticky-cta a {
       display: flex; justify-content: center; align-items: center; gap: .5rem;
       width: 100%; background: var(--coral); color: #fff;
       font-size: 1rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em;
       padding: .9rem; border-radius: 50px;
       transition: background .3s;
+    }
     .sticky-cta a:active { background: var(--coral-hover); }
     @media (max-width: 860px) { .sticky-cta { display: block; } }
 
@@ -258,11 +291,13 @@
       position: relative;
       overflow: hidden;
       text-align: center;
+    }
     .page-hero::before {
       content: '';
       position: absolute; top: -50%; right: -20%; width: 60%; height: 200%;
       background: radial-gradient(circle, rgba(212,237,207,.6) 0%, transparent 70%);
       pointer-events: none;
+    }
     .page-hero h1 {
       font-family: var(--font-display);
       font-size: clamp(2rem, 5vw, 3.6rem);
@@ -270,11 +305,13 @@
       line-height: 1.1;
       margin-bottom: .5rem;
       position: relative;
+    }
     .page-hero-sub {
       font-size: .95rem; line-height: 1.75; color: var(--text-mid);
       max-width: 600px;
       position: relative;
       margin: 0 auto;
+    }
 
     /* ===== MARQUEE ===== */
     .marquee {
@@ -282,15 +319,18 @@
       padding: .8rem 0;
       overflow: hidden;
       position: relative;
+    }
     .marquee-track {
       display: flex; width: max-content;
       animation: marqueeScroll 20s linear infinite;
+    }
     .marquee-track span {
       font-family: var(--font-display);
       font-size: clamp(1rem, 2.5vw, 1.4rem);
       color: var(--yellow-soft);
       white-space: nowrap;
       padding: 0 .6rem;
+    }
     .marquee-track .sep {
       color: var(--coral);
       font-family: var(--font-body);
@@ -298,9 +338,11 @@
       display: inline-flex;
       align-items: center;
       padding: 0 .3rem;
+    }
     @keyframes marqueeScroll {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
+    }
 
     /* ===== SECTION COMMON ===== */
     .section { padding: var(--section-py) 0; position: relative; overflow: hidden; }
@@ -312,15 +354,18 @@
       color: var(--green-deep);
       margin-bottom: .3rem;
       line-height: 1.1;
+    }
     .section-sub {
       font-size: .9rem; font-weight: 700; color: var(--text-mid);
       text-transform: uppercase; letter-spacing: .08em;
       margin-bottom: 2.5rem;
+    }
 
     /* ===== FAQ ACCORDION ===== */
     .faq-list {
       max-width: 800px;
       margin: 0 auto;
+    }
 
     .faq-item {
       background: #fff;
@@ -330,6 +375,7 @@
       box-shadow: 0 2px 8px rgba(26,59,6,.03);
       overflow: hidden;
       transition: box-shadow .3s;
+    }
     .faq-item:hover { box-shadow: 0 4px 16px rgba(26,59,6,.06); }
 
     .faq-q {
@@ -345,6 +391,7 @@
       color: var(--green-deep);
       background: none; border: none;
       transition: color .2s;
+    }
     .faq-q:hover { color: var(--coral); }
 
     .faq-num {
@@ -353,6 +400,7 @@
       color: var(--coral);
       flex-shrink: 0;
       width: 2rem;
+    }
 
     .faq-q-text { flex: 1; }
 
@@ -360,6 +408,7 @@
       width: 20px; height: 20px; flex-shrink: 0;
       transition: transform .35s cubic-bezier(.34,1.56,.64,1);
       color: var(--green-logo);
+    }
     .faq-item.open .faq-chevron { transform: rotate(180deg); }
 
     .faq-a {
@@ -367,26 +416,33 @@
       overflow: hidden;
       transition: max-height .4s cubic-bezier(.16,1,.3,1), padding .4s;
       padding: 0 1.5rem 0 4.5rem;
+    }
     .faq-item.open .faq-a {
       max-height: 600px;
       padding: 0 1.5rem 1.5rem 4.5rem;
+    }
     @media (max-width: 768px) {
       .faq-a { padding-left: 1.5rem; }
       .faq-item.open .faq-a { padding-left: 1.5rem; }
+    }
 
     .faq-a p {
       font-size: .9rem; line-height: 1.75; color: var(--text-mid);
       margin-bottom: .6rem;
+    }
     .faq-a p:last-child { margin-bottom: 0; }
     .faq-a ul {
       padding-left: 1.2rem; margin: .4rem 0 .8rem;
+    }
     .faq-a li {
       font-size: .88rem; line-height: 1.7; color: var(--text-mid);
       margin-bottom: .2rem;
+    }
     .faq-a a {
       color: var(--coral); font-weight: 700;
       border-bottom: 1.5px solid rgba(232,69,69,.3);
       transition: border-color .2s;
+    }
     .faq-a a:hover { border-color: var(--coral); }
 
     .faq-cta {
@@ -396,6 +452,7 @@
       padding: .4rem .9rem; border-radius: 50px;
       margin-top: .6rem;
       transition: all .3s;
+    }
     .faq-cta:hover { background: var(--green-deep); color: var(--yellow-soft); }
     .faq-cta svg { width: 14px; height: 14px; }
 
@@ -409,27 +466,33 @@
       text-align: center;
       position: relative;
       overflow: hidden;
+    }
     .cta-banner::before {
       content: ''; position: absolute;
       top: -8px; left: -8px; right: -8px; bottom: -8px;
       border: none; border-radius: 26px; opacity: .5; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Crect x='1.5' y='1.5' width='99%25' height='99%25' rx='26' ry='26' fill='none' stroke='%232D6A0F' stroke-width='3' stroke-dasharray='14 10'/%3E%3C/svg%3E"); background-size: 100% 100%;
       pointer-events: none;
+    }
     .cta-banner-title {
       font-family: var(--font-display);
       font-size: clamp(1.4rem,3vw,2rem);
       color: var(--green-deep);
       margin-bottom: .5rem;
+    }
     .cta-banner p {
       font-size: .9rem; color: var(--text-mid); margin-bottom: 1.2rem;
+    }
     .btn {
       display: inline-flex; align-items: center; gap: .4rem;
       font-weight: 800; font-size: .9rem; padding: .8rem 1.6rem;
       border-radius: 50px; letter-spacing: .03em;
       transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
+    }
     .btn:hover { transform: translateY(-2px); }
     .btn-primary {
       background: var(--coral); color: #fff;
       box-shadow: 0 4px 20px rgba(232,69,69,.3);
+    }
     .btn-primary:hover { box-shadow: 0 8px 30px rgba(232,69,69,.45); }
 
     /* ===== FOOTER ===== */
@@ -437,6 +500,7 @@
     .footer-grid {
       display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr; gap: 2.5rem;
       padding-bottom: 2.5rem; border-bottom: 1px solid rgba(255,255,255,.08);
+    }
     @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 1.8rem; } }
     @media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr; } }
 
@@ -446,9 +510,11 @@
     .footer-col h4 {
       font-family: var(--font-display); font-size: 1.1rem;
       color: var(--yellow-soft); margin-bottom: 1rem;
+    }
     .footer-col a, .footer-col p {
       display: block; font-size: .85rem; color: rgba(255,255,255,.45);
       margin-bottom: .5rem; transition: color .3s;
+    }
     .footer-col a:hover { color: #fff; }
 
     .footer-social { display: flex; gap: .6rem; margin-top: .6rem; }
@@ -457,14 +523,18 @@
       width: 38px; height: 38px; border-radius: 10px;
       background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.08);
       color: rgba(255,255,255,.5); transition: all .3s;
+    }
     .footer-social a:hover {
       background: var(--yellow-rich); border-color: var(--yellow-rich);
       color: var(--green-deep); transform: translateY(-2px);
+    }
 
     .footer-seo {
       padding: 1.2rem 0; border-bottom: 1px solid rgba(255,255,255,.05);
+    }
     .footer-seo p {
       font-size: .75rem; color: rgba(255,255,255,.55); text-align: center; line-height: 2;
+    }
     .footer-seo a { color: rgba(255,255,255,.55); border-bottom: 1px dotted rgba(255,255,255,.12); transition: color .3s; }
     .footer-seo a:hover { color: rgba(255,255,255,.6); }
 
@@ -473,6 +543,7 @@
 
     @media (max-width: 860px) {
       .footer { padding-bottom: 4.5rem; }
+    }
 
   </style>
 </head>
@@ -813,9 +884,11 @@
       e.stopPropagation();
       var open = dropdown.classList.toggle('open');
       ddToggle.setAttribute('aria-expanded', open);
+    });
     document.addEventListener('click', function() {
       dropdown.classList.remove('open');
       ddToggle.setAttribute('aria-expanded', 'false');
+    });
     dropdown.querySelector('.dropdown-menu').addEventListener('click', function(e) { e.stopPropagation(); });
 
     /* Burger */
@@ -826,6 +899,7 @@
       mobNav.classList.toggle('open');
       burger.setAttribute('aria-expanded', open);
       document.body.style.overflow = open ? 'hidden' : '';
+    });
     mobNav.querySelectorAll('a').forEach(function(a) {
       a.addEventListener('click', function() {
         if (a.classList.contains('mob-dropdown-toggle')) return;
@@ -833,6 +907,8 @@
         mobNav.classList.remove('open');
         burger.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = '';
+      });
+    });
 
 
     /* Mobile Explorer dropdown */
@@ -842,10 +918,12 @@
       e.preventDefault();
       mobExploreToggle.classList.toggle('open');
       mobExploreMenu.classList.toggle('open');
+    });
     /* Sticky header */
     var hdr = document.getElementById('hdr');
     window.addEventListener('scroll', function() {
       hdr.classList.toggle('stuck', window.scrollY > 50);
+    }, { passive: true });
 
     /* Sticky mobile CTA */
     var stickyCta = document.getElementById('sticky-cta');
@@ -854,6 +932,8 @@
     function checkSticky() {
       if (window.innerWidth <= 860) {
         stickyCta.style.transform = window.scrollY > 200 ? 'translateY(0)' : 'translateY(100%)';
+      }
+    }
     window.addEventListener('scroll', checkSticky, { passive: true });
     checkSticky();
 
@@ -867,11 +947,15 @@
         document.querySelectorAll('.faq-item').forEach(function(el) {
           el.classList.remove('open');
           el.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+        });
 
         // Toggle clicked
         if (!wasOpen) {
           item.classList.add('open');
           this.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
 
     /* Scroll reveal */
     var els = document.querySelectorAll('.rv');
@@ -879,14 +963,20 @@
       var obs = new IntersectionObserver(function(entries) {
         entries.forEach(function(e) {
           if (e.isIntersecting) { e.target.classList.add('show'); obs.unobserve(e.target); }
+        });
+      }, { threshold: .1, rootMargin: '0px 0px -40px 0px' });
       els.forEach(function(el) { obs.observe(el); });
+    } else {
       els.forEach(function(el) { el.classList.add('show'); });
+    }
 
     /* Smooth scroll */
     document.querySelectorAll('a[href^="#"]').forEach(function(a) {
       a.addEventListener('click', function(e) {
         var t = document.querySelector(this.getAttribute('href'));
         if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
   })();
   </script>
 
