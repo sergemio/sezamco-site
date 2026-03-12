@@ -1,16 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<!-- Google tag (gtag.js) — GA4 + Google Ads -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-320RMHJKY5"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-320RMHJKY5');
-  gtag('config', 'AW-18009131329');
-</script>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sezam&Co | Restaurant Libanais Lyon 2 — Man'ouches, Shawarma & Mezzes</title>
@@ -1104,16 +1094,16 @@
     /* Sticky mobile CTA — show after scrolling past hero */
     var stickyCta = document.getElementById('sticky-cta');
     var hero = document.getElementById('hero');
-    function checkSticky() {
-      if (window.innerWidth <= 860) {
-        var heroBottom = hero.getBoundingClientRect().bottom;
-        stickyCta.style.transform = heroBottom < 0 ? 'translateY(0)' : 'translateY(100%)';
-      }
-    }
     stickyCta.style.transition = 'transform .35s ease';
     stickyCta.style.transform = 'translateY(100%)';
-    window.addEventListener('scroll', checkSticky, { passive: true });
-    checkSticky();
+    if ('IntersectionObserver' in window) {
+      var stickyObs = new IntersectionObserver(function(entries) {
+        if (window.innerWidth <= 860) {
+          stickyCta.style.transform = entries[0].isIntersecting ? 'translateY(100%)' : 'translateY(0)';
+        }
+      }, { threshold: 0 });
+      stickyObs.observe(hero);
+    }
 
     /* Scroll reveal */
     var els = document.querySelectorAll('.rv');
@@ -1137,6 +1127,16 @@
     });
   })();
   </script>
+
+<!-- Google tag (gtag.js) — GA4 + Google Ads — en bas pour ne pas bloquer le rendu -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-320RMHJKY5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-320RMHJKY5');
+  gtag('config', 'AW-18009131329');
+</script>
 
 </body>
 </html>
