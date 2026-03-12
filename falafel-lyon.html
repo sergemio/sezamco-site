@@ -221,6 +221,17 @@
     .cta-links a { font-size: .85rem; font-weight: 700; color: var(--green-logo); border-bottom: 2px solid var(--coral); padding-bottom: 2px; transition: color .3s; }
     .cta-links a:hover { color: var(--coral); }
 
+    /* VOUS AIMEREZ AUSSI */
+    .also-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
+    .also-card { background: #fff; border-radius: 16px; overflow: hidden; text-decoration: none; color: var(--text-dark); transition: transform .3s, box-shadow .3s; border: 2px dashed rgba(65,127,10,.15); }
+    .also-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,.1); }
+    .also-card img { width: 100%; height: 160px; object-fit: cover; }
+    .also-card-body { padding: 1rem 1.2rem; }
+    .also-card-body h3 { font-family: var(--font-display); font-size: 1.15rem; color: var(--green-deep); margin-bottom: .3rem; }
+    .also-card-body p { font-size: .85rem; color: #666; margin-bottom: .6rem; line-height: 1.4; }
+    .also-card-body .also-link { font-size: .8rem; font-weight: 700; color: var(--coral); }
+    @media (max-width: 700px) { .also-grid { grid-template-columns: 1fr; max-width: 360px; margin-left: auto; margin-right: auto; } }
+
     /* FOOTER */
     .footer { background: var(--green-deep); padding: var(--section-py) 0 0; position: relative; }
     .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr; gap: 2.5rem; padding-bottom: 2.5rem; border-bottom: 1px solid rgba(255,255,255,.08); }
@@ -304,7 +315,7 @@
 
   <!-- HERO -->
   <section class="page-hero" id="hero">
-    <div class="page-hero-bg" style="background-image:url('assets/images/falafel/hero.png');"></div>
+    <div class="page-hero-bg" style="background-image:url('assets/images/falafel/hero.webp');"></div>
     <div class="page-hero-content">
       <div class="hero-badge">
         <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -453,10 +464,33 @@
           <a href="https://commandes.sezamandco.com" class="btn btn-primary">Commander en ligne</a>
           <a href="menu.html" class="btn btn-dark">Voir le menu complet</a>
         </div>
-        <div class="cta-links">
-          <a href="manouche.html">Man'ouche à Lyon</a>
-          <a href="shawarma-lyon.html">Shawarma à Lyon</a>
-          <a href="adresse.html">Nous trouver</a>
+        <hr style="margin:2.5rem auto 1.5rem; border:none; border-top:2px dashed rgba(65,127,10,.15); width:60%;">
+        <h3 style="font-family:var(--font-display); color:var(--green-deep); font-size:1.3rem;">Vous aimerez aussi</h3>
+        <div class="also-grid">
+          <a href="shawarma-lyon.html" class="also-card">
+            <img src="assets/images/placeholder-shawarma-poulet.webp" alt="Shawarma à Lyon" loading="lazy" width="360" height="160">
+            <div class="also-card-body">
+              <h3>Shawarma à Lyon</h3>
+              <p>Poulet mariné, grillé au four, sauce ail et sumac.</p>
+              <span class="also-link">Découvrir →</span>
+            </div>
+          </a>
+          <a href="manouche.html" class="also-card">
+            <img src="assets/images/placeholder-zaatar.webp" alt="Man'ouche à Lyon" loading="lazy" width="360" height="160">
+            <div class="also-card-body">
+              <h3>Man'ouche à Lyon</h3>
+              <p>Galettes libanaises cuites minute, zaatar ou cheesy kafta.</p>
+              <span class="also-link">Découvrir →</span>
+            </div>
+          </a>
+          <a href="mezze-lyon.html" class="also-card">
+            <img src="assets/images/placeholder-hummus.webp" alt="Mezze à Lyon" loading="lazy" width="360" height="160">
+            <div class="also-card-body">
+              <h3>Mezze à Lyon</h3>
+              <p>Houmous, taboulé, fattouch — nos mezzes faits maison.</p>
+              <span class="also-link">Découvrir →</span>
+            </div>
+          </a>
         </div>
       </div>
     </div>
