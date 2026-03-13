@@ -71,6 +71,63 @@
   }
   </script>
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Quels sont les horaires de livraison de Sezam&Co ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nous livrons 7 jours sur 7, de 12h à 23h (dernière commande 22h30). Le temps de livraison moyen est de 20 à 35 minutes selon la distance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quel est le minimum de commande en livraison ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Le minimum de commande dépend de la plateforme choisie (généralement 10 à 15 €). Notre formule man'ouche + starter + boisson démarre à 10,90 €."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Dans quels arrondissements de Lyon livrez-vous ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nous livrons à Lyon 1, 2, 3, 5, 6, 7, 8 et Villeurbanne via Uber Eats, Deliveroo et Delicity. La zone exacte dépend de la plateforme et du moment."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Y a-t-il des frais de livraison ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Les frais de livraison sont fixés par chaque plateforme et dépendent de la distance. Pour zéro frais, optez pour le click & collect sur commandes.sezamandco.com."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "La nourriture reste-t-elle chaude à la livraison ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui. Chaque plat est préparé à la commande et emballé avec soin pour conserver chaleur et croustillant pendant le transport."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "La carte Sezam&Co est-elle 100% halal ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui, toute notre carte est 100% halal, sans exception. Viandes, sauces, pains — tout est halal."
+        }
+      }
+    ]
+  }
+  </script>
+
   <style>
     @font-face {
       font-family: 'Ambery Garden';
@@ -200,6 +257,15 @@
     .step-num { width: 48px; height: 48px; border-radius: 50%; background: var(--coral); color: #fff; font-weight: 800; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; margin: 0 auto .8rem; }
     .step h3 { font-weight: 800; font-size: .95rem; color: var(--green-deep); margin-bottom: .3rem; }
     .step p { font-size: .82rem; color: var(--text-mid); line-height: 1.6; }
+
+    /* FAQ ACCORDION */
+    .faq-detail { background: #fff; border: 1px solid rgba(26,59,6,.06); border-radius: 12px; margin-bottom: .8rem; overflow: hidden; transition: box-shadow .3s; }
+    .faq-detail:hover { box-shadow: 0 4px 20px rgba(26,59,6,.06); }
+    .faq-detail summary { padding: 1.2rem 1.5rem; font-weight: 800; font-size: .95rem; color: var(--green-deep); cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .faq-detail summary::-webkit-details-marker { display: none; }
+    .faq-detail summary::after { content: '+'; font-size: 1.4rem; font-weight: 700; color: var(--coral); flex-shrink: 0; transition: transform .3s; }
+    .faq-detail[open] summary::after { content: '−'; }
+    .faq-detail p { padding: 0 1.5rem 1.2rem; font-size: .9rem; color: var(--text-mid); line-height: 1.7; }
 
     /* ZONES */
     .zones { display: flex; flex-wrap: wrap; gap: .8rem; justify-content: center; margin-top: 1.5rem; }
@@ -542,6 +608,10 @@
       </div>
 
       <p class="rv rv-d3" style="margin-top:1.5rem;font-size:.88rem;color:var(--text-mid);">La zone de livraison exacte dépend de la plateforme choisie. Via notre site, on livre dans un rayon de ~5km autour du restaurant (6 rue Petit David, Lyon 2).</p>
+
+      <div class="rv rv-d4" style="margin-top:2rem;border-radius:20px;overflow:hidden;box-shadow:0 8px 40px rgba(26,59,6,.1);">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11140.5!2d4.8335!3d45.7578!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f4ea516ae88797%3A0x408ab2ae4bb21f0!2sSezam%26Co!5e0!3m2!1sfr!2sfr!4v1710360000000" width="100%" height="300" style="border:0;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Zone de livraison Sezam&Co Lyon"></iframe>
+      </div>
     </div>
   </section>
 
@@ -599,8 +669,43 @@
     </div>
   </section>
 
-  <!-- CTA -->
+  <!-- FAQ LIVRAISON -->
   <section class="section section-green">
+    <div class="container">
+      <h2 class="section-title rv">Questions Fréquentes sur la Livraison</h2>
+      <p class="section-sub rv rv-d1">Tout savoir avant de commander</p>
+
+      <div style="max-width:800px;">
+        <details class="faq-detail rv">
+          <summary>Quels sont les horaires de livraison de Sezam&Co ?</summary>
+          <p>Nous livrons 7 jours sur 7, de 12h à 23h (dernière commande 22h30). Le temps de livraison moyen est de 20 à 35 minutes selon la distance.</p>
+        </details>
+        <details class="faq-detail rv rv-d1">
+          <summary>Quel est le minimum de commande en livraison ?</summary>
+          <p>Le minimum de commande dépend de la plateforme choisie (généralement 10 à 15&nbsp;€). Notre <a href="menu.html" style="color:var(--coral);font-weight:700;">formule</a> man'ouche + starter + boisson démarre à 10,90&nbsp;€.</p>
+        </details>
+        <details class="faq-detail rv rv-d2">
+          <summary>Dans quels arrondissements de Lyon livrez-vous ?</summary>
+          <p>Nous livrons à Lyon 1, 2, 3, 5, 6, 7, 8 et Villeurbanne via Uber Eats, Deliveroo et Delicity. La zone exacte dépend de la plateforme et du moment.</p>
+        </details>
+        <details class="faq-detail rv rv-d3">
+          <summary>Y a-t-il des frais de livraison ?</summary>
+          <p>Les frais de livraison sont fixés par chaque plateforme et dépendent de la distance. Pour zéro frais, optez pour le click &amp; collect sur <a href="https://commandes.sezamandco.com" style="color:var(--coral);font-weight:700;">notre site</a>.</p>
+        </details>
+        <details class="faq-detail rv">
+          <summary>La nourriture reste-t-elle chaude à la livraison ?</summary>
+          <p>Oui. Chaque plat est préparé à la commande et emballé avec soin pour conserver chaleur et croustillant pendant le transport.</p>
+        </details>
+        <details class="faq-detail rv rv-d1">
+          <summary>La carte Sezam&Co est-elle 100% halal ?</summary>
+          <p>Oui, toute notre carte est 100% halal, sans exception. Viandes, sauces, pains — tout est halal.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section-cream">
     <div class="container">
       <div class="cta-section rv">
         <h2>Envie d'un Libanais ?</h2>
