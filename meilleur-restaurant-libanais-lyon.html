@@ -152,19 +152,37 @@
     .page-hero p { font-size: clamp(.95rem, 2vw, 1.15rem); line-height: 1.8; max-width: 620px; margin: 0 auto; color: rgba(255,255,255,.75); }
     .hero-badge { display: inline-flex; align-items: center; gap: .4rem; background: rgba(255,255,255,.12); backdrop-filter: blur(8px); padding: .4rem 1rem; border-radius: 50px; font-size: .82rem; font-weight: 700; color: #fff; margin-bottom: 1.2rem; }
 
-    /* MARQUEE */
-    .marquee { background: var(--green-deep); padding: .8rem 0; overflow: hidden; position: relative; }
-    .marquee-track { display: flex; width: max-content; animation: marqueeScroll 22s linear infinite; }
-    .marquee-track span { font-family: var(--font-display); font-size: clamp(1rem, 2.5vw, 1.4rem); color: var(--yellow-soft); white-space: nowrap; padding: 0 .6rem; }
-    .marquee-track .sep { color: var(--coral); font-family: var(--font-body); font-size: .9rem; display: inline-flex; align-items: center; padding: 0 .3rem; }
-    @keyframes marqueeScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
     /* SECTIONS */
     .section { padding: var(--section-py) 0; position: relative; overflow: hidden; }
     .section-cream { background: var(--cream); }
     .section-green { background: var(--green-pastel); }
     .section-title { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.4rem); color: var(--green-deep); margin-bottom: .3rem; line-height: 1.1; }
     .section-sub { font-size: .9rem; font-weight: 700; color: var(--text-mid); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 2.5rem; }
+
+    /* GUIDE INTRO */
+    .guide-intro { max-width: 720px; margin: 0 auto; text-align: center; }
+    .guide-intro p { font-size: clamp(1rem, 2.2vw, 1.15rem); color: var(--text-mid); line-height: 1.9; margin-bottom: 1rem; }
+
+    /* VS CARDS — Le Match */
+    .vs-grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: 0; align-items: stretch; max-width: 960px; margin: 0 auto; }
+    .vs-card { padding: clamp(1.5rem, 4vw, 2.5rem); border-radius: 20px; display: flex; flex-direction: column; }
+    .vs-card--left { background: var(--cream); border: 2px dashed rgba(26,59,6,.12); }
+    .vs-card--right { background: var(--green-pastel); border: 2px dashed rgba(65,127,10,.2); }
+    .vs-divider { display: flex; align-items: center; justify-content: center; padding: 0 1.2rem; }
+    .vs-or { font-family: var(--font-display); font-size: clamp(1.4rem, 3vw, 2rem); color: var(--coral); background: #fff; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(232,69,69,.15); border: 2px solid rgba(232,69,69,.15); }
+    .vs-card h3 { font-family: var(--font-display); font-size: clamp(1.2rem, 3vw, 1.6rem); color: var(--green-deep); margin-bottom: 1.2rem; line-height: 1.2; }
+    .vs-card .vs-tag { display: inline-block; font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; padding: .25rem .7rem; border-radius: 50px; margin-bottom: 1rem; }
+    .vs-tag--tradition { background: var(--yellow-soft); color: var(--text-dark); }
+    .vs-tag--street { background: var(--coral); color: #fff; }
+    .vs-list { list-style: none; padding: 0; margin: 0; flex: 1; }
+    .vs-list li { font-size: .9rem; color: var(--text-mid); line-height: 1.6; padding: .5rem 0; border-bottom: 1px solid rgba(26,59,6,.06); display: flex; align-items: baseline; gap: .5rem; }
+    .vs-list li:last-child { border-bottom: none; }
+    .vs-list .vs-icon { font-size: .8rem; flex-shrink: 0; }
+    @media (max-width: 700px) {
+      .vs-grid { grid-template-columns: 1fr; gap: 0; }
+      .vs-divider { padding: 1rem 0; }
+      .vs-or { width: 48px; height: 48px; }
+    }
 
     /* INTRO GRID */
     .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
@@ -176,6 +194,14 @@
     .intro-img { border-radius: 20px; overflow: hidden; box-shadow: 0 8px 40px rgba(26,59,6,.1); }
     .intro-img img { width: 100%; height: 350px; object-fit: cover; }
     @media (max-width: 768px) { .intro-img img { height: 250px; } }
+
+    /* PRIDE GRID */
+    .pride-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-top: 2rem; }
+    .pride-card { background: #fff; border-radius: 16px; padding: 1.5rem; border: 1px solid rgba(26,59,6,.06); transition: transform .3s; }
+    .pride-card:hover { transform: translateY(-3px); }
+    .pride-card h3 { font-weight: 800; font-size: .95rem; color: var(--green-deep); margin-bottom: .4rem; }
+    .pride-card p { font-size: .85rem; color: var(--text-mid); line-height: 1.6; }
+    @media (max-width: 600px) { .pride-grid { grid-template-columns: 1fr; } }
 
     /* QUOTE */
     .quote-band { text-align: center; padding: clamp(2.5rem,5vw,4rem) clamp(1.25rem,4vw,2.5rem); background: var(--coral); }
@@ -302,57 +328,81 @@
     <div class="page-hero-content">
       <div class="hero-badge">Guide Gourmand</div>
       <h1>Meilleur Restaurant Libanais à Lyon</h1>
-      <p>Grandes tablées traditionnelles ou recettes de rue authentiques&nbsp;? À Lyon, la cuisine libanaise se vit de plusieurs façons. Voici comment choisir.</p>
+      <p>La cuisine libanaise se vit de deux façons à Lyon. Laquelle est faite pour vous&nbsp;?</p>
     </div>
   </section>
 
-  <!-- MARQUEE -->
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee-track">
-      <span>Man'ouché</span><span class="sep">◆</span>
-      <span>Shawarma</span><span class="sep">◆</span>
-      <span>Mezze</span><span class="sep">◆</span>
-      <span>Falafel</span><span class="sep">◆</span>
-      <span>Houmous</span><span class="sep">◆</span>
-      <span>Kafta</span><span class="sep">◆</span>
-      <span>Zaatar</span><span class="sep">◆</span>
-      <span>Labné</span><span class="sep">◆</span>
-      <span>Man'ouché</span><span class="sep">◆</span>
-      <span>Shawarma</span><span class="sep">◆</span>
-      <span>Mezze</span><span class="sep">◆</span>
-      <span>Falafel</span><span class="sep">◆</span>
-      <span>Houmous</span><span class="sep">◆</span>
-      <span>Kafta</span><span class="sep">◆</span>
-      <span>Zaatar</span><span class="sep">◆</span>
-      <span>Labné</span><span class="sep">◆</span>
-    </div>
-  </div>
-
-  <!-- SECTION 1 : LE GRAND LIBAN -->
+  <!-- INTRO EDITORIALE -->
   <section class="section section-cream">
     <div class="container">
-      <div class="intro-grid rv">
-        <div class="intro-text">
-          <h2>Une occasion spéciale ? Direction Le Grand Liban</h2>
-          <p>Pour une grande tablée entre amis ou un dîner en famille, le restaurant traditionnel libanais reste une valeur sûre à Lyon. Mezzes en entrée, grillades au charbon, grandes assiettes à partager — c'est l'expérience complète, celle qu'on associe instinctivement à la cuisine libanaise.</p>
-          <p>Le Grand Liban, sur les quais de Saône, est une institution lyonnaise. Plus de 4&nbsp;000 avis et une note de 4.9 — quand on cherche le libanais traditionnel à Lyon, c'est la référence. Service à table, cadre soigné, portions généreuses.</p>
+      <div class="guide-intro rv">
+        <p>Quand on cherche le <strong>meilleur restaurant libanais à Lyon</strong>, on tombe sur deux mondes très différents. D'un côté, le libanais traditionnel&nbsp;: grandes tablées, mezzes en entrée, grillades, service à table. De l'autre, la street food libanaise&nbsp;: les recettes de rue de Beyrouth, cuites minute, dans un vrai restaurant.</p>
+        <p>Les deux sont excellents. Tout dépend de ce que vous cherchez.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LE MATCH — VS CARDS -->
+  <section class="section section-green">
+    <div class="container">
+      <h2 class="section-title rv" style="text-align:center;">Deux expériences, une même passion</h2>
+      <p class="section-sub rv rv-d1" style="text-align:center;">Choisissez votre style</p>
+
+      <div class="vs-grid rv rv-d2">
+        <div class="vs-card vs-card--left">
+          <span class="vs-tag vs-tag--tradition">Occasion spéciale</span>
+          <h3>La Grande Tablée</h3>
+          <ul class="vs-list">
+            <li><span class="vs-icon">🍽</span> Service à table, cadre soigné</li>
+            <li><span class="vs-icon">🥘</span> Mezzes + grillades + grandes assiettes</li>
+            <li><span class="vs-icon">👨‍👩‍👧‍👦</span> Dîner en famille, soirée entre amis</li>
+            <li><span class="vs-icon">💰</span> €€€ — le repas complet</li>
+            <li><span class="vs-icon">⭐</span> L'expérience traditionnelle</li>
+          </ul>
         </div>
-        <div class="intro-img">
-          <img src="assets/images/histoire/mezze.webp" alt="Mezzes libanais traditionnels — grandes tablées à Lyon" loading="lazy">
+        <div class="vs-divider">
+          <div class="vs-or">ou</div>
+        </div>
+        <div class="vs-card vs-card--right">
+          <span class="vs-tag vs-tag--street">Tous les jours</span>
+          <h3>Le Comptoir Moderne</h3>
+          <ul class="vs-list">
+            <li><span class="vs-icon">🔥</span> Cuit minute au four devant vous</li>
+            <li><span class="vs-icon">🧆</span> Man'ouché, shawarma, falafels, mezzes</li>
+            <li><span class="vs-icon">🪑</span> Salle avec places assises + à emporter</li>
+            <li><span class="vs-icon">💰</span> € — dès 5,50€, formule dès 10,90€</li>
+            <li><span class="vs-icon">⭐</span> Les recettes de rue de Beyrouth</li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SECTION 2 : SEZAM&CO -->
+  <!-- LE GRAND LIBAN -->
+  <section class="section section-cream">
+    <div class="container">
+      <div class="intro-grid rv">
+        <div class="intro-text">
+          <h2>Le Grand Liban — l'institution</h2>
+          <p>Sur les quais de Saône, Le Grand Liban est une référence de la cuisine libanaise traditionnelle à Lyon. C'est le restaurant qu'on choisit pour un anniversaire, un dîner de famille ou une soirée où l'on veut prendre son temps.</p>
+          <p>Mezzes en entrée, grillades au charbon, grandes assiettes à partager, service à table&nbsp;— l'expérience complète. Plus de 4&nbsp;000 avis Google et une note de 4.9. Quand on cherche le libanais traditionnel à Lyon, c'est la référence.</p>
+        </div>
+        <div class="intro-img">
+          <img src="assets/images/histoire/mezze.webp" alt="Tablée libanaise traditionnelle — mezzes et grillades à Lyon" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEZAM&CO -->
   <section class="section section-green">
     <div class="container">
       <div class="intro-grid intro-grid--reverse rv">
         <div class="intro-text">
-          <h2>L'authenticité libanaise, version moderne ? Sézam&amp;Co</h2>
-          <p>Chez Sézam&amp;Co, on s'inspire des recettes de rue libanaises — celles qu'on mange à Beyrouth entre deux ruelles — mais dans un vrai restaurant avec places assises, au cœur de Lyon 2.</p>
-          <p>Notre man'ouché est pétri chaque matin et cuit minute au four devant vous. Le shawarma, c'est du poulet mariné maison aux épices. Les mezzes — houmous, moutabal, fattouch — sont préparés chaque jour avec des produits frais. Pas de conserve, pas de sachet.</p>
-          <p>Le tout à prix doux&nbsp;: un man'ouché dès 5,50&nbsp;€, la formule complète (man'ouché + mezze + boisson) dès 10,90&nbsp;€. 734 avis Google, 4.8 étoiles — et on est ouverts 7j/7.</p>
+          <h2>Sézam&amp;Co — l'authenticité de rue</h2>
+          <p>Chez Sézam&amp;Co, on s'inspire des recettes qu'on mange à Beyrouth entre deux ruelles&nbsp;— mais dans un vrai restaurant avec places assises, au cœur de Lyon 2, entre Bellecour et Cordeliers.</p>
+          <p>Notre man'ouché est pétri chaque matin et cuit minute au four devant vous. Le shawarma, c'est du poulet mariné maison aux épices. Les mezzes&nbsp;— houmous, moutabal, fattouch&nbsp;— sont préparés chaque jour avec des produits frais.</p>
+          <p>734 avis Google, 4.8 étoiles. Ouvert 7j/7, 12h à 23h. 100% halal.</p>
         </div>
         <div class="intro-img">
           <img src="assets/images/placeholder-shawarma-poulet.webp" alt="Shawarma et man'ouché chez Sézam&Co — restaurant libanais Lyon 2" loading="lazy">
@@ -361,19 +411,27 @@
     </div>
   </section>
 
-  <!-- SECTION 3 : CE QUI NOUS REND FIERS -->
+  <!-- CE QUI NOUS REND FIERS -->
   <section class="section section-cream">
     <div class="container">
-      <div class="intro-grid rv">
-        <div class="intro-text">
-          <h2>Ce qui nous rend fiers</h2>
-          <p><strong>Pâte maison, chaque matin.</strong> Notre pâte à man'ouché n'est pas industrielle. Elle est pétrie sur place et cuite au four en 3 minutes devant vous.</p>
-          <p><strong>Mezzes frais du jour.</strong> Houmous mixé à partir de pois chiches cuits le matin. Moutabal à l'aubergine rôtie. Labné égoutté maison. Tous à 5,90&nbsp;€.</p>
-          <p><strong>Ouvert 7j/7, 12h à 23h.</strong> Déjeuner rapide le midi, dîner tranquille le soir. On est là tous les jours.</p>
-          <p><strong>100% halal.</strong> Toute notre carte est halal, sans exception.</p>
+      <h2 class="section-title rv" style="text-align:center;">Ce qui nous rend fiers</h2>
+      <p class="section-sub rv rv-d1" style="text-align:center;">Chez Sézam&amp;Co</p>
+      <div class="pride-grid">
+        <div class="pride-card rv">
+          <h3>Pâte maison, chaque matin</h3>
+          <p>Notre pâte à man'ouché est pétrie sur place et cuite au four en 3 minutes devant vous. Pas de pâte industrielle.</p>
         </div>
-        <div class="intro-img">
-          <img src="assets/images/placeholder-zaatar.webp" alt="Man'ouché au zaatar cuit minute — Sézam&Co Lyon" loading="lazy">
+        <div class="pride-card rv rv-d1">
+          <h3>Mezzes frais du jour</h3>
+          <p>Houmous mixé à partir de pois chiches cuits le matin. Moutabal à l'aubergine rôtie. Labné égoutté maison. Tous à 5,90&nbsp;€.</p>
+        </div>
+        <div class="pride-card rv rv-d2">
+          <h3>Ouvert 7j/7, 12h à 23h</h3>
+          <p>Déjeuner rapide le midi, dîner tranquille le soir. On est là tous les jours, week-end compris.</p>
+        </div>
+        <div class="pride-card rv rv-d3">
+          <h3>La formule complète dès 10,90&nbsp;€</h3>
+          <p>Un man'ouché + un mezze + une boisson. On mange bien, vite et sans se ruiner.</p>
         </div>
       </div>
     </div>
