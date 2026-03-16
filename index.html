@@ -541,6 +541,27 @@
     .avis-card p { font-size: .9rem; line-height: 1.65; color: var(--text-mid); font-style: italic; margin-bottom: .8rem; }
     .avis-card cite { font-style: normal; font-weight: 800; font-size: .82rem; color: var(--green-deep); }
 
+    /* ===== ABOUT (restaurant libanais) ===== */
+    .about-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: .5rem;
+    }
+    .about-card {
+      background: #fff; border-radius: 14px; padding: 2rem 1.6rem;
+      border: 2px dashed rgba(26,59,6,.12);
+      text-align: center;
+      transition: transform .35s cubic-bezier(.34,1.56,.64,1), box-shadow .35s;
+    }
+    .about-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,.06); }
+    .about-icon { font-size: 2rem; display: block; margin-bottom: .8rem; }
+    .about-card-title {
+      font-family: var(--font-display); font-size: 1.15rem; color: var(--green-deep);
+      margin-bottom: .6rem;
+    }
+    .about-card p { font-size: .88rem; line-height: 1.7; color: var(--text-mid); }
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; gap: 1rem; }
+    }
+
     /* ===== FOOTER ===== */
     .footer { background: var(--green-deep); padding: var(--section-py) 0 0; position: relative; }
     .footer-grid {
@@ -884,16 +905,26 @@
   </section>
 
   <!-- RESTAURANT LIBANAIS LYON -->
-  <section class="section section-cream" id="about">
+  <section class="section section-green" id="about">
     <div class="container">
       <h2 class="section-title rv">Un Restaurant Libanais au Cœur de Lyon</h2>
-      <div class="rv rv-d1" style="max-width:750px;margin:0 auto 2rem;font-size:.94rem;line-height:1.8;color:var(--text-mid);">
-        <p style="margin-bottom:1.2rem;">
-          Sézam&Co est un restaurant libanais situé au 6 rue Petit David, entre Bellecour et Cordeliers, dans le 2<sup>ème</sup> arrondissement de Lyon. On y sert une cuisine libanaise authentique&nbsp;: man'ouches pétris et cuits à la minute, shawarma poulet découpé au couteau, falafels croustillants et mezzes frais préparés chaque jour.
-        </p>
-        <p>
-          Ouvert 7 jours sur 7, midi et soir, sur place, à emporter ou en livraison. Que vous cherchiez un restaurant libanais pour une pause déjeuner rapide près de Bellecour ou un repas entre amis dans le Vieux Lyon, Sézam&Co vous accueille dans une ambiance street food chaleureuse — avec des formules dès 10,90&nbsp;€.
-        </p>
+      <p class="section-sub rv rv-d1">Entre Bellecour & Cordeliers, depuis 2023</p>
+      <div class="about-grid rv rv-d2">
+        <div class="about-card">
+          <span class="about-icon">🔥</span>
+          <h3 class="about-card-title">Cuit à la Minute</h3>
+          <p>Chaque man'ouche est pétri et cuit sous vos yeux. Le shawarma poulet est découpé au couteau, les falafels sont croustillants à souhait. Chez Sézam&Co, la cuisine libanaise est vivante.</p>
+        </div>
+        <div class="about-card">
+          <span class="about-icon">📍</span>
+          <h3 class="about-card-title">Lyon 2, 7j/7</h3>
+          <p>Notre restaurant libanais vous accueille au 6 rue Petit David, à deux pas de Bellecour. Sur place, à emporter ou en livraison — midi et soir, tous les jours.</p>
+        </div>
+        <div class="about-card">
+          <span class="about-icon">🤝</span>
+          <h3 class="about-card-title">Street Food Généreuse</h3>
+          <p>Formules dès 10,90&nbsp;€, portions généreuses, halal. Que vous veniez du Vieux Lyon ou de Cordeliers, ce restaurant libanais est votre cantine de quartier.</p>
+        </div>
       </div>
     </div>
   </section>
