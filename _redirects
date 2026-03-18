@@ -1,0 +1,19 @@
+# Cloudflare Pages redirects — .html to clean URLs (301)
+/index.html / 301
+/menu.html /menu 301
+/adresse.html /adresse 301
+/falafel-lyon.html /falafel-lyon 301
+/faq.html /faq 301
+/livraison-libanais-lyon.html /livraison-libanais-lyon 301
+/manouche.html /manouche 301
+/meilleur-restaurant-libanais-lyon.html /meilleur-restaurant-libanais-lyon 301
+/mentions-legales.html /mentions-legales 301
+/mezze-lyon.html /mezze-lyon 301
+/mission.html /mission 301
+/notre-histoire.html /notre-histoire 301
+/restaurant-libanais-lyon-1.html /restaurant-libanais-lyon-1 301
+/restaurant-libanais-lyon-3.html /restaurant-libanais-lyon-3 301
+/restaurant-libanais-lyon-7.html /restaurant-libanais-lyon-7 301
+/restaurant-libanais-vieux-lyon.html /restaurant-libanais-vieux-lyon 301
+/shawarma-lyon.html /shawarma-lyon 301
+/vegetarien-vegan-lyon.html /vegetarien-vegan-lyon 301
