@@ -27,7 +27,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"></noscript>
-  <style>
+  <style>body{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
     @font-face {
       font-family: 'Ambery Garden';
       src: url('assets/fonts/AmberyGarden.woff') format('woff');
@@ -498,5 +498,6 @@
   })();
   </script>
 
+<script>document.addEventListener("contextmenu",function(e){e.preventDefault()});document.addEventListener("keydown",function(e){if(e.ctrlKey&&(e.key==="u"||e.key==="s"||e.key==="c")||e.key==="F12")e.preventDefault()});document.addEventListener("copy",function(e){e.preventDefault()});</script>
 </body>
 </html>
