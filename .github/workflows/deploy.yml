@@ -1,0 +1,54 @@
+name: Deploy with minification
+
+on:
+  push:
+    branches: [master]
+
+permissions:
+  pages: write
+  id-token: write
+  contents: read
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install minifiers
+        run: npm install -g html-minifier-terser
+
+      - name: Minify HTML (inline CSS + JS included)
+        run: |
+          for f in *.html; do
+            [ "$f" = "index-v1-backup.html" ] && continue
+            html-minifier-terser \
+              --collapse-whitespace \
+              --remove-comments \
+              --minify-css true \
+              --minify-js true \
+              --remove-redundant-attributes \
+              --remove-empty-attributes \
+              --output "$f" "$f"
+            echo "Minified: $f"
+          done
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
