@@ -1221,7 +1221,7 @@
   gtag('js', new Date());
   gtag('config', 'G-320RMHJKY5');
   gtag('config', 'AW-18009131329');
-  document.addEventListener('click',function(e){var a=e.target.closest('a[href*="commandes.sezamandco.com"]');if(a){e.preventDefault();gtag('event','conversion',{'send_to':'AW-18009131329/SBRCCJqu3IYcEMGStotD','transaction_id':'T_'+Date.now()+'_'+Math.random().toString(36).substr(2,6),'value':1.0,'currency':'EUR','event_callback':function(){window.location=a.href;}});setTimeout(function(){window.location=a.href;},500);}});
+  document.addEventListener('click',function(e){var a=e.target.closest('a[href*="commandes.sezamandco.com"]');if(a){e.preventDefault();var tid='T_'+Date.now()+'_'+Math.random().toString(36).substr(2,6);gtag('event','purchase',{'send_to':'G-320RMHJKY5','transaction_id':tid,'value':1.0,'currency':'EUR'});gtag('event','conversion',{'send_to':'AW-18009131329/SBRCCJqu3IYcEMGStotD','transaction_id':tid,'value':1.0,'currency':'EUR','event_callback':function(){window.location=a.href;}});setTimeout(function(){window.location=a.href;},500);}});
 </script>
 
 <script>document.addEventListener("contextmenu",function(e){e.preventDefault()});document.addEventListener("keydown",function(e){if(e.ctrlKey&&(e.key==="u"||e.key==="s"||e.key==="c")||e.key==="F12")e.preventDefault()});document.addEventListener("copy",function(e){e.preventDefault()});</script>
