@@ -619,23 +619,16 @@
       .footer { padding-bottom: 4.5rem; }
     }
 
-  </style>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Sezam&Co",
-    "alternateName": "Sezam and Co",
-    "url": "https://sezamandco.com",
-    "logo": "https://sezamandco.com/assets/images/logo-sezamco.webp",
-    "sameAs": [
-      "https://www.instagram.com/sezamandco/",
-      "https://www.tiktok.com/@sezamandco",
-      "https://www.facebook.com/sezamandco"
-    ]
-  }
-  </script>
+  
+    .menu-item { display: flex; align-items: center; gap: 1rem; }
+    .menu-item-img { flex-shrink: 0; width: 90px; height: 90px; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(26,59,6,.1); }
+    .menu-item-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .menu-item-left { flex: 1; min-width: 0; }
+    @media (max-width: 600px) {
+      .menu-item-img { width: 70px; height: 70px; }
+    }
 
+  </style>
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -745,6 +738,7 @@
 
       <div class="menu-card rv rv-d2">
         <div class="menu-item">
+          <div class="menu-item-img"><img src="assets/images/mezze/houmous.webp" alt="Houmous & Crackers" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Houmous &amp; Crackers</div>
             <p class="menu-item-desc">Pois chiches, crème de sésame, sumac, citron, huile d'olive, crackers</p>
@@ -756,6 +750,7 @@
         </div>
 
         <div class="menu-item">
+          <div class="menu-item-img"><img src="assets/images/mezze/moutabal.webp" alt="Moutabal & Crackers" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Moutabal &amp; Crackers</div>
             <p class="menu-item-desc">Caviar d'aubergine crémeuse et fumée, sésame, citron, huile d'olive, crackers</p>
@@ -767,6 +762,7 @@
         </div>
 
         <div class="menu-item">
+          <div class="menu-item-img"><img src="assets/images/mezze/houmous.webp" alt="Labné & Crackers" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Labné &amp; Crackers</div>
             <p class="menu-item-desc">Fromage blanc salé en crème, huile d'olive, crackers, pincée de zaatar</p>
@@ -778,6 +774,7 @@
         </div>
 
         <div class="menu-item">
+          <div class="menu-item-img"><img src="assets/images/mezze/fattouch.webp" alt="Fattouch" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Fattouch</div>
             <p class="menu-item-desc">Grenade, laitue, tomate, concombre, radis, menthe, crackers, mélasse de grenade</p>
@@ -789,6 +786,7 @@
         </div>
 
         <div class="menu-item">
+          <div class="menu-item-img"><img src="assets/images/mezze/mozza-sticks.webp" alt="Mozza Sticks" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Mozza Sticks</div>
             <p class="menu-item-desc">5 mozzarellas filantes panées, saupoudrées de zaatar, sauce au choix</p>
@@ -800,6 +798,7 @@
         </div>
 
         <div class="menu-item">
+          <div class="menu-item-img"><img src="assets/images/mezze/mozza-sticks.webp" alt="Frites Signature" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Frites Signature</div>
             <p class="menu-item-desc">Croustillantes et dorées, saupoudrées d'un mélange épicé maison</p>
@@ -863,6 +862,7 @@
 
       <div class="menu-card rv rv-d2">
         <div class="menu-item">
+          <div class="menu-item-img"><img src="assets/images/manouche/honey-mustard.webp" alt="Honey-Mustard Dinde" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Honey-Mustard Dinde <span class="menu-item-protein">Dinde</span></div>
             <p class="menu-item-desc">Tranches de dinde, 3 fromages, pickles, laitue, tomate, honey-mustard</p>
@@ -874,6 +874,7 @@
         </div>
 
         <div class="menu-item">
+          <div class="menu-item-img"><img src="assets/images/manouche/hummus-kafta.webp" alt="Houmous Kafta" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Houmous Kafta <span class="menu-item-protein">Boeuf</span></div>
             <p class="menu-item-desc">Houmous maison sur viande de boeuf façon kafta, pickles, assaisonnement maison</p>
@@ -885,6 +886,7 @@
         </div>
 
         <div class="menu-item">
+          <div class="menu-item-img"><img src="assets/images/manouche/cheesy-kafta.webp" alt="Cheesy Kafta" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Cheesy Kafta <span class="menu-item-protein">Boeuf</span></div>
             <p class="menu-item-desc">Kafta de boeuf aux épices orientales, oignons, persil, 3 fromages, tomates, pickles, mayo</p>
@@ -896,6 +898,7 @@
         </div>
 
         <div class="menu-item">
+          <div class="menu-item-img"><img src="assets/images/manouche/garlic-chicken.webp" alt="Garlic Chicken" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Garlic Chicken <span class="menu-item-protein">Poulet</span></div>
             <p class="menu-item-desc">Poulet mariné, fondue de 3 fromages, laitue, tomate, pickles, sauce garlic-mayo maison</p>
@@ -907,6 +910,7 @@
         </div>
 
         <div class="menu-item">
+          <div class="menu-item-img"><img src="assets/images/manouche/spicy-chicken.webp" alt="Spicy Chicken" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Spicy Chicken <span class="menu-item-protein">Poulet</span></div>
             <p class="menu-item-desc">Poulet mariné aux poivrons et oignons, 3 fromages, laitue, sauce épicée maison</p>
@@ -929,6 +933,7 @@
         </div>
 
         <div class="menu-item">
+          <div class="menu-item-img"><img src="assets/images/manouche/spicy-sojok.webp" alt="Spicy Sojok" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Spicy Sojok <span class="menu-item-protein">Boeuf</span></div>
             <p class="menu-item-desc">Saucisse de boeuf à l'ail "Sojok", 3 fromages, frites, tomate, pickles, laitue, spicy sauce</p>
@@ -940,6 +945,7 @@
         </div>
 
         <div class="menu-item">
+          <div class="menu-item-img"><img src="assets/images/manouche/crispy-chicken.webp" alt="Crispy Chicken" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Crispy Chicken <span class="menu-item-protein">Poulet</span></div>
             <p class="menu-item-desc">Tenders de blanc de poulet croustillants, tomate, pickles, laitue, sauce garlic-mayo</p>
@@ -963,6 +969,7 @@
         </div>
 
         <div class="menu-item">
+          <div class="menu-item-img"><img src="assets/images/manouche/halloumi-bacon.webp" alt="Halloumi Bacon" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Halloumi Bacon <span class="menu-item-protein">Dinde</span></div>
             <p class="menu-item-desc">Fromage halloumi, bacon de dinde grillé, mozzarella filante, tomate, mayo</p>
@@ -1018,6 +1025,7 @@
         <h3 class="menu-sub-label">Viande</h3>
 
         <div class="menu-item">
+          <div class="menu-item-img"><img src="assets/images/manouche/lahmajine.webp" alt="Lahmajine" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Lahmajine</div>
             <p class="menu-item-desc">Viande de boeuf hachée, épices, oignons, tomate, poivrons, mélasse de grenade</p>
@@ -1029,6 +1037,7 @@
         </div>
 
         <div class="menu-item">
+          <div class="menu-item-img"><img src="assets/images/manouche/sojok-jebne.webp" alt="Sojok Jebne" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Sojok Jebne</div>
             <p class="menu-item-desc">Saucisse de boeuf à l'ail "Sojok" parsemée sur un lit de fromage fondu</p>
@@ -1045,6 +1054,7 @@
         <h3 class="menu-sub-label">Sans viande</h3>
 
         <div class="menu-item">
+          <div class="menu-item-img"><img src="assets/images/manouche/zaatar.webp" alt="Zaatar" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Zaatar</div>
             <p class="menu-item-desc">Mélange savoureux de thym, graines de sésame, sumac, huile d'olive</p>
@@ -1057,6 +1067,7 @@
         </div>
 
         <div class="menu-item">
+          <div class="menu-item-img"><img src="assets/images/manouche/zaatar-extra.webp" alt="Zaatar Extra" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Zaatar Extra</div>
             <p class="menu-item-desc">Zaatar avec tomate, concombre, olive et feuille de menthe</p>
@@ -1069,6 +1080,7 @@
         </div>
 
         <div class="menu-item">
+          <div class="menu-item-img"><img src="assets/images/manouche/zaatar-duo.webp" alt="Zaatar Duo" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Zaatar Duo</div>
             <p class="menu-item-desc">D'un côté zaatar sésame sumac et huile, de l'autre l'Akkawi fromage filant</p>
@@ -1081,6 +1093,7 @@
         </div>
 
         <div class="menu-item">
+          <div class="menu-item-img"><img src="assets/images/manouche/jebne.webp" alt="Jebne" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Jebne</div>
             <p class="menu-item-desc">Man'ouche aux fromages fondants "kashkaval", "Edam" et "Mozza"</p>
@@ -1093,6 +1106,7 @@
         </div>
 
         <div class="menu-item">
+          <div class="menu-item-img"><img src="assets/images/manouche/jebne-extra.webp" alt="Jebne Extra" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Jebne Extra</div>
             <p class="menu-item-desc">Jebne avec tomate, concombre, olive et feuille de menthe</p>
@@ -1105,6 +1119,7 @@
         </div>
 
         <div class="menu-item">
+          <div class="menu-item-img"><img src="assets/images/manouche/zaatar.webp" alt="Labné-Zaatar" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Labné-Zaatar</div>
             <p class="menu-item-desc">Fromage blanc salé "Labné", zaatar, olives, tomates, concombres, menthe</p>
@@ -1117,6 +1132,7 @@
         </div>
 
         <div class="menu-item">
+          <div class="menu-item-img"><img src="assets/images/manouche/halloumi-fromage.webp" alt="Halloumi Fromage" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Halloumi Fromage</div>
             <p class="menu-item-desc">Fromage halloumi, mozzarella filante, tomate, mayo, dans notre pain man'ouche</p>
