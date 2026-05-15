@@ -44,10 +44,10 @@
       --green-pastel: #D4EDCF;
       --yellow-soft: #FFF4BD;
       --blue-pastel: #D4E4FF;
-      --green-deep: #1A3B06;
+      --green-deep: #3F7000;
       --green-logo: #417F0A;
-      --coral: #E84545;
-      --coral-hover: #d63333;
+      --coral: #FF8A00;
+      --coral-hover: #E08200;
       --rose: #F58181;
       --yellow-rich: #F5D547;
       --text-dark: #1A1A1A;
@@ -70,7 +70,7 @@
     .hdr {
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
       padding: .7rem 0;
-      background: var(--cream);
+      background: #fff;
       box-shadow: 0 2px 16px rgba(26,59,6,.06);
       transition: padding .35s, box-shadow .35s;
     }
@@ -98,7 +98,7 @@
     .dropdown.open .dropdown-toggle svg { transform: rotate(180deg); }
     .dropdown-menu {
       position: absolute; top: calc(100% + 10px); right: 0;
-      background: var(--cream); border: 1px solid rgba(26,59,6,.08);
+      background: #fff; border: 1px solid rgba(26,59,6,.08);
       border-radius: 12px; padding: .5rem 0; min-width: 200px;
       box-shadow: 0 8px 30px rgba(26,59,6,.1);
       opacity: 0; transform: translateY(-8px); pointer-events: none;
@@ -116,12 +116,12 @@
 
     .hdr-cta {
       display: inline-flex; align-items: center; gap: .4rem;
-      background: var(--coral); color: #fff;
+      background: #FF8A00; color: #fff;
       font-family: var(--font-display); font-size: .95rem; letter-spacing: .02em;
       padding: .6rem 1.3rem; border-radius: 50px;
       transition: transform .3s, box-shadow .3s, background .3s;
     }
-    .hdr-cta:hover { transform: scale(1.05); box-shadow: 0 4px 16px rgba(232,69,69,.3); background: var(--coral-hover); }
+    .hdr-cta:hover { transform: scale(1.05); box-shadow: 0 4px 16px rgba(255,138,0,.4); background: #E07800; }
 
     .burger { display: none; flex-direction: column; gap: 5px; padding: 6px; z-index: 210; }
     .burger span { width: 24px; height: 2.5px; background: var(--green-deep); border-radius: 3px; transition: all .35s cubic-bezier(.34,1.56,.64,1); transform-origin: center; }
@@ -203,7 +203,7 @@
       margin-bottom: .8rem;
     }
     .legal-content strong { color: var(--text-dark); }
-    .legal-content a { color: var(--coral); font-weight: 700; border-bottom: 1.5px solid rgba(232,69,69,.3); transition: border-color .2s; }
+    .legal-content a { color: var(--coral); font-weight: 700; border-bottom: 1.5px solid rgba(255,138,0,.4); transition: border-color .2s; }
     .legal-content a:hover { border-color: var(--coral); }
     .legal-card {
       background: #fff;

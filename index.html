@@ -104,10 +104,10 @@
       --green-pastel: #D4EDCF;
       --yellow-soft: #FFF4BD;
       --blue-pastel: #D4E4FF;
-      --green-deep: #1A3B06;
+      --green-deep: #3F7000;
       --green-logo: #417F0A;
-      --coral: #E84545;
-      --coral-hover: #d63333;
+      --coral: #FF8A00;
+      --coral-hover: #E08200;
       --rose: #F58181;
       --yellow-rich: #F5D547;
       --text-dark: #1A1A1A;
@@ -138,7 +138,7 @@
     .hdr {
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
       padding: .7rem 0;
-      background: var(--cream);
+      background: #fff;
       box-shadow: 0 2px 16px rgba(26,59,6,.06);
       transition: padding .35s, box-shadow .35s;
     }
@@ -170,7 +170,7 @@
     .dropdown.open .dropdown-toggle svg { transform: rotate(180deg); }
     .dropdown-menu {
       position: absolute; top: calc(100% + 10px); right: 0;
-      background: var(--cream); border: 1px solid rgba(26,59,6,.08);
+      background: #fff; border: 1px solid rgba(26,59,6,.08);
       border-radius: 12px; padding: .5rem 0; min-width: 200px;
       box-shadow: 0 8px 30px rgba(26,59,6,.1);
       opacity: 0; transform: translateY(-8px); pointer-events: none;
@@ -191,12 +191,12 @@
 
     .hdr-cta {
       display: inline-flex; align-items: center; gap: .4rem;
-      background: var(--coral); color: #fff;
+      background: #FF8A00; color: #fff;
       font-family: var(--font-display); font-size: .95rem; letter-spacing: .02em;
       padding: .6rem 1.3rem; border-radius: 50px;
       transition: transform .3s, box-shadow .3s, background .3s;
     }
-    .hdr-cta:hover { transform: scale(1.05); box-shadow: 0 4px 16px rgba(232,69,69,.3); background: var(--coral-hover); }
+    .hdr-cta:hover { transform: scale(1.05); box-shadow: 0 4px 16px rgba(255,138,0,.4); background: #E07800; }
 
     /* Hamburger */
     .burger { display: none; flex-direction: column; gap: 5px; padding: 6px; z-index: 210; }
@@ -328,7 +328,7 @@
     .btn:hover { transform: translateY(-2px); }
     .btn-primary {
       background: var(--coral); color: #fff;
-      box-shadow: 0 4px 20px rgba(232,69,69,.3);
+      box-shadow: 0 4px 20px rgba(255,138,0,.4);
     }
     .btn-primary:hover { box-shadow: 0 8px 30px rgba(232,69,69,.45); }
     .btn-outline {
@@ -601,8 +601,9 @@
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: .5rem;
     }
     .about-card {
-      background: #fff; border-radius: 14px; padding: 2rem 1.6rem;
-      border: 2px dashed rgba(26,59,6,.12);
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Crect x='1.5' y='1.5' width='99%25' height='99%25' rx='14' ry='14' fill='none' stroke='%232D6A0F' stroke-width='3' stroke-dasharray='14 10'/%3E%3C/svg%3E") 0 0/100% 100% no-repeat, #fff;
+      border-radius: 14px; padding: 2rem 1.6rem;
+      border: none;
       text-align: center;
       transition: transform .35s cubic-bezier(.34,1.56,.64,1), box-shadow .35s;
     }
@@ -672,6 +673,101 @@
     .deco-seed {
       position: absolute; pointer-events: none; opacity: .07; z-index: 0;
     }
+
+    /* ===== DISH MODAL ===== */
+    .bs-card { cursor: pointer; }
+    .dish-modal-backdrop {
+      position: fixed; inset: 0; z-index: 1000;
+      background: rgba(26,59,6,.55); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 1rem;
+      opacity: 0; pointer-events: none; transition: opacity .3s ease;
+    }
+    .dish-modal-backdrop.open { opacity: 1; pointer-events: all; }
+    .dish-modal {
+      background: var(--cream); border-radius: 22px; overflow: hidden;
+      width: 100%; max-width: 540px; max-height: 92vh;
+      display: flex; flex-direction: column;
+      box-shadow: 0 30px 80px rgba(0,0,0,.4);
+      transform: translateY(20px) scale(.97);
+      transition: transform .35s cubic-bezier(.34,1.56,.64,1);
+    }
+    .dish-modal-backdrop.open .dish-modal { transform: translateY(0) scale(1); }
+    .dish-modal-img {
+      width: 100%; height: clamp(220px, 35vh, 320px); background: var(--green-pastel);
+      position: relative; flex-shrink: 0;
+    }
+    .dish-modal-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .dish-modal-close {
+      position: absolute; top: .9rem; right: .9rem; z-index: 2;
+      width: 38px; height: 38px; border-radius: 50%;
+      background: rgba(255,255,255,.95); color: var(--green-deep);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: transform .25s, background .25s;
+      box-shadow: 0 4px 14px rgba(0,0,0,.18);
+      border: none;
+    }
+    .dish-modal-close:hover { transform: rotate(90deg); background: #fff; }
+    .dish-modal-close svg { width: 18px; height: 18px; }
+    .dish-modal-body { padding: clamp(1.4rem, 4vw, 2rem); overflow-y: auto; }
+    .dish-modal-name {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 4.5vw, 2.2rem);
+      color: var(--green-deep); line-height: 1.1; margin-bottom: .3rem;
+    }
+    .dish-modal-price {
+      font-family: var(--font-display); font-size: 1.6rem; color: var(--coral);
+      margin: .2rem 0 1rem;
+    }
+    .dish-modal-desc {
+      font-size: 1rem; line-height: 1.7; color: var(--text-dark);
+      margin-bottom: 1.4rem;
+    }
+    .dish-modal-section {
+      margin-top: 1.2rem; padding-top: 1.2rem;
+      border-top: 1px dashed rgba(26,59,6,.15);
+    }
+    .dish-modal-section h4 {
+      font-size: .75rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: .1em; color: var(--text-mid); margin-bottom: .6rem;
+    }
+    .dish-modal-tags { display: flex; gap: .5rem; flex-wrap: wrap; }
+    .dish-modal-tags .tag {
+      display: inline-flex; align-items: center; gap: .35rem;
+      font-size: .75rem; font-weight: 700;
+      padding: .35rem .8rem; border-radius: 50px;
+    }
+    .dish-modal-tags .tag-veggie { background: var(--green-pastel); color: var(--green-deep); }
+    .dish-modal-allergens {
+      font-size: .88rem; color: var(--text-mid); line-height: 1.6;
+    }
+    .dish-modal-allergens em { color: var(--coral); font-style: normal; font-weight: 700; }
+    .dish-modal-cta { display: flex; gap: .7rem; margin-top: 1.5rem; flex-wrap: wrap; }
+    .dish-modal-cta a,
+    .dish-modal-cta button {
+      flex: 1; min-width: 140px;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: .88rem;
+      padding: .85rem 1.2rem; border-radius: 50px;
+      transition: transform .25s, box-shadow .25s;
+      cursor: pointer; font-family: inherit;
+    }
+    .dish-modal-cta a:hover,
+    .dish-modal-cta button:hover { transform: translateY(-2px); }
+    .dish-modal-cta .btn-order {
+      background: var(--coral); color: #fff;
+      box-shadow: 0 4px 14px rgba(255,138,0,.4);
+    }
+    .dish-modal-cta .btn-close-2 {
+      background: transparent; color: var(--green-deep);
+      border: 2px solid rgba(26,59,6,.15);
+    }
+    .dish-modal-cta .btn-close-2:hover { background: var(--green-pastel); border-color: var(--green-logo); }
+    body.modal-open { overflow: hidden; }
+    .dish-modal-protein[hidden],
+    .dish-modal-formule[hidden],
+    .dish-modal-section[hidden] { display: none !important; }
+    @media (max-width: 500px) { .dish-modal-img { height: 200px; } }
   </style>
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -777,8 +873,8 @@
   <!-- SEO INTRO -->
   <section class="section-intro-seo" style="background:var(--cream);padding:2.5rem 0 1.5rem;text-align:center;position:relative;">
     <div class="container">
-      <div class="rv" style="max-width:720px;margin:0 auto;padding:1.6rem 2rem;border:3px dashed rgba(26,59,6,.25);border-radius:16px;">
-        <span style="display:inline-block;font-family:var(--font-display);font-size:.85rem;color:var(--coral);margin-bottom:.6rem;">Depuis Lyon 2</span>
+      <div class="rv" style="max-width:720px;margin:0 auto;padding:1.6rem 2rem;border:none;border-radius:16px;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Crect x='1.5' y='1.5' width='99%25' height='99%25' rx='16' ry='16' fill='none' stroke='%232D6A0F' stroke-width='3' stroke-dasharray='14 10'/%3E%3C/svg%3E&quot;);background-size:100% 100%;">
+        <span style="display:inline-block;font-family:var(--font-display);font-size:1.15rem;color:var(--coral);margin-bottom:.6rem;">Depuis Lyon 2</span>
         <p style="font-size:.95rem;line-height:1.8;color:var(--text-mid);">
           Bienvenue chez Sézam&amp;Co, votre restaurant libanais au cœur de Lyon 2, entre Bellecour et Cordeliers. Ici, on cuisine comme dans les rues de Beyrouth&nbsp;: man'ouches pétris et cuits minute, mezzes préparés maison chaque jour. Sur place, à emporter ou en livraison.
         </p>
@@ -1245,6 +1341,124 @@
   gtag('config', 'G-320RMHJKY5');
   gtag('config', 'AW-18009131329');
   document.addEventListener('click',function(e){var a=e.target.closest('a[href*="commandes.sezamandco.com"]');if(a){e.preventDefault();var tid='T_'+Date.now()+'_'+Math.random().toString(36).substr(2,6);gtag('event','purchase',{'send_to':'G-320RMHJKY5','transaction_id':tid,'value':1.0,'currency':'EUR'});gtag('event','conversion',{'send_to':'AW-18009131329/SBRCCJqu3IYcEMGStotD','transaction_id':tid,'value':1.0,'currency':'EUR','event_callback':function(){window.location=a.href;}});setTimeout(function(){window.location=a.href;},500);}});
+</script>
+
+<!-- DISH MODAL -->
+<div class="dish-modal-backdrop" id="dishModal" role="dialog" aria-modal="true" aria-labelledby="dishModalName" hidden>
+  <div class="dish-modal">
+    <div class="dish-modal-img">
+      <button class="dish-modal-close" id="dishModalClose" aria-label="Fermer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+      </button>
+      <img id="dishModalImg" src="" alt="">
+    </div>
+    <div class="dish-modal-body">
+      <h3 class="dish-modal-name" id="dishModalName"></h3>
+      <span class="dish-modal-price" id="dishModalPrice"></span>
+      <p class="dish-modal-desc" id="dishModalDesc"></p>
+      <div class="dish-modal-section" id="dishModalTagsSection" hidden>
+        <h4>Régime alimentaire</h4>
+        <div class="dish-modal-tags" id="dishModalTags"></div>
+      </div>
+      <div class="dish-modal-section" id="dishModalAllergensSection" hidden>
+        <h4>Allergènes connus</h4>
+        <p class="dish-modal-allergens" id="dishModalAllergens"></p>
+      </div>
+      <div class="dish-modal-cta">
+        <a href="https://commandes.sezamandco.com" class="btn-order">Commander</a>
+        <button type="button" class="btn-close-2" id="dishModalClose2">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var modal = document.getElementById('dishModal');
+  if (!modal) return;
+  var modalImg = document.getElementById('dishModalImg');
+  var modalName = document.getElementById('dishModalName');
+  var modalPrice = document.getElementById('dishModalPrice');
+  var modalDesc = document.getElementById('dishModalDesc');
+  var modalTagsSection = document.getElementById('dishModalTagsSection');
+  var modalTags = document.getElementById('dishModalTags');
+  var modalAllergensSection = document.getElementById('dishModalAllergensSection');
+  var modalAllergens = document.getElementById('dishModalAllergens');
+
+  var ALLERGEN_MAP = {
+    'sésame': 'Sésame', 'sesame': 'Sésame', 'tahini': 'Sésame',
+    'fromage': 'Lait', 'jebne': 'Lait', 'halloumi': 'Lait',
+    'labné': 'Lait', 'mozzarella': 'Lait', 'mozza': 'Lait',
+    'crackers': 'Gluten (crackers)', 'pain': 'Gluten',
+    'falafel': 'Gluten (sauce sésame possible)',
+    'wrap': 'Gluten (galette)', 'manouche': 'Gluten (pâte)',
+    'zaatar': 'Sésame',
+    'mayo': 'Œuf'
+  };
+
+  function openModal(card) {
+    var nameEl = card.querySelector('.bs-card-name');
+    var nameText = '';
+    var hasVeggie = false;
+    if (nameEl) {
+      var clone = nameEl.cloneNode(true);
+      var badge = clone.querySelector('.badge-veggie');
+      if (badge) { hasVeggie = true; badge.remove(); }
+      nameText = (clone.textContent || '').trim();
+    }
+    var img = card.querySelector('.bs-card-img img');
+    var desc = card.querySelector('.bs-card-desc');
+    var price = card.querySelector('.bs-card-price');
+
+    modalName.textContent = nameText;
+    if (img) { modalImg.src = img.getAttribute('src'); modalImg.alt = nameText; modalImg.style.display = ''; }
+    else modalImg.style.display = 'none';
+    modalDesc.textContent = desc ? desc.textContent.trim() : '';
+    modalPrice.textContent = price ? price.textContent.trim() : '';
+
+    modalTags.innerHTML = '';
+    if (hasVeggie) {
+      var t = document.createElement('span');
+      t.className = 'tag tag-veggie';
+      t.textContent = 'Veggie';
+      modalTags.appendChild(t);
+      modalTagsSection.hidden = false;
+    } else modalTagsSection.hidden = true;
+
+    var search = (nameText + ' ' + (desc ? desc.textContent : '')).toLowerCase();
+    var found = new Set();
+    Object.keys(ALLERGEN_MAP).forEach(function(kw) {
+      if (search.indexOf(kw) !== -1) found.add(ALLERGEN_MAP[kw]);
+    });
+    if (found.size) {
+      modalAllergens.innerHTML = Array.from(found).map(function(a) { return '<em>•</em> ' + a; }).join('<br>');
+      modalAllergensSection.hidden = false;
+    } else modalAllergensSection.hidden = true;
+
+    modal.hidden = false;
+    requestAnimationFrame(function() {
+      modal.classList.add('open');
+      document.body.classList.add('modal-open');
+    });
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.classList.remove('modal-open');
+    setTimeout(function() { modal.hidden = true; }, 350);
+  }
+
+  document.querySelectorAll('.bs-card').forEach(function(card) {
+    card.addEventListener('click', function() { openModal(card); });
+  });
+
+  document.getElementById('dishModalClose').addEventListener('click', closeModal);
+  document.getElementById('dishModalClose2').addEventListener('click', closeModal);
+  modal.addEventListener('click', function(e) { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+  });
+})();
 </script>
 
 <script>document.addEventListener("contextmenu",function(e){e.preventDefault()});document.addEventListener("keydown",function(e){if(e.ctrlKey&&(e.key==="u"||e.key==="s"||e.key==="c")||e.key==="F12")e.preventDefault()});document.addEventListener("copy",function(e){e.preventDefault()});</script>
