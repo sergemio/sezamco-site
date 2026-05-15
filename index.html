@@ -529,26 +529,40 @@
     }
     .liv-card {
       display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: .5rem; padding: 2rem 1.5rem; border-radius: 18px;
-      font-family: var(--font-display); font-size: 1.15rem;
+      gap: 1rem; padding: 1.6rem 1.2rem; border-radius: 18px;
+      background: #fff; border: 2px solid var(--liv-c);
       transition: transform .35s cubic-bezier(.34,1.56,.64,1), box-shadow .35s;
-      text-align: center;
+      text-align: center; min-height: 160px;
     }
-    .liv-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,.18); }
-    .liv-card--direct { background: var(--green-pastel); border: 2px solid var(--green-logo); color: var(--green-deep); }
-    .liv-card--direct .liv-card-sub { background: var(--green-deep); color: var(--yellow-soft); }
-    .liv-card--delicity { background: #FF3D6E; color: #fff; }
-    .liv-card--delicity .liv-card-sub { background: #fff; color: #FF3D6E; }
-    .liv-card--uber { background: #06C167; color: #fff; }
-    .liv-card--uber .liv-card-sub { background: #1A1A1A; color: #06C167; }
-    .liv-card--deliveroo { background: #00CCBC; color: #fff; }
-    .liv-card--deliveroo .liv-card-sub { background: #fff; color: #00CCBC; }
-    .liv-card-icon { font-size: 1.8rem; }
+    .liv-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,.12); }
+    .liv-card--direct    { --liv-c: #417F0A; }
+    .liv-card--delicity  { --liv-c: #FF3D6E; }
+    .liv-card--uber      { --liv-c: #06C167; }
+    .liv-card--deliveroo { --liv-c: #00CCBC; }
+
+    .liv-logo { height: 44px; display: flex; align-items: center; justify-content: center; width: 100%; }
+    .liv-logo img { height: 100%; width: auto; display: block; max-width: 140px; object-fit: contain; }
+    .liv-logo .deliveroo-mark { display: inline-flex; align-items: center; gap: 6px; }
+    .liv-logo .deliveroo-mark svg { width: 28px; height: 28px; flex-shrink: 0; }
+    .liv-logo .word {
+      font-family: 'Nunito', sans-serif; font-weight: 900;
+      font-size: 1.55rem; line-height: 1; letter-spacing: -0.04em;
+    }
+    .liv-logo .uber-mark {
+      background: #1A1A1A; color: #06C167;
+      padding: .35rem .7rem; border-radius: 6px;
+      font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1rem;
+      line-height: 1; letter-spacing: -0.02em; display: inline-flex; gap: .35rem;
+    }
+    .liv-logo .uber-mark .eats { color: #fff; }
+
     .liv-card-sub {
       font-family: var(--font-body); font-size: .68rem; font-weight: 800;
       text-transform: uppercase; letter-spacing: .08em;
-      padding: .25rem .7rem; border-radius: 50px;
+      padding: .3rem .8rem; border-radius: 50px;
+      background: var(--liv-c); color: #fff;
     }
+    .liv-card--uber .liv-card-sub { background: #1A1A1A; color: #06C167; }
 
     .address-bar {
       display: flex; align-items: center; gap: 1rem;
@@ -977,24 +991,23 @@
       <h2 class="section-title rv">Livraison Libanaise à Lyon</h2>
       <p class="section-sub rv rv-d1">Recevez vos man'ouches chez vous</p>
       <div class="liv-grid rv">
-        <a href="https://commandes.sezamandco.com" class="liv-card liv-card--direct">
-          <span class="liv-card-icon">🌐</span>
-          <span>Commande Directe</span>
+        <a href="https://commandes.sezamandco.com" class="liv-card liv-card--direct" aria-label="Commander directement chez Sezam&Co">
+          <span class="liv-logo"><img src="assets/images/logo-sezamco.webp" alt="Sezam&Co"></span>
           <span class="liv-card-sub">Meilleur prix</span>
         </a>
-        <a href="https://commandes.sezamandco.com/order/" class="liv-card liv-card--delicity" target="_blank" rel="noopener">
-          <span class="liv-card-icon">📦</span>
-          <span>Delicity</span>
+        <a href="https://commandes.sezamandco.com/order/" class="liv-card liv-card--delicity" target="_blank" rel="noopener" aria-label="Commander via Delicity">
+          <span class="liv-logo"><img src="assets/images/delicity-logo.png" alt="Delicity"></span>
           <span class="liv-card-sub">Société française</span>
         </a>
-        <a href="https://www.ubereats.com/fr/store/sezam-%26-co/gDsD8BBrWyC-g7qd8uar4Q" class="liv-card liv-card--uber" target="_blank" rel="noopener">
-          <span class="liv-card-icon">🍽️</span>
-          <span>Uber Eats</span>
+        <a href="https://www.ubereats.com/fr/store/sezam-%26-co/gDsD8BBrWyC-g7qd8uar4Q" class="liv-card liv-card--uber" target="_blank" rel="noopener" aria-label="Commander via Uber Eats">
+          <span class="liv-logo"><span class="uber-mark"><span>Uber</span><span class="eats">Eats</span></span></span>
           <span class="liv-card-sub">Le classique</span>
         </a>
-        <a href="https://deliveroo.fr/fr/menu/lyon/lyon-bellecour/sezam-and-co" class="liv-card liv-card--deliveroo" target="_blank" rel="noopener">
-          <span class="liv-card-icon">🚲</span>
-          <span>Deliveroo</span>
+        <a href="https://deliveroo.fr/fr/menu/lyon/lyon-bellecour/sezam-and-co" class="liv-card liv-card--deliveroo" target="_blank" rel="noopener" aria-label="Commander via Deliveroo">
+          <span class="liv-logo"><span class="deliveroo-mark">
+            <svg viewBox="0 0 24 24" fill="#00CCBC" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M16.861 0l-1.127 10.584L13.81 1.66 7.777 2.926l1.924 8.922-8.695 1.822 1.535 7.127L17.832 24l3.498-7.744L22.994.636 16.861 0zM11.39 13.61a.755.755 0 01.322.066c.208.093.56.29.63.592.103.434.004.799-.312 1.084v.002c-.315.284-.732.258-1.174.113-.441-.145-.637-.672-.402-1.111.169-.317.503-.745.936-.745zm4.16-.18a.787.787 0 01.345.054c.434.124.677.582.541 1.024-.135.443-.598.71-1.034.59-.435-.118-.685-.572-.557-1.014.107-.371.394-.658.704-.654z"/></svg>
+            <span class="word" style="color:#00CCBC;">deliveroo</span>
+          </span></span>
           <span class="liv-card-sub">Livraison rapide</span>
         </a>
       </div>
