@@ -76,7 +76,7 @@
     .hdr .logo img { height: 48px; width: auto; transition: height .3s; }
     .hdr.stuck .logo img { height: 40px; }
     .hdr-nav { display: flex; gap: 1.8rem; align-items: center; }
-    .hdr-nav > a, .hdr-nav .dropdown-toggle { font-size: .88rem; font-weight: 700; color: var(--green-deep); letter-spacing: .02em; position: relative; cursor: pointer; font-family: var(--font-body); background: none; border: none; padding: 0; display: inline-flex; align-items: center; gap: .3rem; }
+    .hdr-nav > a, .hdr-nav .dropdown-toggle { font-size: 1.05rem; font-weight: 700; color: var(--green-deep); letter-spacing: .05em; position: relative; cursor: pointer; font-family: var(--font-display); background: none; border: none; padding: 0; display: inline-flex; align-items: center; gap: .3rem; }
     .hdr-nav > a::after, .hdr-nav .dropdown-toggle::after { content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 2px; background: var(--coral); border-radius: 2px; transition: width .3s cubic-bezier(.34,1.56,.64,1); }
     .hdr-nav > a:hover::after, .hdr-nav .dropdown-toggle:hover::after { width: 100%; }
     .dropdown { position: relative; }
@@ -84,7 +84,7 @@
     .dropdown.open .dropdown-toggle svg { transform: rotate(180deg); }
     .dropdown-menu { position: absolute; top: calc(100% + 10px); right: 0; background: #fff; border: 1px solid rgba(26,59,6,.08); border-radius: 12px; padding: .5rem 0; min-width: 200px; box-shadow: 0 8px 30px rgba(26,59,6,.1); opacity: 0; transform: translateY(-8px); pointer-events: none; transition: opacity .25s, transform .25s; }
     .dropdown.open .dropdown-menu { opacity: 1; transform: translateY(0); pointer-events: all; }
-    .dropdown-menu a { display: block; padding: .6rem 1.2rem; font-size: .85rem; font-weight: 700; color: var(--green-deep); transition: background .2s, color .2s; }
+    .dropdown-menu a { display: block; padding: .6rem 1.2rem; font-size: 1rem; font-weight: 700; font-family: var(--font-display); letter-spacing: .05em; color: var(--green-deep); transition: background .2s, color .2s; }
     .dropdown-menu a:hover { background: var(--green-pastel); color: var(--coral); }
     .hdr-phone { font-size: .85rem; font-weight: 700; color: var(--green-deep); display: flex; align-items: center; gap: .35rem; }
     .hdr-phone svg { width: 16px; height: 16px; }
