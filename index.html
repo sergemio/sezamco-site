@@ -263,7 +263,7 @@
     /* ===== HERO ===== */
     .hero {
       position: relative; width: 100%; height: 60vh; min-height: 420px;
-      display: flex; align-items: flex-end;
+      display: flex; align-items: stretch;
       overflow: hidden;
       margin-top: 64px;
     }
@@ -286,10 +286,13 @@
 
     .hero-content {
       position: relative; z-index: 2;
-      padding: 0 clamp(1.25rem,4vw,2.5rem) clamp(2.5rem,5vw,4rem);
+      display: flex; flex-direction: column;
+      padding: clamp(5rem,9vw,7.5rem) clamp(1.25rem,4vw,2.5rem) clamp(2.5rem,5vw,4rem);
       max-width: var(--max-w); margin: 0 auto; width: 100%;
       text-shadow: 0 2px 12px rgba(0,0,0,.45), 0 1px 3px rgba(0,0,0,.6);
     }
+    .hero-content > * { align-self: flex-start; }
+    .hero-content .hero-ctas { margin-top: auto; }
 
     .hero-badge {
       display: inline-flex; align-items: center; gap: .5rem;
@@ -312,10 +315,11 @@
 
     .hero-sub {
       font-size: clamp(.95rem, 1.8vw, 1.15rem);
-      color: rgba(255,255,255,.75);
+      color: #fff;
       font-weight: 600;
       margin-bottom: 1.8rem;
       max-width: 500px;
+      text-shadow: 0 2px 10px rgba(0,0,0,.55), 0 1px 3px rgba(0,0,0,.7);
     }
 
     .hero-ctas { display: flex; gap: .8rem; flex-wrap: wrap; margin-bottom: 2rem; }
@@ -356,22 +360,22 @@
     }
     .marquee-track {
       display: flex; width: max-content;
-      animation: marqueeScroll 20s linear infinite;
+      animation: marqueeScroll 39s linear infinite;
     }
     .marquee-track span {
       font-family: var(--font-display);
       font-size: clamp(1rem, 2.5vw, 1.4rem);
       color: var(--yellow-soft);
       white-space: nowrap;
-      padding: 0 .6rem;
+      padding: 0 1.4rem;
     }
     .marquee-track .sep {
-      color: var(--coral);
+      color: var(--yellow-rich);
       font-family: var(--font-body);
       font-size: .9rem;
       display: inline-flex;
       align-items: center;
-      padding: 0 .3rem;
+      padding: 0 .9rem;
     }
 
     @keyframes marqueeScroll {
@@ -669,6 +673,45 @@
       .footer { padding-bottom: 4.5rem; }
     }
 
+    /* ===== FLOATING EMOJIS — section "Depuis Lyon 2" ===== */
+    .float-emoji {
+      position: absolute; font-size: 2rem; line-height: 1;
+      opacity: .45; z-index: 0; pointer-events: none;
+      filter: saturate(.9);
+      will-change: transform;
+    }
+    .float-emoji svg { display: block; }
+    .float-1 { top: 18%; left: 3%;  animation: floatA 38s ease-in-out infinite; }
+    .float-2 { top: 5%;  left: 17%; animation: floatB 44s ease-in-out infinite; animation-delay: -8s; }
+    .float-3 { top: 62%; left: 8%;  animation: floatC 34s ease-in-out infinite; animation-delay: -14s; }
+    .float-4 { top: 82%; left: 33%; animation: floatA 46s ease-in-out infinite; animation-delay: -6s; }
+    .float-5 { top: 14%; left: 79%; animation: floatB 40s ease-in-out infinite; animation-delay: -18s; }
+    .float-6 { top: 68%; left: 94%; animation: floatC 48s ease-in-out infinite; animation-delay: -4s; }
+    .float-7 { top: 88%; left: 67%; animation: floatA 42s ease-in-out infinite; animation-delay: -22s; }
+    .float-8 { top: 30%; left: 55%; animation: floatB 36s ease-in-out infinite; animation-delay: -12s; }
+    @keyframes floatA {
+      0%,100% { transform: translate(0,0) rotate(0deg); }
+      20% { transform: translate(55px,-45px) rotate(12deg); }
+      45% { transform: translate(-50px,40px) rotate(-10deg); }
+      70% { transform: translate(38px,55px) rotate(8deg); }
+      85% { transform: translate(-30px,-40px) rotate(-6deg); }
+    }
+    @keyframes floatB {
+      0%,100% { transform: translate(0,0) rotate(0deg); }
+      25% { transform: translate(-60px,30px) rotate(-14deg); }
+      55% { transform: translate(45px,-55px) rotate(10deg); }
+      80% { transform: translate(-35px,48px) rotate(-7deg); }
+    }
+    @keyframes floatC {
+      0%,100% { transform: translate(0,0) rotate(0deg); }
+      30% { transform: translate(42px,50px) rotate(11deg); }
+      55% { transform: translate(-55px,-38px) rotate(-13deg); }
+      80% { transform: translate(32px,-48px) rotate(7deg); }
+    }
+    @media (max-width: 600px) {
+      .float-emoji { font-size: 1.4rem; opacity: .35; }
+    }
+
     /* ===== DECORATIVE SESAME SEEDS (SVG scattered) ===== */
     .deco-seed {
       position: absolute; pointer-events: none; opacity: .07; z-index: 0;
@@ -844,11 +887,11 @@
     </div>
     <div class="hero-content">
       <h1 class="rv">Restaurant Libanais <span class="accent">Lyon 2</span> | Sézam&Co</h1>
-      <p class="hero-sub rv rv-d1">Man'ouches, shawarma & mezzes — faits maison chaque jour.</p>
-      <div class="hero-badge rv rv-d2">
+      <div class="hero-badge rv rv-d1">
         <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
         <span>4.8/5 sur Google</span>
       </div>
+      <p class="hero-sub rv rv-d2">Man'ouches, shawarma & mezzes — faits maison chaque jour.</p>
       <div class="hero-ctas rv rv-d3">
         <a href="https://commandes.sezamandco.com" class="btn btn-primary">Commander en ligne</a>
         <a href="menu.html" class="btn btn-outline">Découvrir le menu</a>
@@ -871,9 +914,17 @@
   </section>
 
   <!-- SEO INTRO -->
-  <section class="section-intro-seo" style="background:var(--cream);padding:2.5rem 0 1.5rem;text-align:center;position:relative;">
-    <div class="container">
-      <div class="rv" style="max-width:720px;margin:0 auto;padding:1.6rem 2rem;border:none;border-radius:16px;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Crect x='1.5' y='1.5' width='99%25' height='99%25' rx='16' ry='16' fill='none' stroke='%232D6A0F' stroke-width='3' stroke-dasharray='14 10'/%3E%3C/svg%3E&quot;);background-size:100% 100%;">
+  <section class="section-intro-seo" style="background:var(--cream);padding:2.5rem 0 1.5rem;text-align:center;position:relative;overflow:hidden;">
+    <span class="float-emoji float-1" aria-hidden="true"><svg viewBox="0 0 30 20" width="36" height="24" xmlns="http://www.w3.org/2000/svg"><rect width="30" height="5" y="0" fill="#ED1C24"/><rect width="30" height="10" y="5" fill="#fff"/><rect width="30" height="5" y="15" fill="#ED1C24"/><g transform="translate(15,10) scale(.45)"><path d="M0,-7 L-2,-3 L-5,-2 L-3,0 L-6,2 L-3,3 L-2,6 L0,4 L2,6 L3,3 L6,2 L3,0 L5,-2 L2,-3 Z" fill="#007A3D"/><rect x="-1" y="3" width="2" height="4" fill="#007A3D"/></g></svg></span>
+    <span class="float-emoji float-2" aria-hidden="true">🍗</span>
+    <span class="float-emoji float-3" aria-hidden="true">🫓</span>
+    <span class="float-emoji float-4" aria-hidden="true">🍅</span>
+    <span class="float-emoji float-5" aria-hidden="true">🥒</span>
+    <span class="float-emoji float-6" aria-hidden="true">🌯</span>
+    <span class="float-emoji float-7" aria-hidden="true">🥬</span>
+    <span class="float-emoji float-8" aria-hidden="true">🧆</span>
+    <div class="container" style="position:relative;z-index:1;">
+      <div class="rv depuis-lyon-box" style="position:relative;max-width:720px;margin:0 auto;padding:1.6rem 2rem;border:none;border-radius:16px;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Crect x='1.5' y='1.5' width='99%25' height='99%25' rx='16' ry='16' fill='none' stroke='%232D6A0F' stroke-width='3' stroke-dasharray='14 10'/%3E%3C/svg%3E&quot;);background-size:100% 100%;">
         <span style="display:inline-block;font-family:var(--font-display);font-size:1.15rem;color:var(--coral);margin-bottom:.6rem;">Depuis Lyon 2</span>
         <p style="font-size:.95rem;line-height:1.8;color:var(--text-mid);">
           Bienvenue chez Sézam&amp;Co, votre restaurant libanais au cœur de Lyon 2, entre Bellecour et Cordeliers. Ici, on cuisine comme dans les rues de Beyrouth&nbsp;: man'ouches pétris et cuits minute, mezzes préparés maison chaque jour. Sur place, à emporter ou en livraison.
@@ -884,27 +935,37 @@
 
   <!-- MARQUEE -->
   <div class="marquee" aria-hidden="true">
-    <div class="marquee-track">
-      <span>Man'ouche</span><span class="sep">◆</span>
-      <span>Shawarma</span><span class="sep">◆</span>
-      <span>Falafel</span><span class="sep">◆</span>
-      <span>Mezze</span><span class="sep">◆</span>
-      <span>Lyon 2</span><span class="sep">◆</span>
-      <span>Man'ouche</span><span class="sep">◆</span>
-      <span>Shawarma</span><span class="sep">◆</span>
-      <span>Falafel</span><span class="sep">◆</span>
-      <span>Mezze</span><span class="sep">◆</span>
-      <span>Lyon 2</span><span class="sep">◆</span>
-      <span>Man'ouche</span><span class="sep">◆</span>
-      <span>Shawarma</span><span class="sep">◆</span>
-      <span>Falafel</span><span class="sep">◆</span>
-      <span>Mezze</span><span class="sep">◆</span>
-      <span>Lyon 2</span><span class="sep">◆</span>
-      <span>Man'ouche</span><span class="sep">◆</span>
-      <span>Shawarma</span><span class="sep">◆</span>
-      <span>Falafel</span><span class="sep">◆</span>
-      <span>Mezze</span><span class="sep">◆</span>
-      <span>Lyon 2</span><span class="sep">◆</span>
+    <div class="marquee-track" style="animation-duration: 39s;">
+      <span>Man'ouche</span><span class="sep">★</span>
+      <span>Shawarma</span><span class="sep">★</span>
+      <span>Falafel</span><span class="sep">★</span>
+      <span>Houmous</span><span class="sep">★</span>
+      <span>Moutabal</span><span class="sep">★</span>
+      <span>Knefe</span><span class="sep">★</span>
+      <span>Labné</span><span class="sep">★</span>
+      <span>Fattouch</span><span class="sep">★</span>
+      <span>Sojouk</span><span class="sep">★</span>
+      <span>Mezze</span><span class="sep">★</span>
+      <span>Man'ouche</span><span class="sep">★</span>
+      <span>Shawarma</span><span class="sep">★</span>
+      <span>Falafel</span><span class="sep">★</span>
+      <span>Houmous</span><span class="sep">★</span>
+      <span>Moutabal</span><span class="sep">★</span>
+      <span>Knefe</span><span class="sep">★</span>
+      <span>Labné</span><span class="sep">★</span>
+      <span>Fattouch</span><span class="sep">★</span>
+      <span>Sojouk</span><span class="sep">★</span>
+      <span>Mezze</span><span class="sep">★</span>
+      <span>Man'ouche</span><span class="sep">★</span>
+      <span>Shawarma</span><span class="sep">★</span>
+      <span>Falafel</span><span class="sep">★</span>
+      <span>Houmous</span><span class="sep">★</span>
+      <span>Moutabal</span><span class="sep">★</span>
+      <span>Knefe</span><span class="sep">★</span>
+      <span>Labné</span><span class="sep">★</span>
+      <span>Fattouch</span><span class="sep">★</span>
+      <span>Sojouk</span><span class="sep">★</span>
+      <span>Mezze</span><span class="sep">★</span>
     </div>
   </div>
 
@@ -1119,23 +1180,31 @@
 
   <!-- MARQUEE 3 -->
   <div class="marquee" aria-hidden="true" style="background: var(--green-deep);">
-    <div class="marquee-track" style="animation-duration: 22s;">
-      <span>★ 4.8/5</span><span class="sep">◆</span>
-      <span>800+ avis</span><span class="sep">◆</span>
-      <span>Meilleur Libanais</span><span class="sep">◆</span>
-      <span>Lyon 2</span><span class="sep">◆</span>
-      <span>★ 4.8/5</span><span class="sep">◆</span>
-      <span>800+ avis</span><span class="sep">◆</span>
-      <span>Meilleur Libanais</span><span class="sep">◆</span>
-      <span>Lyon 2</span><span class="sep">◆</span>
-      <span>★ 4.8/5</span><span class="sep">◆</span>
-      <span>800+ avis</span><span class="sep">◆</span>
-      <span>Meilleur Libanais</span><span class="sep">◆</span>
-      <span>Lyon 2</span><span class="sep">◆</span>
-      <span>★ 4.8/5</span><span class="sep">◆</span>
-      <span>800+ avis</span><span class="sep">◆</span>
-      <span>Meilleur Libanais</span><span class="sep">◆</span>
-      <span>Lyon 2</span><span class="sep">◆</span>
+    <div class="marquee-track" style="animation-duration: 39s;">
+      <span>★ 4.8/5</span><span class="sep">★</span>
+      <span>800+ avis</span><span class="sep">★</span>
+      <span>Meilleur Libanais</span><span class="sep">★</span>
+      <span>Vegan</span><span class="sep">★</span>
+      <span>Végétarien</span><span class="sep">★</span>
+      <span>Halal</span><span class="sep">★</span>
+      <span>★ 4.8/5</span><span class="sep">★</span>
+      <span>800+ avis</span><span class="sep">★</span>
+      <span>Meilleur Libanais</span><span class="sep">★</span>
+      <span>Vegan</span><span class="sep">★</span>
+      <span>Végétarien</span><span class="sep">★</span>
+      <span>Halal</span><span class="sep">★</span>
+      <span>★ 4.8/5</span><span class="sep">★</span>
+      <span>800+ avis</span><span class="sep">★</span>
+      <span>Meilleur Libanais</span><span class="sep">★</span>
+      <span>Vegan</span><span class="sep">★</span>
+      <span>Végétarien</span><span class="sep">★</span>
+      <span>Halal</span><span class="sep">★</span>
+      <span>★ 4.8/5</span><span class="sep">★</span>
+      <span>800+ avis</span><span class="sep">★</span>
+      <span>Meilleur Libanais</span><span class="sep">★</span>
+      <span>Vegan</span><span class="sep">★</span>
+      <span>Végétarien</span><span class="sep">★</span>
+      <span>Halal</span><span class="sep">★</span>
     </div>
   </div>
 
