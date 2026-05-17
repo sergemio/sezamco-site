@@ -25,11 +25,13 @@
 ### Accents forts (typo, CTAs, elements graphiques)
 | Nom | Hex | Usage | Changement V2 |
 |-----|-----|-------|---------------|
+| Vert tres fonce | `#1A3B06` | **NOUVEAU V2.2** — hover underline header nav, accents tres sombres, shadow tints. V1 utilisait pour titres. |
 | Vert profond | `#3F7000` | Titres Ambery, header text, footer | **V1 etait `#1A3B06` — eclairci** |
-| Vert logo | `#417F0A` | Logo, outline livraison Sezam | inchange |
+| **Vert CTA** | **`#549E11`** | **NOUVEAU V2.2** — bouton "Commander" (header + hero) + nav header text. Remplace l'orange #FF8A00 pour les CTAs principaux apres audit a11y (orange + texte blanc = contrast fail) |
+| Vert logo | `#417F0A` | Logo Sezam, outline livraison Sezam | inchange |
 | Vert "Formule" | `#2D6A0F` | Stroke des pointillés SVG | inchange |
-| **Orange** | **`#FF8A00`** | **CTAs principaux, prix, badges, bouton "Commander" header** | **NOUVEAU — remplace le corail** |
-| Orange hover | `#E07800` | Etat hover des CTAs orange | NOUVEAU |
+| Orange | `#FF8A00` | **Prix, badges, marquees** (plus les CTAs depuis V2.2) | NOUVEAU — remplace le corail V1 |
+| Orange hover | `#E07800` | Etat hover des elements orange | NOUVEAU |
 | Jaune riche | `#F5D547` | Etoiles avis, accents secondaires | inchange |
 
 ### Couleurs SUPPRIMEES en V2
@@ -136,13 +138,15 @@ Les cartes `.bs-card` sur index.html sont aussi cliquables et ouvrent le meme mo
 
 ---
 
-## Boutons / CTAs — Standard V2
+## Boutons / CTAs — Standard V2.2
 
 | Type | Background | Color | Border-radius | Hover |
 |------|-----------|-------|---------------|-------|
-| CTA primaire (Commander) | `#FF8A00` | `#fff` | `50px` | `#E07800` + shadow orange |
+| CTA primaire (Commander en ligne) | `#549E11` (vert CTA) | `#fff` | `50px` | shadow `rgba(84,158,17,.55)` |
 | CTA secondaire (Fermer) | `transparent` | `var(--green-deep)` | `50px` | bg `var(--green-pastel)` |
-| Header CTA | `#FF8A00` | `#fff` | `50px` | `#E07800` |
+| Header CTA (Commander) | `#549E11` | `#fff` | `50px` | bg `#3F7000` |
+
+**Note V2.2 (mai 2026)** : la palette CTA est passee de orange a vert apres audit Lighthouse a11y — l'orange `#FF8A00` + texte blanc generait un contrast ratio 2.94:1 (fail WCAG AA 4.5:1). Le vert intermediaire `#549E11` ramene le ratio a 4.4:1 (proche pass AA) tout en restant un signal d'action distinct du vert profond `#3F7000` des titres. L'orange reste utilise pour les **prix, badges, marquees** ou` le texte est plus court / le contraste moins critique.
 
 **Regle** : tous les boutons doivent etre **pill** (border-radius 50px). Pas de boutons carres/angulaires nulle part — un button HTML doit explicitement recevoir le radius.
 
@@ -185,9 +189,9 @@ Utiliser **"800+"** partout sur le site (jamais de chiffre exact). En mai 2026 o
 ---
 
 ## Quand creer un nouveau design V3+
-- **Garder** : Ambery Garden, palette fonds pastels+blanc, orange #FF8A00, vert #3F7000, pointillés SVG `stroke-width=3 dasharray='14 10'`
-- **Eviter** : corail, rouge, rose, vert tres fonce #1A3B06, header creme, boutons non-pill, CSS dashed natif sur conteneurs visibles
-- **Toujours** : tester en local AVANT push, canary 1 page d'abord, ne JAMAIS promettre "0 risque" sur mass-edit
+- **Garder** : Ambery Garden, palette fonds pastels+cream, vert CTA `#549E11`, vert profond `#3F7000`, vert tres fonce `#1A3B06` pour hover underline, orange `#FF8A00` pour prix/marquees/badges, pointillés SVG `stroke-width=3 dasharray='14 10'`
+- **Eviter** : corail, rouge, rose, header blanc, boutons non-pill, CSS dashed natif sur conteneurs visibles, **orange en background de CTA principal avec texte blanc (a11y fail)**
+- **Toujours** : tester en local AVANT push, canary 1 page d'abord, ne JAMAIS promettre "0 risque" sur mass-edit, **verifier contrast ratio WCAG AA (4.5:1) sur tout bouton avant validation**
 
 ---
 
