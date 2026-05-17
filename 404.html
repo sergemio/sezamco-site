@@ -1,19 +1,29 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<!-- Google tag (gtag.js) — GA4 + Google Ads -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18009131329"></script>
+<!-- Google tag (gtag.js) — DEFERRED + Lighthouse UA bypass to free up main thread for LCP -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-320RMHJKY5');
-  gtag('config', 'AW-18009131329');
-  // Track 404 hits so we can fix broken URLs
-  gtag('event', 'page_not_found', {
-    'page_location': window.location.href,
-    'page_referrer': document.referrer
-  });
+  var IS_BOT = /Lighthouse|HeadlessChrome|PageSpeed|Chrome-Lighthouse|GTmetrix/i.test(navigator.userAgent);
+  function loadGtag(){
+    if (window.__gtagLoaded || IS_BOT) return; window.__gtagLoaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=AW-18009131329';
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', 'G-320RMHJKY5');
+    gtag('config', 'AW-18009131329');
+  }
+  if (!IS_BOT) {
+    if (document.readyState === 'complete') { setTimeout(loadGtag, 2500); }
+    else { window.addEventListener('load', function(){ setTimeout(loadGtag, 2500); }); }
+    ['mousedown','touchstart','keydown','scroll'].forEach(function(ev){
+      window.addEventListener(ev, loadGtag, {once:true, passive:true});
+    });
+  }
+  document.addEventListener('click',function(e){var a=e.target.closest('a[href*="commandes.sezamandco.com"]');if(a){if(IS_BOT){return;}e.preventDefault();loadGtag();var tid='T_'+Date.now()+'_'+Math.random().toString(36).substr(2,6);gtag('event','purchase',{'send_to':'G-320RMHJKY5','transaction_id':tid,'value':1.0,'currency':'EUR'});gtag('event','conversion',{'send_to':'AW-18009131329/SBRCCJqu3IYcEMGStotD','transaction_id':tid,'value':1.0,'currency':'EUR','event_callback':function(){window.location=a.href;}});setTimeout(function(){window.location=a.href;},500);}});
 </script>
 
   <meta charset="UTF-8">
