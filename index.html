@@ -1174,7 +1174,7 @@
           <span class="liv-card-sub">Meilleur prix</span>
         </a>
         <a href="https://commandes.sezamandco.com/order/" class="liv-card liv-card--delicity" target="_blank" rel="noopener" aria-label="Commander via Delicity">
-          <span class="liv-logo"><img src="assets/images/delicity-logo.png" alt="Delicity"></span>
+          <span class="liv-logo"><img src="assets/images/delicity-logo.webp" alt="Delicity"></span>
           <span class="liv-card-sub">Société française</span>
         </a>
         <a href="https://www.ubereats.com/fr/store/sezam-%26-co/gDsD8BBrWyC-g7qd8uar4Q" class="liv-card liv-card--uber" target="_blank" rel="noopener" aria-label="Commander via Uber Eats">
@@ -1424,15 +1424,28 @@
   })();
   </script>
 
-<!-- Google tag (gtag.js) — GA4 + Google Ads — en bas pour ne pas bloquer le rendu -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18009131329"></script>
+<!-- Google tag (gtag.js) — DEFERRED until after load + 2.5s to free up main thread for LCP -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-320RMHJKY5');
-  gtag('config', 'AW-18009131329');
-  document.addEventListener('click',function(e){var a=e.target.closest('a[href*="commandes.sezamandco.com"]');if(a){e.preventDefault();var tid='T_'+Date.now()+'_'+Math.random().toString(36).substr(2,6);gtag('event','purchase',{'send_to':'G-320RMHJKY5','transaction_id':tid,'value':1.0,'currency':'EUR'});gtag('event','conversion',{'send_to':'AW-18009131329/SBRCCJqu3IYcEMGStotD','transaction_id':tid,'value':1.0,'currency':'EUR','event_callback':function(){window.location=a.href;}});setTimeout(function(){window.location=a.href;},500);}});
+  function loadGtag(){
+    if (window.__gtagLoaded) return; window.__gtagLoaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=AW-18009131329';
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', 'G-320RMHJKY5');
+    gtag('config', 'AW-18009131329');
+  }
+  // Load gtag after page is interactive + 2.5s, OR on first user interaction
+  if (document.readyState === 'complete') { setTimeout(loadGtag, 2500); }
+  else { window.addEventListener('load', function(){ setTimeout(loadGtag, 2500); }); }
+  ['mousedown','touchstart','keydown','scroll'].forEach(function(ev){
+    window.addEventListener(ev, loadGtag, {once:true, passive:true});
+  });
+  // Click handler for conversion tracking — loads gtag synchronously if not yet loaded
+  document.addEventListener('click',function(e){var a=e.target.closest('a[href*="commandes.sezamandco.com"]');if(a){e.preventDefault();loadGtag();var tid='T_'+Date.now()+'_'+Math.random().toString(36).substr(2,6);gtag('event','purchase',{'send_to':'G-320RMHJKY5','transaction_id':tid,'value':1.0,'currency':'EUR'});gtag('event','conversion',{'send_to':'AW-18009131329/SBRCCJqu3IYcEMGStotD','transaction_id':tid,'value':1.0,'currency':'EUR','event_callback':function(){window.location=a.href;}});setTimeout(function(){window.location=a.href;},500);}});
 </script>
 
 <!-- DISH MODAL -->
