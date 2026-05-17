@@ -86,7 +86,8 @@
   }
   </script>
 
-  <style>body{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
+  <style>
+.skip-to-content { position: absolute; left: -10000px; top: 1rem; background: var(--green-deep,#3F7000); color: #fff; padding: .8rem 1.4rem; border-radius: 8px; font-weight: 700; font-size: .9rem; z-index: 9999; text-decoration: none; } .skip-to-content:focus { left: 1rem; }body{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
     @font-face {
       font-family: 'Ambery Garden';
       src: url('assets/fonts/AmberyGarden.woff') format('woff');
@@ -490,6 +491,8 @@
     <a href="https://commandes.sezamandco.com" class="mob-cta">Commander</a>
   </nav>
 
+  <main id="main">
+
   <!-- HERO -->
   <section class="page-hero" id="hero">
     <div class="page-hero-bg" style="background-image:url('assets/images/manouche/shawarma.webp');"></div>
@@ -674,6 +677,8 @@
   </section>
 
   <!-- FOOTER -->
+  </main>
+
   <footer class="footer" id="footer">
     <div class="container">
       <div class="footer-grid">

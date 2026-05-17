@@ -123,7 +123,8 @@
   }
   </script>
 
-  <style>body{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
+  <style>
+.skip-to-content { position: absolute; left: -10000px; top: 1rem; background: var(--green-deep,#3F7000); color: #fff; padding: .8rem 1.4rem; border-radius: 8px; font-weight: 700; font-size: .9rem; z-index: 9999; text-decoration: none; } .skip-to-content:focus { left: 1rem; }body{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
     @font-face {
       font-family: 'Ambery Garden';
       src: url('assets/fonts/AmberyGarden.woff') format('woff');
@@ -781,6 +782,8 @@
 </head>
 <body>
 
+  <a href="#main" class="skip-to-content">Aller au contenu principal</a>
+
   <!-- HEADER -->
   <header class="hdr" id="hdr">
     <div class="hdr-inner">
@@ -840,6 +843,8 @@
     <a href="tel:+33478954316" style="font-family:var(--font-body);font-size:1rem;color:var(--text-mid);">04 78 95 43 16</a>
     <a href="https://commandes.sezamandco.com" class="mob-cta">Commander</a>
   </nav>
+
+  <main id="main">
 
   <!-- PAGE HERO -->
   <section class="page-hero">
@@ -1445,6 +1450,8 @@
   </section>
 
   <!-- FOOTER -->
+  </main>
+
   <footer class="footer" id="footer">
     <div class="container">
       <div class="footer-grid">
@@ -1622,7 +1629,7 @@
 <script>document.addEventListener("contextmenu",function(e){e.preventDefault()});document.addEventListener("keydown",function(e){if(e.ctrlKey&&(e.key==="u"||e.key==="s"||e.key==="c")||e.key==="F12")e.preventDefault()});document.addEventListener("copy",function(e){e.preventDefault()});</script>
 
 <!-- DISH MODAL -->
-<div class="dish-modal-backdrop" id="dishModal" role="dialog" aria-modal="true" aria-labelledby="dishModalName" hidden>
+<div class="dish-modal-backdrop" id="dishModal" role="dialog" aria-modal="true" aria-labelledby="dishModalName" aria-label="Détails du plat" hidden>
   <div class="dish-modal">
     <div class="dish-modal-img">
       <button class="dish-modal-close" id="dishModalClose" aria-label="Fermer">
