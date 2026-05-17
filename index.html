@@ -1170,11 +1170,11 @@
       <p class="section-sub rv rv-d1">Recevez vos man'ouches chez vous</p>
       <div class="liv-grid rv">
         <a href="https://commandes.sezamandco.com" class="liv-card liv-card--direct" aria-label="Commander directement chez Sezam&Co">
-          <span class="liv-logo"><img src="assets/images/logo-sezamco.webp" alt="Sezam&Co"></span>
+          <span class="liv-logo"><img src="assets/images/logo-sezamco.webp" alt="Sezam&Co" width="140" height="48" loading="lazy"></span>
           <span class="liv-card-sub">Meilleur prix</span>
         </a>
         <a href="https://commandes.sezamandco.com/order/" class="liv-card liv-card--delicity" target="_blank" rel="noopener" aria-label="Commander via Delicity">
-          <span class="liv-logo"><img src="assets/images/delicity-logo.webp" alt="Delicity"></span>
+          <span class="liv-logo"><img src="assets/images/delicity-logo.webp" alt="Delicity" width="89" height="108" loading="lazy"></span>
           <span class="liv-card-sub">Société française</span>
         </a>
         <a href="https://www.ubereats.com/fr/store/sezam-%26-co/gDsD8BBrWyC-g7qd8uar4Q" class="liv-card liv-card--uber" target="_blank" rel="noopener" aria-label="Commander via Uber Eats">
@@ -1393,8 +1393,9 @@
     stickyCta.style.transition = 'transform .35s ease';
     stickyCta.style.transform = 'translateY(100%)';
     if ('IntersectionObserver' in window) {
+      var mqMobile = window.matchMedia('(max-width: 860px)');
       var stickyObs = new IntersectionObserver(function(entries) {
-        if (window.innerWidth <= 860) {
+        if (mqMobile.matches) {
           stickyCta.style.transform = entries[0].isIntersecting ? 'translateY(100%)' : 'translateY(0)';
         }
       }, { threshold: 0 });
@@ -1449,7 +1450,7 @@
 </script>
 
 <!-- DISH MODAL -->
-<div class="dish-modal-backdrop" id="dishModal" role="dialog" aria-modal="true" aria-labelledby="dishModalName" hidden>
+<div class="dish-modal-backdrop" id="dishModal" role="dialog" aria-modal="true" aria-labelledby="dishModalName" aria-label="Détails du plat" hidden>
   <div class="dish-modal">
     <div class="dish-modal-img">
       <button class="dish-modal-close" id="dishModalClose" aria-label="Fermer">
