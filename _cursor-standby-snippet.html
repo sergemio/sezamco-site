@@ -1,0 +1,53 @@
+<!--
+  CURSOR MAN'OUCHE ZAATAR — STANDBY (pas en prod, à finaliser avant push)
+  Version retenue 2026-05-14. Encore à peaufiner :
+  - bord manouche : halo peut subsister selon le rendu
+  - inertie trail = 0.09 (Serge a validé après ralentissement depuis 0.18)
+  - point central vert logo, taille 10px
+  - ring 44px → 72px sur hover
+  - désactivé sur tactile/mobile via media query
+
+  Pour ré-implémenter : copier les 3 blocs (CSS dans <style>, divs avant </body>, script).
+  Image utilisée : assets/images/cursor-manouche-80.png (15KB, déjà commitée)
+-->
+
+<!-- 1. CSS — à coller dans le <style> existant -->
+<style>
+@media (hover: hover) and (pointer: fine) {
+  body { cursor: none; }
+  .sz-cursor-dot {
+    position: fixed; pointer-events: none; z-index: 9999;
+    width: 10px; height: 10px;
+    background: var(--green-logo); border-radius: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .sz-cursor-ring {
+    position: fixed; pointer-events: none; z-index: 9998;
+    width: 44px; height: 44px;
+    transform: translate(-50%, -50%);
+    transition: width .25s ease-out, height .25s ease-out;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,.2));
+  }
+  .sz-cursor-ring.hover { width: 72px; height: 72px; }
+  .sz-cursor-ring img { width: 100%; height: 100%; display: block; object-fit: contain; }
+}
+</style>
+
+<!-- 2. HTML — à coller juste avant </body> -->
+<div class="sz-cursor-dot"></div>
+<div class="sz-cursor-ring"><img src="assets/images/cursor-manouche-80.png" alt="" aria-hidden="true"></div>
+
+<!-- 3. Script — à coller juste après les divs -->
+<script>
+(function(){
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  var dot=document.querySelector('.sz-cursor-dot'),ring=document.querySelector('.sz-cursor-ring');
+  var mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';},{passive:true});
+  function tick(){rx+=(mx-rx)*.09;ry+=(my-ry)*.09;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(tick);}tick();
+  document.querySelectorAll('a, button, .btn, .bs-card, .avis-card, .dropdown-toggle').forEach(function(el){
+    el.addEventListener('mouseenter',function(){ring.classList.add('hover');});
+    el.addEventListener('mouseleave',function(){ring.classList.remove('hover');});
+  });
+})();
+</script>

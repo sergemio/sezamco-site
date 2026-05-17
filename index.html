@@ -12,7 +12,15 @@
   <meta property="og:type" content="restaurant">
   <meta property="og:url" content="https://sezamandco.com/">
   <meta property="og:image" content="https://sezamandco.com/assets/images/hero-spread.webp">
+  <meta property="og:image:width" content="1920">
+  <meta property="og:image:height" content="1280">
+  <meta property="og:image:alt" content="Spread de street food libanaise Sezam&Co — man'ouche, shawarma, mezzes">
   <meta property="og:locale" content="fr_FR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sezam&Co | Restaurant Libanais & Street Food Lyon 2">
+  <meta name="twitter:description" content="Man'ouches artisanaux, shawarma, falafels maison et mezzes libanais à Lyon 2. 100% halal. 7j/7.">
+  <meta name="twitter:image" content="https://sezamandco.com/assets/images/hero-spread.webp">
+  <meta name="twitter:image:alt" content="Spread de street food libanaise Sezam&Co">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -57,31 +65,30 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
+    "@type": "Organization",
+    "name": "Sezam&Co",
+    "url": "https://sezamandco.com",
+    "logo": "https://sezamandco.com/assets/images/logo-sezamco.webp",
+    "sameAs": [
+      "https://www.instagram.com/sezamandco/",
+      "https://www.facebook.com/profile.php?id=61553705857895",
+      "https://www.tiktok.com/@sezamandco",
+      "https://www.tripadvisor.com/Restaurant_Review-g187265-d26102731-Reviews-Sezam_Co-Lyon_Rhone_Auvergne_Rhone_Alpes.html",
+      "https://www.pagesjaunes.fr/pros/62310741"
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
       {
-        "@type": "Question",
-        "name": "Où manger libanais à Lyon ?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sezam&Co est un restaurant libanais au cœur de Lyon 2, entre Bellecour et Cordeliers. Man'ouches cuits minute, shawarma, falafels et mezzes maison. Ouvert 7j/7, sur place, à emporter ou en livraison."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Quel est le meilleur restaurant libanais à Lyon ?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sezam&Co est noté 4.8/5 sur Google avec plus de 740 avis. Situé à Lyon 2, ce restaurant libanais propose une cuisine 100% faite maison avec des produits frais : man'ouches, shawarma poulet mariné 24h, falafels croustillants et mezzes généreux."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Est-ce que Sezam&Co livre à Lyon ?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Oui, Sezam&Co livre dans Lyon 1, 2, 3, 5, 6 et 7 via Uber Eats, Deliveroo ou commande directe sur commandes.sezamandco.com. Livraison disponible 7j/7."
-        }
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Accueil",
+        "item": "https://sezamandco.com/"
       }
     ]
   }
@@ -98,6 +105,16 @@
 
     /* ===== RESET ===== */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* Skip-to-content (visible only on keyboard focus) */
+    .skip-to-content {
+      position: absolute; left: -10000px; top: 1rem;
+      background: var(--green-deep); color: #fff;
+      padding: .8rem 1.4rem; border-radius: 8px;
+      font-weight: 700; font-size: .9rem;
+      z-index: 9999; text-decoration: none;
+    }
+    .skip-to-content:focus { left: 1rem; }
 
     :root {
       --cream: #FFF8E1;
@@ -820,6 +837,8 @@
 </head>
 <body>
 
+  <a href="#main" class="skip-to-content">Aller au contenu principal</a>
+
   <!-- HEADER -->
   <header class="hdr" id="hdr">
     <div class="hdr-inner">
@@ -879,6 +898,8 @@
     <a href="tel:+33478954316" style="font-family:var(--font-body);font-size:1rem;color:var(--text-mid);">04 78 95 43 16</a>
     <a href="https://commandes.sezamandco.com" class="mob-cta">Commander</a>
   </nav>
+
+  <main id="main">
 
   <!-- HERO -->
   <section class="hero" id="hero">
@@ -1002,28 +1023,28 @@
       <p class="section-sub rv rv-d1">Les plats préférés de nos clients</p>
       <div class="bs-grid">
         <div class="bs-card rv">
-          <div class="bs-card-img"><img src="assets/images/placeholder-shawarma-poulet.webp" alt="Shawarma Poulet" loading="lazy" width="600" height="375"></div>
+          <div class="bs-card-img"><img src="assets/images/shawarma-poulet-sezam-co-lyon.webp" alt="Shawarma Poulet" loading="lazy" width="600" height="375"></div>
           <div class="bs-card-body">
             <div class="bs-card-top"><span class="bs-card-name">Shawarma Poulet</span><span class="bs-card-price">9,20&nbsp;€</span></div>
             <p class="bs-card-desc">Poulet mariné, grillé au four, sauce ail, sumac</p>
           </div>
         </div>
         <div class="bs-card rv rv-d1">
-          <div class="bs-card-img"><img src="assets/images/placeholder-hummus.webp" alt="Houmous & Crackers" loading="lazy" width="400" height="300"></div>
+          <div class="bs-card-img"><img src="assets/images/houmous-crackers-sezam-co-lyon.webp" alt="Houmous & Crackers" loading="lazy" width="400" height="300"></div>
           <div class="bs-card-body">
             <div class="bs-card-top"><span class="bs-card-name">Houmous &amp; Crackers</span><span class="bs-card-price">5,90&nbsp;€</span></div>
             <p class="bs-card-desc">Pois chiches, crème de sésame, citron</p>
           </div>
         </div>
         <div class="bs-card rv rv-d1">
-          <div class="bs-card-img"><img src="assets/images/placeholder-zaatar.webp" alt="Manouche Zaatar" loading="lazy" width="400" height="300"></div>
+          <div class="bs-card-img"><img src="assets/images/manouche-zaatar-sezam-co-lyon.webp" alt="Manouche Zaatar" loading="lazy" width="400" height="300"></div>
           <div class="bs-card-body">
             <div class="bs-card-top"><span class="bs-card-name">Manouche Zaatar</span><span class="bs-card-price">5,50&nbsp;€</span></div>
             <p class="bs-card-desc">Thym, sésame, sumac, huile d'olive</p>
           </div>
         </div>
         <div class="bs-card rv rv-d2">
-          <div class="bs-card-img"><img src="assets/images/placeholder-falafel-wrap.webp" alt="Falafel Wrap" loading="lazy" width="400" height="300"></div>
+          <div class="bs-card-img"><img src="assets/images/falafel-wrap-veggie-sezam-co-lyon.webp" alt="Falafel Wrap" loading="lazy" width="400" height="300"></div>
           <div class="bs-card-body">
             <div class="bs-card-top">
               <span class="bs-card-name">Falafel Wrap <span class="badge-veggie">Veggie</span></span>
@@ -1033,7 +1054,7 @@
           </div>
         </div>
         <div class="bs-card rv rv-d3">
-          <div class="bs-card-img"><img src="assets/images/placeholder-kafta.webp" alt="Cheesy Kafta" loading="lazy" width="400" height="300"></div>
+          <div class="bs-card-img"><img src="assets/images/cheesy-kafta-sezam-co-lyon.webp" alt="Cheesy Kafta" loading="lazy" width="400" height="300"></div>
           <div class="bs-card-body">
             <div class="bs-card-top"><span class="bs-card-name">Cheesy Kafta</span><span class="bs-card-price">9,50&nbsp;€</span></div>
             <p class="bs-card-desc">Bœuf, 3 fromages, épices orientales</p>
@@ -1046,26 +1067,26 @@
   <!-- MARQUEE 2 -->
   <div class="marquee" aria-hidden="true" style="background: var(--coral);">
     <div class="marquee-track" style="animation-direction: reverse; animation-duration: 18s;">
-      <span style="color:#fff;">Cuit Minute</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
-      <span style="color:#fff;">Fait Maison</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
-      <span style="color:#fff;">Généreux</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
-      <span style="color:#fff;">Authentique</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
-      <span style="color:#fff;">7j/7</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
-      <span style="color:#fff;">Cuit Minute</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
-      <span style="color:#fff;">Fait Maison</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
-      <span style="color:#fff;">Généreux</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
-      <span style="color:#fff;">Authentique</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
-      <span style="color:#fff;">7j/7</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
-      <span style="color:#fff;">Cuit Minute</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
-      <span style="color:#fff;">Fait Maison</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
-      <span style="color:#fff;">Généreux</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
-      <span style="color:#fff;">Authentique</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
-      <span style="color:#fff;">7j/7</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
-      <span style="color:#fff;">Cuit Minute</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
-      <span style="color:#fff;">Fait Maison</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
-      <span style="color:#fff;">Généreux</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
-      <span style="color:#fff;">Authentique</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
-      <span style="color:#fff;">7j/7</span><span class="sep" style="color:var(--yellow-soft);">◆</span>
+      <span style="color:#fff;">Cuit Minute</span><span class="sep" style="color:var(--yellow-soft);">★</span>
+      <span style="color:#fff;">Fait Maison</span><span class="sep" style="color:var(--yellow-soft);">★</span>
+      <span style="color:#fff;">Généreux</span><span class="sep" style="color:var(--yellow-soft);">★</span>
+      <span style="color:#fff;">Authentique</span><span class="sep" style="color:var(--yellow-soft);">★</span>
+      <span style="color:#fff;">7j/7</span><span class="sep" style="color:var(--yellow-soft);">★</span>
+      <span style="color:#fff;">Cuit Minute</span><span class="sep" style="color:var(--yellow-soft);">★</span>
+      <span style="color:#fff;">Fait Maison</span><span class="sep" style="color:var(--yellow-soft);">★</span>
+      <span style="color:#fff;">Généreux</span><span class="sep" style="color:var(--yellow-soft);">★</span>
+      <span style="color:#fff;">Authentique</span><span class="sep" style="color:var(--yellow-soft);">★</span>
+      <span style="color:#fff;">7j/7</span><span class="sep" style="color:var(--yellow-soft);">★</span>
+      <span style="color:#fff;">Cuit Minute</span><span class="sep" style="color:var(--yellow-soft);">★</span>
+      <span style="color:#fff;">Fait Maison</span><span class="sep" style="color:var(--yellow-soft);">★</span>
+      <span style="color:#fff;">Généreux</span><span class="sep" style="color:var(--yellow-soft);">★</span>
+      <span style="color:#fff;">Authentique</span><span class="sep" style="color:var(--yellow-soft);">★</span>
+      <span style="color:#fff;">7j/7</span><span class="sep" style="color:var(--yellow-soft);">★</span>
+      <span style="color:#fff;">Cuit Minute</span><span class="sep" style="color:var(--yellow-soft);">★</span>
+      <span style="color:#fff;">Fait Maison</span><span class="sep" style="color:var(--yellow-soft);">★</span>
+      <span style="color:#fff;">Généreux</span><span class="sep" style="color:var(--yellow-soft);">★</span>
+      <span style="color:#fff;">Authentique</span><span class="sep" style="color:var(--yellow-soft);">★</span>
+      <span style="color:#fff;">7j/7</span><span class="sep" style="color:var(--yellow-soft);">★</span>
     </div>
   </div>
 
@@ -1080,7 +1101,7 @@
       <div class="tou-grid">
         <div class="tou-col rv">
           <div class="tou-col-img">
-            <img src="assets/images/placeholder-tradi.webp" alt="Man'ouches Traditionnels" loading="lazy" width="600" height="340">
+            <img src="assets/images/manouches-traditionnels-lyon.webp" alt="Man'ouches Traditionnels" loading="lazy" width="600" height="340">
             <span class="tou-col-label">Traditionnels</span>
           </div>
           <div class="tou-col-body">
@@ -1100,7 +1121,7 @@
         </div>
         <div class="tou-col rv rv-d1">
           <div class="tou-col-img">
-            <img src="assets/images/placeholder-urbain.webp" alt="Man'ouches Urbains" loading="lazy" width="600" height="340">
+            <img src="assets/images/manouches-urbains-lyon.webp" alt="Man'ouches Urbains" loading="lazy" width="600" height="340">
             <span class="tou-col-label">Urbains</span>
           </div>
           <div class="tou-col-body">
@@ -1136,7 +1157,7 @@
           <a href="https://commandes.sezamandco.com" class="btn btn-dark">Commander ma formule</a>
         </div>
         <div class="formule-img-wrap">
-          <img src="assets/images/placeholder-formule.webp" alt="Formule Sezam&Co — man'ouche, boisson et dessert" loading="lazy" width="500" height="400">
+          <img src="assets/images/formule-sezam-co-lyon.webp" alt="Formule Sezam&Co — man'ouche, boisson et dessert" loading="lazy" width="500" height="400">
         </div>
       </div>
     </div>
@@ -1241,6 +1262,8 @@
   </section>
 
   <!-- FOOTER -->
+  </main>
+
   <footer class="footer" id="footer">
     <div class="container">
       <div class="footer-grid">
