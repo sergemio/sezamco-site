@@ -1132,8 +1132,28 @@
           </div>
         </div>
       </div>
-      <div class="rv" style="text-align:center;margin-top:2rem;">
+      <style>
+        .order-row{display:flex;align-items:center;justify-content:center;gap:.8rem;flex-wrap:wrap;}
+        .order-row .liv-sep{font-size:.82rem;color:var(--text-mid,#666);font-weight:700;}
+        .liv-round{width:46px;height:46px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 3px 10px rgba(0,0,0,.18);transition:transform .2s,box-shadow .2s;}
+        .liv-round:hover{transform:translateY(-3px);box-shadow:0 7px 18px rgba(0,0,0,.28);}
+        .liv-round--uber{background:#06C167;}
+        .liv-round--deliveroo{background:#00CCBC;}
+        .liv-round--delicity{background:#FF3D6E;}
+        .liv-round .mono{color:#fff;font-weight:900;font-family:var(--font-display),sans-serif;font-size:1.45rem;line-height:1;}
+      </style>
+      <div class="rv order-row" style="margin-top:2rem;">
         <a href="https://commandes.sezamandco.com" class="btn" style="background:var(--green-deep);color:var(--yellow-soft);box-shadow:0 4px 16px rgba(26,59,6,.15);">Commander mon man'ouche</a>
+        <span class="liv-sep">ou via</span>
+        <a href="https://www.ubereats.com/fr/store/sezam-%26-co/gDsD8BBrWyC-g7qd8uar4Q" target="_blank" rel="noopener" class="liv-round liv-round--uber" aria-label="Commander via Uber Eats" title="Uber Eats">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        </a>
+        <a href="https://deliveroo.fr/fr/menu/lyon/lyon-bellecour/sezam-and-co" target="_blank" rel="noopener" class="liv-round liv-round--deliveroo" aria-label="Commander via Deliveroo" title="Deliveroo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M16.861 0l-1.127 10.584L13.81 1.66 7.777 2.926l1.924 8.922-8.695 1.822 1.535 7.127L17.832 24l3.498-7.744L22.994.636 16.861 0zM11.39 13.61a.755.755 0 01.322.066c.208.093.56.29.63.592.103.434.004.799-.312 1.084v.002c-.315.284-.732.258-1.174.113-.441-.145-.637-.672-.402-1.111.169-.317.503-.745.936-.745zm4.16-.18a.787.787 0 01.345.054c.434.124.677.582.541 1.024-.135.443-.598.71-1.034.59-.435-.118-.685-.572-.557-1.014.107-.371.394-.658.704-.654z"/></svg>
+        </a>
+        <a href="https://commandes.sezamandco.com/order/" target="_blank" rel="noopener" class="liv-round liv-round--delicity" aria-label="Commander via Delicity" title="Delicity">
+          <span class="mono">D</span>
+        </a>
       </div>
     </div>
   </section>
