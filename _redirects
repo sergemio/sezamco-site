@@ -6,7 +6,7 @@
 /faq.html /faq 301
 /livraison-libanais-lyon.html /livraison-libanais-lyon 301
 /manouche.html /manouche 301
-/meilleur-restaurant-libanais-lyon.html /meilleur-restaurant-libanais-lyon 301
+/meilleur-restaurant-libanais-lyon.html / 301
 /mentions-legales.html /mentions-legales 301
 /mezze-lyon.html /mezze-lyon 301
 /mission.html /mission 301
@@ -22,3 +22,5 @@
 /street-food-libanaise-lyon.html /snack-libanais-lyon 301
 /street-food-libanaise-lyon /snack-libanais-lyon 301
 /snack-libanais-lyon.html /snack-libanais-lyon 301
+# EXP-7 : page meilleur morte (42 imp/14j) -> consolidation home
+/meilleur-restaurant-libanais-lyon / 301
