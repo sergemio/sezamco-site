@@ -24,3 +24,5 @@
 /snack-libanais-lyon.html /snack-libanais-lyon 301
 # EXP-7 : page meilleur morte (42 imp/14j) -> consolidation home
 /meilleur-restaurant-libanais-lyon / 301
+# Backup de l'ancienne home : duplicate de / , neutralise (double ceinture avec X-Robots-Tag noindex)
+/index-v1-backup / 301

@@ -1,0 +1,18 @@
+# Cloudflare Pages — en-tetes HTTP
+# Fichiers de travail servis par Cloudflare mais qui ne sont pas des pages :
+# on autorise le crawl (sinon Google ne verrait pas la directive) et on interdit l'indexation.
+
+# Fichiers de standby / doc a la racine (_README-CURSOR-STANDBY.md, _cursor-standby-snippet.html)
+# Note : _redirects et _headers ne sont jamais servis par Cloudflare.
+/_*
+  X-Robots-Tag: noindex
+
+# Workflows GitHub servis publiquement (deploy.yml)
+/.github/*
+  X-Robots-Tag: noindex
+
+# Ancienne home conservee en backup — duplicate de / , ne doit pas etre indexee
+/index-v1-backup
+  X-Robots-Tag: noindex
+/index-v1-backup.html
+  X-Robots-Tag: noindex
