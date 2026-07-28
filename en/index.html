@@ -837,6 +837,20 @@
     .dish-modal-formule[hidden],
     .dish-modal-section[hidden] { display: none !important; }
     @media (max-width: 500px) { .dish-modal-img { height: 200px; } }
+
+    /* ===== TRAITEUR ===== */
+    .trt-lead { max-width: 700px; font-size: .95rem; line-height: 1.8; color: var(--text-mid); margin-bottom: 2.2rem; }
+    .trt-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+    .trt-card { background: #fff; border-radius: 16px; padding: 1.2rem 1.3rem; box-shadow: 0 4px 16px rgba(26,26,26,.06); }
+    .trt-card h3 { font-family: var(--font-display); font-size: 1.3rem; color: var(--green-deep); margin-bottom: .3rem; font-weight: 400; }
+    .trt-card p { font-size: .85rem; line-height: 1.6; color: var(--text-mid); }
+    .trt-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 1.2rem 2rem; background: rgba(255,255,255,.6); border-radius: 16px; padding: 1.5rem 1.7rem; margin-bottom: 1.8rem; }
+    .trt-info div { font-size: .88rem; line-height: 1.6; color: var(--text-mid); }
+    .trt-info strong { display: block; font-family: var(--font-display); font-weight: 400; font-size: 1.05rem; color: var(--green-deep); margin-bottom: .2rem; }
+    .trt-note { max-width: 700px; font-size: .92rem; line-height: 1.8; color: var(--text-mid); margin-bottom: 2rem; }
+    .trt-cta { display: flex; gap: .8rem 1rem; flex-wrap: wrap; align-items: center; }
+    .trt-cta small { font-size: .8rem; line-height: 1.5; color: var(--text-mid); }
+    @media (max-width: 560px) { .trt-cta .btn { width: 100%; justify-content: center; } }
   </style>
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -1197,6 +1211,53 @@
           <strong>Sezam&amp;Co</strong><br>
           6 rue Petit David, 69002 Lyon — Between Bellecour &amp; Cordeliers · Open daily 12pm–11pm
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRAITEUR / CATERING -->
+  <section class="section section-yellow" id="traiteur">
+    <div class="container">
+      <h2 class="section-title rv">Lebanese Catering in Lyon</h2>
+      <p class="section-sub rv rv-d1">Pre-order 5 to 50 man'ouches, pickup at the restaurant</p>
+      <p class="trt-lead rv rv-d1">
+        A birthday, an office meeting, a brunch with friends? We prepare your traditional man'ouches ahead of time &mdash; from 5 to 50 &mdash; and you collect them at 6&nbsp;rue Petit David, Lyon&nbsp;2. No delivery, no on-site service: you order, we prepare, you pick up at the agreed time.
+      </p>
+
+      <div class="trt-grid rv rv-d2">
+        <div class="trt-card">
+          <h3>Zaatar</h3>
+          <p>Thyme, sesame seeds, sumac and olive oil.</p>
+        </div>
+        <div class="trt-card">
+          <h3>Zaatar Duo</h3>
+          <p>Zaatar, sesame, sumac and oil on one side; stretchy Akkawi cheese on the other.</p>
+        </div>
+        <div class="trt-card">
+          <h3>Jebne</h3>
+          <p>Man'ouche with melted cheeses.</p>
+        </div>
+        <div class="trt-card">
+          <h3>Lahmajine</h3>
+          <p>Minced beef, spices, onions, tomato, peppers, pomegranate molasses.</p>
+        </div>
+      </div>
+
+      <div class="trt-info rv">
+        <div><strong>5 to 50 man'ouches</strong>Choose from the four traditional man'ouches above.</div>
+        <div><strong>Up to 20: order 24h ahead</strong>Place your order the day before.</div>
+        <div><strong>Over 20: order 48h ahead</strong>For larger quantities, give us two days' notice.</div>
+        <div><strong>Pickup at the restaurant</strong>6 rue Petit David, Lyon 2. Open daily, 12pm to 11pm.</div>
+      </div>
+
+      <p class="trt-note rv">
+        Good news: man'ouche is just as good <strong>cold, warm or reheated</strong> &mdash; a few seconds in the microwave or on a pan is all it takes. That is exactly what makes it ideal to order in advance and share, with no rush on timing.
+      </p>
+
+      <div class="trt-cta rv">
+        <a href="mailto:modernlebfood@gmail.com?subject=Catering%20order%20man%27ouches" class="btn btn-dark">Order by email <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        <a href="tel:+33478954316" class="btn btn-outline" style="background:transparent;border-color:var(--green-deep);color:var(--green-deep);">+33 4 78 95 43 16</a>
+        <small>We call you back to confirm the quantity,<br>pickup time and price.</small>
       </div>
     </div>
   </section>

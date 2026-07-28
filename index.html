@@ -836,6 +836,20 @@
     .dish-modal-formule[hidden],
     .dish-modal-section[hidden] { display: none !important; }
     @media (max-width: 500px) { .dish-modal-img { height: 200px; } }
+
+    /* ===== TRAITEUR ===== */
+    .trt-lead { max-width: 700px; font-size: .95rem; line-height: 1.8; color: var(--text-mid); margin-bottom: 2.2rem; }
+    .trt-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+    .trt-card { background: #fff; border-radius: 16px; padding: 1.2rem 1.3rem; box-shadow: 0 4px 16px rgba(26,26,26,.06); }
+    .trt-card h3 { font-family: var(--font-display); font-size: 1.3rem; color: var(--green-deep); margin-bottom: .3rem; font-weight: 400; }
+    .trt-card p { font-size: .85rem; line-height: 1.6; color: var(--text-mid); }
+    .trt-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 1.2rem 2rem; background: rgba(255,255,255,.6); border-radius: 16px; padding: 1.5rem 1.7rem; margin-bottom: 1.8rem; }
+    .trt-info div { font-size: .88rem; line-height: 1.6; color: var(--text-mid); }
+    .trt-info strong { display: block; font-family: var(--font-display); font-weight: 400; font-size: 1.05rem; color: var(--green-deep); margin-bottom: .2rem; }
+    .trt-note { max-width: 700px; font-size: .92rem; line-height: 1.8; color: var(--text-mid); margin-bottom: 2rem; }
+    .trt-cta { display: flex; gap: .8rem 1rem; flex-wrap: wrap; align-items: center; }
+    .trt-cta small { font-size: .8rem; line-height: 1.5; color: var(--text-mid); }
+    @media (max-width: 560px) { .trt-cta .btn { width: 100%; justify-content: center; } }
   </style>
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -1219,6 +1233,53 @@
           <strong>Sezam&amp;Co</strong><br>
           6 rue Petit David, 69002 Lyon — Entre Bellecour &amp; Cordeliers · 7j/7 12h–23h
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRAITEUR -->
+  <section class="section section-yellow" id="traiteur">
+    <div class="container">
+      <h2 class="section-title rv">Traiteur Libanais à Lyon</h2>
+      <p class="section-sub rv rv-d1">Man'ouches à pré-commander, de 5 à 50, à retirer au restaurant</p>
+      <p class="trt-lead rv rv-d1">
+        Un anniversaire, une réunion au bureau, un brunch entre amis&nbsp;? On prépare vos man'ouches traditionnelles à l'avance — de 5 à 50 — et vous passez les récupérer au 6&nbsp;rue Petit David, à Lyon&nbsp;2. Pas de livraison, pas de service chez vous&nbsp;: vous commandez, on prépare, vous récupérez à l'heure convenue.
+      </p>
+
+      <div class="trt-grid rv rv-d2">
+        <div class="trt-card">
+          <h3>Zaatar</h3>
+          <p>Mélange savoureux de thym, graines de sésame, sumac, huile d'olive.</p>
+        </div>
+        <div class="trt-card">
+          <h3>Zaatar Duo</h3>
+          <p>D'un côté zaatar, sésame, sumac et huile&nbsp;; de l'autre l'Akkawi, fromage filant.</p>
+        </div>
+        <div class="trt-card">
+          <h3>Jebne</h3>
+          <p>Man'ouche aux fromages fondants.</p>
+        </div>
+        <div class="trt-card">
+          <h3>Lahmajine</h3>
+          <p>Viande de bœuf hachée, épices, oignons, tomate, poivrons, mélasse de grenade.</p>
+        </div>
+      </div>
+
+      <div class="trt-info rv">
+        <div><strong>De 5 à 50 man'ouches</strong>À choisir parmi les quatre man'ouches traditionnelles ci-dessus.</div>
+        <div><strong>Jusqu'à 20 : 24 h à l'avance</strong>Passez commande la veille pour être tranquille.</div>
+        <div><strong>Au-delà de 20 : 48 h à l'avance</strong>Pour les grosses quantités, prévenez-nous deux jours avant.</div>
+        <div><strong>Retrait au restaurant</strong>6 rue Petit David, Lyon 2. Ouvert 7j/7, de 12h à 23h.</div>
+      </div>
+
+      <p class="trt-note rv">
+        Bonne nouvelle&nbsp;: la man'ouche se mange <strong>froide, tiède ou réchauffée</strong> — quelques secondes au micro-ondes ou sur une plaque suffisent. C'est ce qui la rend idéale à commander en avance et à partager, sans courir après le timing.
+      </p>
+
+      <div class="trt-cta rv">
+        <a href="mailto:modernlebfood@gmail.com?subject=Commande%20traiteur%20man%27ouches" class="btn btn-dark">Commander par email <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        <a href="tel:+33478954316" class="btn btn-outline" style="background:transparent;border-color:var(--green-deep);color:var(--green-deep);">04 78 95 43 16</a>
+        <small>On vous rappelle pour confirmer la quantité,<br>l'heure de retrait et le prix.</small>
       </div>
     </div>
   </section>
