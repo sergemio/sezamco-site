@@ -26,7 +26,7 @@
   <meta name="twitter:image" content="https://sezamandco.com/assets/images/hero-spread.webp">
   <meta name="twitter:image:alt" content="Lebanese street food by Sezam&Co">
 
-  <link rel="preload" as="image" href="/assets/images/hero-spread-1920.webp" imagesrcset="/assets/images/hero-spread-800.webp 800w, /assets/images/hero-spread-1920.webp 1920w" imagesizes="100vw" fetchpriority="high">
+  <link rel="preload" as="image" href="/assets/images/manouche-hero-750.webp" imagesrcset="/assets/images/manouche-hero-480.webp 480w, /assets/images/manouche-hero-750.webp 750w" imagesizes="(max-width: 900px) 66vw, 43.5vw" fetchpriority="high">
   <link rel="stylesheet" href="/assets/css/fonts.css?v=2">
 
   <script type="application/ld+json">
@@ -135,6 +135,8 @@
       --max-w: 1200px;
       /* --- nouveau header --- */
       --green-btn: #549E11;
+      --honey: #FFD98C;          /* grand cercle du hero */
+      --tomato: #C42B05;         /* pastille tomate */
       --brown: #4A322B;
       --gouttiere: clamp(1.25rem, 5vw, 72px);
       --logo-h: clamp(44px, 6.9vh, 62px);
@@ -317,95 +319,228 @@
     @media (max-width: 860px) { .sticky-cta { display: block; } }
 
     /* ===== HERO ===== */
+    /* padding-top = hauteur exacte du header, qui est `fixed` : sans ca le
+       texte se centrerait dans tout le viewport et passerait dessous. */
     .hero {
-      position: relative; width: 100%; height: 60vh; min-height: 420px;
-      display: flex; align-items: stretch;
-      overflow: hidden;
-      margin-top: 64px;
+      position: relative; min-height: 100vh; overflow: hidden;
+      display: flex; align-items: center; background: var(--cream);
+      padding-top: calc(var(--logo-h) + var(--hdr-pad) * 2);
     }
-    .hero-img {
-      position: absolute; inset: 0; z-index: 0;
+    /* Formes de fond. Le grand cercle suit la HAUTEUR de fenetre, les autres
+       la LARGEUR — releve sur 8 tailles d'ecran de la reference. */
+    .blob { position: absolute; pointer-events: none; }
+    .b1 { width: 46vw; height: 46vw; left: -180px; top: -140px; background: var(--green-pastel);
+          border-radius: 58% 42% 47% 53% / 45% 51% 49% 55%; }
+    .b2 { width: 100vh; height: 100vh; left: 54%; top: 0; background: var(--honey); opacity: .5; border-radius: 50%; }
+
+    /* Doodles : ils grandissent avec la largeur puis plafonnent, d'ou les min(). */
+    .doodle { position: absolute; z-index: 0; pointer-events: none; will-change: transform; }
+    .d-tomate { left: 51vw; top: 21vh; width: min(5vw,84px); height: min(5vw,84px);
+                --tilt: 0deg; animation: deriveA 49s ease-in-out infinite; }
+    .d-tomate .boule { position: absolute; inset: 0; border-radius: 50%; background: var(--tomato); }
+    .d-tomate .feuille { position: absolute; width: 52%; height: 52%; top: -16%;
+                         background: var(--green-deep); border-radius: 0 68%; }
+    .d-tomate .feuille-a { left: 6%; transform: rotate(-30deg); }
+    .d-tomate .feuille-b { left: 42%; transform: rotate(30deg) scaleX(-1); }
+    .d-feuille { right: min(5.35vw,81px); top: 15.2vh; width: min(5.07vw,83px); height: min(5.07vw,83px);
+                 border-radius: 0 68%; background: var(--green-deep);
+                 --tilt: 18deg; animation: deriveB 60s ease-in-out infinite; animation-delay: -15.5s; }
+    .d-sombre { right: min(8.89vw,150px); top: 79vh; width: min(2.43vw,40px); height: min(2.43vw,40px);
+                border-radius: 50%; background: var(--brown);
+                --tilt: 0deg; animation: deriveC 54.5s ease-in-out infinite; animation-delay: -28s; }
+    .d-anneau { left: 53.7vw; top: 83vh; width: min(3.4vw,49px); height: min(3.4vw,49px);
+                border-radius: 50%; border: 6px solid var(--yellow-rich); background: transparent;
+                --tilt: 0deg; animation: deriveA 49s ease-in-out infinite; animation-delay: -22s; }
+
+    /* --tilt conserve l'inclinaison propre de chaque forme pendant la derive. */
+    @keyframes deriveA {
+      0%,100% { transform: translate(0,0) rotate(var(--tilt)); }
+      25% { transform: translate(31px,-26px) rotate(calc(var(--tilt) + 9deg)); }
+      50% { transform: translate(-23px,29px) rotate(calc(var(--tilt) - 8deg)); }
+      75% { transform: translate(26px,18px) rotate(calc(var(--tilt) + 5deg)); }
     }
-    .hero-img img {
-      width: 100%; height: 100%; object-fit: cover;
+    @keyframes deriveB {
+      0%,100% { transform: translate(0,0) rotate(var(--tilt)); }
+      30% { transform: translate(-29px,23px) rotate(calc(var(--tilt) - 10deg)); }
+      60% { transform: translate(21px,33px) rotate(calc(var(--tilt) + 8deg)); }
+      80% { transform: translate(27px,-21px) rotate(calc(var(--tilt) - 5deg)); }
     }
-    /* Light overlay only at bottom for text legibility */
-    .hero-img::after {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(
-        to top,
-        rgba(0,0,0,.42) 0%,
-        rgba(0,0,0,.18) 30%,
-        rgba(0,0,0,0) 55%
-      );
+    @keyframes deriveC {
+      0%,100% { transform: translate(0,0) rotate(var(--tilt)); }
+      35% { transform: translate(23px,31px) rotate(calc(var(--tilt) + 12deg)); }
+      65% { transform: translate(-31px,-20px) rotate(calc(var(--tilt) - 9deg)); }
     }
 
-    .hero-content {
-      position: relative; z-index: 2;
-      display: flex; flex-direction: column;
-      padding: clamp(5rem,9vw,7.5rem) clamp(1.25rem,4vw,2.5rem) clamp(2.5rem,5vw,4rem);
-      max-width: var(--max-w); margin: 0 auto; width: 100%;
-      text-shadow: 0 2px 12px rgba(0,0,0,.45), 0 1px 3px rgba(0,0,0,.6);
+    .hero-grille {
+      position: relative; z-index: 1; width: 100%; max-width: 1920px; margin: 0 auto;
+      padding: 0 var(--gouttiere);
+      display: grid; grid-template-columns: 1fr auto; align-items: center; gap: clamp(1.5rem,4vw,3.5rem);
     }
-    .hero-content > * { align-self: flex-start; }
-    .hero-content .hero-ctas { margin-top: auto; }
+    .hero-txt { min-width: 0; }
+    /* Le sujet n'est pas cale sur la gouttiere : bord droit a 36px du bord de
+       fenetre, centre 22px sous le centre vertical — les deux decalages releves. */
+    .hero-art { margin-right: calc(36px - var(--gouttiere)); transform: translateY(22px); }
+    .hero-art img { display: block; width: clamp(240px, 43.5vw, 760px); height: auto; will-change: transform; }
 
-    .hero-badge {
+    /* Le VRAI H1 : texte inchange au mot pres, rendu petit et place en premier.
+       Google lit la balise, pas le corps de la police : valeur SEO identique. */
+    .hero .sous-h1 {
+      font: 800 13px/1.5 'Nunito Sans', system-ui, sans-serif;
+      letter-spacing: .16em; text-transform: uppercase; color: var(--green-btn); margin: 0 0 1.6vh;
+    }
+    /* Taille FLUIDE sur la hauteur de fenetre, comme la reference. Une seule
+       regle pour tous les ecrans : reduire ici reduit partout, dans la meme
+       proportion. La reference est a min(11vh, 8.6vw) ; on etait a 1,21 fois
+       cette valeur, on passe a 1,09 apres la baisse de 10% demandee. */
+    .accroche {
+      font-family: 'Archivo', system-ui, sans-serif; font-weight: 900;
+      font-size: min(11.97vh, 9.36vw); line-height: .88; letter-spacing: -.015em;
+      text-transform: uppercase; color: var(--green-deep); margin: 0 0 1.8vh;
+    }
+    .accroche span { display: block; }
+    .accroche em { font-style: normal; color: var(--green-btn); }
+    .accroche .flourish {
+      font-family: 'Yellowtail', 'Brush Script MT', cursive; font-weight: 400; font-style: normal;
+      font-size: 1em; line-height: .7; text-transform: none; color: var(--yellow-rich);
+      margin-left: .12em; display: inline-block;
+    }
+    .hero .sous {
+      margin: 0; max-width: 44ch; color: var(--brown);
+      font-family: 'Nunito Sans', system-ui, sans-serif; font-size: 17px; line-height: 1.55;
+    }
+
+    /* Badge d'avis : mobile seulement. En grand ecran le hero suit la reference,
+       qui n'en a pas. L'ancienne pastille etait posee sur une photo sombre, d'ou
+       le verre depoli ; sur le creme il faut un fond plein et un texte fonce. */
+    .hero-badge { display: none; }
+
+    /* Boutons : 15px/800/majuscules, interlettrage 1,8px, padding 17/34,
+       rayon 999px. La bordure transparente de 2px sur le bouton plein garantit
+       que les deux aient exactement la meme hauteur. */
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 1rem; margin: 2.4vh 0 2.6vh; }
+    .hbtn {
+      font-family: 'Nunito Sans', system-ui, sans-serif;
+      /* inline-flex + gap : certains de ces boutons portent une fleche en SVG,
+         qui doit s'aligner sur la ligne de base du texte. */
       display: inline-flex; align-items: center; gap: .5rem;
-      background: rgba(253,244,231,.15); border: 1px solid rgba(253,244,231,.25);
-      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-      padding: .4rem 1rem; border-radius: 50px; margin-bottom: 1.2rem;
+      /* line-height explicite : le prototype l'heritait d'un body en 16px/1.6.
+         Ici le body est en `normal`, ce qui rendait les boutons 4px plus courts. */
+      font-size: 15px; font-weight: 800; line-height: 1.6; letter-spacing: .12em; text-transform: uppercase;
+      padding: 17px 34px; border-radius: 999px; border: 2px solid transparent; white-space: nowrap;
+      transition: transform .25s, box-shadow .25s, background .25s, color .25s;
     }
-    .hero-badge .stars { color: var(--yellow-rich); font-size: .85rem; letter-spacing: 2px; }
-    .hero-badge span:last-child { color: rgba(255,255,255,.9); font-size: .82rem; font-weight: 600; }
+    .hbtn-plein { background: var(--green-btn); color: #FFFBF4; }
+    .hbtn-plein:hover { background: var(--green-deep); transform: translateY(-2px); box-shadow: 0 10px 24px rgba(63,112,0,.26); }
+    .hbtn-vide { color: var(--green-btn); border-color: var(--green-btn); }
+    .hbtn-vide:hover { background: var(--green-pastel); transform: translateY(-2px); }
+    /* Version reduite pour les boutons du corps de page : le format du hero
+       (15px / 17-34) y serait disproportionne. */
+    .hbtn-sm { font-size: 13px; padding: 13px 26px; }
+    .hbtn-sm svg { width: 15px; height: 15px; }
 
-    .hero h1 {
-      font-family: var(--font-display);
-      font-size: clamp(1.8rem, 4.5vw, 3.6rem);
-      color: #fff;
-      line-height: 1.05;
-      margin-bottom: .6rem;
-      max-width: 600px;
-    }
-    .hero h1 .accent { color: var(--yellow-rich); }
+    .stats { display: flex; flex-wrap: wrap; gap: clamp(1.4rem,3vw,2.8rem); }
+    .stats b { display: block; font-family: 'Archivo', system-ui, sans-serif; font-weight: 900;
+               font-size: min(4.6vh, 3.4vw); line-height: 1; color: var(--green-btn); }
+    /* #7A6155 et non le gris de la reference : celui-ci tombe a 2,41:1 sur le
+       creme, inutilisable a 12px. Ici on est a 5,25:1, conforme AA. */
+    .stats span { display: block; margin-top: .4rem; font: 800 12px/1.5 'Nunito Sans', system-ui, sans-serif;
+                  letter-spacing: .18em; text-transform: uppercase; color: #7A6155; }
 
-    .hero-sub {
-      font-size: clamp(.95rem, 1.8vw, 1.15rem);
-      color: #fff;
-      font-weight: 600;
-      margin-bottom: 1.8rem;
-      max-width: 500px;
-      text-shadow: 0 2px 10px rgba(0,0,0,.55), 0 1px 3px rgba(0,0,0,.7);
+    @media (max-width: 900px) {
+      /* En mobile le sujet passe EN HAUT, comme sur la reference — mais plus
+         resserre : chez eux 36px sous le header et 20px avant le texte, ici 18
+         et 14, pour qu'une partie du texte soit visible sans scroller.
+         `flex-start` au lieu de `center` : le contenu se cale sous le header
+         au lieu de se centrer dans les 100vh et de pousser le texte trop bas. */
+      /* `min-height: auto` : en mobile le hero se dimensionne sur son contenu.
+         Avec 100vh, un telephone haut (412x1232) forçait la section a 1232px
+         pour 1019px de contenu, soit 213px de vide en bas. */
+      .hero { align-items: flex-start; min-height: auto; padding-bottom: 2rem; }
+      /* Ordre mobile voulu : H1, puis la man'ouche, puis l'accroche et la suite.
+         Le H1 vit dans .hero-txt : `display: contents` fait remonter les enfants
+         de ce bloc au niveau de la grille, seul endroit ou `order` opere. Le
+         balisage et la balise h1 restent intacts. */
+      .hero-grille { grid-template-columns: 1fr; gap: 0; }
+      .hero-txt { display: contents; }
+      /* Marges en vh : elles amenent la man'ouche au centre de l'ecran quelle que
+         soit la hauteur du telephone. Le but n'est pas decoratif — l'image tourne
+         avec le defilement, et si elle demarre collee en haut elle sort du champ
+         avant d'avoir tourne. Au centre, elle traverse tout l'ecran en tournant. */
+      .hero .sous-h1 { order: 1; margin: 2.4vh 0 1.4vh; }
+      .hero-badge {
+        order: 2; display: inline-flex; align-items: center; gap: .5rem;
+        width: fit-content; justify-self: start; margin: 0 0 11vh;
+        /* Verre depoli, comme sur l'ancien site : la pastille laisse passer ce
+           qu'il y a derriere (creme, ou le cercle vert quand elle le chevauche)
+           au lieu de poser un blanc franc qui coupe le fond en deux. */
+        background: rgba(255,255,255,.3); border: 1px solid rgba(255,255,255,.6);
+        backdrop-filter: blur(10px) saturate(1.35);
+        -webkit-backdrop-filter: blur(10px) saturate(1.35);
+        padding: .45rem .95rem; border-radius: 999px;
+      }
+      .hero-badge .stars { color: var(--yellow-rich); font-size: .84rem; letter-spacing: 2px; line-height: 1; }
+      .hero-badge span:last-child {
+        font: 800 12px/1 'Nunito Sans', system-ui, sans-serif;
+        letter-spacing: .04em; color: var(--brown);
+      }
+      .hero-art { order: 3; margin: 0 0 18px; transform: none; justify-self: center; padding-top: 0; }
+      /* 66vw = 78vw moins 15% : la man'ouche prenait trop de place et ecrasait
+         les formes qui l'entourent. */
+      .hero-art img { width: min(66vw, 357px); }
+      .accroche { order: 4; margin: 0 0 14px; }
+      .hero .sous { order: 5; margin: 0; }
+      .hero-ctas { order: 6; margin: 22px 0 24px; }
+      .stats { order: 7; }
+      /* 46vw cale a left:-180px sort entierement de l'ecran en dessous de 400px
+         de large : le cercle vert n'etait plus visible du tout. On l'agrandit et
+         on le ramene vers le centre, en le gardant bien plus petit que le jaune. */
+      .b1 { width: 60vw; height: 60vw; left: -16vw; top: -12vw; }
+
+      /* Les elements flottants restent, comme sur la reference : en mobile ils
+         sont ancres sur la MAN'OUCHE et non sur la fenetre. Taille et position
+         relevees sur la reference en 390 et 412 de large, exprimees en fraction
+         de la largeur de l'image (les deux releves donnent les memes fractions).
+         Le haut de l'image varie de 13px entre 360 et 412 : 158px est la valeur
+         mediane relevee, l'ecart residuel est de 4% du diametre de l'image. */
+      /* --img-top est ecrit par le script depuis la position reelle de l'image ;
+         249px est la valeur mediane relevee, utilisee si le script ne tourne pas. */
+      .hero { --img: min(66vw, 357px); --img-cx: 50vw;
+              --img-cy: calc(var(--img-top, 249px) + var(--img) / 2); }
+      /* clamp : notre man'ouche occupe 78% de la largeur la ou leur pizza en fait
+         70%, donc le meme decalage relatif pousse les formes hors de l'ecran. La
+         butee a 5vw les retient sans les decoller de l'image sur les tablettes,
+         ou le calcul reste bien a l'interieur des bornes. */
+      .doodle {
+        --w: calc(var(--img) * var(--s));
+        width: var(--w); height: var(--w);
+        left: clamp(5vw, calc(var(--img-cx) + var(--img) * var(--dx) - var(--w) / 2), calc(95vw - var(--w)));
+        top: calc(var(--img-cy) + var(--img) * var(--dy) - var(--w) / 2);
+        right: auto; bottom: auto;
+      }
+      /* Les positions sont celles de la reference. Les tailles sont ses fractions
+         ramenees a 80% : leurs formes font 13,4% du diametre de la pizza sur une
+         capture large, les notres en faisaient 16,8% — elles pesaient trop. */
+      .d-tomate  { --s: .141; --dx: -.551; --dy: -.370; }  /* haut gauche  */
+      .d-feuille { --s: .140; --dx:  .532; --dy: -.453; }  /* haut droite  */
+      .d-anneau  { --s: .100; --dx: -.501; --dy:  .351; }  /* bas gauche   */
+      .d-sombre  { --s: .076; --dx:  .466; --dy:  .300; }  /* bas droite   */
+      /* L'epaisseur de l'anneau suit son diametre : 6px fixes sur un cercle
+         reduit donneraient un trait deux fois trop epais (17,6% chez eux). */
+      .d-anneau { border-width: calc(var(--w) * .176); }
+      /* La derive d'origine (+-31px) est calibree pour le grand ecran : a cette
+         echelle elle deplacerait les formes d'un tiers de leur diametre. */
+      .d-tomate, .d-feuille, .d-anneau, .d-sombre { animation: deriveMobile 46s ease-in-out infinite; }
+      .d-feuille { animation-delay: -12s; }
+      .d-anneau { animation-delay: -24s; }
+      .d-sombre { animation-delay: -33s; }
+    }
+    @keyframes deriveMobile {
+      0%,100% { transform: translate(0,0) rotate(var(--tilt)); }
+      25% { transform: translate(9px,-8px) rotate(calc(var(--tilt) + 7deg)); }
+      50% { transform: translate(-7px,9px) rotate(calc(var(--tilt) - 6deg)); }
+      75% { transform: translate(8px,6px) rotate(calc(var(--tilt) + 4deg)); }
     }
 
-    .hero-ctas { display: flex; gap: .8rem; flex-wrap: wrap; margin-bottom: 2rem; }
-    .btn {
-      display: inline-flex; align-items: center; gap: .4rem;
-      font-weight: 800; font-size: .9rem; padding: .8rem 1.6rem;
-      border-radius: 50px; letter-spacing: .03em;
-      transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
-    }
-    .btn:hover { transform: translateY(-2px); }
-    .btn-primary {
-      background: #549E11; color: #fff;
-      box-shadow: 0 4px 20px rgba(84,158,17,.4);
-    }
-    .btn-primary:hover { box-shadow: 0 8px 30px rgba(84,158,17,.55); }
-    .btn-outline {
-      background: rgba(255,255,255,.12); color: #fff;
-      border: 2px solid rgba(255,255,255,.35);
-      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
-    }
-    .btn-outline:hover { border-color: var(--yellow-soft); color: var(--yellow-soft); }
-
-    .hero-info {
-      display: flex; gap: 1.5rem; flex-wrap: wrap;
-    }
-    .hero-info-item {
-      display: flex; align-items: center; gap: .4rem;
-      font-size: .82rem; font-weight: 600; color: rgba(255,255,255,.55);
-    }
-    .hero-info-item svg { width: 15px; height: 15px; opacity: .5; flex-shrink: 0; }
 
     /* ===== MARQUEE ===== */
     .marquee {
@@ -955,53 +1090,43 @@
 
   <!-- HERO -->
   <section class="hero" id="hero">
-    <div class="hero-img">
-      <img src="/assets/images/hero-spread-800.webp" srcset="/assets/images/hero-spread-800.webp 800w, /assets/images/hero-spread-1920.webp 1920w" sizes="100vw" alt="Lebanese street food spread — manakish, shawarma, fattouch, hummus" width="1920" height="1280" fetchpriority="high">
-    </div>
-    <div class="hero-content">
-      <h1 class="rv">Lebanese Restaurant <span class="accent">Lyon 2</span> | Sezam&Co</h1>
-      <div class="hero-badge rv rv-d1">
-        <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-        <span>4.8/5 on Google · 800+ reviews</span>
-      </div>
-      <p class="hero-sub rv rv-d2">Manakish, shawarma & mezze — handmade fresh every day in the heart of Lyon.</p>
-      <div class="hero-ctas rv rv-d3">
-        <a href="https://commandes.sezamandco.com" class="btn btn-primary">Order online</a>
-        <a href="/en/menu" class="btn btn-outline">See the menu</a>
-      </div>
-      <div class="hero-info rv rv-d4">
-        <div class="hero-info-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          6 rue Petit David, Lyon 2
-        </div>
-        <div class="hero-info-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          Open daily 12pm – 11pm
-        </div>
-        <div class="hero-info-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 10V5a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v5"/><path d="M3 10h18v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-9z"/><line x1="12" y1="14" x2="12" y2="18"/></svg>
-          Outdoor seating
-        </div>
-      </div>
-    </div>
-  </section>
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
 
-  <!-- SEO INTRO -->
-  <section class="section-intro-seo" style="background:var(--cream);padding:2.5rem 0 1.5rem;text-align:center;position:relative;overflow:hidden;">
-    <span class="float-emoji float-1" aria-hidden="true"><svg viewBox="0 0 30 20" width="36" height="24" xmlns="http://www.w3.org/2000/svg"><rect width="30" height="5" y="0" fill="#ED1C24"/><rect width="30" height="10" y="5" fill="#fff"/><rect width="30" height="5" y="15" fill="#ED1C24"/><g transform="translate(15,10) scale(.45)"><path d="M0,-7 L-2,-3 L-5,-2 L-3,0 L-6,2 L-3,3 L-2,6 L0,4 L2,6 L3,3 L6,2 L3,0 L5,-2 L2,-3 Z" fill="#007A3D"/><rect x="-1" y="3" width="2" height="4" fill="#007A3D"/></g></svg></span>
-    <span class="float-emoji float-2" aria-hidden="true">🍗</span>
-    <span class="float-emoji float-3" aria-hidden="true">🫓</span>
-    <span class="float-emoji float-4" aria-hidden="true">🍅</span>
-    <span class="float-emoji float-5" aria-hidden="true">🥒</span>
-    <span class="float-emoji float-6" aria-hidden="true">🌯</span>
-    <span class="float-emoji float-7" aria-hidden="true">🥬</span>
-    <span class="float-emoji float-8" aria-hidden="true">🧆</span>
-    <div class="container" style="position:relative;z-index:1;">
-      <div class="rv depuis-lyon-box" style="position:relative;max-width:720px;margin:0 auto;padding:1.6rem 2rem;border:none;border-radius:16px;background-color:var(--cream);background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Crect x='1.5' y='1.5' width='99%25' height='99%25' rx='16' ry='16' fill='none' stroke='%232D6A0F' stroke-width='3' stroke-dasharray='14 10'/%3E%3C/svg%3E&quot;);background-size:100% 100%;">
-        <span style="display:inline-block;font-family:var(--font-display);font-size:1.15rem;color:var(--coral);margin-bottom:.6rem;">From Lyon 2</span>
-        <p style="font-size:.95rem;line-height:1.8;color:var(--text-mid);">
-          Welcome to Sezam&amp;Co, your Lebanese restaurant in the heart of Lyon 2, between Bellecour and Cordeliers. Here we cook like in the streets of Beirut: manakish kneaded and baked to order, mezze prepared fresh every day. Dine in, takeaway or delivery.
-        </p>
+    <div class="doodle d-tomate" aria-hidden="true">
+      <span class="feuille feuille-a"></span>
+      <span class="feuille feuille-b"></span>
+      <span class="boule"></span>
+    </div>
+    <div class="doodle d-feuille" aria-hidden="true"></div>
+    <div class="doodle d-sombre" aria-hidden="true"></div>
+    <div class="doodle d-anneau" aria-hidden="true"></div>
+
+    <div class="hero-grille">
+      <div class="hero-txt">
+        <h1 class="sous-h1">Lebanese Restaurant Lyon 2 | Sezam&amp;Co</h1>
+        <p class="hero-badge"><span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span>4.8/5 on Google</span></p>
+        <p class="accroche"><span>Cooked</span><span>on the</span><span>spot,</span><span><em>served</em> <i class="flourish">hot!</i></span></p>
+        <p class="sous">Manakish, falafel, shawarma and mezze — hand-stretched and cooked to order, 7 days a week, 12pm to 11pm.</p>
+
+        <div class="hero-ctas">
+          <a href="https://commandes.sezamandco.com" class="hbtn hbtn-plein">Order online</a>
+          <a href="/en/menu" class="hbtn hbtn-vide">See the menu</a>
+        </div>
+
+        <div class="stats">
+          <div><b>7 days</b><span>Open</span></div>
+          <div><b>12&#8239;–&#8239;11pm</b><span>Lunch &amp; dinner</span></div>
+          <div><b>Lyon 2</b><span>Bellecour · Cordeliers</span></div>
+        </div>
+      </div>
+
+      <div class="hero-art">
+        <img id="manouche" src="/assets/images/manouche-hero-750.webp"
+             srcset="/assets/images/manouche-hero-480.webp 480w, /assets/images/manouche-hero-750.webp 750w"
+             sizes="(max-width: 900px) 66vw, 43.5vw"
+             width="750" height="750" fetchpriority="high"
+             alt="Manakish, half zaatar and half cheese, seen from above">
       </div>
     </div>
   </section>
@@ -1041,6 +1166,26 @@
       <span>Mezze</span><span class="sep"><img src="/assets/images/sesame-seed.webp?v=2" alt="" width="22" height="15" loading="lazy" style="display:block"></span>
     </div>
   </div>
+
+  <!-- SEO INTRO -->
+  <section class="section-intro-seo" style="background:var(--cream);padding:2.5rem 0 1.5rem;text-align:center;position:relative;overflow:hidden;">
+    <span class="float-emoji float-1" aria-hidden="true"><svg viewBox="0 0 30 20" width="36" height="24" xmlns="http://www.w3.org/2000/svg"><rect width="30" height="5" y="0" fill="#ED1C24"/><rect width="30" height="10" y="5" fill="#fff"/><rect width="30" height="5" y="15" fill="#ED1C24"/><g transform="translate(15,10) scale(.45)"><path d="M0,-7 L-2,-3 L-5,-2 L-3,0 L-6,2 L-3,3 L-2,6 L0,4 L2,6 L3,3 L6,2 L3,0 L5,-2 L2,-3 Z" fill="#007A3D"/><rect x="-1" y="3" width="2" height="4" fill="#007A3D"/></g></svg></span>
+    <span class="float-emoji float-2" aria-hidden="true">🍗</span>
+    <span class="float-emoji float-3" aria-hidden="true">🫓</span>
+    <span class="float-emoji float-4" aria-hidden="true">🍅</span>
+    <span class="float-emoji float-5" aria-hidden="true">🥒</span>
+    <span class="float-emoji float-6" aria-hidden="true">🌯</span>
+    <span class="float-emoji float-7" aria-hidden="true">🥬</span>
+    <span class="float-emoji float-8" aria-hidden="true">🧆</span>
+    <div class="container" style="position:relative;z-index:1;">
+      <div class="rv depuis-lyon-box" style="position:relative;max-width:720px;margin:0 auto;padding:1.6rem 2rem;border:none;border-radius:16px;background-color:var(--cream);background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Crect x='1.5' y='1.5' width='99%25' height='99%25' rx='16' ry='16' fill='none' stroke='%232D6A0F' stroke-width='3' stroke-dasharray='14 10'/%3E%3C/svg%3E&quot;);background-size:100% 100%;">
+        <span style="display:inline-block;font-family:var(--font-display);font-size:1.15rem;color:var(--coral);margin-bottom:.6rem;">From Lyon 2</span>
+        <p style="font-size:.95rem;line-height:1.8;color:var(--text-mid);">
+          Welcome to Sezam&amp;Co, your Lebanese restaurant in the heart of Lyon 2, between Bellecour and Cordeliers. Here we cook like in the streets of Beirut: manakish kneaded and baked to order, mezze prepared fresh every day. Dine in, takeaway or delivery.
+        </p>
+      </div>
+    </div>
+  </section>
 
   <!-- RESTAURANT LIBANAIS LYON -->
   <section class="section section-green" id="about">
@@ -1206,7 +1351,7 @@
             <div class="formule-price">€11.10</div>
           </div>
           <p class="formule-desc">Manakish + Drink + Daily dessert.<br>Lunch and dinner, every day.</p>
-          <a href="https://commandes.sezamandco.com" class="btn btn-dark">Order my set <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+          <a href="https://commandes.sezamandco.com" class="hbtn hbtn-vide hbtn-sm">Order my set <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
         </div>
         <div class="formule-img-wrap">
           <img src="/assets/images/formule-sezam-co-lyon.webp" alt="Sezam&Co lunch set — manakish, drink and dessert" loading="lazy" width="500" height="400">
@@ -1259,7 +1404,7 @@
       <div class="trt-teaser rv rv-d1">
         <div class="trt-teaser-txt">
           <p>An office meeting, a birthday, a brunch with friends? We prepare your traditional man'ouches ahead of time — Zaatar, Zaatar Duo, Jebne, Lahmajine, Sojok Jebne — for pickup at the restaurant or delivery around Lyon. Build your order and the price shows instantly, with up to 30% off.</p>
-          <a href="/traiteur-libanais-lyon" class="btn btn-dark">See the catering offer <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+          <a href="/traiteur-libanais-lyon" class="hbtn hbtn-vide hbtn-sm">See the catering offer <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
         </div>
         <div class="trt-teaser-imgs">
           <img src="/assets/images/manouche/zaatar.webp?v=2507" alt="Man'ouche zaatar" loading="lazy" width="300" height="225">
@@ -1275,28 +1420,28 @@
   <div class="marquee" aria-hidden="true" style="background: var(--green-deep);">
     <div class="marquee-track" style="animation-duration: 39s;">
       <span>★ 4.8/5</span><span class="sep"><img src="/assets/images/sesame-seed.webp?v=2" alt="" width="22" height="15" loading="lazy" style="display:block"></span>
-      <span>800+ avis</span><span class="sep"><img src="/assets/images/sesame-seed.webp?v=2" alt="" width="22" height="15" loading="lazy" style="display:block"></span>
-      <span>Meilleur Libanais</span><span class="sep"><img src="/assets/images/sesame-seed.webp?v=2" alt="" width="22" height="15" loading="lazy" style="display:block"></span>
+      
+      <span>Best Lebanese</span><span class="sep"><img src="/assets/images/sesame-seed.webp?v=2" alt="" width="22" height="15" loading="lazy" style="display:block"></span>
       <span>Vegan</span><span class="sep"><img src="/assets/images/sesame-seed.webp?v=2" alt="" width="22" height="15" loading="lazy" style="display:block"></span>
-      <span>Végétarien</span><span class="sep"><img src="/assets/images/sesame-seed.webp?v=2" alt="" width="22" height="15" loading="lazy" style="display:block"></span>
+      <span>Vegetarian</span><span class="sep"><img src="/assets/images/sesame-seed.webp?v=2" alt="" width="22" height="15" loading="lazy" style="display:block"></span>
       <span>Halal</span><span class="sep"><img src="/assets/images/sesame-seed.webp?v=2" alt="" width="22" height="15" loading="lazy" style="display:block"></span>
       <span>★ 4.8/5</span><span class="sep"><img src="/assets/images/sesame-seed.webp?v=2" alt="" width="22" height="15" loading="lazy" style="display:block"></span>
-      <span>800+ avis</span><span class="sep"><img src="/assets/images/sesame-seed.webp?v=2" alt="" width="22" height="15" loading="lazy" style="display:block"></span>
-      <span>Meilleur Libanais</span><span class="sep"><img src="/assets/images/sesame-seed.webp?v=2" alt="" width="22" height="15" loading="lazy" style="display:block"></span>
+      
+      <span>Best Lebanese</span><span class="sep"><img src="/assets/images/sesame-seed.webp?v=2" alt="" width="22" height="15" loading="lazy" style="display:block"></span>
       <span>Vegan</span><span class="sep"><img src="/assets/images/sesame-seed.webp?v=2" alt="" width="22" height="15" loading="lazy" style="display:block"></span>
-      <span>Végétarien</span><span class="sep"><img src="/assets/images/sesame-seed.webp?v=2" alt="" width="22" height="15" loading="lazy" style="display:block"></span>
+      <span>Vegetarian</span><span class="sep"><img src="/assets/images/sesame-seed.webp?v=2" alt="" width="22" height="15" loading="lazy" style="display:block"></span>
       <span>Halal</span><span class="sep"><img src="/assets/images/sesame-seed.webp?v=2" alt="" width="22" height="15" loading="lazy" style="display:block"></span>
       <span>★ 4.8/5</span><span class="sep"><img src="/assets/images/sesame-seed.webp?v=2" alt="" width="22" height="15" loading="lazy" style="display:block"></span>
-      <span>800+ avis</span><span class="sep"><img src="/assets/images/sesame-seed.webp?v=2" alt="" width="22" height="15" loading="lazy" style="display:block"></span>
-      <span>Meilleur Libanais</span><span class="sep"><img src="/assets/images/sesame-seed.webp?v=2" alt="" width="22" height="15" loading="lazy" style="display:block"></span>
+      
+      <span>Best Lebanese</span><span class="sep"><img src="/assets/images/sesame-seed.webp?v=2" alt="" width="22" height="15" loading="lazy" style="display:block"></span>
       <span>Vegan</span><span class="sep"><img src="/assets/images/sesame-seed.webp?v=2" alt="" width="22" height="15" loading="lazy" style="display:block"></span>
-      <span>Végétarien</span><span class="sep"><img src="/assets/images/sesame-seed.webp?v=2" alt="" width="22" height="15" loading="lazy" style="display:block"></span>
+      <span>Vegetarian</span><span class="sep"><img src="/assets/images/sesame-seed.webp?v=2" alt="" width="22" height="15" loading="lazy" style="display:block"></span>
       <span>Halal</span><span class="sep"><img src="/assets/images/sesame-seed.webp?v=2" alt="" width="22" height="15" loading="lazy" style="display:block"></span>
       <span>★ 4.8/5</span><span class="sep"><img src="/assets/images/sesame-seed.webp?v=2" alt="" width="22" height="15" loading="lazy" style="display:block"></span>
-      <span>800+ avis</span><span class="sep"><img src="/assets/images/sesame-seed.webp?v=2" alt="" width="22" height="15" loading="lazy" style="display:block"></span>
-      <span>Meilleur Libanais</span><span class="sep"><img src="/assets/images/sesame-seed.webp?v=2" alt="" width="22" height="15" loading="lazy" style="display:block"></span>
+      
+      <span>Best Lebanese</span><span class="sep"><img src="/assets/images/sesame-seed.webp?v=2" alt="" width="22" height="15" loading="lazy" style="display:block"></span>
       <span>Vegan</span><span class="sep"><img src="/assets/images/sesame-seed.webp?v=2" alt="" width="22" height="15" loading="lazy" style="display:block"></span>
-      <span>Végétarien</span><span class="sep"><img src="/assets/images/sesame-seed.webp?v=2" alt="" width="22" height="15" loading="lazy" style="display:block"></span>
+      <span>Vegetarian</span><span class="sep"><img src="/assets/images/sesame-seed.webp?v=2" alt="" width="22" height="15" loading="lazy" style="display:block"></span>
       <span>Halal</span><span class="sep"><img src="/assets/images/sesame-seed.webp?v=2" alt="" width="22" height="15" loading="lazy" style="display:block"></span>
     </div>
   </div>
@@ -1307,7 +1452,7 @@
       <div class="avis-header rv">
         <span class="avis-big">4.8</span>
         <span class="avis-stars">★★★★★</span>
-        <span class="avis-count">Our Google reviews · 800+ ratings</span>
+        <span class="avis-count">Our Google reviews</span>
       </div>
       <div class="avis-grid">
         <blockquote class="avis-card rv">
@@ -1327,8 +1472,8 @@
         </blockquote>
       </div>
       <div class="rv" style="text-align:center;margin-top:2.5rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-        <a href="https://search.google.com/local/writereview?placeid=ChIJK0BCQ-fq9EcRpuS0Y3iHAQo" class="btn btn-primary" target="_blank" rel="noopener">Leave a review</a>
-        <a href="https://maps.app.goo.gl/TbX5DtHSZeVs9hYG6" class="btn btn-outline" style="border-color:var(--green-deep);color:var(--green-deep);" target="_blank" rel="noopener">See all reviews</a>
+        <a href="https://search.google.com/local/writereview?placeid=ChIJK0BCQ-fq9EcRpuS0Y3iHAQo" class="hbtn hbtn-plein hbtn-sm" target="_blank" rel="noopener">Leave a review</a>
+        <a href="https://maps.app.goo.gl/TbX5DtHSZeVs9hYG6" class="hbtn hbtn-vide hbtn-sm" target="_blank" rel="noopener">See all reviews</a>
       </div>
     </div>
   </section>
@@ -1455,11 +1600,42 @@
       });
     }
 
-    /* Sticky header */
+    /* Sticky header + rotation de la man'ouche.
+       La reference tourne a 0,03 deg/px ; on est au double, 0,06. L'image ne
+       change jamais de taille : c'est la boite englobante d'un carre en
+       rotation qui donne l'illusion qu'elle grossit.
+       Une seule ecriture de style par frame, sinon le scroll saccade. */
     var hdr = document.getElementById('hdr');
-    window.addEventListener('scroll', function() {
+    var manouche = document.getElementById('manouche');
+    var sobre = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var VITESSE = 0.06, enAttente = false;
+    function peindreHero() {
       hdr.classList.toggle('stuck', window.scrollY > 24);
+      if (manouche && !sobre) {
+        manouche.style.transform = 'rotate(' + (window.scrollY * VITESSE).toFixed(2) + 'deg)';
+      }
+      enAttente = false;
+    }
+    window.addEventListener('scroll', function() {
+      if (!enAttente) { enAttente = true; requestAnimationFrame(peindreHero); }
     }, { passive: true });
+    peindreHero();
+
+    /* En mobile les formes flottantes sont posees autour de la man'ouche. Le haut
+       de l'image depend du nombre de lignes du H1, qui depend de la largeur : on
+       le mesure au lieu de le deviner. On mesure .hero-art et non l'image, dont
+       la boite englobante enfle avec la rotation. Le CSS garde une valeur de
+       repli, la page reste correcte sans JavaScript. */
+    var heroSec = document.getElementById('hero');
+    var art = document.querySelector('.hero-art');
+    function ancrerDoodles() {
+      if (!heroSec || !art) return;
+      heroSec.style.setProperty('--img-top',
+        Math.round(art.getBoundingClientRect().top - heroSec.getBoundingClientRect().top) + 'px');
+    }
+    ancrerDoodles();
+    window.addEventListener('resize', ancrerDoodles, { passive: true });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(ancrerDoodles);
 
     /* Sticky mobile CTA — show after scrolling past hero */
     var stickyCta = document.getElementById('sticky-cta');
