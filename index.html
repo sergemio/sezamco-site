@@ -400,10 +400,13 @@
       font: 800 13px/1.5 'Nunito Sans', system-ui, sans-serif;
       letter-spacing: .16em; text-transform: uppercase; color: var(--green-btn); margin: 0 0 1.6vh;
     }
-    /* Taille FLUIDE sur la hauteur de fenetre, comme la reference. */
+    /* Taille FLUIDE sur la hauteur de fenetre, comme la reference. Une seule
+       regle pour tous les ecrans : reduire ici reduit partout, dans la meme
+       proportion. La reference est a min(11vh, 8.6vw) ; on etait a 1,21 fois
+       cette valeur, on passe a 1,09 apres la baisse de 10% demandee. */
     .accroche {
       font-family: 'Archivo', system-ui, sans-serif; font-weight: 900;
-      font-size: min(13.3vh, 10.4vw); line-height: .88; letter-spacing: -.015em;
+      font-size: min(11.97vh, 9.36vw); line-height: .88; letter-spacing: -.015em;
       text-transform: uppercase; color: var(--green-deep); margin: 0 0 1.8vh;
     }
     .accroche span { display: block; }
