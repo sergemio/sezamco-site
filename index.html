@@ -117,7 +117,7 @@
     .skip-to-content:focus { left: 1rem; }
 
     :root {
-      --cream: #FFF8E1;
+      --cream: #FDF4E7;
       --green-pastel: #D4EDCF;
       --yellow-soft: #FFF4BD;
       --blue-pastel: #D4E4FF;
@@ -132,6 +132,14 @@
       --font-display: 'Ambery Garden', cursive, sans-serif;
       --font-body: 'Nunito', system-ui, sans-serif;
       --max-w: 1200px;
+      /* --- nouveau hero --- */
+      --green-btn: #549E11;      /* le vert du bouton, jusqu'ici en dur */
+      --brown: #4A322B;          /* brun chaud des liens de nav */
+      --honey: #FFD98C;          /* grand cercle du hero */
+      --tomato: #C42B05;         /* pastille tomate */
+      --gouttiere: clamp(1.25rem, 5vw, 72px);
+      --logo-h: clamp(44px, 6.9vh, 62px);
+      --hdr-pad: clamp(12px, 2.1vh, 19px);
       --section-py: clamp(4rem, 8vw, 7rem);
     }
 
@@ -152,69 +160,110 @@
     .rv-d4 { transition-delay: .32s; }
 
     /* ===== HEADER ===== */
+    /* Hauteur pilotee par le LOGO : 62 + 2x19 = 100px a 900px de fenetre.
+       Les deux valeurs suivent la hauteur d'ecran, avec un plancher mobile. */
     .hdr {
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      padding: .7rem 0;
-      background: var(--cream);
-      box-shadow: 0 2px 16px rgba(26,59,6,.06);
-      transition: padding .35s, box-shadow .35s;
+      padding: var(--hdr-pad) 0; transition: padding .35s ease;
     }
-    .hdr.stuck {
-      padding: .55rem 0;
-      box-shadow: 0 2px 24px rgba(26,59,6,.12);
+    /* Le fond floute vit dans un pseudo-element dont on anime l'opacite :
+       backdrop-filter ne se transitionne pas depuis `none`. Ni bordure ni
+       ombre, pour qu'aucune ligne ne separe le header de la premiere section. */
+    .hdr::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: rgba(253,244,231,.72);   /* = --cream, en rgba pour l'opacite */
+      backdrop-filter: blur(14px) saturate(1.4);
+      -webkit-backdrop-filter: blur(14px) saturate(1.4);
+      opacity: 0; transition: opacity .35s ease;
     }
-    .hdr-inner { display: flex; align-items: center; justify-content: space-between; max-width: var(--max-w); margin: 0 auto; padding: 0 clamp(1.25rem,4vw,2.5rem); }
-    .hdr .logo img { height: 48px; width: auto; transition: height .3s; }
-    .hdr.stuck .logo img { height: 40px; }
+    .hdr.stuck::before { opacity: 1; }
+    .hdr.stuck { padding: calc(var(--hdr-pad) * .7) 0; }
+    .hdr.stuck .logo img { height: calc(var(--logo-h) * .72); }
 
-    .hdr-nav { display: flex; gap: 1.8rem; align-items: center; }
+    .hdr-inner {
+      position: relative; z-index: 1;
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 1920px; margin: 0 auto; padding: 0 var(--gouttiere); gap: 2rem;
+    }
+    .hdr .logo { display: flex; align-items: center; }
+    .hdr .logo img { display: block; height: var(--logo-h); width: auto; transition: height .35s ease; }
+    .hdr-droite { display: flex; align-items: center; gap: 1.6rem; }
+
+    /* Nunito Sans 12px/800, majuscules, interlettrage 0,18em, brun #4A322B. */
+    .hdr-nav { display: flex; align-items: center; gap: 1.7rem; }
     .hdr-nav > a, .hdr-nav .dropdown-toggle {
-      font-size: 1.05rem; font-weight: 700; color: #549E11;
-      letter-spacing: .05em; position: relative; cursor: pointer;
-      font-family: var(--font-display); background: none; border: none; padding: 0;
-      display: inline-flex; align-items: center; gap: .3rem;
+      font-family: 'Nunito Sans', system-ui, sans-serif;
+      font-size: 12px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--brown); background: none; border: 0; padding: 0; cursor: pointer;
+      display: inline-flex; align-items: center; gap: .35rem; position: relative;
+      transition: color .2s;
     }
     .hdr-nav > a::after, .hdr-nav .dropdown-toggle::after {
-      content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 2px;
-      background: #1A3B06; border-radius: 2px;
+      content: ''; position: absolute; bottom: -6px; left: 0; width: 0; height: 2px;
+      background: var(--green-btn); border-radius: 2px;
       transition: width .3s cubic-bezier(.34,1.56,.64,1);
     }
+    .hdr-nav > a:hover, .hdr-nav .dropdown-toggle:hover { color: var(--green-btn); }
     .hdr-nav > a:hover::after, .hdr-nav .dropdown-toggle:hover::after { width: 100%; }
 
-    /* Dropdown */
     .dropdown { position: relative; }
-    .dropdown-toggle svg { width: 12px; height: 12px; transition: transform .3s; }
-    .dropdown.open .dropdown-toggle svg { transform: rotate(180deg); }
+    /* Pont invisible : sans lui le curseur traverse le vide de 14px entre le
+       bouton et le menu, perd le survol, et le menu se referme avant l'arrivee. */
+    .dropdown::before { content: ''; position: absolute; top: 100%; right: 0; min-width: 210px; height: 14px; }
+    .dropdown svg { width: 11px; height: 11px; transition: transform .3s; }
+    .dropdown:hover svg { transform: rotate(180deg); }
     .dropdown-menu {
-      position: absolute; top: calc(100% + 10px); right: 0;
-      background: var(--cream); border: 1px solid rgba(26,59,6,.08);
-      border-radius: 12px; padding: .5rem 0; min-width: 200px;
-      box-shadow: 0 8px 30px rgba(26,59,6,.1);
+      position: absolute; top: calc(100% + 14px); right: 0; min-width: 210px;
+      background: var(--cream); border-radius: 14px; padding: .45rem 0;
+      box-shadow: 0 10px 34px rgba(74,50,43,.14);
       opacity: 0; transform: translateY(-8px); pointer-events: none;
       transition: opacity .25s, transform .25s;
     }
-    .dropdown.open .dropdown-menu { opacity: 1; transform: translateY(0); pointer-events: all; }
+    .dropdown:hover .dropdown-menu, .dropdown.open .dropdown-menu { opacity: 1; transform: translateY(0); pointer-events: auto; }
     .dropdown-menu a {
-      display: block; padding: .6rem 1.2rem; font-size: 1rem; font-weight: 700;
-      font-family: var(--font-display); letter-spacing: .05em;
-      color: var(--green-deep); transition: background .2s, color .2s;
+      display: block; padding: .55rem 1.1rem; font-family: 'Nunito Sans', system-ui, sans-serif;
+      font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--brown); transition: background .2s, color .2s;
     }
-    .dropdown-menu a:hover { background: var(--green-pastel); color: var(--coral); }
+    .dropdown-menu a:hover { background: var(--green-pastel); color: var(--green-btn); }
 
     .hdr-phone {
-      font-size: .85rem; font-weight: 700; color: var(--green-deep);
-      display: flex; align-items: center; gap: .35rem;
-    }
-    .hdr-phone svg { width: 16px; height: 16px; }
-
-    .hdr-cta {
       display: inline-flex; align-items: center; gap: .4rem;
-      background: #549E11; color: #fff;
-      font-family: var(--font-display); font-size: .95rem; letter-spacing: .02em;
-      padding: .6rem 1.3rem; border-radius: 50px;
-      transition: transform .3s, box-shadow .3s, background .3s;
+      font-family: 'Nunito Sans', system-ui, sans-serif;
+      font-size: 12px; font-weight: 800; letter-spacing: .08em;
+      color: var(--brown); white-space: nowrap; transition: color .2s;
     }
-    .hdr-cta:hover { transform: scale(1.05); box-shadow: 0 4px 16px rgba(255,138,0,.4); background: #E07800; }
+    .hdr-phone:hover { color: var(--green-btn); }
+    .hdr-phone svg { width: 15px; height: 15px; }
+
+    /* Meme systeme typographique que les liens. */
+    .hdr-cta {
+      background: var(--green-btn); color: #FFFBF4;
+      font-family: 'Nunito Sans', system-ui, sans-serif;
+      font-size: 12px; font-weight: 800; line-height: 1.6; letter-spacing: .12em; text-transform: uppercase;
+      padding: 10px 20px; border-radius: 999px; white-space: nowrap;
+      transition: transform .25s, box-shadow .25s, background .25s;
+    }
+    .hdr-cta:hover { background: var(--green-deep); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(63,112,0,.28); }
+
+    /* Selecteur de langue. Ce CSS vivait dans un <style> inline a l'interieur
+       du <header> ; il est remonte ici car la nav mobile s'en sert aussi.
+       Sans lui les drapeaux SVG prennent leur taille par defaut et le header
+       passe de 100 a 154px. */
+    .lang-switch {
+      display: inline-flex; align-items: center; border: 1.5px solid var(--green-btn);
+      border-radius: 999px; overflow: hidden; line-height: 1;
+    }
+    .lang-switch a {
+      display: inline-flex; align-items: center; gap: .3rem; padding: .34rem .55rem;
+      font-family: 'Nunito Sans', system-ui, sans-serif;
+      font-size: 11px; font-weight: 800; letter-spacing: .1em;
+      color: var(--green-btn); text-decoration: none; transition: background .2s;
+    }
+    .lang-switch a.active { background: var(--green-btn); color: #fff; pointer-events: none; }
+    .lang-switch a:not(.active):hover { background: var(--green-pastel); }
+    .lang-switch svg { width: 15px; height: 10px; border-radius: 1px; display: block; }
+    @media (max-width: 860px) { .lang-switch svg { width: 14px; height: 10px; } }
 
     /* Hamburger */
     .burger { display: none; flex-direction: column; gap: 5px; padding: 6px; z-index: 210; }
@@ -260,10 +309,14 @@
       .burger { display: flex; }
     }
 
+    @media (prefers-reduced-motion: reduce) {
+      .doodle { animation: none !important; }
+    }
+
     /* ===== STICKY MOBILE CTA ===== */
     .sticky-cta {
       display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 190;
-      padding: .75rem 1rem; background: rgba(255,248,225,.95);
+      padding: .75rem 1rem; background: rgba(253,244,231,.95);
       backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
       box-shadow: 0 -2px 20px rgba(0,0,0,.08);
     }
@@ -278,95 +331,140 @@
     @media (max-width: 860px) { .sticky-cta { display: block; } }
 
     /* ===== HERO ===== */
+    /* padding-top = hauteur exacte du header, qui est `fixed` : sans ca le
+       texte se centrerait dans tout le viewport et passerait dessous. */
     .hero {
-      position: relative; width: 100%; height: 60vh; min-height: 420px;
-      display: flex; align-items: stretch;
-      overflow: hidden;
-      margin-top: 64px;
+      position: relative; min-height: 100vh; overflow: hidden;
+      display: flex; align-items: center; background: var(--cream);
+      padding-top: calc(var(--logo-h) + var(--hdr-pad) * 2);
     }
-    .hero-img {
-      position: absolute; inset: 0; z-index: 0;
+    /* Formes de fond. Le grand cercle suit la HAUTEUR de fenetre, les autres
+       la LARGEUR — releve sur 8 tailles d'ecran de la reference. */
+    .blob { position: absolute; pointer-events: none; }
+    .b1 { width: 46vw; height: 46vw; left: -180px; top: -140px; background: var(--green-pastel);
+          border-radius: 58% 42% 47% 53% / 45% 51% 49% 55%; }
+    .b2 { width: 100vh; height: 100vh; left: 54%; top: 0; background: var(--honey); opacity: .5; border-radius: 50%; }
+
+    /* Doodles : ils grandissent avec la largeur puis plafonnent, d'ou les min(). */
+    .doodle { position: absolute; z-index: 0; pointer-events: none; will-change: transform; }
+    .d-tomate { left: 51vw; top: 21vh; width: min(5vw,84px); height: min(5vw,84px);
+                --tilt: 0deg; animation: deriveA 49s ease-in-out infinite; }
+    .d-tomate .boule { position: absolute; inset: 0; border-radius: 50%; background: var(--tomato); }
+    .d-tomate .feuille { position: absolute; width: 52%; height: 52%; top: -16%;
+                         background: var(--green-deep); border-radius: 0 68%; }
+    .d-tomate .feuille-a { left: 6%; transform: rotate(-30deg); }
+    .d-tomate .feuille-b { left: 42%; transform: rotate(30deg) scaleX(-1); }
+    .d-feuille { right: min(5.35vw,81px); top: 15.2vh; width: min(5.07vw,83px); height: min(5.07vw,83px);
+                 border-radius: 0 68%; background: var(--green-deep);
+                 --tilt: 18deg; animation: deriveB 60s ease-in-out infinite; animation-delay: -15.5s; }
+    .d-sombre { right: min(8.89vw,150px); top: 79vh; width: min(2.43vw,40px); height: min(2.43vw,40px);
+                border-radius: 50%; background: var(--brown);
+                --tilt: 0deg; animation: deriveC 54.5s ease-in-out infinite; animation-delay: -28s; }
+    .d-anneau { left: 53.7vw; top: 83vh; width: min(3.4vw,49px); height: min(3.4vw,49px);
+                border-radius: 50%; border: 6px solid var(--yellow-rich); background: transparent;
+                --tilt: 0deg; animation: deriveA 49s ease-in-out infinite; animation-delay: -22s; }
+
+    /* --tilt conserve l'inclinaison propre de chaque forme pendant la derive. */
+    @keyframes deriveA {
+      0%,100% { transform: translate(0,0) rotate(var(--tilt)); }
+      25% { transform: translate(31px,-26px) rotate(calc(var(--tilt) + 9deg)); }
+      50% { transform: translate(-23px,29px) rotate(calc(var(--tilt) - 8deg)); }
+      75% { transform: translate(26px,18px) rotate(calc(var(--tilt) + 5deg)); }
     }
-    .hero-img img {
-      width: 100%; height: 100%; object-fit: cover;
+    @keyframes deriveB {
+      0%,100% { transform: translate(0,0) rotate(var(--tilt)); }
+      30% { transform: translate(-29px,23px) rotate(calc(var(--tilt) - 10deg)); }
+      60% { transform: translate(21px,33px) rotate(calc(var(--tilt) + 8deg)); }
+      80% { transform: translate(27px,-21px) rotate(calc(var(--tilt) - 5deg)); }
     }
-    /* Light overlay only at bottom for text legibility */
-    .hero-img::after {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(
-        to top,
-        rgba(0,0,0,.42) 0%,
-        rgba(0,0,0,.18) 30%,
-        rgba(0,0,0,0) 55%
-      );
+    @keyframes deriveC {
+      0%,100% { transform: translate(0,0) rotate(var(--tilt)); }
+      35% { transform: translate(23px,31px) rotate(calc(var(--tilt) + 12deg)); }
+      65% { transform: translate(-31px,-20px) rotate(calc(var(--tilt) - 9deg)); }
     }
 
-    .hero-content {
-      position: relative; z-index: 2;
-      display: flex; flex-direction: column;
-      padding: clamp(5rem,9vw,7.5rem) clamp(1.25rem,4vw,2.5rem) clamp(2.5rem,5vw,4rem);
-      max-width: var(--max-w); margin: 0 auto; width: 100%;
-      text-shadow: 0 2px 12px rgba(0,0,0,.45), 0 1px 3px rgba(0,0,0,.6);
+    .hero-grille {
+      position: relative; z-index: 1; width: 100%; max-width: 1920px; margin: 0 auto;
+      padding: 0 var(--gouttiere);
+      display: grid; grid-template-columns: 1fr auto; align-items: center; gap: clamp(1.5rem,4vw,3.5rem);
     }
-    .hero-content > * { align-self: flex-start; }
-    .hero-content .hero-ctas { margin-top: auto; }
+    .hero-txt { min-width: 0; }
+    /* Le sujet n'est pas cale sur la gouttiere : bord droit a 36px du bord de
+       fenetre, centre 22px sous le centre vertical — les deux decalages releves. */
+    .hero-art { margin-right: calc(36px - var(--gouttiere)); transform: translateY(22px); }
+    .hero-art img { display: block; width: clamp(240px, 43.5vw, 760px); height: auto; will-change: transform; }
 
-    .hero-badge {
+    /* Le VRAI H1 : texte inchange au mot pres, rendu petit et place en premier.
+       Google lit la balise, pas le corps de la police : valeur SEO identique. */
+    .hero .sous-h1 {
+      font: 800 13px/1.5 'Nunito Sans', system-ui, sans-serif;
+      letter-spacing: .16em; text-transform: uppercase; color: var(--green-btn); margin: 0 0 1.6vh;
+    }
+    /* Taille FLUIDE sur la hauteur de fenetre, comme la reference. */
+    .accroche {
+      font-family: 'Archivo', system-ui, sans-serif; font-weight: 900;
+      font-size: min(13.3vh, 10.4vw); line-height: .88; letter-spacing: -.015em;
+      text-transform: uppercase; color: var(--green-deep); margin: 0 0 1.8vh;
+    }
+    .accroche span { display: block; }
+    .accroche em { font-style: normal; color: var(--green-btn); }
+    .accroche .flourish {
+      font-family: 'Yellowtail', 'Brush Script MT', cursive; font-weight: 400; font-style: normal;
+      font-size: 1em; line-height: .7; text-transform: none; color: var(--yellow-rich);
+      margin-left: .12em; display: inline-block;
+    }
+    .hero .sous {
+      margin: 0; max-width: 44ch; color: var(--brown);
+      font-family: 'Nunito Sans', system-ui, sans-serif; font-size: 17px; line-height: 1.55;
+    }
+
+    /* Boutons : 15px/800/majuscules, interlettrage 1,8px, padding 17/34,
+       rayon 999px. La bordure transparente de 2px sur le bouton plein garantit
+       que les deux aient exactement la meme hauteur. */
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 1rem; margin: 2.4vh 0 2.6vh; }
+    .hbtn {
+      font-family: 'Nunito Sans', system-ui, sans-serif;
+      /* inline-flex + gap : certains de ces boutons portent une fleche en SVG,
+         qui doit s'aligner sur la ligne de base du texte. */
       display: inline-flex; align-items: center; gap: .5rem;
-      background: rgba(255,248,225,.15); border: 1px solid rgba(255,248,225,.25);
-      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-      padding: .4rem 1rem; border-radius: 50px; margin-bottom: 1.2rem;
+      /* line-height explicite : le prototype l'heritait d'un body en 16px/1.6.
+         Ici le body est en `normal`, ce qui rendait les boutons 4px plus courts. */
+      font-size: 15px; font-weight: 800; line-height: 1.6; letter-spacing: .12em; text-transform: uppercase;
+      padding: 17px 34px; border-radius: 999px; border: 2px solid transparent; white-space: nowrap;
+      transition: transform .25s, box-shadow .25s, background .25s, color .25s;
     }
-    .hero-badge .stars { color: var(--yellow-rich); font-size: .85rem; letter-spacing: 2px; }
-    .hero-badge span:last-child { color: rgba(255,255,255,.9); font-size: .82rem; font-weight: 600; }
+    .hbtn-plein { background: var(--green-btn); color: #FFFBF4; }
+    .hbtn-plein:hover { background: var(--green-deep); transform: translateY(-2px); box-shadow: 0 10px 24px rgba(63,112,0,.26); }
+    .hbtn-vide { color: var(--green-btn); border-color: var(--green-btn); }
+    .hbtn-vide:hover { background: var(--green-pastel); transform: translateY(-2px); }
+    /* Version reduite pour les boutons du corps de page : le format du hero
+       (15px / 17-34) y serait disproportionne. */
+    .hbtn-sm { font-size: 13px; padding: 13px 26px; }
+    .hbtn-sm svg { width: 15px; height: 15px; }
 
-    .hero h1 {
-      font-family: var(--font-display);
-      font-size: clamp(1.8rem, 4.5vw, 3.6rem);
-      color: #fff;
-      line-height: 1.05;
-      margin-bottom: .6rem;
-      max-width: 600px;
-    }
-    .hero h1 .accent { color: var(--yellow-rich); }
+    .stats { display: flex; flex-wrap: wrap; gap: clamp(1.4rem,3vw,2.8rem); }
+    .stats b { display: block; font-family: 'Archivo', system-ui, sans-serif; font-weight: 900;
+               font-size: min(4.6vh, 3.4vw); line-height: 1; color: var(--green-btn); }
+    /* #7A6155 et non le gris de la reference : celui-ci tombe a 2,41:1 sur le
+       creme, inutilisable a 12px. Ici on est a 5,25:1, conforme AA. */
+    .stats span { display: block; margin-top: .4rem; font: 800 12px/1.5 'Nunito Sans', system-ui, sans-serif;
+                  letter-spacing: .18em; text-transform: uppercase; color: #7A6155; }
 
-    .hero-sub {
-      font-size: clamp(.95rem, 1.8vw, 1.15rem);
-      color: #fff;
-      font-weight: 600;
-      margin-bottom: 1.8rem;
-      max-width: 500px;
-      text-shadow: 0 2px 10px rgba(0,0,0,.55), 0 1px 3px rgba(0,0,0,.7);
+    @media (max-width: 900px) {
+      /* En mobile le sujet passe EN HAUT, comme sur la reference — mais plus
+         resserre : chez eux 36px sous le header et 20px avant le texte, ici 18
+         et 14, pour qu'une partie du texte soit visible sans scroller.
+         `flex-start` au lieu de `center` : le contenu se cale sous le header
+         au lieu de se centrer dans les 100vh et de pousser le texte trop bas. */
+      /* `min-height: auto` : en mobile le hero se dimensionne sur son contenu.
+         Avec 100vh, un telephone haut (412x1232) forçait la section a 1232px
+         pour 1019px de contenu, soit 213px de vide en bas. */
+      .hero { align-items: flex-start; min-height: auto; padding-bottom: 2rem; }
+      .hero-grille { grid-template-columns: 1fr; gap: 14px; }
+      .hero-art { order: -1; margin-right: 0; transform: none; justify-self: center; padding-top: 18px; }
+      .hero-art img { width: min(78vw, 420px); }
+      .doodle { display: none; }
     }
-
-    .hero-ctas { display: flex; gap: .8rem; flex-wrap: wrap; margin-bottom: 2rem; }
-    .btn {
-      display: inline-flex; align-items: center; gap: .4rem;
-      font-weight: 800; font-size: .9rem; padding: .8rem 1.6rem;
-      border-radius: 50px; letter-spacing: .03em;
-      transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
-    }
-    .btn:hover { transform: translateY(-2px); }
-    .btn-primary {
-      background: #549E11; color: #fff;
-      box-shadow: 0 4px 20px rgba(84,158,17,.4);
-    }
-    .btn-primary:hover { box-shadow: 0 8px 30px rgba(84,158,17,.55); }
-    .btn-outline {
-      background: rgba(255,255,255,.12); color: #fff;
-      border: 2px solid rgba(255,255,255,.35);
-      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
-    }
-    .btn-outline:hover { border-color: var(--yellow-soft); color: var(--yellow-soft); }
-
-    .hero-info {
-      display: flex; gap: 1.5rem; flex-wrap: wrap;
-    }
-    .hero-info-item {
-      display: flex; align-items: center; gap: .4rem;
-      font-size: .82rem; font-weight: 600; color: rgba(255,255,255,.55);
-    }
-    .hero-info-item svg { width: 15px; height: 15px; opacity: .5; flex-shrink: 0; }
 
     /* ===== MARQUEE ===== */
     .marquee {
@@ -837,19 +935,12 @@
     .dish-modal-section[hidden] { display: none !important; }
     @media (max-width: 500px) { .dish-modal-img { height: 200px; } }
 
-    /* ===== TRAITEUR ===== */
-    .trt-lead { max-width: 700px; font-size: .95rem; line-height: 1.8; color: var(--text-mid); margin-bottom: 2.2rem; }
-    .trt-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
-    .trt-card { background: #fff; border-radius: 16px; padding: 1.2rem 1.3rem; box-shadow: 0 4px 16px rgba(26,26,26,.06); }
-    .trt-card h3 { font-family: var(--font-display); font-size: 1.3rem; color: var(--green-deep); margin-bottom: .3rem; font-weight: 400; }
-    .trt-card p { font-size: .85rem; line-height: 1.6; color: var(--text-mid); }
-    .trt-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 1.2rem 2rem; background: rgba(255,255,255,.6); border-radius: 16px; padding: 1.5rem 1.7rem; margin-bottom: 1.8rem; }
-    .trt-info div { font-size: .88rem; line-height: 1.6; color: var(--text-mid); }
-    .trt-info strong { display: block; font-family: var(--font-display); font-weight: 400; font-size: 1.05rem; color: var(--green-deep); margin-bottom: .2rem; }
-    .trt-note { max-width: 700px; font-size: .92rem; line-height: 1.8; color: var(--text-mid); margin-bottom: 2rem; }
-    .trt-cta { display: flex; gap: .8rem 1rem; flex-wrap: wrap; align-items: center; }
-    .trt-cta small { font-size: .8rem; line-height: 1.5; color: var(--text-mid); }
-    @media (max-width: 560px) { .trt-cta .btn { width: 100%; justify-content: center; } }
+    /* ===== TRAITEUR — teaser ===== */
+    .trt-teaser { display: grid; grid-template-columns: 1.1fr 1fr; gap: 2.5rem; align-items: center; }
+    @media (max-width: 800px) { .trt-teaser { grid-template-columns: 1fr; gap: 1.8rem; } }
+    .trt-teaser-txt p { max-width: 520px; font-size: .95rem; line-height: 1.8; color: var(--text-mid); margin-bottom: 1.5rem; }
+    .trt-teaser-imgs { display: grid; grid-template-columns: repeat(2, 1fr); gap: .8rem; }
+    .trt-teaser-imgs img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 14px; box-shadow: 0 6px 22px rgba(26,59,6,.1); display: block; }
   </style>
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -865,47 +956,46 @@
   <header class="hdr" id="hdr">
     <div class="hdr-inner">
       <a href="/" class="logo" aria-label="Sezam&Co — Accueil">
-        <img src="assets/images/logo-sezamco.webp" alt="Sezam&Co" width="140" height="48">
+        <img src="assets/images/logo-sezam-header.webp" alt="Sezam&Co" width="276" height="192">
       </a>
-      <nav class="hdr-nav" aria-label="Navigation principale">
-        <a href="/">Home</a>
-        <a href="/menu">Menu</a>
-        <a href="/faq">FAQ</a>
-        <a href="/adresse">Adresse</a>
-        <div class="dropdown" id="dropdown">
-          <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">
-            Explorer
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="dropdown-menu">
-            <a href="/manouche">Man'ouche à Lyon</a>
-            <a href="/shawarma-lyon">Shawarma à Lyon</a>
-            <a href="/falafel-lyon">Falafel à Lyon</a>
-            <a href="/mezze-lyon">Mezze à Lyon</a>
-          <a href="/vegetarien-vegan-lyon">Végétarien &amp; Vegan</a>
-            <a href="/livraison-libanais-lyon">Livraison</a>
-            <a href="/notre-histoire">Histoire</a>
-            <a href="/mission">Mission</a>
+
+      <div class="hdr-droite">
+        <nav class="hdr-nav" aria-label="Navigation principale">
+          <a href="/menu">Menu</a>
+          <a href="/faq">FAQ</a>
+          <a href="/adresse">Adresse</a>
+          <div class="dropdown" id="dropdown">
+            <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+              Explorer
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="dropdown-menu">
+              <a href="/manouche">Man'ouche à Lyon</a>
+              <a href="/shawarma-lyon">Shawarma à Lyon</a>
+              <a href="/falafel-lyon">Falafel à Lyon</a>
+              <a href="/mezze-lyon">Mezze à Lyon</a>
+              <a href="/vegetarien-vegan-lyon">Végétarien &amp; Vegan</a>
+              <a href="/livraison-libanais-lyon">Livraison</a>
+              <a href="/notre-histoire">Histoire</a>
+              <a href="/mission">Mission</a>
+            </div>
           </div>
+          <a href="/traiteur-libanais-lyon">Traiteur</a>
+        </nav>
+
+        <div class="lang-switch" role="group" aria-label="Sélecteur de langue">
+          <a href="/" class="active" aria-current="true" aria-label="Version française"><svg viewBox="0 0 60 40" aria-hidden="true"><rect width="20" height="40" fill="#002654"/><rect x="20" width="20" height="40" fill="#fff"/><rect x="40" width="20" height="40" fill="#CE1126"/></svg>FR</a>
+          <a href="/en/" aria-label="English version"><svg viewBox="0 0 60 40" aria-hidden="true"><clipPath id="ukclipFR"><rect width="60" height="40"/></clipPath><g clip-path="url(#ukclipFR)"><rect width="60" height="40" fill="#012169"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#fff" stroke-width="8"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#C8102E" stroke-width="4"/><path d="M30,0 V40 M0,20 H60" stroke="#fff" stroke-width="12"/><path d="M30,0 V40 M0,20 H60" stroke="#C8102E" stroke-width="6"/></g></svg>EN</a>
         </div>
-      </nav>
-      <style>
-        .lang-switch{display:inline-flex;align-items:center;border:1.5px solid var(--green-deep);border-radius:999px;overflow:hidden;font-size:.75rem;font-weight:800;line-height:1}
-        .lang-switch a{padding:.35rem .55rem;color:var(--green-deep);text-decoration:none;display:inline-flex;align-items:center;gap:.3rem;transition:background .2s}
-        .lang-switch a.active{background:var(--green-deep);color:#fff;pointer-events:none}
-        .lang-switch a:not(.active):hover{background:var(--green-pastel)}
-        .lang-switch svg{width:16px;height:11px;border-radius:1px;display:block}
-        @media(max-width:860px){.lang-switch{font-size:.7rem}.lang-switch svg{width:14px;height:10px}}
-      </style>
-      <div class="lang-switch" role="group" aria-label="Sélecteur de langue">
-        <a href="/" class="active" aria-current="true" aria-label="Version française"><svg viewBox="0 0 60 40" aria-hidden="true"><rect width="20" height="40" fill="#002654"/><rect x="20" width="20" height="40" fill="#fff"/><rect x="40" width="20" height="40" fill="#CE1126"/></svg>FR</a>
-        <a href="/en/" aria-label="English version"><svg viewBox="0 0 60 40" aria-hidden="true"><clipPath id="ukclipFR"><rect width="60" height="40"/></clipPath><g clip-path="url(#ukclipFR)"><rect width="60" height="40" fill="#012169"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#fff" stroke-width="8"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#C8102E" stroke-width="4"/><path d="M30,0 V40 M0,20 H60" stroke="#fff" stroke-width="12"/><path d="M30,0 V40 M0,20 H60" stroke="#C8102E" stroke-width="6"/></g></svg>EN</a>
+
+        <a href="tel:+33478954316" class="hdr-phone" aria-label="Appeler le restaurant">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          04 78 95 43 16
+        </a>
+
+        <a href="https://commandes.sezamandco.com" class="hdr-cta">Commander</a>
       </div>
-      <a href="tel:+33478954316" class="hdr-phone" aria-label="Appeler le restaurant">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        04 78 95 43 16
-      </a>
-      <a href="https://commandes.sezamandco.com" class="hdr-cta">Commander</a>
+
       <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -914,7 +1004,6 @@
 
   <!-- MOBILE NAV -->
   <nav class="mob-nav" id="mob-nav" aria-label="Navigation mobile">
-    <a href="/">Home</a>
     <a href="/menu">Menu</a>
     <a href="/faq">FAQ</a>
     <a href="/adresse">Adresse</a>
@@ -933,6 +1022,7 @@
       <a href="/" class="active"><svg viewBox="0 0 60 40" aria-hidden="true"><rect width="20" height="40" fill="#002654"/><rect x="20" width="20" height="40" fill="#fff"/><rect x="40" width="20" height="40" fill="#CE1126"/></svg>FR</a>
       <a href="/en/"><svg viewBox="0 0 60 40" aria-hidden="true"><clipPath id="ukclipFRm"><rect width="60" height="40"/></clipPath><g clip-path="url(#ukclipFRm)"><rect width="60" height="40" fill="#012169"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#fff" stroke-width="8"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#C8102E" stroke-width="4"/><path d="M30,0 V40 M0,20 H60" stroke="#fff" stroke-width="12"/><path d="M30,0 V40 M0,20 H60" stroke="#C8102E" stroke-width="6"/></g></svg>EN</a>
     </div>
+    <a href="/traiteur-libanais-lyon">Traiteur</a>
     <a href="tel:+33478954316" style="font-family:var(--font-body);font-size:1rem;color:var(--text-mid);">04 78 95 43 16</a>
     <a href="https://commandes.sezamandco.com" class="mob-cta">Commander</a>
   </nav>
@@ -941,53 +1031,42 @@
 
   <!-- HERO -->
   <section class="hero" id="hero">
-    <div class="hero-img">
-      <img src="assets/images/hero-spread-800.webp" srcset="assets/images/hero-spread-800.webp 800w, assets/images/hero-spread-1920.webp 1920w" sizes="100vw" alt="Spread de street food libanaise — man'ouche, shawarma, fattouch, hummus" width="1920" height="1280" fetchpriority="high">
-    </div>
-    <div class="hero-content">
-      <h1 class="rv">Restaurant Libanais <span class="accent">Lyon 2</span> | Sézam&Co</h1>
-      <div class="hero-badge rv rv-d1">
-        <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-        <span>4.8/5 sur Google</span>
-      </div>
-      <p class="hero-sub rv rv-d2">Man'ouches, shawarma & mezzes — faits maison chaque jour.</p>
-      <div class="hero-ctas rv rv-d3">
-        <a href="https://commandes.sezamandco.com" class="btn btn-primary">Commander en ligne</a>
-        <a href="/menu" class="btn btn-outline">Découvrir le menu</a>
-      </div>
-      <div class="hero-info rv rv-d4">
-        <div class="hero-info-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          6 rue Petit David, Lyon 2
-        </div>
-        <div class="hero-info-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          7j/7 — 12h à 23h
-        </div>
-        <div class="hero-info-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 10V5a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v5"/><path d="M3 10h18v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-9z"/><line x1="12" y1="14" x2="12" y2="18"/></svg>
-          Terrasse ouverte
-        </div>
-      </div>
-    </div>
-  </section>
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
 
-  <!-- SEO INTRO -->
-  <section class="section-intro-seo" style="background:var(--cream);padding:2.5rem 0 1.5rem;text-align:center;position:relative;overflow:hidden;">
-    <span class="float-emoji float-1" aria-hidden="true"><svg viewBox="0 0 30 20" width="36" height="24" xmlns="http://www.w3.org/2000/svg"><rect width="30" height="5" y="0" fill="#ED1C24"/><rect width="30" height="10" y="5" fill="#fff"/><rect width="30" height="5" y="15" fill="#ED1C24"/><g transform="translate(15,10) scale(.45)"><path d="M0,-7 L-2,-3 L-5,-2 L-3,0 L-6,2 L-3,3 L-2,6 L0,4 L2,6 L3,3 L6,2 L3,0 L5,-2 L2,-3 Z" fill="#007A3D"/><rect x="-1" y="3" width="2" height="4" fill="#007A3D"/></g></svg></span>
-    <span class="float-emoji float-2" aria-hidden="true">🍗</span>
-    <span class="float-emoji float-3" aria-hidden="true">🫓</span>
-    <span class="float-emoji float-4" aria-hidden="true">🍅</span>
-    <span class="float-emoji float-5" aria-hidden="true">🥒</span>
-    <span class="float-emoji float-6" aria-hidden="true">🌯</span>
-    <span class="float-emoji float-7" aria-hidden="true">🥬</span>
-    <span class="float-emoji float-8" aria-hidden="true">🧆</span>
-    <div class="container" style="position:relative;z-index:1;">
-      <div class="rv depuis-lyon-box" style="position:relative;max-width:720px;margin:0 auto;padding:1.6rem 2rem;border:none;border-radius:16px;background-color:var(--cream);background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Crect x='1.5' y='1.5' width='99%25' height='99%25' rx='16' ry='16' fill='none' stroke='%232D6A0F' stroke-width='3' stroke-dasharray='14 10'/%3E%3C/svg%3E&quot;);background-size:100% 100%;">
-        <span style="display:inline-block;font-family:var(--font-display);font-size:1.15rem;color:var(--coral);margin-bottom:.6rem;">Depuis Lyon 2</span>
-        <p style="font-size:.95rem;line-height:1.8;color:var(--text-mid);">
-          Bienvenue chez Sézam&amp;Co, votre restaurant libanais au cœur de Lyon 2, entre Bellecour et Cordeliers. Ici, on cuisine comme dans les rues de Beyrouth&nbsp;: man'ouches pétris et cuits minute, mezzes préparés maison chaque jour. Sur place, à emporter ou en livraison.
-        </p>
+    <div class="doodle d-tomate" aria-hidden="true">
+      <span class="feuille feuille-a"></span>
+      <span class="feuille feuille-b"></span>
+      <span class="boule"></span>
+    </div>
+    <div class="doodle d-feuille" aria-hidden="true"></div>
+    <div class="doodle d-sombre" aria-hidden="true"></div>
+    <div class="doodle d-anneau" aria-hidden="true"></div>
+
+    <div class="hero-grille">
+      <div class="hero-txt">
+        <h1 class="sous-h1">Restaurant Libanais Lyon 2 | Sézam&amp;Co</h1>
+        <p class="accroche"><span>Cuit</span><span>minute,</span><span>jamais</span><span><em>avant</em> <i class="flourish">hot</i></span></p>
+        <p class="sous">Man'ouches, falafels, shawarmas et mezzes — pétris et cuits minute, 7j/7 de 12h à 23h.</p>
+
+        <div class="hero-ctas">
+          <a href="https://commandes.sezamandco.com" class="hbtn hbtn-plein">Commander en ligne</a>
+          <a href="/menu" class="hbtn hbtn-vide">Découvrir le menu</a>
+        </div>
+
+        <div class="stats">
+          <div><b>7/7</b><span>Ouvert</span></div>
+          <div><b>12&#8239;–&#8239;23h</b><span>Midi et soir</span></div>
+          <div><b>Lyon 2</b><span>Bellecour · Cordeliers</span></div>
+        </div>
+      </div>
+
+      <div class="hero-art">
+        <img id="manouche" src="assets/images/manouche-hero-750.webp"
+             srcset="assets/images/manouche-hero-480.webp 480w, assets/images/manouche-hero-750.webp 750w"
+             sizes="(max-width: 900px) 78vw, 43.5vw"
+             width="750" height="750" fetchpriority="high"
+             alt="Man'ouche moitié zaatar, moitié fromage, vue de dessus">
       </div>
     </div>
   </section>
@@ -1028,6 +1107,26 @@
     </div>
   </div>
 
+  <!-- SEO INTRO -->
+  <section class="section-intro-seo" style="background:var(--cream);padding:2.5rem 0 1.5rem;text-align:center;position:relative;overflow:hidden;">
+    <span class="float-emoji float-1" aria-hidden="true"><svg viewBox="0 0 30 20" width="36" height="24" xmlns="http://www.w3.org/2000/svg"><rect width="30" height="5" y="0" fill="#ED1C24"/><rect width="30" height="10" y="5" fill="#fff"/><rect width="30" height="5" y="15" fill="#ED1C24"/><g transform="translate(15,10) scale(.45)"><path d="M0,-7 L-2,-3 L-5,-2 L-3,0 L-6,2 L-3,3 L-2,6 L0,4 L2,6 L3,3 L6,2 L3,0 L5,-2 L2,-3 Z" fill="#007A3D"/><rect x="-1" y="3" width="2" height="4" fill="#007A3D"/></g></svg></span>
+    <span class="float-emoji float-2" aria-hidden="true">🍗</span>
+    <span class="float-emoji float-3" aria-hidden="true">🫓</span>
+    <span class="float-emoji float-4" aria-hidden="true">🍅</span>
+    <span class="float-emoji float-5" aria-hidden="true">🥒</span>
+    <span class="float-emoji float-6" aria-hidden="true">🌯</span>
+    <span class="float-emoji float-7" aria-hidden="true">🥬</span>
+    <span class="float-emoji float-8" aria-hidden="true">🧆</span>
+    <div class="container" style="position:relative;z-index:1;">
+      <div class="rv depuis-lyon-box" style="position:relative;max-width:720px;margin:0 auto;padding:1.6rem 2rem;border:none;border-radius:16px;background-color:var(--cream);background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Crect x='1.5' y='1.5' width='99%25' height='99%25' rx='16' ry='16' fill='none' stroke='%232D6A0F' stroke-width='3' stroke-dasharray='14 10'/%3E%3C/svg%3E&quot;);background-size:100% 100%;">
+        <span style="display:inline-block;font-family:var(--font-display);font-size:1.15rem;color:var(--coral);margin-bottom:.6rem;">Depuis Lyon 2</span>
+        <p style="font-size:.95rem;line-height:1.8;color:var(--text-mid);">
+          Bienvenue chez Sézam&amp;Co, votre restaurant libanais au cœur de Lyon 2, entre Bellecour et Cordeliers. Ici, on cuisine comme dans les rues de Beyrouth&nbsp;: man'ouches pétris et cuits minute, mezzes préparés maison chaque jour. Sur place, à emporter ou en livraison.
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- RESTAURANT LIBANAIS LYON -->
   <section class="section section-green" id="about">
     <div class="container">
@@ -1048,7 +1147,7 @@
         <div class="about-card">
           <span class="about-icon">🤝</span>
           <h3 class="about-card-title">Street Food Généreuse</h3>
-          <p>Formules dès 10,90&nbsp;€, portions généreuses, <a href="/restaurant-halal-lyon" style="color:var(--coral);font-weight:700;">100% halal</a>. Que vous veniez du Vieux Lyon ou de Cordeliers, ce restaurant libanais est votre cantine de quartier.</p>
+          <p>Formules dès 11,10&nbsp;€, portions généreuses, <a href="/restaurant-halal-lyon" style="color:var(--coral);font-weight:700;">100% halal</a>. Que vous veniez du Vieux Lyon ou de Cordeliers, ce restaurant libanais est votre cantine de quartier.</p>
         </div>
       </div>
     </div>
@@ -1063,7 +1162,7 @@
         <div class="bs-card rv">
           <div class="bs-card-img"><img src="assets/images/shawarma-poulet-lyon.webp?v=2" alt="Shawarma Poulet" loading="lazy" width="600" height="375"></div>
           <div class="bs-card-body">
-            <div class="bs-card-top"><span class="bs-card-name">Shawarma Poulet</span><span class="bs-card-price">9,20&nbsp;€</span></div>
+            <div class="bs-card-top"><span class="bs-card-name">Shawarma Poulet</span><span class="bs-card-price">9,30&nbsp;€</span></div>
             <p class="bs-card-desc">Poulet mariné, grillé au four, sauce ail, sumac</p>
           </div>
         </div>
@@ -1094,7 +1193,7 @@
         <div class="bs-card rv rv-d3">
           <div class="bs-card-img"><img src="assets/images/cheesy-kafta-sezam-co-lyon.webp" alt="Cheesy Kafta" loading="lazy" width="400" height="300"></div>
           <div class="bs-card-body">
-            <div class="bs-card-top"><span class="bs-card-name">Cheesy Kafta</span><span class="bs-card-price">9,50&nbsp;€</span></div>
+            <div class="bs-card-top"><span class="bs-card-name">Cheesy Kafta</span><span class="bs-card-price">9,60&nbsp;€</span></div>
             <p class="bs-card-desc">Bœuf, 3 fromages, épices orientales</p>
           </div>
         </div>
@@ -1145,15 +1244,15 @@
           <div class="tou-col-body">
             <div class="tou-item">
               <span class="tou-item-name">Zaatar</span>
-              <div class="tou-item-right"><span class="tou-item-price">5,50&nbsp;€</span><span class="tou-item-formule">Formule 10,90&nbsp;€</span></div>
+              <div class="tou-item-right"><span class="tou-item-price">5,50&nbsp;€</span><span class="tou-item-formule">Formule 11,10&nbsp;€</span></div>
             </div>
             <div class="tou-item">
               <span class="tou-item-name">Jebne</span>
-              <div class="tou-item-right"><span class="tou-item-price">7,00&nbsp;€</span><span class="tou-item-formule">Formule 12,40&nbsp;€</span></div>
+              <div class="tou-item-right"><span class="tou-item-price">6,90&nbsp;€</span><span class="tou-item-formule">Formule 12,50&nbsp;€</span></div>
             </div>
             <div class="tou-item">
               <span class="tou-item-name">Lahmajine</span>
-              <div class="tou-item-right"><span class="tou-item-price">8,00&nbsp;€</span><span class="tou-item-formule">Formule 13,40&nbsp;€</span></div>
+              <div class="tou-item-right"><span class="tou-item-price">7,90&nbsp;€</span><span class="tou-item-formule">Formule 13,50&nbsp;€</span></div>
             </div>
           </div>
         </div>
@@ -1165,15 +1264,15 @@
           <div class="tou-col-body">
             <div class="tou-item">
               <span class="tou-item-name">Shawarma</span>
-              <div class="tou-item-right"><span class="tou-item-price">9,20&nbsp;€</span><span class="tou-item-formule">Formule 14,60&nbsp;€</span></div>
+              <div class="tou-item-right"><span class="tou-item-price">9,30&nbsp;€</span><span class="tou-item-formule">Formule 14,90&nbsp;€</span></div>
             </div>
             <div class="tou-item">
               <span class="tou-item-name">Falafel Wrap <span class="badge-veggie">Veggie</span></span>
-              <div class="tou-item-right"><span class="tou-item-price">8,90&nbsp;€</span><span class="tou-item-formule">Formule 14,30&nbsp;€</span></div>
+              <div class="tou-item-right"><span class="tou-item-price">8,90&nbsp;€</span><span class="tou-item-formule">Formule 14,50&nbsp;€</span></div>
             </div>
             <div class="tou-item">
               <span class="tou-item-name">Cheesy Kafta</span>
-              <div class="tou-item-right"><span class="tou-item-price">9,50&nbsp;€</span><span class="tou-item-formule">Formule 14,90&nbsp;€</span></div>
+              <div class="tou-item-right"><span class="tou-item-price">9,60&nbsp;€</span><span class="tou-item-formule">Formule 15,20&nbsp;€</span></div>
             </div>
           </div>
         </div>
@@ -1189,10 +1288,10 @@
           <span class="formule-tag">La Formule Sezam</span>
           <div>
             <span class="formule-from">dès</span>
-            <div class="formule-price">10,90&nbsp;€</div>
+            <div class="formule-price">11,10&nbsp;€</div>
           </div>
           <p class="formule-desc">Man'ouche + Boisson + Dessert du jour.<br>7j/7, midi et soir.</p>
-          <a href="https://commandes.sezamandco.com" class="btn btn-dark">Commander ma formule <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+          <a href="https://commandes.sezamandco.com" class="hbtn hbtn-vide hbtn-sm">Commander ma formule <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
         </div>
         <div class="formule-img-wrap">
           <img src="assets/images/formule-sezam-co-lyon.webp" alt="Formule Sezam&Co — man'ouche, boisson et dessert" loading="lazy" width="500" height="400">
@@ -1241,45 +1340,18 @@
   <section class="section section-yellow" id="traiteur">
     <div class="container">
       <h2 class="section-title rv">Traiteur Libanais à Lyon</h2>
-      <p class="section-sub rv rv-d1">Man'ouches à pré-commander, de 5 à 50, à retirer au restaurant</p>
-      <p class="trt-lead rv rv-d1">
-        Un anniversaire, une réunion au bureau, un brunch entre amis&nbsp;? On prépare vos man'ouches traditionnelles à l'avance — de 5 à 50 — et vous passez les récupérer au 6&nbsp;rue Petit David, à Lyon&nbsp;2. Pas de livraison, pas de service chez vous&nbsp;: vous commandez, on prépare, vous récupérez à l'heure convenue.
-      </p>
-
-      <div class="trt-grid rv rv-d2">
-        <div class="trt-card">
-          <h3>Zaatar</h3>
-          <p>Mélange savoureux de thym, graines de sésame, sumac, huile d'olive.</p>
+      <p class="section-sub rv rv-d1">De 10 à 100 man'ouches, prix affiché en direct</p>
+      <div class="trt-teaser rv rv-d1">
+        <div class="trt-teaser-txt">
+          <p>Une réunion au bureau, un anniversaire, un brunch entre amis&nbsp;? On prépare vos man'ouches traditionnelles à l'avance — Zaatar, Zaatar Duo, Jebne, Lahmajine, Sojok Jebne — à retirer au restaurant ou livrées aux alentours de Lyon. Composez votre commande et le prix s'affiche tout de suite, avec une remise qui grimpe jusqu'à &minus;25&nbsp;%.</p>
+          <a href="/traiteur-libanais-lyon" class="hbtn hbtn-vide hbtn-sm">Découvrir l'offre traiteur <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
         </div>
-        <div class="trt-card">
-          <h3>Zaatar Duo</h3>
-          <p>D'un côté zaatar, sésame, sumac et huile&nbsp;; de l'autre l'Akkawi, fromage filant.</p>
+        <div class="trt-teaser-imgs">
+          <img src="assets/images/manouche/zaatar.webp?v=2507" alt="Man'ouche zaatar" loading="lazy" width="300" height="225">
+          <img src="assets/images/manouche/zaatar-duo.webp?v=2507" alt="Man'ouche zaatar duo" loading="lazy" width="300" height="225">
+          <img src="assets/images/manouche/jebne.webp" alt="Man'ouche jebne" loading="lazy" width="300" height="225">
+          <img src="assets/images/manouche/lahmajine.webp" alt="Lahmajine" loading="lazy" width="300" height="225">
         </div>
-        <div class="trt-card">
-          <h3>Jebne</h3>
-          <p>Man'ouche aux fromages fondants.</p>
-        </div>
-        <div class="trt-card">
-          <h3>Lahmajine</h3>
-          <p>Viande de bœuf hachée, épices, oignons, tomate, poivrons, mélasse de grenade.</p>
-        </div>
-      </div>
-
-      <div class="trt-info rv">
-        <div><strong>De 5 à 50 man'ouches</strong>À choisir parmi les quatre man'ouches traditionnelles ci-dessus.</div>
-        <div><strong>Jusqu'à 20 : 24 h à l'avance</strong>Passez commande la veille pour être tranquille.</div>
-        <div><strong>Au-delà de 20 : 48 h à l'avance</strong>Pour les grosses quantités, prévenez-nous deux jours avant.</div>
-        <div><strong>Retrait au restaurant</strong>6 rue Petit David, Lyon 2. Ouvert 7j/7, de 12h à 23h.</div>
-      </div>
-
-      <p class="trt-note rv">
-        Bonne nouvelle&nbsp;: la man'ouche se mange <strong>froide, tiède ou réchauffée</strong> — quelques secondes au micro-ondes ou sur une plaque suffisent. C'est ce qui la rend idéale à commander en avance et à partager, sans courir après le timing.
-      </p>
-
-      <div class="trt-cta rv">
-        <a href="mailto:modernlebfood@gmail.com?subject=Commande%20traiteur%20man%27ouches" class="btn btn-dark">Commander par email <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
-        <a href="tel:+33478954316" class="btn btn-outline" style="background:transparent;border-color:var(--green-deep);color:var(--green-deep);">04 78 95 43 16</a>
-        <small>On vous rappelle pour confirmer la quantité,<br>l'heure de retrait et le prix.</small>
       </div>
     </div>
   </section>
@@ -1340,8 +1412,8 @@
         </blockquote>
       </div>
       <div class="rv" style="text-align:center;margin-top:2.5rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-        <a href="https://search.google.com/local/writereview?placeid=ChIJK0BCQ-fq9EcRpuS0Y3iHAQo" class="btn btn-primary" target="_blank" rel="noopener">Laisser un avis</a>
-        <a href="https://maps.app.goo.gl/TbX5DtHSZeVs9hYG6" class="btn btn-outline" style="border-color:var(--green-deep);color:var(--green-deep);" target="_blank" rel="noopener">Voir tous les avis</a>
+        <a href="https://search.google.com/local/writereview?placeid=ChIJK0BCQ-fq9EcRpuS0Y3iHAQo" class="hbtn hbtn-plein hbtn-sm" target="_blank" rel="noopener">Laisser un avis</a>
+        <a href="https://maps.app.goo.gl/TbX5DtHSZeVs9hYG6" class="hbtn hbtn-vide hbtn-sm" target="_blank" rel="noopener">Voir tous les avis</a>
       </div>
     </div>
   </section>
@@ -1465,11 +1537,26 @@
       mobExploreMenu.classList.toggle('open');
     });
 
-    /* Sticky header */
+    /* Sticky header + rotation du man'ouche.
+       La reference tourne a 0,03 deg/px ; on est au double, 0,06. L'image ne
+       change jamais de taille : c'est la boite englobante d'un carre en
+       rotation qui donne l'illusion qu'elle grossit.
+       Une seule ecriture de style par frame, sinon le scroll saccade. */
     var hdr = document.getElementById('hdr');
+    var manouche = document.getElementById('manouche');
+    var sobre = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var VITESSE = 0.06, enAttente = false;
+    function peindreHero() {
+      hdr.classList.toggle('stuck', window.scrollY > 24);
+      if (manouche && !sobre) {
+        manouche.style.transform = 'rotate(' + (window.scrollY * VITESSE).toFixed(2) + 'deg)';
+      }
+      enAttente = false;
+    }
     window.addEventListener('scroll', function() {
-      hdr.classList.toggle('stuck', window.scrollY > 50);
+      if (!enAttente) { enAttente = true; requestAnimationFrame(peindreHero); }
     }, { passive: true });
+    peindreHero();
 
     /* Sticky mobile CTA — show after scrolling past hero */
     var stickyCta = document.getElementById('sticky-cta');

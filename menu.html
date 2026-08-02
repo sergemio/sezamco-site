@@ -29,14 +29,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Menu Libanais Lyon 2 | Man'ouches, Shawarma, Mezzes | Sezam&Co</title>
-  <meta name="description" content="Le menu de Sezam&Co, restaurant libanais à Lyon 2. Man'ouches, shawarma, falafels, mezzes maison, desserts. Formule dès 10,90€. 7j/7.">
+  <meta name="description" content="Le menu de Sezam&Co, restaurant libanais à Lyon 2. Man'ouches, shawarma, falafels, mezzes maison, desserts. Formule dès 11,10€. 7j/7.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://sezamandco.com/menu">
   <link rel="alternate" hreflang="fr" href="https://sezamandco.com/menu">
   <link rel="alternate" hreflang="en" href="https://sezamandco.com/en/menu">
   <link rel="alternate" hreflang="x-default" href="https://sezamandco.com/menu">
   <meta property="og:title" content="Menu Libanais Lyon 2 | Sezam&Co">
-  <meta property="og:description" content="Man'ouches cuits minute, shawarma poulet, falafels, mezzes maison et desserts libanais. Formule dès 10,90€. 100% halal. 7j/7.">
+  <meta property="og:description" content="Man'ouches cuits minute, shawarma poulet, falafels, mezzes maison et desserts libanais. Formule dès 11,10€. 100% halal. 7j/7.">
   <meta property="og:type" content="restaurant.menu">
   <meta property="og:url" content="https://sezamandco.com/menu">
   <meta property="og:image" content="https://sezamandco.com/assets/images/hero-spread.webp">
@@ -137,7 +137,7 @@
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --cream: #FFF8E1;
+      --cream: #FDF4E7;
       --green-pastel: #D4EDCF;
       --yellow-soft: #FFF4BD;
       --blue-pastel: #D4E4FF;
@@ -152,6 +152,12 @@
       --font-display: 'Ambery Garden', cursive, sans-serif;
       --font-body: 'Nunito', system-ui, sans-serif;
       --max-w: 1200px;
+      /* --- nouveau header --- */
+      --green-btn: #549E11;
+      --brown: #4A322B;
+      --gouttiere: clamp(1.25rem, 5vw, 72px);
+      --logo-h: clamp(44px, 6.9vh, 62px);
+      --hdr-pad: clamp(12px, 2.1vh, 19px);
       --section-py: clamp(4rem, 8vw, 7rem);
     }
 
@@ -172,72 +178,103 @@
     .rv-d4 { transition-delay: .32s; }
 
     /* ===== HEADER ===== */
+    /* Identique a celui de la page d'accueil, a une difference pres : ici le
+       fond est un beige OPAQUE et non transparent, car ces pages n'ont pas de
+       hero derriere le header. La couleur est ecrite en dur : --cream vaut
+       encore l'ancien #FDF4E7 sur ces pages, le basculement global viendra
+       dans un second temps.
+       Hauteur pilotee par le LOGO : 62 + 2x19 = 100px a 900px de fenetre. */
     .hdr {
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      padding: .7rem 0;
-      background: var(--cream);
-      box-shadow: 0 2px 16px rgba(26,59,6,.06);
-      transition: padding .35s, box-shadow .35s;
+      background: #FDF4E7;
+      padding: var(--hdr-pad) 0; transition: padding .35s ease;
     }
-    .hdr.stuck {
-      padding: .55rem 0;
-      box-shadow: 0 2px 24px rgba(26,59,6,.12);
-    }
-    .hdr-inner { display: flex; align-items: center; justify-content: space-between; max-width: var(--max-w); margin: 0 auto; padding: 0 clamp(1.25rem,4vw,2.5rem); }
-    .hdr .logo img { height: 48px; width: auto; transition: height .3s; }
-    .hdr.stuck .logo img { height: 40px; }
+    .hdr.stuck { padding: calc(var(--hdr-pad) * .7) 0; }
+    .hdr.stuck .logo img { height: calc(var(--logo-h) * .72); }
 
-    .hdr-nav { display: flex; gap: 1.8rem; align-items: center; }
+    .hdr-inner {
+      position: relative; z-index: 1;
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 1920px; margin: 0 auto; padding: 0 var(--gouttiere); gap: 2rem;
+    }
+    .hdr .logo { display: flex; align-items: center; }
+    .hdr .logo img { display: block; height: var(--logo-h); width: auto; transition: height .35s ease; }
+    .hdr-droite { display: flex; align-items: center; gap: 1.6rem; }
+
+    /* Nunito Sans 12px/800, majuscules, interlettrage 0,18em, brun #4A322B. */
+    .hdr-nav { display: flex; align-items: center; gap: 1.7rem; }
     .hdr-nav > a, .hdr-nav .dropdown-toggle {
-      font-size: 1.05rem; font-weight: 700; color: #549E11;
-      letter-spacing: .05em; position: relative; cursor: pointer;
-      font-family: var(--font-display); background: none; border: none; padding: 0;
-      display: inline-flex; align-items: center; gap: .3rem;
+      font-family: 'Nunito Sans', system-ui, sans-serif;
+      font-size: 12px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--brown); background: none; border: 0; padding: 0; cursor: pointer;
+      display: inline-flex; align-items: center; gap: .35rem; position: relative;
+      transition: color .2s;
     }
     .hdr-nav > a::after, .hdr-nav .dropdown-toggle::after {
-      content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 2px;
-      background: #1A3B06; border-radius: 2px;
+      content: ''; position: absolute; bottom: -6px; left: 0; width: 0; height: 2px;
+      background: var(--green-btn); border-radius: 2px;
       transition: width .3s cubic-bezier(.34,1.56,.64,1);
     }
+    .hdr-nav > a:hover, .hdr-nav .dropdown-toggle:hover { color: var(--green-btn); }
     .hdr-nav > a:hover::after, .hdr-nav .dropdown-toggle:hover::after { width: 100%; }
-    .hdr-nav > a.active::after { width: 100%; }
 
-    /* Dropdown */
     .dropdown { position: relative; }
-    .dropdown-toggle svg { width: 12px; height: 12px; transition: transform .3s; }
-    .dropdown.open .dropdown-toggle svg { transform: rotate(180deg); }
+    /* Pont invisible : sans lui le curseur traverse le vide de 14px entre le
+       bouton et le menu, perd le survol, et le menu se referme avant l'arrivee. */
+    .dropdown::before { content: ''; position: absolute; top: 100%; right: 0; min-width: 210px; height: 14px; }
+    .dropdown svg { width: 11px; height: 11px; transition: transform .3s; }
+    .dropdown:hover svg { transform: rotate(180deg); }
     .dropdown-menu {
-      position: absolute; top: calc(100% + 10px); right: 0;
-      background: var(--cream); border: 1px solid rgba(26,59,6,.08);
-      border-radius: 12px; padding: .5rem 0; min-width: 200px;
-      box-shadow: 0 8px 30px rgba(26,59,6,.1);
+      position: absolute; top: calc(100% + 14px); right: 0; min-width: 210px;
+      background: #FDF4E7; border-radius: 14px; padding: .45rem 0;
+      box-shadow: 0 10px 34px rgba(74,50,43,.14);
       opacity: 0; transform: translateY(-8px); pointer-events: none;
       transition: opacity .25s, transform .25s;
     }
-    .dropdown.open .dropdown-menu { opacity: 1; transform: translateY(0); pointer-events: all; }
+    .dropdown:hover .dropdown-menu, .dropdown.open .dropdown-menu { opacity: 1; transform: translateY(0); pointer-events: auto; }
     .dropdown-menu a {
-      display: block; padding: .6rem 1.2rem; font-size: 1rem; font-weight: 700;
-      font-family: var(--font-display); letter-spacing: .05em;
-      color: var(--green-deep); transition: background .2s, color .2s;
+      display: block; padding: .55rem 1.1rem; font-family: 'Nunito Sans', system-ui, sans-serif;
+      font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--brown); transition: background .2s, color .2s;
     }
-    .dropdown-menu a:hover { background: var(--green-pastel); color: var(--coral); }
+    .dropdown-menu a:hover { background: var(--green-pastel); color: var(--green-btn); }
 
     .hdr-phone {
-      font-size: .85rem; font-weight: 700; color: var(--green-deep);
-      display: flex; align-items: center; gap: .35rem;
+      display: inline-flex; align-items: center; gap: .4rem;
+      font-family: 'Nunito Sans', system-ui, sans-serif;
+      font-size: 12px; font-weight: 800; letter-spacing: .08em;
+      color: var(--brown); white-space: nowrap; transition: color .2s;
     }
-    .hdr-phone svg { width: 16px; height: 16px; }
+    .hdr-phone:hover { color: var(--green-btn); }
+    .hdr-phone svg { width: 15px; height: 15px; }
 
     .hdr-cta {
-      display: inline-flex; align-items: center; gap: .4rem;
-      background: #549E11; color: #fff;
-      font-family: var(--font-display); font-size: .95rem; letter-spacing: .02em;
-      padding: .6rem 1.3rem; border-radius: 50px;
-      transition: transform .3s, box-shadow .3s, background .3s;
+      background: var(--green-btn); color: #FFFBF4;
+      font-family: 'Nunito Sans', system-ui, sans-serif;
+      font-size: 12px; font-weight: 800; line-height: 1.6; letter-spacing: .12em; text-transform: uppercase;
+      padding: 10px 20px; border-radius: 999px; white-space: nowrap;
+      transition: transform .25s, box-shadow .25s, background .25s;
     }
-    .hdr-cta:hover { transform: scale(1.05); box-shadow: 0 4px 16px rgba(84,158,17,.4); background: #3F7000; }
+    .hdr-cta:hover { background: var(--green-deep); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(63,112,0,.28); }
 
-    /* Hamburger */
+    /* Ce CSS vivait dans un <style> inline a l'interieur du <header> ; il est
+       remonte ici car la nav mobile s'en sert aussi. Sans lui les drapeaux SVG
+       prennent leur taille par defaut et le header passe de 100 a 154px. */
+    .lang-switch {
+      display: inline-flex; align-items: center; border: 1.5px solid var(--green-btn);
+      border-radius: 999px; overflow: hidden; line-height: 1;
+    }
+    .lang-switch a {
+      display: inline-flex; align-items: center; gap: .3rem; padding: .34rem .55rem;
+      font-family: 'Nunito Sans', system-ui, sans-serif;
+      font-size: 11px; font-weight: 800; letter-spacing: .1em;
+      color: var(--green-btn); text-decoration: none; transition: background .2s;
+    }
+    .lang-switch a.active { background: var(--green-btn); color: #fff; pointer-events: none; }
+    .lang-switch a:not(.active):hover { background: var(--green-pastel); }
+    .lang-switch svg { width: 15px; height: 10px; border-radius: 1px; display: block; }
+    @media (max-width: 860px) { .lang-switch svg { width: 14px; height: 10px; } }
+
     .burger { display: none; flex-direction: column; gap: 5px; padding: 6px; z-index: 210; }
     .burger span { width: 24px; height: 2.5px; background: var(--green-deep); border-radius: 3px; transition: all .35s cubic-bezier(.34,1.56,.64,1); transform-origin: center; }
     .burger.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
@@ -284,7 +321,7 @@
     /* ===== STICKY MOBILE CTA ===== */
     .sticky-cta {
       display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 190;
-      padding: .75rem 1rem; background: rgba(255,248,225,.95);
+      padding: .75rem 1rem; background: rgba(253,244,231,.95);
       backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
       box-shadow: 0 -2px 20px rgba(0,0,0,.08);
     }
@@ -788,48 +825,47 @@
   <!-- HEADER -->
   <header class="hdr" id="hdr">
     <div class="hdr-inner">
-      <a href="/" class="logo" aria-label="Sezam&Co — Accueil">
-        <img src="assets/images/logo-sezamco.webp" alt="Sezam&Co" width="140" height="48">
+      <a href="/" class="logo" aria-label="Sezam&Co">
+        <img src="assets/images/logo-sezam-header.webp" alt="Sezam&Co" width="276" height="192">
       </a>
-      <nav class="hdr-nav" aria-label="Navigation principale">
-        <a href="/">Home</a>
-        <a href="/menu" class="active">Menu</a>
-        <a href="/faq">FAQ</a>
-        <a href="/adresse">Adresse</a>
-        <div class="dropdown" id="dropdown">
-          <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">
-            Explorer
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="dropdown-menu">
-            <a href="/manouche">Man'ouche à Lyon</a>
-            <a href="/shawarma-lyon">Shawarma à Lyon</a>
-            <a href="/falafel-lyon">Falafel à Lyon</a>
-            <a href="/mezze-lyon">Mezze à Lyon</a>
-          <a href="/vegetarien-vegan-lyon">Végétarien &amp; Vegan</a>
-            <a href="/livraison-libanais-lyon">Livraison</a>
-            <a href="/notre-histoire">Histoire</a>
-            <a href="/mission">Mission</a>
+
+      <div class="hdr-droite">
+        <nav class="hdr-nav" aria-label="Navigation principale">
+          <a href="/menu">Menu</a>
+          <a href="/faq">FAQ</a>
+          <a href="/adresse">Adresse</a>
+          <div class="dropdown" id="dropdown">
+            <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+              Explorer
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="dropdown-menu">
+              <a href="/manouche">Man'ouche à Lyon</a>
+              <a href="/shawarma-lyon">Shawarma à Lyon</a>
+              <a href="/falafel-lyon">Falafel à Lyon</a>
+              <a href="/mezze-lyon">Mezze à Lyon</a>
+              <a href="/vegetarien-vegan-lyon">Végétarien &amp; Vegan</a>
+              <a href="/livraison-libanais-lyon">Livraison</a>
+              <a href="/notre-histoire">Histoire</a>
+              <a href="/mission">Mission</a>
+            </div>
           </div>
+          <a href="/traiteur-libanais-lyon">Traiteur</a>
+        </nav>
+
+        <div class="lang-switch" role="group" aria-label="Sélecteur de langue">
+          <a href="/" class="active" aria-current="true" aria-label="Version française"><svg viewBox="0 0 60 40" aria-hidden="true"><rect width="20" height="40" fill="#002654"/><rect x="20" width="20" height="40" fill="#fff"/><rect x="40" width="20" height="40" fill="#CE1126"/></svg>FR</a>
+          <a href="/en/" aria-label="English version"><svg viewBox="0 0 60 40" aria-hidden="true"><clipPath id="ukclipFR"><rect width="60" height="40"/></clipPath><g clip-path="url(#ukclipFR)"><rect width="60" height="40" fill="#012169"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#fff" stroke-width="8"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#C8102E" stroke-width="4"/><path d="M30,0 V40 M0,20 H60" stroke="#fff" stroke-width="12"/><path d="M30,0 V40 M0,20 H60" stroke="#C8102E" stroke-width="6"/></g></svg>EN</a>
         </div>
-      </nav>
-      <style>
-        .lang-switch{display:inline-flex;align-items:center;border:1.5px solid var(--green-deep);border-radius:999px;overflow:hidden;font-size:.75rem;font-weight:800;line-height:1}
-        .lang-switch a{padding:.35rem .55rem;color:var(--green-deep);text-decoration:none;display:inline-flex;align-items:center;gap:.3rem;transition:background .2s}
-        .lang-switch a.active{background:var(--green-deep);color:#fff;pointer-events:none}
-        .lang-switch a:not(.active):hover{background:var(--green-pastel)}
-        .lang-switch svg{width:16px;height:11px;border-radius:1px;display:block}
-        @media(max-width:860px){.lang-switch{font-size:.7rem}.lang-switch svg{width:14px;height:10px}}
-      </style>
-      <div class="lang-switch" role="group" aria-label="Sélecteur de langue">
-        <a href="/menu" class="active" aria-current="true" aria-label="Version française"><svg viewBox="0 0 60 40" aria-hidden="true"><rect width="20" height="40" fill="#002654"/><rect x="20" width="20" height="40" fill="#fff"/><rect x="40" width="20" height="40" fill="#CE1126"/></svg>FR</a>
-        <a href="/en/menu" aria-label="English version"><svg viewBox="0 0 60 40" aria-hidden="true"><clipPath id="ukclipMenu"><rect width="60" height="40"/></clipPath><g clip-path="url(#ukclipMenu)"><rect width="60" height="40" fill="#012169"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#fff" stroke-width="8"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#C8102E" stroke-width="4"/><path d="M30,0 V40 M0,20 H60" stroke="#fff" stroke-width="12"/><path d="M30,0 V40 M0,20 H60" stroke="#C8102E" stroke-width="6"/></g></svg>EN</a>
+
+        <a href="tel:+33478954316" class="hdr-phone" aria-label="Appeler le restaurant">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          04 78 95 43 16
+        </a>
+
+        <a href="https://commandes.sezamandco.com" class="hdr-cta">Commander</a>
       </div>
-      <a href="tel:+33478954316" class="hdr-phone" aria-label="Appeler le restaurant">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        04 78 95 43 16
-      </a>
-      <a href="https://commandes.sezamandco.com" class="hdr-cta">Commander</a>
+
       <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -838,7 +874,6 @@
 
   <!-- MOBILE NAV -->
   <nav class="mob-nav" id="mob-nav" aria-label="Navigation mobile">
-    <a href="/">Home</a>
     <a href="/menu">Menu</a>
     <a href="/faq">FAQ</a>
     <a href="/adresse">Adresse</a>
@@ -857,6 +892,7 @@
       <a href="/menu" class="active"><svg viewBox="0 0 60 40" aria-hidden="true"><rect width="20" height="40" fill="#002654"/><rect x="20" width="20" height="40" fill="#fff"/><rect x="40" width="20" height="40" fill="#CE1126"/></svg>FR</a>
       <a href="/en/menu"><svg viewBox="0 0 60 40" aria-hidden="true"><clipPath id="ukclipMenuM"><rect width="60" height="40"/></clipPath><g clip-path="url(#ukclipMenuM)"><rect width="60" height="40" fill="#012169"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#fff" stroke-width="8"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#C8102E" stroke-width="4"/><path d="M30,0 V40 M0,20 H60" stroke="#fff" stroke-width="12"/><path d="M30,0 V40 M0,20 H60" stroke="#C8102E" stroke-width="6"/></g></svg>EN</a>
     </div>
+    <a href="/traiteur-libanais-lyon">Traiteur</a>
     <a href="tel:+33478954316" style="font-family:var(--font-body);font-size:1rem;color:var(--text-mid);">04 78 95 43 16</a>
     <a href="https://commandes.sezamandco.com" class="mob-cta">Commander</a>
   </nav>
@@ -874,7 +910,7 @@
           <span style="font-size:.82rem;font-weight:600;color:var(--green-deep);">4.8/5 sur Google</span>
         </div>
         <div class="rv rv-d3" style="margin-top:1.2rem;display:flex;gap:1rem;align-items:center;flex-wrap:wrap;justify-content:center;">
-          <span style="font-family:var(--font-display);font-size:.9rem;color:var(--coral);">Formule dès 10,90&nbsp;€</span>
+          <span style="font-family:var(--font-display);font-size:.9rem;color:var(--coral);">Formule dès 11,10&nbsp;€</span>
           <span style="font-size:.78rem;font-weight:700;color:var(--text-mid);">·</span>
           <span style="font-size:.82rem;font-weight:700;color:var(--text-mid);">7j/7 — 12h à 23h</span>
         </div>
@@ -971,7 +1007,7 @@
             <div class="menu-item-tags"><span class="tag tag-vegan">Vegan</span></div>
           </div>
           <div class="menu-item-right">
-            <span class="menu-item-price">5,90&nbsp;€</span>
+            <span class="menu-item-price">4,90&nbsp;€</span>
           </div>
         </div>
 
@@ -1035,7 +1071,7 @@
   <section class="section section-green" id="urbain">
     <div class="container">
       <h2 class="section-title rv">Man'ouche Urbain</h2>
-      <p class="section-sub rv rv-d1">La galette libanaise revisitée street food — <span style="color:var(--green-logo);">+5,40&nbsp;€ pour transformer votre man'ouche en formule (+ 1 starter + 1 boisson)</span></p>
+      <p class="section-sub rv rv-d1">La galette libanaise revisitée street food — <span style="color:var(--green-logo);">+5,60&nbsp;€ pour transformer votre man'ouche en formule (+ 1 starter + 1 boisson)</span></p>
 
       <div class="menu-card rv rv-d2">
         <div class="menu-item">
@@ -1046,7 +1082,7 @@
           </div>
           <div class="menu-item-right">
             <span class="menu-item-price">8,50&nbsp;€</span>
-            <span class="menu-item-formule">Formule 13,90&nbsp;€</span>
+            <span class="menu-item-formule">Formule 14,10&nbsp;€</span>
           </div>
         </div>
 
@@ -1058,7 +1094,7 @@
           </div>
           <div class="menu-item-right">
             <span class="menu-item-price">9,20&nbsp;€</span>
-            <span class="menu-item-formule">Formule 14,60&nbsp;€</span>
+            <span class="menu-item-formule">Formule 14,80&nbsp;€</span>
           </div>
         </div>
 
@@ -1069,8 +1105,8 @@
             <p class="menu-item-desc">Kafta de boeuf aux épices orientales, oignons, persil, 3 fromages, tomates, pickles, mayo</p>
           </div>
           <div class="menu-item-right">
-            <span class="menu-item-price">9,50&nbsp;€</span>
-            <span class="menu-item-formule">Formule 14,90&nbsp;€</span>
+            <span class="menu-item-price">9,60&nbsp;€</span>
+            <span class="menu-item-formule">Formule 15,20&nbsp;€</span>
           </div>
         </div>
 
@@ -1081,8 +1117,8 @@
             <p class="menu-item-desc">Poulet mariné, fondue de 3 fromages, laitue, tomate, pickles, sauce garlic-mayo maison</p>
           </div>
           <div class="menu-item-right">
-            <span class="menu-item-price">9,20&nbsp;€</span>
-            <span class="menu-item-formule">Formule 14,60&nbsp;€</span>
+            <span class="menu-item-price">9,30&nbsp;€</span>
+            <span class="menu-item-formule">Formule 14,90&nbsp;€</span>
           </div>
         </div>
 
@@ -1093,8 +1129,8 @@
             <p class="menu-item-desc">Poulet mariné aux poivrons et oignons, 3 fromages, laitue, sauce épicée maison</p>
           </div>
           <div class="menu-item-right">
-            <span class="menu-item-price">9,20&nbsp;€</span>
-            <span class="menu-item-formule">Formule 14,60&nbsp;€</span>
+            <span class="menu-item-price">9,30&nbsp;€</span>
+            <span class="menu-item-formule">Formule 14,90&nbsp;€</span>
           </div>
         </div>
 
@@ -1105,8 +1141,8 @@
             <p class="menu-item-desc">Poulet mariné aux épices, laitue, frites, pickles, sauce à l'ail, sumac</p>
           </div>
           <div class="menu-item-right">
-            <span class="menu-item-price">9,20&nbsp;€</span>
-            <span class="menu-item-formule">Formule 14,60&nbsp;€</span>
+            <span class="menu-item-price">9,30&nbsp;€</span>
+            <span class="menu-item-formule">Formule 14,90&nbsp;€</span>
           </div>
         </div>
 
@@ -1117,8 +1153,8 @@
             <p class="menu-item-desc">Saucisse de boeuf à l'ail "Sojok", 3 fromages, frites, tomate, pickles, laitue, spicy sauce</p>
           </div>
           <div class="menu-item-right">
-            <span class="menu-item-price">8,90&nbsp;€</span>
-            <span class="menu-item-formule">Formule 14,30&nbsp;€</span>
+            <span class="menu-item-price">9,20&nbsp;€</span>
+            <span class="menu-item-formule">Formule 14,80&nbsp;€</span>
           </div>
         </div>
 
@@ -1129,8 +1165,8 @@
             <p class="menu-item-desc">Tenders de blanc de poulet croustillants, tomate, pickles, laitue, sauce garlic-mayo</p>
           </div>
           <div class="menu-item-right">
-            <span class="menu-item-price">9,20&nbsp;€</span>
-            <span class="menu-item-formule">Formule 14,60&nbsp;€</span>
+            <span class="menu-item-price">9,30&nbsp;€</span>
+            <span class="menu-item-formule">Formule 14,90&nbsp;€</span>
           </div>
         </div>
 
@@ -1143,7 +1179,7 @@
           </div>
           <div class="menu-item-right">
             <span class="menu-item-price">8,90&nbsp;€</span>
-            <span class="menu-item-formule">Formule 14,30&nbsp;€</span>
+            <span class="menu-item-formule">Formule 14,50&nbsp;€</span>
           </div>
         </div>
 
@@ -1154,8 +1190,8 @@
             <p class="menu-item-desc">Fromage halloumi, bacon de dinde grillé, mozzarella filante, tomate, mayo</p>
           </div>
           <div class="menu-item-right">
-            <span class="menu-item-price">8,80&nbsp;€</span>
-            <span class="menu-item-formule">Formule 14,20&nbsp;€</span>
+            <span class="menu-item-price">9,20&nbsp;€</span>
+            <span class="menu-item-formule">Formule 14,80&nbsp;€</span>
           </div>
         </div>
       </div>
@@ -1214,8 +1250,8 @@
   <section class="section section-cream" id="traditionnel">
     <div class="container">
       <h2 class="section-title rv"><a href="/manouche" style="color:inherit;border-bottom:2px solid var(--coral);">Man'ouche Traditionnel</a></h2>
-      <p class="section-sub rv rv-d1">Galette libanaise cuite minute au four — comme à Beyrouth — <span style="color:var(--green-logo);">+5,40&nbsp;€ pour passer en formule (+ 1 starter + 1 boisson)</span></p>
-      <p class="rv rv-d1" style="max-width:640px;font-size:.9rem;line-height:1.7;color:var(--text-mid);margin:-1.8rem 0 2.4rem;">Pour un groupe ou un événement, découvrez <a href="/#traiteur" style="color:var(--coral);font-weight:700;">notre offre traiteur à Lyon</a>&nbsp;: de 5 à 50 man'ouches traditionnelles pré-commandées, à retirer au restaurant.</p>
+      <p class="section-sub rv rv-d1">Galette libanaise cuite minute au four — comme à Beyrouth — <span style="color:var(--green-logo);">+5,60&nbsp;€ pour passer en formule (+ 1 starter + 1 boisson)</span></p>
+      <p class="rv rv-d1" style="max-width:640px;font-size:.9rem;line-height:1.7;color:var(--text-mid);margin:-1.8rem 0 2.4rem;">Pour un groupe ou un événement, découvrez <a href="/traiteur-libanais-lyon" style="color:var(--coral);font-weight:700;">notre offre traiteur à Lyon</a>&nbsp;: de 10 à 100 man'ouches traditionnelles, avec le prix affiché en direct et une remise jusqu'à &minus;25&nbsp;%, à retirer au restaurant ou livrées aux alentours de Lyon.</p>
 
       <!-- Viande -->
       <div class="menu-card rv rv-d2">
@@ -1228,8 +1264,8 @@
             <p class="menu-item-desc">Viande de boeuf hachée, épices, oignons, tomate, poivrons, mélasse de grenade</p>
           </div>
           <div class="menu-item-right">
-            <span class="menu-item-price">8,00&nbsp;€</span>
-            <span class="menu-item-formule">Formule 13,40&nbsp;€</span>
+            <span class="menu-item-price">7,90&nbsp;€</span>
+            <span class="menu-item-formule">Formule 13,50&nbsp;€</span>
           </div>
         </div>
 
@@ -1241,7 +1277,7 @@
           </div>
           <div class="menu-item-right">
             <span class="menu-item-price">7,90&nbsp;€</span>
-            <span class="menu-item-formule">Formule 13,30&nbsp;€</span>
+            <span class="menu-item-formule">Formule 13,50&nbsp;€</span>
           </div>
         </div>
       </div>
@@ -1259,7 +1295,7 @@
           </div>
           <div class="menu-item-right">
             <span class="menu-item-price">5,50&nbsp;€</span>
-            <span class="menu-item-formule">Formule 10,90&nbsp;€</span>
+            <span class="menu-item-formule">Formule 11,10&nbsp;€</span>
           </div>
         </div>
 
@@ -1272,7 +1308,7 @@
           </div>
           <div class="menu-item-right">
             <span class="menu-item-price">6,50&nbsp;€</span>
-            <span class="menu-item-formule">Formule 11,90&nbsp;€</span>
+            <span class="menu-item-formule">Formule 12,10&nbsp;€</span>
           </div>
         </div>
 
@@ -1284,8 +1320,8 @@
             <div class="menu-item-tags"><span class="tag tag-veggie">Végétarien</span></div>
           </div>
           <div class="menu-item-right">
-            <span class="menu-item-price">7,00&nbsp;€</span>
-            <span class="menu-item-formule">Formule 12,40&nbsp;€</span>
+            <span class="menu-item-price">6,90&nbsp;€</span>
+            <span class="menu-item-formule">Formule 12,50&nbsp;€</span>
           </div>
         </div>
 
@@ -1297,8 +1333,8 @@
             <div class="menu-item-tags"><span class="tag tag-veggie">Végétarien</span></div>
           </div>
           <div class="menu-item-right">
-            <span class="menu-item-price">7,00&nbsp;€</span>
-            <span class="menu-item-formule">Formule 12,40&nbsp;€</span>
+            <span class="menu-item-price">6,90&nbsp;€</span>
+            <span class="menu-item-formule">Formule 12,50&nbsp;€</span>
           </div>
         </div>
 
@@ -1311,7 +1347,7 @@
           </div>
           <div class="menu-item-right">
             <span class="menu-item-price">7,50&nbsp;€</span>
-            <span class="menu-item-formule">Formule 12,90&nbsp;€</span>
+            <span class="menu-item-formule">Formule 13,10&nbsp;€</span>
           </div>
         </div>
 
@@ -1323,8 +1359,8 @@
             <div class="menu-item-tags"><span class="tag tag-veggie">Végétarien</span></div>
           </div>
           <div class="menu-item-right">
-            <span class="menu-item-price">7,40&nbsp;€</span>
-            <span class="menu-item-formule">Formule 12,80&nbsp;€</span>
+            <span class="menu-item-price">7,50&nbsp;€</span>
+            <span class="menu-item-formule">Formule 13,10&nbsp;€</span>
           </div>
         </div>
 
@@ -1337,7 +1373,7 @@
           </div>
           <div class="menu-item-right">
             <span class="menu-item-price">7,90&nbsp;€</span>
-            <span class="menu-item-formule">Formule 13,30&nbsp;€</span>
+            <span class="menu-item-formule">Formule 13,50&nbsp;€</span>
           </div>
         </div>
       </div>
@@ -1367,7 +1403,7 @@
           <span class="formule-banner-tag">La Formule Sezam</span>
           <div>
             <span class="formule-banner-from">dès</span>
-            <div class="formule-banner-price">10,90&nbsp;€</div>
+            <div class="formule-banner-price">11,10&nbsp;€</div>
           </div>
           <p class="formule-banner-desc">Man'ouche + Starter au choix + Boisson.<br>Disponible 7j/7, midi et soir.</p>
           <div class="order-row" style="justify-content:flex-start;margin-top:.5rem;">
@@ -1403,7 +1439,7 @@
           <h3 class="menu-sub-label">Boissons Froides</h3>
           <div class="boisson-item">
             <span class="boisson-name">Eau Cristaline 50cl</span>
-            <span class="boisson-price">1,70&nbsp;€</span>
+            <span class="boisson-price">1,80&nbsp;€</span>
           </div>
           <div class="boisson-item">
             <span class="boisson-name">Citronnade maison 30cl</span>
@@ -1411,23 +1447,23 @@
           </div>
           <div class="boisson-item">
             <span class="boisson-name">Coca Cola 33cl</span>
-            <span class="boisson-price">2,70&nbsp;€</span>
+            <span class="boisson-price">2,90&nbsp;€</span>
           </div>
           <div class="boisson-item">
             <span class="boisson-name">Coca Zero 33cl</span>
-            <span class="boisson-price">2,70&nbsp;€</span>
+            <span class="boisson-price">2,90&nbsp;€</span>
           </div>
           <div class="boisson-item">
             <span class="boisson-name">Ice Tea Peach 33cl</span>
-            <span class="boisson-price">2,70&nbsp;€</span>
+            <span class="boisson-price">2,90&nbsp;€</span>
           </div>
           <div class="boisson-item">
             <span class="boisson-name">Sprite 33cl</span>
-            <span class="boisson-price">2,70&nbsp;€</span>
+            <span class="boisson-price">2,90&nbsp;€</span>
           </div>
           <div class="boisson-item">
             <span class="boisson-name">Orangina 33cl</span>
-            <span class="boisson-price">2,70&nbsp;€</span>
+            <span class="boisson-price">2,90&nbsp;€</span>
           </div>
           <div class="boisson-item">
             <span class="boisson-name">Ayran maison 30cl</span>
@@ -1498,19 +1534,19 @@
           <div class="dessert-icon">🍫🍌</div>
           <div class="dessert-name">Nutella Banane</div>
           <p class="dessert-desc">Nutella et tranches de banane dans un man'ouche</p>
-          <span class="dessert-price">5,50&nbsp;€</span>
+          <span class="dessert-price">5,60&nbsp;€</span>
         </div>
         <div class="dessert-card rv rv-d1">
           <div class="dessert-icon">🍪🍌</div>
           <div class="dessert-name">Spéculoos Banane</div>
           <p class="dessert-desc">Crème de spéculoos, banane, dans un pain man'ouche</p>
-          <span class="dessert-price">5,50&nbsp;€</span>
+          <span class="dessert-price">5,60&nbsp;€</span>
         </div>
         <div class="dessert-card rv rv-d2">
           <div class="dessert-icon">🍫✨</div>
           <div class="dessert-name">Choco-Tahini Twist</div>
           <p class="dessert-desc">Coeur de chocolat fondant, coque moelleuse, crème de sésame</p>
-          <span class="dessert-price">6,00&nbsp;€</span>
+          <span class="dessert-price">5,90&nbsp;€</span>
         </div>
       </div>
     </div>
@@ -1638,7 +1674,7 @@
     /* Sticky header */
     var hdr = document.getElementById('hdr');
     window.addEventListener('scroll', function() {
-      hdr.classList.toggle('stuck', window.scrollY > 50);
+      hdr.classList.toggle('stuck', window.scrollY > 24);
     }, { passive: true });
 
     /* Sticky mobile CTA — always visible on menu page (no hero to wait for) */

@@ -101,7 +101,7 @@
         "name": "Quels plats halal peut-on manger chez Sezam&Co à Lyon ?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Man'ouchés cuits minute, shawarma de poulet mariné aux épices, kafta de bœuf, falafels croustillants, mezzes maison (houmous, moutabal, fattouch) et desserts. Formule complète dès 10,90 €. Tout le menu est halal."
+          "text": "Man'ouchés cuits minute, shawarma de poulet mariné aux épices, kafta de bœuf, falafels croustillants, mezzes maison (houmous, moutabal, fattouch) et desserts. Formule complète dès 11,10 €. Tout le menu est halal."
         }
       },
       {
@@ -128,7 +128,7 @@
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --cream: #FFF8E1;
+      --cream: #FDF4E7;
       --green-pastel: #D4EDCF;
       --yellow-soft: #FFF4BD;
       --blue-pastel: #D4E4FF;
@@ -143,6 +143,12 @@
       --font-display: 'Ambery Garden', cursive, sans-serif;
       --font-body: 'Nunito', system-ui, sans-serif;
       --max-w: 1200px;
+      /* --- nouveau header --- */
+      --green-btn: #549E11;
+      --brown: #4A322B;
+      --gouttiere: clamp(1.25rem, 5vw, 72px);
+      --logo-h: clamp(44px, 6.9vh, 62px);
+      --hdr-pad: clamp(12px, 2.1vh, 19px);
       --section-py: clamp(4rem, 8vw, 7rem);
     }
 
@@ -161,61 +167,104 @@
     .rv-d3 { transition-delay: .24s; }
     .rv-d4 { transition-delay: .32s; }
 
-    /* HEADER */
+    /* ===== HEADER ===== */
+    /* Identique a celui de la page d'accueil, a une difference pres : ici le
+       fond est un beige OPAQUE et non transparent, car ces pages n'ont pas de
+       hero derriere le header. La couleur est ecrite en dur : --cream vaut
+       encore l'ancien #FDF4E7 sur ces pages, le basculement global viendra
+       dans un second temps.
+       Hauteur pilotee par le LOGO : 62 + 2x19 = 100px a 900px de fenetre. */
     .hdr {
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      padding: .7rem 0; background: var(--cream);
-      box-shadow: 0 2px 16px rgba(26,59,6,.06);
-      transition: padding .35s, box-shadow .35s;
+      background: #FDF4E7;
+      padding: var(--hdr-pad) 0; transition: padding .35s ease;
     }
-    .hdr.stuck { padding: .55rem 0; box-shadow: 0 2px 24px rgba(26,59,6,.12); }
-    .hdr-inner { display: flex; align-items: center; justify-content: space-between; max-width: var(--max-w); margin: 0 auto; padding: 0 clamp(1.25rem,4vw,2.5rem); }
-    .hdr .logo img { height: 48px; width: auto; transition: height .3s; }
-    .hdr.stuck .logo img { height: 40px; }
-    .hdr-nav { display: flex; gap: 1.8rem; align-items: center; }
+    .hdr.stuck { padding: calc(var(--hdr-pad) * .7) 0; }
+    .hdr.stuck .logo img { height: calc(var(--logo-h) * .72); }
+
+    .hdr-inner {
+      position: relative; z-index: 1;
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 1920px; margin: 0 auto; padding: 0 var(--gouttiere); gap: 2rem;
+    }
+    .hdr .logo { display: flex; align-items: center; }
+    .hdr .logo img { display: block; height: var(--logo-h); width: auto; transition: height .35s ease; }
+    .hdr-droite { display: flex; align-items: center; gap: 1.6rem; }
+
+    /* Nunito Sans 12px/800, majuscules, interlettrage 0,18em, brun #4A322B. */
+    .hdr-nav { display: flex; align-items: center; gap: 1.7rem; }
     .hdr-nav > a, .hdr-nav .dropdown-toggle {
-      font-size: 1.05rem; font-weight: 700; color: #549E11;
-      letter-spacing: .05em; position: relative; cursor: pointer;
-      font-family: var(--font-display); background: none; border: none; padding: 0;
-      display: inline-flex; align-items: center; gap: .3rem;
+      font-family: 'Nunito Sans', system-ui, sans-serif;
+      font-size: 12px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--brown); background: none; border: 0; padding: 0; cursor: pointer;
+      display: inline-flex; align-items: center; gap: .35rem; position: relative;
+      transition: color .2s;
     }
     .hdr-nav > a::after, .hdr-nav .dropdown-toggle::after {
-      content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 2px;
-      background: #1A3B06; border-radius: 2px;
+      content: ''; position: absolute; bottom: -6px; left: 0; width: 0; height: 2px;
+      background: var(--green-btn); border-radius: 2px;
       transition: width .3s cubic-bezier(.34,1.56,.64,1);
     }
+    .hdr-nav > a:hover, .hdr-nav .dropdown-toggle:hover { color: var(--green-btn); }
     .hdr-nav > a:hover::after, .hdr-nav .dropdown-toggle:hover::after { width: 100%; }
-    .hdr-nav > a.active::after { width: 100%; }
 
     .dropdown { position: relative; }
-    .dropdown-toggle svg { width: 12px; height: 12px; transition: transform .3s; }
-    .dropdown.open .dropdown-toggle svg { transform: rotate(180deg); }
+    /* Pont invisible : sans lui le curseur traverse le vide de 14px entre le
+       bouton et le menu, perd le survol, et le menu se referme avant l'arrivee. */
+    .dropdown::before { content: ''; position: absolute; top: 100%; right: 0; min-width: 210px; height: 14px; }
+    .dropdown svg { width: 11px; height: 11px; transition: transform .3s; }
+    .dropdown:hover svg { transform: rotate(180deg); }
     .dropdown-menu {
-      position: absolute; top: calc(100% + 10px); right: 0;
-      background: var(--cream); border: 1px solid rgba(26,59,6,.08);
-      border-radius: 12px; padding: .5rem 0; min-width: 200px;
-      box-shadow: 0 8px 30px rgba(26,59,6,.1);
+      position: absolute; top: calc(100% + 14px); right: 0; min-width: 210px;
+      background: #FDF4E7; border-radius: 14px; padding: .45rem 0;
+      box-shadow: 0 10px 34px rgba(74,50,43,.14);
       opacity: 0; transform: translateY(-8px); pointer-events: none;
       transition: opacity .25s, transform .25s;
     }
-    .dropdown.open .dropdown-menu { opacity: 1; transform: translateY(0); pointer-events: all; }
+    .dropdown:hover .dropdown-menu, .dropdown.open .dropdown-menu { opacity: 1; transform: translateY(0); pointer-events: auto; }
     .dropdown-menu a {
-      display: block; padding: .6rem 1.2rem; font-size: 1rem; font-weight: 700;
-      font-family: var(--font-display); letter-spacing: .05em;
-      color: var(--green-deep); transition: background .2s, color .2s;
+      display: block; padding: .55rem 1.1rem; font-family: 'Nunito Sans', system-ui, sans-serif;
+      font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--brown); transition: background .2s, color .2s;
     }
-    .dropdown-menu a:hover { background: var(--green-pastel); color: var(--coral); }
+    .dropdown-menu a:hover { background: var(--green-pastel); color: var(--green-btn); }
 
-    .hdr-phone { font-size: .85rem; font-weight: 700; color: var(--green-deep); display: flex; align-items: center; gap: .35rem; }
-    .hdr-phone svg { width: 16px; height: 16px; }
-    .hdr-cta {
+    .hdr-phone {
       display: inline-flex; align-items: center; gap: .4rem;
-      background: #549E11; color: #fff;
-      font-family: var(--font-display); font-size: .95rem; letter-spacing: .02em;
-      padding: .6rem 1.3rem; border-radius: 50px;
-      transition: transform .3s, box-shadow .3s, background .3s;
+      font-family: 'Nunito Sans', system-ui, sans-serif;
+      font-size: 12px; font-weight: 800; letter-spacing: .08em;
+      color: var(--brown); white-space: nowrap; transition: color .2s;
     }
-    .hdr-cta:hover { transform: scale(1.05); box-shadow: 0 4px 16px rgba(84,158,17,.4); background: #3F7000; }
+    .hdr-phone:hover { color: var(--green-btn); }
+    .hdr-phone svg { width: 15px; height: 15px; }
+
+    .hdr-cta {
+      background: var(--green-btn); color: #FFFBF4;
+      font-family: 'Nunito Sans', system-ui, sans-serif;
+      font-size: 12px; font-weight: 800; line-height: 1.6; letter-spacing: .12em; text-transform: uppercase;
+      padding: 10px 20px; border-radius: 999px; white-space: nowrap;
+      transition: transform .25s, box-shadow .25s, background .25s;
+    }
+    .hdr-cta:hover { background: var(--green-deep); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(63,112,0,.28); }
+
+    /* Ce CSS vivait dans un <style> inline a l'interieur du <header> ; il est
+       remonte ici car la nav mobile s'en sert aussi. Sans lui les drapeaux SVG
+       prennent leur taille par defaut et le header passe de 100 a 154px. */
+    .lang-switch {
+      display: inline-flex; align-items: center; border: 1.5px solid var(--green-btn);
+      border-radius: 999px; overflow: hidden; line-height: 1;
+    }
+    .lang-switch a {
+      display: inline-flex; align-items: center; gap: .3rem; padding: .34rem .55rem;
+      font-family: 'Nunito Sans', system-ui, sans-serif;
+      font-size: 11px; font-weight: 800; letter-spacing: .1em;
+      color: var(--green-btn); text-decoration: none; transition: background .2s;
+    }
+    .lang-switch a.active { background: var(--green-btn); color: #fff; pointer-events: none; }
+    .lang-switch a:not(.active):hover { background: var(--green-pastel); }
+    .lang-switch svg { width: 15px; height: 10px; border-radius: 1px; display: block; }
+    @media (max-width: 860px) { .lang-switch svg { width: 14px; height: 10px; } }
+
     .burger { display: none; flex-direction: column; gap: 5px; padding: 6px; z-index: 210; }
     .burger span { width: 24px; height: 2.5px; background: var(--green-deep); border-radius: 3px; transition: all .35s cubic-bezier(.34,1.56,.64,1); transform-origin: center; }
     .burger.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
@@ -257,7 +306,7 @@
     /* STICKY MOBILE CTA */
     .sticky-cta {
       display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 190;
-      padding: .75rem 1rem; background: rgba(255,248,225,.95);
+      padding: .75rem 1rem; background: rgba(253,244,231,.95);
       backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
       box-shadow: 0 -2px 20px rgba(0,0,0,.08);
     }
@@ -465,36 +514,47 @@
   <!-- HEADER -->
   <header class="hdr" id="hdr">
     <div class="hdr-inner">
-      <a href="/" class="logo">
-        <img src="assets/images/logo-sezamco.webp" alt="Sezam&Co" width="140" height="48">
+      <a href="/" class="logo" aria-label="Sezam&Co">
+        <img src="assets/images/logo-sezam-header.webp" alt="Sezam&Co" width="276" height="192">
       </a>
-      <nav class="hdr-nav" aria-label="Navigation principale">
-        <a href="/">Home</a>
-        <a href="/menu">Menu</a>
-        <a href="/faq">FAQ</a>
-        <a href="/adresse">Adresse</a>
-        <div class="dropdown" id="dropdown">
-          <button class="dropdown-toggle active" aria-expanded="false" aria-haspopup="true">
-            Explorer
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="dropdown-menu">
-            <a href="/manouche">Man'ouche à Lyon</a>
-            <a href="/shawarma-lyon">Shawarma à Lyon</a>
-            <a href="/falafel-lyon">Falafel à Lyon</a>
-            <a href="/mezze-lyon">Mezze à Lyon</a>
-          <a href="/vegetarien-vegan-lyon">Végétarien &amp; Vegan</a>
-            <a href="/livraison-libanais-lyon">Livraison</a>
-            <a href="/notre-histoire">Histoire</a>
-            <a href="/mission">Mission</a>
+
+      <div class="hdr-droite">
+        <nav class="hdr-nav" aria-label="Navigation principale">
+          <a href="/menu">Menu</a>
+          <a href="/faq">FAQ</a>
+          <a href="/adresse">Adresse</a>
+          <div class="dropdown" id="dropdown">
+            <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+              Explorer
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="dropdown-menu">
+              <a href="/manouche">Man'ouche à Lyon</a>
+              <a href="/shawarma-lyon">Shawarma à Lyon</a>
+              <a href="/falafel-lyon">Falafel à Lyon</a>
+              <a href="/mezze-lyon">Mezze à Lyon</a>
+              <a href="/vegetarien-vegan-lyon">Végétarien &amp; Vegan</a>
+              <a href="/livraison-libanais-lyon">Livraison</a>
+              <a href="/notre-histoire">Histoire</a>
+              <a href="/mission">Mission</a>
+            </div>
           </div>
+          <a href="/traiteur-libanais-lyon">Traiteur</a>
+        </nav>
+
+        <div class="lang-switch" role="group" aria-label="Sélecteur de langue">
+          <a href="/" class="active" aria-current="true" aria-label="Version française"><svg viewBox="0 0 60 40" aria-hidden="true"><rect width="20" height="40" fill="#002654"/><rect x="20" width="20" height="40" fill="#fff"/><rect x="40" width="20" height="40" fill="#CE1126"/></svg>FR</a>
+          <a href="/en/" aria-label="English version"><svg viewBox="0 0 60 40" aria-hidden="true"><clipPath id="ukclipFR"><rect width="60" height="40"/></clipPath><g clip-path="url(#ukclipFR)"><rect width="60" height="40" fill="#012169"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#fff" stroke-width="8"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#C8102E" stroke-width="4"/><path d="M30,0 V40 M0,20 H60" stroke="#fff" stroke-width="12"/><path d="M30,0 V40 M0,20 H60" stroke="#C8102E" stroke-width="6"/></g></svg>EN</a>
         </div>
-      </nav>
-      <a href="tel:+33478954316" class="hdr-phone" aria-label="Appeler le restaurant">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        04 78 95 43 16
-      </a>
-      <a href="https://commandes.sezamandco.com" class="hdr-cta">Commander</a>
+
+        <a href="tel:+33478954316" class="hdr-phone" aria-label="Appeler le restaurant">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          04 78 95 43 16
+        </a>
+
+        <a href="https://commandes.sezamandco.com" class="hdr-cta">Commander</a>
+      </div>
+
       <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -503,7 +563,6 @@
 
   <!-- MOBILE NAV -->
   <nav class="mob-nav" id="mob-nav" aria-label="Navigation mobile">
-    <a href="/">Home</a>
     <a href="/menu">Menu</a>
     <a href="/faq">FAQ</a>
     <a href="/adresse">Adresse</a>
@@ -518,6 +577,7 @@
       <a href="/notre-histoire">Histoire</a>
       <a href="/mission">Mission</a>
     </div>
+    <a href="/traiteur-libanais-lyon">Traiteur</a>
     <a href="tel:+33478954316" style="font-family:var(--font-body);font-size:1rem;color:var(--text-mid);">04 78 95 43 16</a>
     <a href="https://commandes.sezamandco.com" class="mob-cta">Commander</a>
   </nav>
@@ -536,7 +596,7 @@
       <p>Trouver un restaurant halal à Lyon, c'est facile. En trouver un où vous n'avez <strong>pas besoin de vérifier plat par plat</strong>, c'est plus rare. Chez Sezam&amp;Co à <a href="/" style="color:var(--yellow-soft);border-bottom:1px solid var(--yellow-soft);">Lyon 2</a>, la question ne se pose pas : <strong>toute la carte est halal</strong>. Du <a href="/shawarma-lyon" style="color:var(--yellow-soft);border-bottom:1px solid var(--yellow-soft);">shawarma</a> à la kafta, vous commandez ce qui vous fait envie. Sur place comme à emporter, <a href="/snack-libanais-lyon" style="color:var(--yellow-soft);border-bottom:1px solid var(--yellow-soft);">notre snack halal à Lyon</a> sert la même carte, du man'ouché cuit minute au mezze.</p>
       <div style="display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;margin-top:1.2rem;">
         <a href="https://commandes.sezamandco.com" class="btn btn-primary" style="font-size:1rem;padding:.9rem 2rem;">Commander en ligne</a>
-        <span style="font-family:var(--font-display);font-size:clamp(1.4rem,3vw,1.8rem);color:var(--yellow-soft);">Formule dès 10,90&nbsp;€</span>
+        <span style="font-family:var(--font-display);font-size:clamp(1.4rem,3vw,1.8rem);color:var(--yellow-soft);">Formule dès 11,10&nbsp;€</span>
       </div>
     </div>
   </section>
@@ -576,7 +636,7 @@
             </div>
             <div class="price-box price-box--formule">
               <div class="price-box-label">Formule dès</div>
-              <div class="price-box-amount">10,90&nbsp;€</div>
+              <div class="price-box-amount">11,10&nbsp;€</div>
             </div>
           </div>
           <a href="https://commandes.sezamandco.com" class="btn btn-primary">Commander</a>
@@ -655,12 +715,12 @@
   <section class="formule-banner">
     <div class="formule-inner">
       <div class="formule-text rv">
-        <h2>La Formule 100% Halal — dès 10,90&nbsp;€</h2>
+        <h2>La Formule 100% Halal — dès 11,10&nbsp;€</h2>
         <p>1 man'ouché au choix + 1 starter (houmous, fattouch, falafel crunch, moutabal...) + 1 boisson. Le repas halal complet, midi et soir, entre Bellecour et Cordeliers.</p>
-        <span class="formule-price">dès 10,90&nbsp;€</span>
+        <span class="formule-price">dès 11,10&nbsp;€</span>
       </div>
       <div class="formule-img rv rv-d1">
-        <img src="assets/images/shawarma/formule.webp" alt="Formule halal Lyon 2 — man'ouché + starter + boisson dès 10,90€ chez Sezam&Co, restaurant halal Bellecour" loading="lazy">
+        <img src="assets/images/shawarma/formule.webp" alt="Formule halal Lyon 2 — man'ouché + starter + boisson dès 11,10€ chez Sezam&Co, restaurant halal Bellecour" loading="lazy">
       </div>
     </div>
   </section>
@@ -823,7 +883,7 @@
     });
     var hdr = document.getElementById('hdr');
     window.addEventListener('scroll', function() {
-      hdr.classList.toggle('stuck', window.scrollY > 50);
+      hdr.classList.toggle('stuck', window.scrollY > 24);
     }, { passive: true });
 
     var stickyCta = document.getElementById('sticky-cta');
