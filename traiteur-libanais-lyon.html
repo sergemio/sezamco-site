@@ -440,11 +440,13 @@
       color: var(--green-deep);
       margin-bottom: .3rem;
       line-height: 1.1;
+      text-align: center;
     }
     .section-sub {
       font-size: .9rem; font-weight: 700; color: var(--text-mid);
       text-transform: uppercase; letter-spacing: .08em;
       margin-bottom: 2.5rem;
+      text-align: center;
     }
 
     /* ===== SAVOIR-FAIRE ===== */
@@ -1058,18 +1060,6 @@
     }
 
     /* Regles des sections SEO restituees depuis la version en ligne. */
-    .trt-bareme-wrap { max-width: 520px; margin: 0 auto; overflow-x: auto; }
-    .trt-bareme-wrap { max-width: 520px; margin: 0 auto; overflow-x: auto; }
-    .trt-bareme { width: 100%; border-collapse: collapse; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 22px rgba(26,59,6,.08); }
-    .trt-bareme caption { caption-side: bottom; padding-top: .8rem; font-size: .76rem; color: var(--text-mid); text-align: center; }
-    .trt-bareme th, .trt-bareme td { padding: .7rem 1.1rem; text-align: left; font-size: .95rem; }
-    .trt-bareme thead th { background: var(--green-deep); color: #fff; font-family: var(--font-display); font-weight: 400; font-size: 1.05rem; letter-spacing: .04em; }
-    .trt-bareme thead th:last-child, .trt-bareme td { text-align: right; }
-    .trt-bareme tbody tr + tr { border-top: 1px solid rgba(63,112,0,.10); }
-    .trt-bareme tbody th { font-weight: 800; color: var(--text-dark); font-variant-numeric: tabular-nums; }
-    .trt-bareme tbody td { font-weight: 800; color: var(--coral); font-variant-numeric: tabular-nums; }
-    .trt-bareme tbody tr:last-child { background: var(--yellow-soft); }
-    .trt-bareme tbody tr:last-child td { color: var(--green-deep); }
     .trt-cond-item {
       background: rgba(255,255,255,.65); border-radius: 16px; padding: 1.4rem 1.3rem;
       border: 2px solid rgba(63,112,0,.12);
@@ -1497,31 +1487,6 @@
     </div>
   </section>
 
-  <!-- BAREME DEGRESSIF -->
-  <section class="section section-cream" id="remise">
-    <div class="container">
-      <h2 class="section-title rv">Plus Vous Commandez, Moins Vous Payez</h2>
-      <p class="section-sub rv rv-d1">La remise est automatique, elle grimpe avec la quantité</p>
-      <div class="trt-bareme-wrap rv rv-d1">
-        <table class="trt-bareme">
-          <caption>Remise appliquée selon le nombre total de man'ouches commandées</caption>
-          <thead><tr><th scope="col">Man'ouches</th><th scope="col">Remise</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">10</th><td>&minus;6,3&nbsp;%</td></tr>
-            <tr><th scope="row">20</th><td>&minus;9,8&nbsp;%</td></tr>
-            <tr><th scope="row">30</th><td>&minus;12,5&nbsp;%</td></tr>
-            <tr><th scope="row">50</th><td>&minus;16,9&nbsp;%</td></tr>
-            <tr><th scope="row">60</th><td>&minus;18,8&nbsp;%</td></tr>
-            <tr><th scope="row">80</th><td>&minus;22,1&nbsp;%</td></tr>
-            <tr><th scope="row">100</th><td>&minus;25,0&nbsp;%</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="rv rv-d2" style="max-width:700px;margin:1.8rem auto 0;text-align:center;font-size:.92rem;line-height:1.8;color:var(--text-mid);">
-        La remise ne dépend que du <strong>nombre total de pièces</strong>, jamais de leur type&nbsp;: 12&nbsp;Zaatar et 8&nbsp;Lahmajine, c'est 20&nbsp;man'ouches, donc la même remise que 20&nbsp;Zaatar. Vous pouvez donc mélanger les cinq recettes sans rien perdre. Le <a href="#simulateur" style="color:var(--coral);font-weight:700;">simulateur ci-dessus</a> applique le barème au centime et vous donne le total tout de suite.
-      </p>
-    </div>
-  </section>
 
   <!-- COMMENT CA MARCHE -->
   <section class="section section-green" id="comment-ca-marche">
@@ -1554,7 +1519,7 @@
     <div class="container">
       <h2 class="section-title rv">Les Cinq Man'ouches du Traiteur</h2>
       <p class="section-sub rv rv-d1">Nos traditionnelles, celles qui se partagent le mieux</p>
-      <p class="rv rv-d2" style="max-width:680px;font-size:.93rem;line-height:1.8;color:var(--text-mid);margin-bottom:2.5rem;">
+      <p class="rv rv-d2" style="max-width:680px;margin:0 auto 2.5rem;text-align:center;font-size:.93rem;line-height:1.8;color:var(--text-mid);">
         Le traiteur, chez nous, c'est la <a href="/manouche" style="color:var(--coral);font-weight:700;">man'ouche traditionnelle</a>&nbsp;: la galette libanaise pétrie et enfournée au restaurant. Une vegan, deux végétariennes, deux à la viande de bœuf&nbsp;— mélangez-les comme vous voulez.
       </p>
 
