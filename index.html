@@ -418,6 +418,11 @@
       font-family: 'Nunito Sans', system-ui, sans-serif; font-size: 17px; line-height: 1.55;
     }
 
+    /* Badge d'avis : mobile seulement. En grand ecran le hero suit la reference,
+       qui n'en a pas. L'ancienne pastille etait posee sur une photo sombre, d'ou
+       le verre depoli ; sur le creme il faut un fond plein et un texte fonce. */
+    .hero-badge { display: none; }
+
     /* Boutons : 15px/800/majuscules, interlettrage 1,8px, padding 17/34,
        rayon 999px. La bordure transparente de 2px sur le bouton plein garantit
        que les deux aient exactement la meme hauteur. */
@@ -460,10 +465,89 @@
          Avec 100vh, un telephone haut (412x1232) forçait la section a 1232px
          pour 1019px de contenu, soit 213px de vide en bas. */
       .hero { align-items: flex-start; min-height: auto; padding-bottom: 2rem; }
-      .hero-grille { grid-template-columns: 1fr; gap: 14px; }
-      .hero-art { order: -1; margin-right: 0; transform: none; justify-self: center; padding-top: 18px; }
-      .hero-art img { width: min(78vw, 420px); }
-      .doodle { display: none; }
+      /* Ordre mobile voulu : H1, puis la man'ouche, puis l'accroche et la suite.
+         Le H1 vit dans .hero-txt : `display: contents` fait remonter les enfants
+         de ce bloc au niveau de la grille, seul endroit ou `order` opere. Le
+         balisage et la balise h1 restent intacts. */
+      .hero-grille { grid-template-columns: 1fr; gap: 0; }
+      .hero-txt { display: contents; }
+      /* Marges en vh : elles amenent la man'ouche au centre de l'ecran quelle que
+         soit la hauteur du telephone. Le but n'est pas decoratif — l'image tourne
+         avec le defilement, et si elle demarre collee en haut elle sort du champ
+         avant d'avoir tourne. Au centre, elle traverse tout l'ecran en tournant. */
+      .hero .sous-h1 { order: 1; margin: 2.4vh 0 1.4vh; }
+      .hero-badge {
+        order: 2; display: inline-flex; align-items: center; gap: .5rem;
+        width: fit-content; justify-self: start; margin: 0 0 11vh;
+        /* Verre depoli, comme sur l'ancien site : la pastille laisse passer ce
+           qu'il y a derriere (creme, ou le cercle vert quand elle le chevauche)
+           au lieu de poser un blanc franc qui coupe le fond en deux. */
+        background: rgba(255,255,255,.3); border: 1px solid rgba(255,255,255,.6);
+        backdrop-filter: blur(10px) saturate(1.35);
+        -webkit-backdrop-filter: blur(10px) saturate(1.35);
+        padding: .45rem .95rem; border-radius: 999px;
+      }
+      .hero-badge .stars { color: var(--yellow-rich); font-size: .84rem; letter-spacing: 2px; line-height: 1; }
+      .hero-badge span:last-child {
+        font: 800 12px/1 'Nunito Sans', system-ui, sans-serif;
+        letter-spacing: .04em; color: var(--brown);
+      }
+      .hero-art { order: 3; margin: 0 0 18px; transform: none; justify-self: center; padding-top: 0; }
+      /* 66vw = 78vw moins 15% : la man'ouche prenait trop de place et ecrasait
+         les formes qui l'entourent. */
+      .hero-art img { width: min(66vw, 357px); }
+      .accroche { order: 4; margin: 0 0 14px; }
+      .hero .sous { order: 5; margin: 0; }
+      .hero-ctas { order: 6; margin: 22px 0 24px; }
+      .stats { order: 7; }
+      /* 46vw cale a left:-180px sort entierement de l'ecran en dessous de 400px
+         de large : le cercle vert n'etait plus visible du tout. On l'agrandit et
+         on le ramene vers le centre, en le gardant bien plus petit que le jaune. */
+      .b1 { width: 60vw; height: 60vw; left: -16vw; top: -12vw; }
+
+      /* Les elements flottants restent, comme sur la reference : en mobile ils
+         sont ancres sur la MAN'OUCHE et non sur la fenetre. Taille et position
+         relevees sur la reference en 390 et 412 de large, exprimees en fraction
+         de la largeur de l'image (les deux releves donnent les memes fractions).
+         Le haut de l'image varie de 13px entre 360 et 412 : 158px est la valeur
+         mediane relevee, l'ecart residuel est de 4% du diametre de l'image. */
+      /* --img-top est ecrit par le script depuis la position reelle de l'image ;
+         249px est la valeur mediane relevee, utilisee si le script ne tourne pas. */
+      .hero { --img: min(66vw, 357px); --img-cx: 50vw;
+              --img-cy: calc(var(--img-top, 249px) + var(--img) / 2); }
+      /* clamp : notre man'ouche occupe 78% de la largeur la ou leur pizza en fait
+         70%, donc le meme decalage relatif pousse les formes hors de l'ecran. La
+         butee a 5vw les retient sans les decoller de l'image sur les tablettes,
+         ou le calcul reste bien a l'interieur des bornes. */
+      .doodle {
+        --w: calc(var(--img) * var(--s));
+        width: var(--w); height: var(--w);
+        left: clamp(5vw, calc(var(--img-cx) + var(--img) * var(--dx) - var(--w) / 2), calc(95vw - var(--w)));
+        top: calc(var(--img-cy) + var(--img) * var(--dy) - var(--w) / 2);
+        right: auto; bottom: auto;
+      }
+      /* Les positions sont celles de la reference. Les tailles sont ses fractions
+         ramenees a 80% : leurs formes font 13,4% du diametre de la pizza sur une
+         capture large, les notres en faisaient 16,8% — elles pesaient trop. */
+      .d-tomate  { --s: .141; --dx: -.551; --dy: -.370; }  /* haut gauche  */
+      .d-feuille { --s: .140; --dx:  .532; --dy: -.453; }  /* haut droite  */
+      .d-anneau  { --s: .100; --dx: -.501; --dy:  .351; }  /* bas gauche   */
+      .d-sombre  { --s: .076; --dx:  .466; --dy:  .300; }  /* bas droite   */
+      /* L'epaisseur de l'anneau suit son diametre : 6px fixes sur un cercle
+         reduit donneraient un trait deux fois trop epais (17,6% chez eux). */
+      .d-anneau { border-width: calc(var(--w) * .176); }
+      /* La derive d'origine (+-31px) est calibree pour le grand ecran : a cette
+         echelle elle deplacerait les formes d'un tiers de leur diametre. */
+      .d-tomate, .d-feuille, .d-anneau, .d-sombre { animation: deriveMobile 46s ease-in-out infinite; }
+      .d-feuille { animation-delay: -12s; }
+      .d-anneau { animation-delay: -24s; }
+      .d-sombre { animation-delay: -33s; }
+    }
+    @keyframes deriveMobile {
+      0%,100% { transform: translate(0,0) rotate(var(--tilt)); }
+      25% { transform: translate(9px,-8px) rotate(calc(var(--tilt) + 7deg)); }
+      50% { transform: translate(-7px,9px) rotate(calc(var(--tilt) - 6deg)); }
+      75% { transform: translate(8px,6px) rotate(calc(var(--tilt) + 4deg)); }
     }
 
     /* ===== MARQUEE ===== */
@@ -1046,6 +1130,7 @@
     <div class="hero-grille">
       <div class="hero-txt">
         <h1 class="sous-h1">Restaurant Libanais Lyon 2 | Sézam&amp;Co</h1>
+        <p class="hero-badge"><span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span>4.8/5 sur Google</span></p>
         <p class="accroche"><span>Cuit</span><span>minute,</span><span>jamais</span><span><em>avant</em> <i class="flourish">hot</i></span></p>
         <p class="sous">Man'ouches, falafels, shawarmas et mezzes — pétris et cuits minute, 7j/7 de 12h à 23h.</p>
 
@@ -1557,6 +1642,22 @@
       if (!enAttente) { enAttente = true; requestAnimationFrame(peindreHero); }
     }, { passive: true });
     peindreHero();
+
+    /* En mobile les formes flottantes sont posees autour de la man'ouche. Le haut
+       de l'image depend du nombre de lignes du H1, qui depend de la largeur : on
+       le mesure au lieu de le deviner. On mesure .hero-art et non l'image, dont
+       la boite englobante enfle avec la rotation. Le CSS garde une valeur de
+       repli, la page reste correcte sans JavaScript. */
+    var heroSec = document.getElementById('hero');
+    var art = document.querySelector('.hero-art');
+    function ancrerDoodles() {
+      if (!heroSec || !art) return;
+      heroSec.style.setProperty('--img-top',
+        Math.round(art.getBoundingClientRect().top - heroSec.getBoundingClientRect().top) + 'px');
+    }
+    ancrerDoodles();
+    window.addEventListener('resize', ancrerDoodles, { passive: true });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(ancrerDoodles);
 
     /* Sticky mobile CTA — show after scrolling past hero */
     var stickyCta = document.getElementById('sticky-cta');
