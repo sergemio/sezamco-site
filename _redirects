@@ -14,7 +14,7 @@
 /restaurant-libanais-lyon-1.html /restaurant-libanais-lyon-1 301
 /restaurant-libanais-lyon-3.html /restaurant-libanais-lyon-3 301
 /restaurant-libanais-lyon-7.html /restaurant-libanais-lyon-7 301
-/restaurant-libanais-vieux-lyon.html /restaurant-libanais-vieux-lyon 301
+/restaurant-libanais-vieux-lyon.html / 301
 /shawarma-lyon.html /shawarma-lyon 301
 /vegetarien-vegan-lyon.html /vegetarien-vegan-lyon 301
 /restaurant-halal-lyon.html /restaurant-halal-lyon 301
@@ -24,5 +24,7 @@
 /snack-libanais-lyon.html /snack-libanais-lyon 301
 # EXP-7 : page meilleur morte (42 imp/14j) -> consolidation home
 /meilleur-restaurant-libanais-lyon / 301
+# EXP-8 (verdict 03/08) : vieux-lyon morte (1 clic/608 imp/28j, CTR 0.16%) -> consolidation home
+/restaurant-libanais-vieux-lyon / 301
 # Backup de l'ancienne home : duplicate de / , neutralise (double ceinture avec X-Robots-Tag noindex)
 /index-v1-backup / 301
