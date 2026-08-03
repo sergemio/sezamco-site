@@ -89,7 +89,7 @@
         "name": "Combien de temps à l'avance faut-il commander ?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Jusqu'à 20 man'ouches, comptez 24 heures. De 21 à 50 man'ouches, prévoyez 48 heures. Au-delà de 50, il nous faut 72 heures. Ce délai nous laisse le temps de préparer la pâte et d'organiser la cuisson pour l'heure convenue."
+          "text": "Jusqu'à 20 man'ouches, comptez 24 heures. Au-delà de 20 man'ouches, prévoyez 48 heures, quelle que soit la quantité. Ce délai nous laisse le temps de préparer la pâte et d'organiser la cuisson pour l'heure convenue, confirmée au téléphone."
         }
       },
       {
@@ -1060,15 +1060,6 @@
     }
 
     /* Regles des sections SEO restituees depuis la version en ligne. */
-    .trt-cond-item {
-      background: rgba(255,255,255,.65); border-radius: 16px; padding: 1.4rem 1.3rem;
-      border: 2px solid rgba(63,112,0,.12);
-    }
-    .trt-cond-item strong {
-      display: block; font-family: var(--font-display); font-weight: 400;
-      font-size: 1.2rem; color: var(--green-deep); margin-bottom: .35rem; line-height: 1.2;
-    }
-    .trt-cond-item span { font-size: .87rem; line-height: 1.65; color: var(--text-mid); }
     .trt-cond { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1.2rem; }
     .trt-cond-item {
       background: rgba(255,255,255,.65); border-radius: 16px; padding: 1.4rem 1.3rem;
@@ -1581,36 +1572,35 @@
   </section>
 
   <!-- CONDITIONS -->
-  <section class="section section-yellow" id="conditions">
+  <section class="section section-yellow" id="pourquoi">
     <div class="container">
-      <h2 class="section-title rv">Quantités, Délais et Retrait</h2>
-      <p class="section-sub rv rv-d1">Tout ce qu'il faut savoir avant de commander</p>
+      <h2 class="section-title rv">Froide, Tiède ou Réchauffée</h2>
+      <p class="section-sub rv rv-d1">Trois façons de la manger, et aucune mauvaise</p>
 
-      <div class="trt-cond rv">
+      <p class="rv rv-d1" style="max-width:760px;margin:1.6rem auto 0;text-align:center;font-size:1rem;line-height:1.8;color:var(--text-mid);">
+        C'est le débat de la pizza, transposé au man'ouché. Certains la mangent <strong>froide</strong>, sortie du frigo, exactement comme une part de pizza de la veille&nbsp;— la pâte au levain est ferme, le zaatar a eu la nuit pour parfumer toute la galette. D'autres ne la conçoivent que chaude. Personne n'a tort.
+      </p>
+      <p class="rv rv-d1" style="max-width:760px;margin:1rem auto 0;text-align:center;font-size:1rem;line-height:1.8;color:var(--text-mid);">
+        <strong>Tiède</strong>, il suffit de la sortir un moment sur le plan de travail avant de servir. <strong>Chaude</strong>, trois manières de la réchauffer, chacune son effet.
+      </p>
+
+      <div class="trt-cond rv" style="margin-top:2.2rem;">
         <div class="trt-cond-item">
-          <strong>De 10 à 100 man'ouches</strong>
-          <span>C'est le format de l'offre traiteur. En dessous de 10, inutile de passer par là&nbsp;: la <a href="/menu" style="color:var(--coral);font-weight:700;">commande normale</a> fait très bien l'affaire.</span>
+          <strong>Au micro-ondes</strong>
+          <span>Le plus rapide, et le seul qui refait vraiment fondre le fromage. À privilégier si c'est le moelleux que vous cherchez.</span>
         </div>
         <div class="trt-cond-item">
-          <strong>Jusqu'à 20 : 24 h avant</strong>
-          <span>Envoyez votre demande la veille pour être tranquille. On vous confirme le créneau au téléphone.</span>
+          <strong>À la poêle</strong>
+          <span>À sec, à feu moyen. La pâte redevient croustillante dessous, comme à la sortie du four.</span>
         </div>
         <div class="trt-cond-item">
-          <strong>De 21 à 50 : 48 h avant</strong>
-          <span>Deux jours suffisent pour préparer la pâte et organiser la cuisson sans bousculer le service.</span>
-        </div>
-        <div class="trt-cond-item">
-          <strong>Au-delà de 50 : 72 h avant</strong>
-          <span>Les très grosses commandes se préparent sur trois jours&nbsp;: on cale la production autour de votre créneau.</span>
-        </div>
-        <div class="trt-cond-item">
-          <strong>Retrait ou livraison</strong>
-          <span>Retrait au 6 rue Petit David, Lyon 2, sur nos heures d'ouverture. Livraison possible aux alentours de Lyon, en supplément.</span>
+          <strong>Au four</strong>
+          <span>Le coup de chaud général, et le plus régulier quand vous en réchauffez plusieurs à la fois.</span>
         </div>
       </div>
 
       <p class="rv" style="max-width:760px;margin:2rem auto 0;text-align:center;font-size:.88rem;line-height:1.75;color:var(--text-mid);">
-        Le prix des man'ouches, remise comprise, est celui que vous voyez dans le <a href="#simulateur" style="color:var(--coral);font-weight:700;">simulateur</a>&nbsp;: il est ferme. Seule la livraison reste à chiffrer, parce qu'elle dépend de l'adresse de destination&nbsp;— on vous la confirme lors de l'appel.
+        C'est ce qui rend le man'ouché commode pour un buffet&nbsp;: vous commandez la veille, vous récupérez le matin, vous servez à midi&nbsp;— aucun four à surveiller, aucune cuisson à synchroniser. Et comme elle se mange à la main, pliée en deux, ni couverts ni assiettes à prévoir. Au Liban, on en achète volontiers plusieurs d'un coup et on en reprend une le lendemain matin.
       </p>
     </div>
   </section>
@@ -1653,11 +1643,32 @@
 
 
   <!-- POURQUOI CA MARCHE -->
-  <section class="section section-cream" id="pourquoi">
+  <section class="section section-cream" id="conditions">
     <div class="container">
-      <h2 class="section-title rv">Froide, Tiède ou Réchauffée</h2>
-      <p class="rv rv-d1" style="max-width:680px;margin:1.2rem auto 0;text-align:center;font-size:1rem;line-height:1.8;color:var(--text-mid);">
-        La man'ouche est aussi bonne froide que tiède&nbsp;: quelques secondes au micro-ondes et elle retrouve son moelleux, mais rien ne vous y oblige. Vous pouvez donc la commander la veille, la récupérer le matin et la servir à midi&nbsp;— sans four à surveiller. Et comme elle se mange à la main, pliée en deux, ni couverts ni assiettes à prévoir.
+      <h2 class="section-title rv">Quantités, Délais et Retrait</h2>
+      <p class="section-sub rv rv-d1">Tout ce qu'il faut savoir avant de commander</p>
+
+      <div class="trt-cond rv">
+        <div class="trt-cond-item">
+          <strong>De 10 à 100 man'ouches</strong>
+          <span>C'est le format de l'offre traiteur. En dessous de 10, inutile de passer par là&nbsp;: la <a href="/menu" style="color:var(--coral);font-weight:700;">commande normale</a> fait très bien l'affaire.</span>
+        </div>
+        <div class="trt-cond-item">
+          <strong>Jusqu'à 20 : 24 h avant</strong>
+          <span>Envoyez votre demande la veille pour être tranquille. On vous confirme le créneau au téléphone.</span>
+        </div>
+        <div class="trt-cond-item">
+          <strong>Au-delà de 20 : 48 h avant</strong>
+          <span>Deux jours pour préparer la pâte et caler la cuisson autour de votre créneau, quelle que soit la quantité.</span>
+        </div>
+        <div class="trt-cond-item">
+          <strong>Retrait ou livraison</strong>
+          <span>Retrait au 6 rue Petit David, Lyon 2, sur nos heures d'ouverture. Livraison possible aux alentours de Lyon, en supplément.</span>
+        </div>
+      </div>
+
+      <p class="rv" style="max-width:760px;margin:2rem auto 0;text-align:center;font-size:.88rem;line-height:1.75;color:var(--text-mid);">
+        Le prix des man'ouches, remise comprise, est celui que vous voyez dans le <a href="#simulateur" style="color:var(--coral);font-weight:700;">simulateur</a>&nbsp;: il est ferme. Seule la livraison reste à chiffrer, parce qu'elle dépend de l'adresse de destination&nbsp;— on vous la confirme lors de l'appel. C'est aussi à ce moment-là qu'on fixe le créneau exact&nbsp;: les délais ci-dessus sont là pour vous donner un ordre d'idée.
       </p>
     </div>
   </section>
@@ -1679,7 +1690,7 @@
         </details>
         <details>
           <summary>Combien de temps à l'avance&nbsp;?</summary>
-          <p>Jusqu'à 20 man'ouches, comptez <strong>24&nbsp;heures</strong>. De 21 à 50, prévoyez <strong>48&nbsp;heures</strong>. Au-delà de 50, il nous faut <strong>72&nbsp;heures</strong>. Ça nous laisse le temps de préparer la pâte et d'organiser la cuisson pour l'heure que vous nous donnez.</p>
+          <p>Jusqu'à 20 man'ouches, comptez <strong>24&nbsp;heures</strong>. Au-delà de 20, prévoyez <strong>48&nbsp;heures</strong>, quelle que soit la quantité. Ça nous laisse le temps de préparer la pâte et d'organiser la cuisson pour l'heure que vous nous donnez&nbsp;— on confirme le créneau exact au téléphone.</p>
         </details>
         <details>
           <summary>Est-ce que vous livrez&nbsp;?</summary>
@@ -1953,7 +1964,7 @@
       el.ttc.innerHTML = eur(ttc);
       el.ht.innerHTML = eur(ttc / TVA);
       el.meta.innerHTML = q
-        ? (q > 50 ? '72 h' : (q > 20 ? '48 h' : '24 h')) + ' à l’avance · ' + eur(ttc / q) + ' la pièce'
+        ? (q > 20 ? '48 h' : '24 h') + ' à l’avance · ' + eur(ttc / q) + ' la pièce'
         : 'Aucune man’ouche sélectionnée';
 
 
@@ -2065,11 +2076,11 @@
     var envoi = frm.querySelector('.sim-fsend');
     var API = 'https://sezamandco.com/api/devis';
 
-    /* la date minimale suit le delai reel : 24 h jusqu'a 20 pieces, 48 h au-dela */
+    /* la date minimale suit le delai annonce : 24 h jusqu'a 20 pieces, 48 h au-dela */
     function majDateMin() {
       var q = rows.reduce(function (a, r) { return a + (+r._in.value); }, 0);
       var d = new Date();
-      d.setDate(d.getDate() + (q > 50 ? 3 : (q > 20 ? 2 : 1)));
+      d.setDate(d.getDate() + (q > 20 ? 2 : 1));
       var p = function (n) { return (n < 10 ? '0' : '') + n; };
       var iso = d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate());
       dat.min = iso;
