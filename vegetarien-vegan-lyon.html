@@ -33,7 +33,16 @@
   <meta property="og:image" content="https://sezamandco.com/assets/images/houmous-crackers-sezam-co-lyon.webp">
   <meta property="og:locale" content="fr_FR">
 
-  <link rel="stylesheet" href="assets/css/fonts.css?v=2">
+  <style>/* polices auto-hebergees, en ligne : une requete bloquante de moins */
+/* Polices du site, generees par P/scripts/build_fonts_subset.py.
+   Versions variables quand elles existent, reduites aux caracteres du site.
+   NE PAS EDITER A LA MAIN : relancer le script. */
+@font-face{font-family:'Nunito';font-style:normal;font-weight:200 1000;font-display:swap;src:url('/assets/fonts/nunito-var.woff2') format('woff2')}
+@font-face{font-family:'Nunito Sans';font-style:normal;font-weight:200 1000;font-display:swap;src:url('/assets/fonts/nunito-sans-var.woff2') format('woff2')}
+@font-face{font-family:'Archivo';font-style:normal;font-weight:900;font-display:swap;src:url('/assets/fonts/archivo-900.woff2') format('woff2')}
+@font-face{font-family:'Yellowtail';font-style:normal;font-weight:400;font-display:swap;src:url('/assets/fonts/yellowtail-400.woff2') format('woff2')}
+@font-face{font-family:'Ambery Garden';font-style:normal;font-weight:400;font-display:swap;src:url('/assets/fonts/ambery-garden.woff2') format('woff2')}
+</style>
 
   <script type="application/ld+json">
   {
@@ -67,13 +76,6 @@
 
   <style>
 .skip-to-content { position: absolute; left: -10000px; top: 1rem; background: var(--green-deep,#3F7000); color: #fff; padding: .8rem 1.4rem; border-radius: 8px; font-weight: 700; font-size: .9rem; z-index: 9999; text-decoration: none; } .skip-to-content:focus { left: 1rem; }body{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
-    @font-face {
-      font-family: 'Ambery Garden';
-      src: url('assets/fonts/AmberyGarden.woff') format('woff');
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-    }
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
       --cream: #FDF4E7; --green-pastel: #D4EDCF; --yellow-soft: #FFF4BD;

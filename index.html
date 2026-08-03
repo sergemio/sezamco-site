@@ -26,7 +26,16 @@
   <meta name="twitter:image:alt" content="Spread de street food libanaise Sezam&Co">
 
   <link rel="preload" as="image" href="assets/images/manouche-hero-750.webp" imagesrcset="assets/images/manouche-hero-480.webp 480w, assets/images/manouche-hero-750.webp 750w" imagesizes="(max-width: 900px) 66vw, 43.5vw" fetchpriority="high">
-  <link rel="stylesheet" href="assets/css/fonts.css?v=2">
+  <style>/* polices auto-hebergees, en ligne : une requete bloquante de moins */
+/* Polices du site, generees par P/scripts/build_fonts_subset.py.
+   Versions variables quand elles existent, reduites aux caracteres du site.
+   NE PAS EDITER A LA MAIN : relancer le script. */
+@font-face{font-family:'Nunito';font-style:normal;font-weight:200 1000;font-display:swap;src:url('/assets/fonts/nunito-var.woff2') format('woff2')}
+@font-face{font-family:'Nunito Sans';font-style:normal;font-weight:200 1000;font-display:swap;src:url('/assets/fonts/nunito-sans-var.woff2') format('woff2')}
+@font-face{font-family:'Archivo';font-style:normal;font-weight:900;font-display:swap;src:url('/assets/fonts/archivo-900.woff2') format('woff2')}
+@font-face{font-family:'Yellowtail';font-style:normal;font-weight:400;font-display:swap;src:url('/assets/fonts/yellowtail-400.woff2') format('woff2')}
+@font-face{font-family:'Ambery Garden';font-style:normal;font-weight:400;font-display:swap;src:url('/assets/fonts/ambery-garden.woff2') format('woff2')}
+</style>
 
   <script type="application/ld+json">
   {
@@ -95,13 +104,6 @@
   </script>
 
   <style>body{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
-    @font-face {
-      font-family: 'Ambery Garden';
-      src: url('assets/fonts/AmberyGarden.woff') format('woff');
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-    }
 
     /* ===== RESET ===== */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -1632,9 +1634,12 @@
     var sobre = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var VITESSE = 0.072, enAttente = false;
     function peindreHero() {
-      hdr.classList.toggle('stuck', window.scrollY > 24);
+      /* Une seule lecture de scrollY : la relire APRES avoir touche au DOM force
+         le navigateur a recalculer la mise en page au milieu de la frame. */
+      var y = window.scrollY;
+      hdr.classList.toggle('stuck', y > 24);
       if (manouche && !sobre) {
-        manouche.style.transform = 'rotate(' + (window.scrollY * VITESSE).toFixed(2) + 'deg)';
+        manouche.style.transform = 'rotate(' + (y * VITESSE).toFixed(2) + 'deg)';
       }
       enAttente = false;
     }
