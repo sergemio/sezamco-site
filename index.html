@@ -1560,7 +1560,7 @@
         </div>
       </div>
       <div class="footer-seo">
-        <p>Sezam&amp;Co, c'est la street food libanaise au cœur de <a href="/adresse">Lyon 2</a>. Man'ouches cuits minute, mezzes faits maison, falafel, options vegan et végétariennes, viandes certifiées halal. Que vous cherchiez un <a href="/">restaurant libanais à Lyon</a>, un déjeuner rapide près de Bellecour, une livraison libanaise à Lyon, un <a href="/shawarma-lyon">shawarma à Lyon</a> ou une <a href="/manouche">man'ouche à Lyon</a>, nos Mezzes à Lyon ou notre <a href="/restaurant-libanais-lyon-7">Restaurant libanais Lyon 7</a> — poussez la porte, ou commandez en ligne.</p>
+        <p>Sezam&amp;Co, c'est la street food libanaise au cœur de <a href="/adresse">Lyon 2</a>. Man'ouches cuits minute, mezzes faits maison, falafel, options vegan et végétariennes, viandes certifiées halal. Que vous cherchiez un <a href="/">restaurant libanais à Lyon</a>, un déjeuner rapide près de Bellecour, une livraison libanaise à Lyon, un <a href="/shawarma-lyon">shawarma à Lyon</a> ou une <a href="/manouche">man'ouche à Lyon</a>, nos mezzes à Lyon ou notre <a href="/restaurant-libanais-lyon-7">Restaurant libanais Lyon 7</a> — poussez la porte, ou commandez en ligne.</p>
       </div>
       <div class="footer-copy">
         <p>&copy; 2026 Sezam&amp;Co — Tous droits réservés</p>
@@ -1622,14 +1622,15 @@
     });
 
     /* Sticky header + rotation du man'ouche.
-       La reference tourne a 0,03 deg/px ; on est au double, 0,06. L'image ne
+       La reference tourne a 0,03 deg/px ; on est a 0,072, soit 2,4 fois plus
+       (releve de 20 % : la rotation passait inapercue au defilement). L'image ne
        change jamais de taille : c'est la boite englobante d'un carre en
        rotation qui donne l'illusion qu'elle grossit.
        Une seule ecriture de style par frame, sinon le scroll saccade. */
     var hdr = document.getElementById('hdr');
     var manouche = document.getElementById('manouche');
     var sobre = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var VITESSE = 0.06, enAttente = false;
+    var VITESSE = 0.072, enAttente = false;
     function peindreHero() {
       hdr.classList.toggle('stuck', window.scrollY > 24);
       if (manouche && !sobre) {
