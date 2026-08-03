@@ -1691,16 +1691,9 @@
     gtag('config', 'G-320RMHJKY5');
     gtag('config', 'AW-18009131329');
   }
-  if (!IS_BOT) {
-    // Load gtag after page is interactive + 2.5s, OR on first user interaction
-    if (document.readyState === 'complete') { setTimeout(loadGtag, 2500); }
-    else { window.addEventListener('load', function(){ setTimeout(loadGtag, 2500); }); }
-    ['mousedown','touchstart','keydown','scroll'].forEach(function(ev){
-      window.addEventListener(ev, loadGtag, {once:true, passive:true});
-    });
-  }
+  if (!IS_BOT) { loadGtag(); /* eager requis : le clic Commander navigue 500 ms apres l'event — un gtag differe n'a pas le temps d'emettre le purchase GA4 (incident 28/07-03/08) */ }
   // Click handler for conversion tracking — loads gtag synchronously if not yet loaded (skipped for bots)
-  document.addEventListener('click',function(e){var a=e.target.closest('a[href*="commandes.sezamandco.com"]');if(a){if(IS_BOT){return;}e.preventDefault();loadGtag();var tid='T_'+Date.now()+'_'+Math.random().toString(36).substr(2,6);gtag('event','purchase',{'send_to':'G-320RMHJKY5','transaction_id':tid,'value':1.0,'currency':'EUR'});gtag('event','conversion',{'send_to':'AW-18009131329/SBRCCJqu3IYcEMGStotD','transaction_id':tid,'value':1.0,'currency':'EUR','event_callback':function(){window.location=a.href;}});setTimeout(function(){window.location=a.href;},500);}});
+  document.addEventListener('click',function(e){var a=e.target.closest('a[href*="commandes.sezamandco.com"]');if(a){if(IS_BOT){return;}e.preventDefault();loadGtag();var tid='T_'+Date.now()+'_'+Math.random().toString(36).substr(2,6);gtag('event','purchase',{'send_to':'G-320RMHJKY5','transaction_id':tid,'value':1.0,'currency':'EUR'});gtag('event','conversion',{'send_to':'AW-18009131329/SBRCCJqu3IYcEMGStotD','transaction_id':tid,'value':1.0,'currency':'EUR','event_callback':function(){window.location=a.href;}});setTimeout(function(){window.location=a.href;},window.google_tag_manager?500:1500);}});
 </script>
 
 <!-- DISH MODAL -->
