@@ -889,9 +889,9 @@
     .sim-row {
       display: grid; grid-template-columns: 52px minmax(0,1fr) auto;
       grid-template-areas: "img meta side" "rng rng rng";
-      gap: .5rem .7rem; align-items: center;
+      gap: .5rem .55rem; align-items: center;
       background: rgba(255,255,255,.62); border: 2px solid rgba(63,112,0,.10);
-      border-radius: 16px; padding: .75rem .9rem .5rem; margin-bottom: .7rem;
+      border-radius: 16px; padding: .75rem .7rem .5rem; margin-bottom: .7rem;
       transition: border-color .25s, background .25s, box-shadow .25s;
     }
     .sim-row.is-on { border-color: rgba(63,112,0,.38); background: #fff; box-shadow: 0 2px 10px rgba(26,59,6,.06); }
@@ -910,7 +910,7 @@
     .sim-side { grid-area: side; display: flex; flex-direction: column; align-items: flex-end; gap: .25rem; }
     .sim-lt { font-size: .95rem; font-weight: 800; color: var(--text-dark); font-variant-numeric: tabular-nums; white-space: nowrap; }
     .sim-lt.zero { color: rgba(85,85,85,.38); font-weight: 700; }
-    .sim-ctrl { display: flex; align-items: center; gap: .4rem; }
+    .sim-ctrl { display: flex; align-items: center; gap: .28rem; }
     .sim-btn {
       flex: 0 0 auto; width: 42px; height: 42px; border-radius: 50%;
       border: 2px solid var(--green-deep); background: #fff; color: var(--green-deep);
@@ -920,7 +920,7 @@
     .sim-btn:hover { background: var(--green-pastel); }
     .sim-btn:active { transform: scale(.9); }
     .sim-btn[disabled] { opacity: .28; cursor: not-allowed; }
-    .sim-qty { flex: 0 0 2.1rem; text-align: center; font-weight: 800; font-size: 1.05rem; color: var(--text-dark); font-variant-numeric: tabular-nums; }
+    .sim-qty { flex: 0 0 1.75rem; text-align: center; font-weight: 800; font-size: 1.05rem; color: var(--text-dark); font-variant-numeric: tabular-nums; }
 
     .sim-range {
       grid-area: rng; width: 100%; margin: 0; height: 36px;
@@ -1020,7 +1020,7 @@
         position: fixed; top: 74px; left: 0; right: 0; z-index: 150;
         margin: 0 clamp(1.25rem, 4vw, 2.5rem);
         display: flex; align-items: center; gap: .5rem;
-        padding: .5rem .5rem .5rem .9rem;
+        padding: .5rem .9rem .5rem .9rem;
       }
       .sim-card.compact .sim-head-lbl,
       .sim-card.compact .sim-sep,
@@ -1038,6 +1038,14 @@
       .sim-card.compact .sim-head { order: 3; margin-left: auto; }
       .sim-card.compact .sim-count { font-size: .66rem; padding: .18rem .48rem; }
       .sim-card.compact .sim-cart { order: 4; display: inline-flex; }
+    }
+
+    /* Sous 380 px, la barre contractee n'a plus la place pour ses quatre blocs :
+       la pastille du nombre de pieces s'efface, l'essentiel reste (remise, total,
+       panier). Sans cela le bouton panier sortait de la barre — de 1 px a 360,
+       de 41 px a 320, avec les grosses quantites. Mesure faite de 320 a 430 px. */
+    @media (max-width: 379px) {
+      .sim-card.compact .sim-head { display: none; }
     }
 
     @media (min-width: 620px) {
