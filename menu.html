@@ -90,7 +90,8 @@
             {"@type": "MenuItem", "name": "Labné & Crackers", "offers": {"@type": "Offer", "price": "5.90", "priceCurrency": "EUR"}, "suitableForDiet": ["https://schema.org/VegetarianDiet"]},
             {"@type": "MenuItem", "name": "Fattouch", "offers": {"@type": "Offer", "price": "5.90", "priceCurrency": "EUR"}, "suitableForDiet": ["https://schema.org/VeganDiet"]},
             {"@type": "MenuItem", "name": "Mozza Sticks", "offers": {"@type": "Offer", "price": "5.90", "priceCurrency": "EUR"}, "suitableForDiet": ["https://schema.org/VegetarianDiet"]},
-            {"@type": "MenuItem", "name": "Frites Signature", "offers": {"@type": "Offer", "price": "5.90", "priceCurrency": "EUR"}, "suitableForDiet": ["https://schema.org/VeganDiet"]},
+            {"@type": "MenuItem", "name": "Frites Signature", "offers": {"@type": "Offer", "price": "4.90", "priceCurrency": "EUR"}, "suitableForDiet": ["https://schema.org/VeganDiet"]},
+            {"@type": "MenuItem", "name": "Fries & Cheese", "offers": {"@type": "Offer", "price": "5.90", "priceCurrency": "EUR"}, "suitableForDiet": ["https://schema.org/VegetarianDiet"]},
             {"@type": "MenuItem", "name": "Falafel Crunch", "offers": {"@type": "Offer", "price": "5.90", "priceCurrency": "EUR"}, "suitableForDiet": ["https://schema.org/VeganDiet"]}
           ]
         },
@@ -98,8 +99,8 @@
           "@type": "MenuSection",
           "name": "Man'ouche Urbain",
           "hasMenuItem": [
-            {"@type": "MenuItem", "name": "Shawarma Poulet", "offers": {"@type": "Offer", "price": "9.20", "priceCurrency": "EUR"}},
-            {"@type": "MenuItem", "name": "Cheesy Kafta", "offers": {"@type": "Offer", "price": "9.50", "priceCurrency": "EUR"}},
+            {"@type": "MenuItem", "name": "Shawarma Poulet", "offers": {"@type": "Offer", "price": "9.30", "priceCurrency": "EUR"}},
+            {"@type": "MenuItem", "name": "Cheesy Kafta", "offers": {"@type": "Offer", "price": "9.60", "priceCurrency": "EUR"}},
             {"@type": "MenuItem", "name": "Falafel Wrap", "offers": {"@type": "Offer", "price": "8.90", "priceCurrency": "EUR"}, "suitableForDiet": ["https://schema.org/VegetarianDiet"]}
           ]
         },
@@ -108,16 +109,17 @@
           "name": "Man'ouche Traditionnel",
           "hasMenuItem": [
             {"@type": "MenuItem", "name": "Zaatar", "offers": {"@type": "Offer", "price": "5.50", "priceCurrency": "EUR"}, "suitableForDiet": ["https://schema.org/VeganDiet"]},
-            {"@type": "MenuItem", "name": "Lahmajine", "offers": {"@type": "Offer", "price": "8.00", "priceCurrency": "EUR"}}
+            {"@type": "MenuItem", "name": "Lahmajine", "offers": {"@type": "Offer", "price": "7.90", "priceCurrency": "EUR"}}
           ]
         },
         {
           "@type": "MenuSection",
           "name": "Desserts",
           "hasMenuItem": [
-            {"@type": "MenuItem", "name": "Nutella Banane", "offers": {"@type": "Offer", "price": "5.50", "priceCurrency": "EUR"}},
-            {"@type": "MenuItem", "name": "Spéculoos Banane", "offers": {"@type": "Offer", "price": "5.50", "priceCurrency": "EUR"}},
-            {"@type": "MenuItem", "name": "Choco-Tahini Twist", "offers": {"@type": "Offer", "price": "6.00", "priceCurrency": "EUR"}}
+            {"@type": "MenuItem", "name": "Nutella Banane", "offers": {"@type": "Offer", "price": "5.60", "priceCurrency": "EUR"}},
+            {"@type": "MenuItem", "name": "Spéculoos Banane", "offers": {"@type": "Offer", "price": "5.60", "priceCurrency": "EUR"}},
+            {"@type": "MenuItem", "name": "Choco-Tahini Twist", "offers": {"@type": "Offer", "price": "5.90", "priceCurrency": "EUR"}},
+            {"@type": "MenuItem", "name": "Knefé", "offers": {"@type": "Offer", "price": "5.90", "priceCurrency": "EUR"}}
           ]
         }
       ]
@@ -601,7 +603,8 @@
 
     /* ===== DESSERTS GRID ===== */
     .desserts-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem;
+      /* auto-fit : les 4 cartes tiennent sur une ligne, sans orpheline en bout */
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem;
     }
     @media (max-width: 768px) { .desserts-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 480px) { .desserts-grid { grid-template-columns: 1fr; } }
@@ -613,6 +616,11 @@
     }
     .dessert-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,.06); }
     .dessert-icon { font-size: 2.2rem; margin-bottom: .6rem; }
+    /* La photo deborde le rembourrage de la carte pour en epouser les bords. */
+    .dessert-photo { display: block; width: calc(100% + 3rem); max-width: none; /* sinon la regle globale img{max-width:100%} rogne la photo et laisse une bande a droite */
+      margin: -1.5rem -1.5rem .9rem; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 16px 16px 0 0; }
+    /* Sans photo, le meme cadre garde l'emoji centre : la grille reste reguliere. */
+    .dessert-cadre { display: flex; align-items: center; justify-content: center; width: calc(100% + 3rem); margin: -1.5rem -1.5rem .9rem; aspect-ratio: 4 / 3; border-radius: 16px 16px 0 0; background: var(--cream, #FDF4E7); font-size: 3rem; }
     .dessert-name {
       font-family: var(--font-display); font-size: 1.15rem;
       color: var(--green-deep); margin-bottom: .3rem;
@@ -789,11 +797,6 @@
       box-shadow: 0 4px 14px rgba(84,158,17,.4);
     }
     .dish-modal-cta .btn-order:hover { box-shadow: 0 8px 22px rgba(84,158,17,.55); }
-    .dish-modal-cta .btn-close-2 {
-      background: transparent; color: var(--green-deep);
-      border: 2px solid rgba(26,59,6,.15);
-    }
-    .dish-modal-cta .btn-close-2:hover { background: var(--green-pastel); border-color: var(--green-logo); }
 
     body.modal-open { overflow: hidden; }
     @media (max-width: 500px) {
@@ -901,9 +904,9 @@
       <div style="border:none;border-radius:20px;padding:clamp(1.5rem,4vw,2.5rem);margin:0 clamp(.75rem,2vw,1.5rem);background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Crect x='1.5' y='1.5' width='99%25' height='99%25' rx='20' ry='20' fill='none' stroke='%232D6A0F' stroke-width='3' stroke-dasharray='14 10'/%3E%3C/svg%3E&quot;);background-size:100% 100%;">
         <h1 class="rv">Menu Libanais — Man'ouches, Shawarma, Mezzes &amp; Desserts Maison</h1>
         <p class="page-hero-sub rv rv-d1">La carte de notre <a href="/" style="color:var(--green-logo);">restaurant libanais à Lyon</a>. Man'ouches cuits minute, shawarma poulet grillé au four, mezzes faits maison et desserts libanais. Tous nos plats sont servis en man'ouche — la galette libanaise artisanale, cuite au four sous vos yeux, <a href="/adresse" style="color:var(--green-logo);">à deux pas de la place Bellecour</a>.</p>
-        <div class="rv rv-d2" style="display:inline-flex;align-items:center;gap:.5rem;background:rgba(26,59,6,.06);border:1px solid rgba(26,59,6,.1);padding:.35rem .9rem;border-radius:50px;margin-bottom:1rem;">
-          <span style="color:var(--yellow-rich);font-size:.85rem;letter-spacing:2px;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-          <span style="font-size:.82rem;font-weight:600;color:var(--green-deep);">4.8/5 sur Google</span>
+        <div class="rv rv-d2" style="display:inline-flex;align-items:center;gap:.5rem;background:#fff;border:1px solid rgba(26,59,6,.13);padding:.45rem 1rem;border-radius:50px;margin-bottom:1rem;">
+          <span style="color:#C57C00;font-size:1.05rem;letter-spacing:2px;line-height:1;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span style="font-size:.9rem;font-weight:700;color:var(--green-deep);">4.8/5 sur Google</span>
         </div>
         <div class="rv rv-d3" style="margin-top:1.2rem;display:flex;gap:1rem;align-items:center;flex-wrap:wrap;justify-content:center;">
           <span style="font-family:var(--font-display);font-size:.9rem;color:var(--coral);">Formule dès 11,10&nbsp;€</span>
@@ -936,7 +939,7 @@
 
       <div class="menu-card rv rv-d2">
         <div class="menu-item">
-          <div class="menu-item-img"><img src="assets/images/mezze/houmous.webp" alt="Houmous & Crackers" loading="lazy"></div>
+          <div class="menu-item-img"><img src="assets/images/mezze/houmous.webp" alt="Houmous & Crackers — mezze libanais fait maison, Sezam&Co Lyon 2" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Houmous &amp; Crackers</div>
             <p class="menu-item-desc">Pois chiches, crème de sésame, sumac, citron, huile d'olive, crackers</p>
@@ -948,7 +951,7 @@
         </div>
 
         <div class="menu-item">
-          <div class="menu-item-img"><img src="assets/images/mezze/moutabal.webp" alt="Moutabal & Crackers" loading="lazy"></div>
+          <div class="menu-item-img"><img src="assets/images/mezze/moutabal.webp" alt="Moutabal & Crackers — mezze libanais fait maison, Sezam&Co Lyon 2" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Moutabal &amp; Crackers</div>
             <p class="menu-item-desc">Caviar d'aubergine crémeuse et fumée, sésame, citron, huile d'olive, crackers</p>
@@ -960,7 +963,7 @@
         </div>
 
         <div class="menu-item">
-          <div class="menu-item-img"><img src="assets/images/mezze/labne.webp" alt="Labné & Crackers" loading="lazy"></div>
+          <div class="menu-item-img"><img src="assets/images/mezze/labne.webp" alt="Labné & Crackers — mezze libanais fait maison, Sezam&Co Lyon 2" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Labné &amp; Crackers</div>
             <p class="menu-item-desc">Fromage blanc salé en crème, huile d'olive, crackers, pincée de zaatar</p>
@@ -972,7 +975,7 @@
         </div>
 
         <div class="menu-item">
-          <div class="menu-item-img"><img src="assets/images/mezze/fattouch.webp" alt="Fattouch" loading="lazy"></div>
+          <div class="menu-item-img"><img src="assets/images/mezze/fattouch.webp" alt="Fattouch, salade libanaise à la grenade — Sezam&Co Lyon 2" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Fattouch</div>
             <p class="menu-item-desc">Grenade, laitue, tomate, concombre, radis, menthe, crackers, mélasse de grenade</p>
@@ -984,7 +987,7 @@
         </div>
 
         <div class="menu-item">
-          <div class="menu-item-img"><img src="assets/images/mezze/mozza-sticks.webp" alt="Mozza Sticks" loading="lazy"></div>
+          <div class="menu-item-img"><img src="assets/images/mezze/mozza-sticks.webp" alt="Mozza sticks panés au zaatar — Sezam&Co Lyon 2" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Mozza Sticks</div>
             <p class="menu-item-desc">5 mozzarellas filantes panées, saupoudrées de zaatar, sauce au choix</p>
@@ -996,7 +999,7 @@
         </div>
 
         <div class="menu-item">
-          <div class="menu-item-img"><img src="assets/images/mezze/frites.webp?v=2" alt="Frites Signature" loading="lazy"></div>
+          <div class="menu-item-img"><img src="assets/images/mezze/frites.webp?v=2" alt="Frites Signature épicées maison — Sezam&Co Lyon 2" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Frites Signature</div>
             <p class="menu-item-desc">Croustillantes et dorées, saupoudrées d'un mélange épicé maison</p>
@@ -1008,7 +1011,19 @@
         </div>
 
         <div class="menu-item">
-          <div class="menu-item-img"><img src="assets/images/falafel/crunch.webp?v=3" alt="Falafel Crunch" loading="lazy"></div>
+          <div class="menu-item-img"><img src="assets/images/mezze/fries-cheese.webp" alt="Fries & Cheese, frites aux 3 fromages fondus — Sezam&Co Lyon 2" loading="lazy"></div>
+          <div class="menu-item-left">
+            <div class="menu-item-name">Fries &amp; Cheese</div>
+            <p class="menu-item-desc">Frites Signature avec un mélange de 3 fromages fondus au four</p>
+            <div class="menu-item-tags"><span class="tag tag-veggie">Végétarien</span></div>
+          </div>
+          <div class="menu-item-right">
+            <span class="menu-item-price">5,90&nbsp;€</span>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-img"><img src="assets/images/falafel/crunch.webp?v=3" alt="Falafel Crunch, bol de falafels maison — Sezam&Co Lyon 2" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name"><a href="/falafel-lyon">Falafel Crunch</a></div>
             <p class="menu-item-desc">Bol de falafels, radis, tomates, concombre, laitue, crackers, sumac, crème de sésame maison</p>
@@ -1071,9 +1086,9 @@
 
       <div class="menu-card rv rv-d2">
         <div class="menu-item">
-          <div class="menu-item-img"><img src="assets/images/manouche/honey-mustard.webp" alt="Honey-Mustard Dinde" loading="lazy"></div>
+          <div class="menu-item-img"><img src="assets/images/manouche/honey-mustard.webp" alt="Man'ouche Cheesy Dinde — galette libanaise garnie, Sezam&Co Lyon 2" loading="lazy"></div>
           <div class="menu-item-left">
-            <div class="menu-item-name">Honey-Mustard Dinde <span class="menu-item-protein">Dinde</span></div>
+            <div class="menu-item-name">Cheesy Dinde <span class="menu-item-protein">Dinde</span></div>
             <p class="menu-item-desc">Tranches de dinde, 3 fromages, pickles, laitue, tomate, honey-mustard</p>
           </div>
           <div class="menu-item-right">
@@ -1083,7 +1098,7 @@
         </div>
 
         <div class="menu-item">
-          <div class="menu-item-img"><img src="assets/images/manouche/hummus-kafta.webp" alt="Houmous Kafta" loading="lazy"></div>
+          <div class="menu-item-img"><img src="assets/images/manouche/hummus-kafta.webp" alt="Man'ouche Houmous Kafta — galette libanaise garnie, Sezam&Co Lyon 2" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Houmous Kafta <span class="menu-item-protein">Boeuf</span></div>
             <p class="menu-item-desc">Houmous maison sur viande de boeuf façon kafta, pickles, assaisonnement maison</p>
@@ -1095,7 +1110,7 @@
         </div>
 
         <div class="menu-item">
-          <div class="menu-item-img"><img src="assets/images/manouche/cheesy-kafta.webp" alt="Cheesy Kafta" loading="lazy"></div>
+          <div class="menu-item-img"><img src="assets/images/manouche/cheesy-kafta.webp" alt="Man'ouche Cheesy Kafta — galette libanaise garnie, Sezam&Co Lyon 2" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Cheesy Kafta <span class="menu-item-protein">Boeuf</span></div>
             <p class="menu-item-desc">Kafta de boeuf aux épices orientales, oignons, persil, 3 fromages, tomates, pickles, mayo</p>
@@ -1107,7 +1122,7 @@
         </div>
 
         <div class="menu-item">
-          <div class="menu-item-img"><img src="assets/images/manouche/garlic-chicken.webp" alt="Garlic Chicken" loading="lazy"></div>
+          <div class="menu-item-img"><img src="assets/images/manouche/garlic-chicken.webp" alt="Man'ouche Garlic Chicken — galette libanaise garnie, Sezam&Co Lyon 2" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Garlic Chicken <span class="menu-item-protein">Poulet</span></div>
             <p class="menu-item-desc">Poulet mariné, fondue de 3 fromages, laitue, tomate, pickles, sauce garlic-mayo maison</p>
@@ -1119,7 +1134,7 @@
         </div>
 
         <div class="menu-item">
-          <div class="menu-item-img"><img src="assets/images/manouche/spicy-chicken.webp" alt="Spicy Chicken" loading="lazy"></div>
+          <div class="menu-item-img"><img src="assets/images/manouche/spicy-chicken.webp" alt="Man'ouche Spicy Chicken — galette libanaise garnie, Sezam&Co Lyon 2" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Spicy Chicken <span class="menu-item-protein">Poulet</span></div>
             <p class="menu-item-desc">Poulet mariné aux poivrons et oignons, 3 fromages, laitue, sauce épicée maison</p>
@@ -1131,7 +1146,7 @@
         </div>
 
         <div class="menu-item">
-          <div class="menu-item-img"><img src="assets/images/shawarma-poulet-lyon.webp?v=3" alt="Shawarma Poulet" loading="lazy"></div>
+          <div class="menu-item-img"><img src="assets/images/shawarma-poulet-lyon.webp?v=3" alt="Man'ouche Shawarma Poulet, poulet mariné grillé au four — Sezam&Co Lyon 2" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name"><a href="/shawarma-lyon">Shawarma</a> <span class="menu-item-protein">Poulet</span></div>
             <p class="menu-item-desc">Poulet mariné aux épices, laitue, frites, pickles, sauce à l'ail, sumac</p>
@@ -1143,7 +1158,7 @@
         </div>
 
         <div class="menu-item">
-          <div class="menu-item-img"><img src="assets/images/manouche/spicy-sojok.webp" alt="Spicy Sojok" loading="lazy"></div>
+          <div class="menu-item-img"><img src="assets/images/manouche/spicy-sojok.webp" alt="Man'ouche Spicy Sojok — galette libanaise garnie, Sezam&Co Lyon 2" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Spicy Sojok <span class="menu-item-protein">Boeuf</span></div>
             <p class="menu-item-desc">Saucisse de boeuf à l'ail "Sojok", 3 fromages, frites, tomate, pickles, laitue, spicy sauce</p>
@@ -1155,7 +1170,7 @@
         </div>
 
         <div class="menu-item">
-          <div class="menu-item-img"><img src="assets/images/manouche/crispy-chicken.webp?v=2507" alt="Crispy Chicken" loading="lazy"></div>
+          <div class="menu-item-img"><img src="assets/images/manouche/crispy-chicken.webp?v=2507" alt="Man'ouche Crispy Chicken — galette libanaise garnie, Sezam&Co Lyon 2" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Crispy Chicken <span class="menu-item-protein">Poulet</span></div>
             <p class="menu-item-desc">Tenders de blanc de poulet croustillants, tomate, pickles, laitue, sauce garlic-mayo</p>
@@ -1167,7 +1182,7 @@
         </div>
 
         <div class="menu-item">
-          <div class="menu-item-img"><img src="assets/images/manouche/falafel-wrap.webp?v=2" alt="Falafel Wrap" loading="lazy"></div>
+          <div class="menu-item-img"><img src="assets/images/manouche/falafel-wrap.webp?v=2" alt="Falafel wrap en man'ouche, falafels maison — Sezam&Co Lyon 2" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name"><a href="/falafel-lyon">Falafel Wrap</a> <span class="menu-item-protein">Veggie</span></div>
             <p class="menu-item-desc">Falafel wrap garni de tomates, radis, pickles, laitue, sauce sezam maison</p>
@@ -1180,7 +1195,7 @@
         </div>
 
         <div class="menu-item">
-          <div class="menu-item-img"><img src="assets/images/manouche/halloumi-bacon.webp" alt="Halloumi Bacon" loading="lazy"></div>
+          <div class="menu-item-img"><img src="assets/images/manouche/halloumi-bacon.webp" alt="Man'ouche Halloumi Bacon — galette libanaise garnie, Sezam&Co Lyon 2" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Halloumi Bacon <span class="menu-item-protein">Dinde</span></div>
             <p class="menu-item-desc">Fromage halloumi, bacon de dinde grillé, mozzarella filante, tomate, mayo</p>
@@ -1254,7 +1269,7 @@
         <h3 class="menu-sub-label">Viande</h3>
 
         <div class="menu-item">
-          <div class="menu-item-img"><img src="assets/images/manouche/lahmajine.webp" alt="Lahmajine" loading="lazy"></div>
+          <div class="menu-item-img"><img src="assets/images/manouche/lahmajine.webp" alt="Man'ouche Lahmajine cuit au four — Sezam&Co Lyon 2" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Lahmajine</div>
             <p class="menu-item-desc">Viande de boeuf hachée, épices, oignons, tomate, poivrons, mélasse de grenade</p>
@@ -1266,7 +1281,7 @@
         </div>
 
         <div class="menu-item">
-          <div class="menu-item-img"><img src="assets/images/manouche/sojok-jebne.webp" alt="Sojok Jebne" loading="lazy"></div>
+          <div class="menu-item-img"><img src="assets/images/manouche/sojok-jebne.webp" alt="Man'ouche Sojok Jebne cuit au four — Sezam&Co Lyon 2" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Sojok Jebne</div>
             <p class="menu-item-desc">Saucisse de boeuf à l'ail "Sojok" parsemée sur un lit de fromage fondu</p>
@@ -1283,7 +1298,7 @@
         <h3 class="menu-sub-label">Sans viande</h3>
 
         <div class="menu-item">
-          <div class="menu-item-img"><img src="assets/images/manouche/zaatar.webp?v=2507" alt="Zaatar" loading="lazy"></div>
+          <div class="menu-item-img"><img src="assets/images/manouche/zaatar.webp?v=2507" alt="Man'ouche Zaatar cuit au four — Sezam&Co Lyon 2" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Zaatar</div>
             <p class="menu-item-desc">Mélange savoureux de thym, graines de sésame, sumac, huile d'olive</p>
@@ -1296,7 +1311,7 @@
         </div>
 
         <div class="menu-item">
-          <div class="menu-item-img"><img src="assets/images/manouche/zaatar-extra.webp" alt="Zaatar Extra" loading="lazy"></div>
+          <div class="menu-item-img"><img src="assets/images/manouche/zaatar-extra.webp" alt="Man'ouche Zaatar Extra cuit au four — Sezam&Co Lyon 2" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Zaatar Extra</div>
             <p class="menu-item-desc">Zaatar avec tomate, concombre, olive et feuille de menthe</p>
@@ -1309,7 +1324,7 @@
         </div>
 
         <div class="menu-item">
-          <div class="menu-item-img"><img src="assets/images/manouche/zaatar-duo.webp?v=2507" alt="Zaatar Duo" loading="lazy"></div>
+          <div class="menu-item-img"><img src="assets/images/manouche/zaatar-duo.webp?v=2507" alt="Man'ouche Zaatar Duo cuit au four — Sezam&Co Lyon 2" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Zaatar Duo</div>
             <p class="menu-item-desc">D'un côté zaatar sésame sumac et huile, de l'autre l'Akkawi fromage filant</p>
@@ -1322,7 +1337,7 @@
         </div>
 
         <div class="menu-item">
-          <div class="menu-item-img"><img src="assets/images/manouche/jebne.webp" alt="Jebne" loading="lazy"></div>
+          <div class="menu-item-img"><img src="assets/images/manouche/jebne.webp" alt="Man'ouche Jebne cuit au four — Sezam&Co Lyon 2" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Jebne</div>
             <p class="menu-item-desc">Man'ouche aux fromages fondants "kashkaval", "Edam" et "Mozza"</p>
@@ -1335,7 +1350,7 @@
         </div>
 
         <div class="menu-item">
-          <div class="menu-item-img"><img src="assets/images/manouche/jebne-extra.webp" alt="Jebne Extra" loading="lazy"></div>
+          <div class="menu-item-img"><img src="assets/images/manouche/jebne-extra.webp" alt="Man'ouche Jebne Extra cuit au four — Sezam&Co Lyon 2" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Jebne Extra</div>
             <p class="menu-item-desc">Jebne avec tomate, concombre, olive et feuille de menthe</p>
@@ -1348,7 +1363,7 @@
         </div>
 
         <div class="menu-item">
-          <div class="menu-item-img"><img src="assets/images/manouche/labne-zaatar.webp?v=2" alt="Labné-Zaatar" loading="lazy"></div>
+          <div class="menu-item-img"><img src="assets/images/manouche/labne-zaatar.webp?v=2" alt="Man'ouche Labné-Zaatar cuit au four — Sezam&Co Lyon 2" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Labné-Zaatar</div>
             <p class="menu-item-desc">Fromage blanc salé "Labné", zaatar, olives, tomates, concombres, menthe</p>
@@ -1361,7 +1376,7 @@
         </div>
 
         <div class="menu-item">
-          <div class="menu-item-img"><img src="assets/images/manouche/halloumi-fromage.webp" alt="Halloumi Fromage" loading="lazy"></div>
+          <div class="menu-item-img"><img src="assets/images/manouche/halloumi-fromage.webp" alt="Man'ouche Halloumi Fromage cuit au four — Sezam&Co Lyon 2" loading="lazy"></div>
           <div class="menu-item-left">
             <div class="menu-item-name">Halloumi Fromage</div>
             <p class="menu-item-desc">Fromage halloumi, mozzarella filante, tomate, mayo, dans notre pain man'ouche</p>
@@ -1527,21 +1542,27 @@
 
       <div class="desserts-grid">
         <div class="dessert-card rv">
-          <div class="dessert-icon">🍫🍌</div>
+          <img class="dessert-photo" src="assets/images/desserts/nutella-banane.webp" alt="Man'ouché sucré au Nutella et tranches de banane — Sezam&Co Lyon 2" width="720" height="540" loading="lazy" decoding="async">
           <div class="dessert-name">Nutella Banane</div>
           <p class="dessert-desc">Nutella et tranches de banane dans un man'ouche</p>
           <span class="dessert-price">5,60&nbsp;€</span>
         </div>
         <div class="dessert-card rv rv-d1">
-          <div class="dessert-icon">🍪🍌</div>
+          <img class="dessert-photo" src="assets/images/desserts/speculoos-banane.webp" alt="Man'ouché roulé à la crème de spéculoos et banane — Sezam&Co Lyon 2" width="720" height="540" loading="lazy" decoding="async">
           <div class="dessert-name">Spéculoos Banane</div>
           <p class="dessert-desc">Crème de spéculoos, banane, dans un pain man'ouche</p>
           <span class="dessert-price">5,60&nbsp;€</span>
         </div>
         <div class="dessert-card rv rv-d2">
-          <div class="dessert-icon">🍫✨</div>
+          <img class="dessert-photo" src="assets/images/desserts/choco-tahini-twist.webp" alt="Choco-Tahini Twist — coeur de chocolat fondant nappe de creme de sesame, Sezam&Co Lyon 2" width="720" height="540" loading="lazy" decoding="async">
           <div class="dessert-name">Choco-Tahini Twist</div>
           <p class="dessert-desc">Coeur de chocolat fondant, coque moelleuse, crème de sésame</p>
+          <span class="dessert-price">5,90&nbsp;€</span>
+        </div>
+        <div class="dessert-card rv rv-d3">
+          <img class="dessert-photo" src="assets/images/desserts/knefe.webp" alt="Knefé — man'ouché plié au fromage fondant et graines de sésame, Sezam&Co Lyon 2" width="720" height="540" loading="lazy" decoding="async">
+          <div class="dessert-name">Knefé</div>
+          <p class="dessert-desc">Knefé et fromage fondant dans un man'ouché plié, graines de sésame</p>
           <span class="dessert-price">5,90&nbsp;€</span>
         </div>
       </div>
@@ -1591,7 +1612,7 @@
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
             </a>
             <a href="https://www.tiktok.com/@sezamandco" target="_blank" rel="noopener" aria-label="TikTok">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-.88-5.64v-3.5a6.37 6.37 0 00-.88-.06A6.34 6.34 0 001.39 15.3a6.34 6.34 0 0011.14 4.17V12.5a8.27 8.27 0 004.68 1.45v-3.4a4.85 4.85 0 01-2.38-1.48V6.69h4.76z"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
             </a>
             <a href="https://www.facebook.com/sezamandco" target="_blank" rel="noopener" aria-label="Facebook">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
@@ -1747,7 +1768,6 @@
       </div>
       <div class="dish-modal-cta">
         <a href="https://commandes.sezamandco.com" class="btn-order">Commander</a>
-        <button type="button" class="btn-close-2" id="dishModalClose2">Fermer</button>
       </div>
     </div>
   </div>
@@ -1852,10 +1872,23 @@
   });
 
   document.getElementById('dishModalClose').addEventListener('click', closeModal);
-  document.getElementById('dishModalClose2').addEventListener('click', closeModal);
   modal.addEventListener('click', function(e) { if (e.target === modal) closeModal(); });
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+  });
+})();
+</script>
+<script>
+/* Bandeau : la piste est doublee jusqu'a couvrir deux fois l'ecran. Les deux
+   moities sont alors identiques au caractere pres, donc l'animation
+   translateX(-50%) retombe exactement sur la meme image — pas de saut — et il
+   reste toujours de quoi remplir la fenetre — pas de zone vide. */
+(function () {
+  var large = Math.max(window.innerWidth || 0, (window.screen || {}).width || 0, 1440);
+  document.querySelectorAll('.marquee-track').forEach(function (piste) {
+    var tours = 0;
+    do { piste.innerHTML += piste.innerHTML; tours++; }
+    while (piste.scrollWidth < large * 2.5 && tours < 6);
   });
 })();
 </script>
