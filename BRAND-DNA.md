@@ -1,4 +1,7 @@
 # Sezam&Co — Brand Identity (valide 10/03/2026)
+> Last update: 2026-10-01
+
+> **Portée (décision de Serge du 01/10/2026)** : cette charte vaut pour ce que voient les CLIENTS — site, menu, supports imprimés, réseaux sociaux. Elle ne s'applique PAS aux documents internes (tableau de bord, rapports aux associés, outils), qui suivent `M/design/UX-UI-Rules.md` (R4.5 pour la police).
 
 ## Identite
 - **Nom** : Sezam&Co (ecrit colle, avec &) — logo : "Sezam&Co"

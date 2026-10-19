@@ -1,4 +1,13 @@
 # Refonte Site Web Sezam&Co — Wix > Site statique
+> Last update: 2026-09-28
+
+## ⏸️ Chantiers mis en attente par Serge (à reprendre plus tard, ne pas lancer sans son feu vert)
+
+### Couleurs centralisées + vert des boutons (demandé et suspendu le 28/09/2026)
+- **Demande de Serge** : un seul endroit de variables globales pour toutes les couleurs du site **et des applications Sezam**, appelées partout au lieu de codes hex écrits en dur.
+- **État mesuré le 28/09/2026** : chacune des 26 pages recopie sa propre liste `:root` (23 variables, cohérentes entre pages) ; **787 couleurs hex en dur** hors `:root` et hors SVG, 29 teintes distinctes (dont 511 × `#FFF`).
+- **Plan proposé** : (1) un fichier unique `assets/css/couleurs.css` chargé par toutes les pages, noms clairs + couleurs Google à part (bloc avis) ; (2) retirer le `:root` recopié des 26 pages ; (3) remplacer les 787 hex par les variables ; (4) captures avant/après sur les 26 pages, zéro écart visuel hors vert des boutons ; (5) numéro de version sur le fichier (Cloudflare garde les assets plusieurs jours). Pour les autres applications : un fichier source de couleurs commun que chacune reprend — **applications visées non précisées par Serge** (borne, Prep Manager, ShiftMaster, to-do ?).
+- **Vert des boutons ≠ vert du logo** : logo `#66B725`, boutons `#549E11` (plus sombre, plus saturé). Contraste texte crème : actuel 3,24:1 (déjà sous le seuil 4,5:1 de BRAND-DNA), logo exact 2,43:1. Options : A actuel · B logo exact texte crème (illisible) · C logo exact + texte `#1A3B06` (5,00:1) · D teinte logo assombrie `#48811A` (4,59:1). **Choix de Serge : non fait.** Comparatif visuel : `P/topics/seo/refonte-siteweb-evolution/comparaison-vert-boutons.html`.
 
 ## Objectif
 Remplacer le site Wix (sezamandco.com) par un site statique code main, optimise SEO, rapide, gratuit a heberger.
