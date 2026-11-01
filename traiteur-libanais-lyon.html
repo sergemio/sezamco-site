@@ -92,7 +92,7 @@
         "name": "Combien de temps à l'avance faut-il commander ?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Jusqu'à 20 man'ouches, comptez 24 heures. Au-delà de 20 man'ouches, prévoyez 48 heures, quelle que soit la quantité. Ce délai nous laisse le temps de préparer la pâte et d'organiser la cuisson pour l'heure convenue, confirmée au téléphone."
+          "text": "Jusqu'à 20 man'ouches, comptez 24 heures. De 21 à 50 man'ouches, prévoyez 48 heures. Au-delà de 50, prévoyez 72 heures. Ce délai nous laisse le temps de préparer la pâte et d'organiser la cuisson pour l'heure convenue, confirmée au téléphone."
         }
       },
       {
@@ -156,7 +156,7 @@
         "name": "C'est adapté pour un anniversaire ou une réunion d'équipe ?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Oui, c'est l'usage le plus fréquent : anniversaires, apéros entre amis, réunions d'équipe et brunchs. Comptez 1,5 man'ouche par personne, prenez un assortiment des cinq recettes, et prévoyez 24 heures jusqu'à 20 man'ouches, 48 heures au-delà."
+          "text": "Oui, c'est l'usage le plus fréquent : anniversaires, apéros entre amis, réunions d'équipe et brunchs. Comptez 1,5 man'ouche par personne, prenez un assortiment des cinq recettes, et prévoyez 24 heures jusqu'à 20 man'ouches, 48 heures de 21 à 50, 72 heures au-delà."
         }
       }
     ]
@@ -1678,8 +1678,8 @@
           <span>Envoyez votre demande la veille pour être tranquille. On vous confirme le créneau au téléphone.</span>
         </div>
         <div class="trt-cond-item">
-          <strong>Au-delà de 20 : 48 h avant</strong>
-          <span>Deux jours pour préparer la pâte et caler la cuisson autour de votre créneau, quelle que soit la quantité.</span>
+          <strong>Au-delà de 20 : 48 à 72 h avant</strong>
+          <span>48 h de 21 à 50 man'ouches, 72 h au-delà de 50&nbsp;: le temps de préparer la pâte et de caler la cuisson autour de votre créneau.</span>
         </div>
         <div class="trt-cond-item">
           <strong>Retrait ou livraison</strong>
@@ -1737,7 +1737,7 @@
         </details>
         <details>
           <summary>Combien de temps à l'avance&nbsp;?</summary>
-          <p>Jusqu'à 20 man'ouches, comptez <strong>24&nbsp;heures</strong>. Au-delà de 20, prévoyez <strong>48&nbsp;heures</strong>, quelle que soit la quantité. Ça nous laisse le temps de préparer la pâte et d'organiser la cuisson pour l'heure que vous nous donnez&nbsp;— on confirme le créneau exact au téléphone.</p>
+          <p>Jusqu'à 20 man'ouches, comptez <strong>24&nbsp;heures</strong>. De 21 à 50, prévoyez <strong>48&nbsp;heures</strong>, et au-delà de 50, <strong>72&nbsp;heures</strong>. Ça nous laisse le temps de préparer la pâte et d'organiser la cuisson pour l'heure que vous nous donnez&nbsp;— on confirme le créneau exact au téléphone.</p>
         </details>
         <details>
           <summary>Est-ce que vous livrez&nbsp;?</summary>
@@ -1769,7 +1769,7 @@
         </details>
         <details>
           <summary>C'est adapté pour un anniversaire ou une réunion&nbsp;?</summary>
-          <p>C'est même l'usage le plus fréquent&nbsp;: anniversaires, apéros entre amis, réunions d'équipe et brunchs. Comptez <strong>1,5 man'ouche par personne</strong>, prenez un assortiment des cinq recettes pour que chacun y trouve son compte, et prévoyez <strong>24&nbsp;h</strong> jusqu'à 20 man'ouches, <strong>48&nbsp;h</strong> au-delà.</p>
+          <p>C'est même l'usage le plus fréquent&nbsp;: anniversaires, apéros entre amis, réunions d'équipe et brunchs. Comptez <strong>1,5 man'ouche par personne</strong>, prenez un assortiment des cinq recettes pour que chacun y trouve son compte, et prévoyez <strong>24&nbsp;h</strong> jusqu'à 20 man'ouches, <strong>48&nbsp;h</strong> de 21 à 50, <strong>72&nbsp;h</strong> au-delà.</p>
         </details>
       </div>
     </div>
@@ -2013,7 +2013,7 @@
       el.ttc.innerHTML = eur(ttc);
       el.ht.innerHTML = eur(ttc / TVA);
       el.meta.innerHTML = q
-        ? (q > 20 ? '48 h' : '24 h') + ' à l’avance · ' + eur(ttc / q) + ' la pièce'
+        ? (q > 50 ? '72 h' : q > 20 ? '48 h' : '24 h') + ' à l’avance · ' + eur(ttc / q) + ' la pièce'
         : 'Aucune man’ouche sélectionnée';
 
 
@@ -2125,11 +2125,11 @@
     var envoi = frm.querySelector('.sim-fsend');
     var API = 'https://sezamandco.com/api/devis';
 
-    /* la date minimale suit le delai annonce : 24 h jusqu'a 20 pieces, 48 h au-dela */
+    /* la date minimale suit le delai annonce : 24 h jusqu'a 20 pieces, 48 h de 21 a 50, 72 h au-dela */
     function majDateMin() {
       var q = rows.reduce(function (a, r) { return a + (+r._in.value); }, 0);
       var d = new Date();
-      d.setDate(d.getDate() + (q > 20 ? 2 : 1));
+      d.setDate(d.getDate() + (q > 50 ? 3 : q > 20 ? 2 : 1));
       var p = function (n) { return (n < 10 ? '0' : '') + n; };
       var iso = d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate());
       dat.min = iso;
